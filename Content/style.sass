@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600')
+// colors
+$primaryblue: #22C9D4
+$btncol: #2d959c
+$primaryyellow: #F6DC7A
+$secondaryblue: #DEE7E7
+$white: #f2f2f2
+$black: #1E001F
+
+
+$button: #3a7272
+$button-hover: #215757
+
+$pink: #ff2222
+$warning: #fff429
+$border: #000000
+
+// fonts
+$default: 16px
+$nav-font: 1em
+$secondary-size: 3em
+$tertiarysize: 1.5em
+$miscfont: 0.9em
+
+$primary-font: 'Open Sans', sans-serif
+
+// logo
+$logo-width: 250px
+$small-logo: 200px
+
+
+=border-radius($radius)
+    -webkit-border-radius: $radius
+    -ms-border-radius: $radius
+    border-radius: $radius
+
+body
+    max-width: 1200px
+    background: $white
+    margin: 0 auto
+    font-size: $default
+    font-family: $primary-font
+    padding: 0
+
+#canvas-main
+    position: absolute
+    // margin-top: 50px
+    margin-top: 250px
+    width: 100%
+    text-align: center
+    opacity: 0.8
+
+canvas 
+  overflow-y: hidden
+  overflow-x: hidden
+  width: 100%
+  margin: 0
+
+header
+nav 
+    background-color: $primaryblue
+    // margin: 0 auto
+    // width: 100%
+ 
+.header-logo
+    max-width: $logo-width
+
+.btn
+    background-color: $btncol
+    border: $border
+
+.btn:hover
+    background-color: $button-hover
+
+#main-container
+    position: relative
+    height: 500px
+    background: linear-gradient($primaryblue,$white)
+  
+.navbar-custom
+    text-transform: uppercase
+    font-size: $nav-font
+
+footer
+    background-color: $black
+
+#footer-nav
+    background-color: $black
+    display: flex
+    flex-flow: column nowrap
+
+#footer-container p
+    color: $white
+    font-size: $miscfont
+    text-align: center
+
+#footer-logo
+    max-width: $small-logo
+
+#about-us-section-container h2
+    text-transform: uppercase
+    font-size: $secondary-size
+    text-align: center
+
+.heading-style 
+    position: relative
+    z-index: 1
+
+.heading-style:before 
+    border-top: 23px solid $primaryyellow
+    content:""
+    margin: 0 auto
+    position: absolute
+    top: 33% 
+    left: 0 
+    right: 0 
+    bottom: 0
+    width: 30%
+    z-index: -1
+
+.para-container
+    padding: 15px 0
+    max-width: 350px
+    margin: 0 auto
+    text-align: center
+    font-size: $miscfont
+
+#whatwedo-section-container h2
+    text-transform: uppercase
+    font-size: $secondary-size
+    text-align: center
+
+.second:before 
+    border-top: 23px solid $primaryblue
+
+#wwd-container
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-evenly
+    height: 250px
+    max-width: 900px
+    margin: 0 auto
+
+#wwd-container p
+    margin: 50px auto 0 auto
+    width: 220px
+
+#misc-container
+    box-shadow: inset 0 0 800px $white
+    border: 20px double $white
+    width: 700px
+    margin: 0 auto
+    background: $secondaryblue
+    padding: 50px
+    text-align: center
+
+#misc-container h3 
+    margin-bottom: 20px
+    text-transform: uppercase
+    font-size: $tertiarysize
+
+#misc-container p
+    font-size: $miscfont
+
+figure 
+    width: 100%
+    overflow: hidden
+    margin: 0
+
+#index-image
+    width: 100%
+    margin:-18.875% 0
+    display: block
+
+#contact
+    margin: 0 auto
+
+#contact-us
+    display: flex
+    justify-content: center
+    flex-flow: column nowrap
+    margin: 20px 0
+
+#contact-us h2
+    text-transform: uppercase
+    font-size: $secondary-size
+    text-align: center
+
+#contact-form
+    margin-top: 10px
+
+#contact-container
+    width: 700px
+    margin: 0 auto
+
+#contact-btn
+    margin-bottom: 10px
+    text-transform: uppercase
+
+
+@media only screen and (max-width: 675px) 
+
+    #wwd-container
+        flex-flow: column nowrap
+        max-width: 400px
+        margin: 50px auto 100px auto
+  
+    #wwd-container p
+        width: 100%
+        margin-top: 20px auto 20px
+
+    .second 
+        margin: 20px 0
+
+    .heading-style:before 
+        width: 55%
+
+    #misc-container
+        width: 400px
+        padding: 20px
+
+    #contact-container
+        width: 400px
+

@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+body {
+  max-width: 1200px;
+  background: #f2f2f2;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  padding: 0;
+}
+
+.hidden {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+#canvas-main {
+  position: absolute;
+  margin-top: 250px;
+  width: 100%;
+  text-align: center;
+  opacity: 0.8;
+}
+
+canvas {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+nav {
+  background-color: #22C9D4;
+}
+
+.header-logo {
+  max-width: 250px;
+}
+
+.btn {
+  background-color: #2d959c;
+  border: #000000;
+}
+
+.btn:hover {
+  background-color: #215757;
+}
+
+#main-container {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(#22C9D4, #f2f2f2);
+}
+
+.navbar-custom {
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+footer {
+  background-color: #1E001F;
+}
+
+#footer-nav {
+  background-color: #1E001F;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#footer-container p {
+  color: #f2f2f2;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+#footer-logo {
+  max-width: 200px;
+}
+
+#about-us-section-container h2 {
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: center;
+}
+
+.heading-style {
+  position: relative;
+  z-index: 1;
+}
+
+.heading-style:before {
+  border-top: 23px solid #F6DC7A;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 33%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  z-index: -1;
+}
+
+.para-container {
+  padding: 15px 0;
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+#whatwedo-section-container h2 {
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: center;
+}
+
+.second:before {
+  border-top: 23px solid #22C9D4;
+}
+
+#wwd-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  height: 250px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#wwd-container p {
+  margin: 50px auto 0 auto;
+  width: 220px;
+}
+
+#misc-container {
+  box-shadow: inset 0 0 800px #f2f2f2;
+  border: 20px double #f2f2f2;
+  width: 700px;
+  margin: 0 auto;
+  background: #DEE7E7;
+  padding: 50px;
+  text-align: center;
+}
+
+#misc-container h3 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+#misc-container p {
+  font-size: 0.9em;
+}
+
+figure {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+#index-image {
+  width: 100%;
+  margin: -18.875% 0;
+  display: block;
+}
+
+#contact {
+  margin: 0 auto;
+}
+
+#contact-us {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  margin: 20px 0;
+}
+
+#contact-us h2 {
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: center;
+}
+
+#contact-form {
+  margin-top: 10px;
+}
+
+#contact-container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#contact-btn {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* to do list feature styling */
+#todo-container {
+  background: #1E001F;
+  color: #f2f2f2;
+  /* padding: 20px; */
+  border-radius: 10px;
+  max-width: 450px;
+}
+
+#todo-container h1 {
+  color: rgb(216, 165, 208);
+  align-self: flex-end;
+}
+
+#todo-title-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 10px 5px;
+  border-bottom: 2px solid rgb(216, 165, 208);
+}
+
+table {
+  width: 450px;
+}
+
+.list-container tr th {
+  padding: 15px 5px;
+  font-size: 1.4em;
+}
+
+.list-container tr td {
+  padding: 15px 5px;
+}
+
+#list-row {
+  transition: background 0.5s;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+#list-row:hover {
+  background: rgb(81, 56, 83);
+}
+
+#add-list a {
+  color: #f2f2f2;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+#add-list a:hover {
+  color:rgb(194, 112, 184);
+}
+
+#add-list {
+  margin-top: 18px;
+  align-self: flex-end;
+}
+
+#todo-actions a{
+  margin: 0 5px;
+  color: #f2f2f2;
+}
+
+#todo-actions a:hover {
+  text-decoration: none !important;
+}
+
+
+#trash {
+  transition: color 1s;
+}
+
+#trash:hover{
+  color: red;
+}
+
+
+@media only screen and (max-width: 675px) {
+  #wwd-container {
+    flex-flow: column nowrap;
+    max-width: 400px;
+    margin: 50px auto 100px auto;
+  }
+
+  #wwd-container p {
+    width: 100%;
+    margin-top: 20px auto 20px;
+  }
+
+  .second {
+    margin: 20px 0;
+  }
+
+  .heading-style:before {
+    width: 55%;
+  }
+
+  #misc-container {
+    width: 400px;
+    padding: 20px;
+  }
+
+  #contact-container {
+    width: 400px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
