@@ -2,7 +2,7 @@
     <div id="footer-container">
         <section id="footer-navigation">
             <nav class="navbar navbar-expand-sm navbar-dark" id="footer-nav">
-                <img alt="Logo for Get Together" src="/Content/Images/bluegglogo.png" class="header-logo" id="footer-logo">
+                <img alt="Logo for Get Together" src="Content/Images/bluegglogo.png" class="header-logo" id="footer-logo">
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
