@@ -22,9 +22,10 @@ include 'inc/header.php';
     <table class="lists">
         <thead class="list-container">
             <tr>
-                <th class="hidden"></th>
-                <th>Title</th>
-                <th>Description</th>
+                <th class="hidden">ID</th>
+                <th scope="col">Status</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
             </tr>
         </thead>
         <tbody class="list-container" id="list-body">
@@ -39,12 +40,17 @@ include 'inc/header.php';
                 //only shows lists that are public
                 if($row['status'] === 'Y'){
                 ?>
-                <tr id="list-row" class="test">
+                <tr id="list-row">
                     <td class="hidden"><?php echo $row['id']; ?></td>
+                <td class="contain">
+                    <input type="checkbox"/>
+                    <span class="checkmark"></span>
+                </td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['description']; ?></td>
                     <td id="todo-actions">
-                        <a href="edittodo.php?id=<?php echo $row['id'];?>">Edit</a><a id="test" data-toggle="modal" data-target="#deleteModal" class="deleteList" href="listtodo.php?del=<?php echo $row['id']; ?>"><i class="fa fa-trash-o" aria-hidden="true" id="trash"></i></a>
+                        <a href="edittodo.php?id=<?php echo $row['id'];?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="sr-only">Edit Button</span></a>
+                        <a class="deleteList" href="listtodo.php?del=<?php echo $row['id']; ?>"><i class="fa fa-trash-o" aria-hidden="true" id="trash"><span class="sr-only">Delete Button</span></i></a>
                     </td>
                 </tr>
 
@@ -56,7 +62,7 @@ include 'inc/header.php';
 
         </tbody>
         </table>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,6 +80,6 @@ include 'inc/header.php';
       </div>
     </div>
   </div>
-</div>
+</div> -->
 </section>
 <script src="js/scripts.js"></script>

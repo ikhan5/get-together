@@ -45,7 +45,7 @@ if (isset($_POST['addlist'])){
     <form action="" method="post" class="form-container">
         <div class="form-group">
                 <label for="title">Title:<span class="required">*</span></label>
-                <input value="" type="text" id="title" class="form-control" name="title" placeholder="Give a title to this project"/>
+                <input value="" type="text" id="title" class="form-control" name="title" placeholder="Give a title to this to do"/>
                 
                 <?php 
                     if(isset($_SESSION['errors["titleError"]'])){
@@ -80,7 +80,7 @@ if (isset($_POST['addlist'])){
         </div>
         <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea value="" id="description" name="description" class="form-control" placeholder="Give some auditional information for this list"></textarea>
+                <textarea value="" id="description" name="description" class="form-control" placeholder="Give some auditional information for this to do"></textarea>
                 
                 <?php 
                     if(isset($_SESSION['errors["descriptionError"]'])){
