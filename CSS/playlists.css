@@ -38,7 +38,7 @@ body {
     padding: 0px;
     color: white;
     font-size: 16px;
-    background: #05E5E5;
+    background: transparent;
     width: 80%;
     margin-left: 10px;
 }
@@ -58,9 +58,15 @@ body {
 
 
 /***********Playlist Listings**************/
-#playlists {
+#playlists,
+#songs {
     display: flex;
     flex-direction: column;
+
+}
+
+#songs {
+    visibility: hidden;
 }
 
 #playlist-page__head {
@@ -72,7 +78,7 @@ body {
     color: white;
 }
 
-.playlist-page__create{
+.playlist-page__create {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -81,20 +87,20 @@ body {
     transition: 0.4s;
 }
 
-.playlist-page__create:hover{
+.playlist-page__create:hover {
     font-size: 25px;
     transition: 0.4s;
     transform: rotate(360deg);
 }
 
-.playlist-page__create:active{
+.playlist-page__create:active {
     color: #ff2222;
 }
 
-
-
-#playlist {
+.playlist,
+.song {
     display: flex;
+    max-width: 330px;
     border: solid 1px #ccc;
     border-radius: 10px;
     background: white;
@@ -105,38 +111,50 @@ body {
     transition: box-shadow 0.3s ease-in-out;
 }
 
-#playlist:hover {
+.playlist:hover {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     color: #ff2222;
     transition: 0.5s;
 }
 
-#playlist:active {
+.playlist:active {
     transform: translateY(2px);
 }
 
-.playlist_item {
+.playlist_item,
+.song_item {
     flex: 0 0 70px;
 }
 
-.playlist__title {
+.playlist__title,
+.song__title {
     margin-bottom: 0;
     font-size: 1.2em;
 }
 
-.playlist__song-count {
+.playlist__song-count,
+.song__artist,
+.song__time {
     margin-top: 0;
     font-size: 0.9em;
+    color: #777;
+}
+
+.song__artist {
+    margin: 0;
+    font-size: 1em;
     color: grey;
 }
 
-.playlist__info {
+.playlist__info,
+.song__info {
     flex: 0 0 170px;
     margin-left: 20px;
     text-decoration: none;
 }
 
-.playlist__info:visited {
+.playlist__info:visited,
+.song__info:visited {
     color: black;
 }
 
@@ -153,8 +171,94 @@ body {
 }
 
 .playlist__image,
-.playlist__options {
+.playlist__options,
+.song__image,
+.song__options {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/************Create Playlist Form**************/
+/* Code Referenced from https://www.w3schools.com/howto/howto_css_modals.asp */
+#createPlaylist {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.playlistForm {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
+
+.playlistForm form{
+    margin: 0 auto;
+}
+
+.playlistForm label, .playlistForm h2 {
+    color: white;
+}
+
+.close{
+    right:0;
+    display: inline;
+    text-align: right;
+    color: white;
+    text-decoration: none;
+}
+
+.form-field{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.form-field > label{
+    flex: 1;
+}
+
+.form-field > input, .form-field > textarea{
+    flex: 2;
+}
+.form-field > textarea{
+    resize: none;
+}
+
+.form-submit{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-submit input{
+    background: none;
+    border: solid 1px white;
+    color: white;
+    padding: 8px 15px;
+}
+
+.form-submit input:hover{
+    color: rgba(0, 0, 0, 0.8);
+    background: white;
+}
+
+@media only screen and (min-width: 675px) {
+    body{
+        /* background: red; */
+        max-width: 650px;
+    }
+
+    #songs{
+        justify-content: flex-end;
+    }
 }
