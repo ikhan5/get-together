@@ -1,0 +1,52 @@
+.event-thead {
+    color: #027272;
+}
+
+#form-add-event, #form-update-event {
+    max-width: 500px;
+}
+
+.btn-primary {
+    background-color: #05e5e5;
+    border-color: #05e5e5;
+}
+
+.btn-primary:hover {
+    background-color: #04b7b7;
+    border-color: #04b7b7;
+}
+
+.btn {
+    margin-right: 10px;
+    color: white;
+}
+
+.btn-default {
+    border-color: #ccc;
+}
+
+.event-action-btn {
+    margin: 5px 0 10px;
+}
+
+.event-action-link {
+    padding-right: 10px;
+}
+
+.event-detail {
+    max-width: 500px;
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+#registration-block {
+    border-right: 2px solid #04b7b7;
+}
+
+.event-delete-container {
+    margin-bottom: 40vh;
+}
+
+.display-4 {
+    font-size: 3rem;
+}
