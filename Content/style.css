@@ -199,10 +199,9 @@ figure {
 /* to do list feature styling */
 #todo-container {
   background: #1E001F;
-  color: #f2f2f2;
-  /* padding: 20px; */
   border-radius: 10px;
-  max-width: 450px;
+  max-width: 600px;
+  padding: 10px;
 }
 
 #todo-container h1 {
@@ -219,16 +218,18 @@ figure {
 }
 
 table {
-  width: 450px;
+  width: 100%;
 }
 
 .list-container tr th {
-  padding: 15px 5px;
+  padding: 15px 0;
   font-size: 1.4em;
+  color: #f2f2f2;
 }
 
 .list-container tr td {
-  padding: 15px 5px;
+  color: hsl(0, 0%, 95%);
+  padding: 10px 0;
 }
 
 #list-row {
@@ -239,16 +240,18 @@ table {
 
 #list-row:hover {
   background: rgb(81, 56, 83);
+  cursor: pointer;
 }
+
 
 #add-list a {
   color: #f2f2f2;
   text-decoration: none;
-  transition: color 0.5s;
+  transition: color 0.2s;
 }
 
 #add-list a:hover {
-  color:rgb(194, 112, 184);
+  color:rgb(80, 180, 110);
 }
 
 #add-list {
@@ -265,7 +268,6 @@ table {
   text-decoration: none !important;
 }
 
-
 #trash {
   transition: color 1s;
 }
@@ -273,6 +275,11 @@ table {
 #trash:hover{
   color: red;
 }
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+
 
 
 @media only screen and (max-width: 675px) {
