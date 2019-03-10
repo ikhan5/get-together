@@ -8,7 +8,6 @@
     <title>Playlists</title>
     <link rel="stylesheet" href="../CSS/playlists.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous"> -->
 </head>
@@ -24,9 +23,9 @@
         </div>
         <div id="playlist-page__head">
             <h1 id="playlist-page__header">Playlists</h1>
-            <a class="playlist-page__create" href="#">
+            <span class="playlist-page__create">
                 <i class="fas fa-plus-circle"></i>
-            </a>
+            </span>
         </div>
     </header>
     <div class="playlists__layout">
@@ -45,6 +44,7 @@
                 <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a></div>
             </div>
         </section>
+
         <div class="divider">
         </div>
         <!--Song Listings for each Playlist-->
@@ -81,12 +81,12 @@
     <!--Create a new Playlist Modal-->
     <section id="createPlaylist">
         <div class="playlistForm">
-            <a href="playlists.php" class="close">X</a>
+            <span class="close">X</span>
             <h2>Create a New Playlist</h2>
-            <form action="" method="" name="create">
+            <form action="" method="post" id="createplaylist">
                 <div class="form-field">
                     <label for="playlist__name">Name: </label>
-                    <input type="text" value="Playlist" id="playlist__name">
+                    <input type="text" value="Playlist" id="playlist__name" name="playlist__name">
                 </div>
                 <div class="form-field">
                     <label for="playlist__description">Description: </label>
@@ -94,10 +94,10 @@
                 </div>
                 <div class="form-field">
                     <label for="playlist__image">Image:</label>
-                    <input type="file" id="playlist__image">
+                    <input type="file" id="playlist__image" name="playlist__image">
                 </div>
                 <div class="form-submit">
-                    <input type="submit" value="Create">
+                    <input type="submit" value="Create" name="createplaylist">
                 </div>
             </form>
         </div>

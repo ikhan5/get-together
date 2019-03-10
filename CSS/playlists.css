@@ -117,7 +117,7 @@ body {
     transition: 0.5s;
 }
 
-.song:hover{
+.song:hover {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     color: #05E5E5;
     transition: 0.5s;
@@ -261,9 +261,12 @@ body {
     background: white;
 }
 
+.close{
+    float: right;
+}
+
 @media only screen and (min-width: 675px) {
     body {
-        /* background: red; */
         max-width: 660px;
     }
 
@@ -279,7 +282,34 @@ body {
         justify-content: space-between;
     }
 
-    #songs h2{
+    #songs h2 {
         display: none;
+    }
+}
+
+@media only screen and (min-width: 860px) {
+    body {
+        max-width: 835px;
+    }
+
+    .playlist,
+    .song {
+        width: 350px;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    body {
+        max-width: 1040px;
+    }
+
+    .playlists__layout {
+        margin-top: 10px;
+        justify-content: space-evenly;
+    }
+
+    .playlist,
+    .song {
+        width: 375px;
     }
 }
