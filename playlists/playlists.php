@@ -41,10 +41,31 @@
                         <p class="playlist__song-count">Number of Songs</p>
                     </div>
                 </a>
-                <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a></div>
+                <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="playlist__options_dropdown">
+                        <a href="#">Edit Playlist</a>
+                        <a href="#">Delete Playlist</a>
+                    </div>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="playlist_item playlist__image">
+                    <i class="fas fa-headphones-alt playlist-icon"></i>
+                </div>
+                <a href="#" class="playlist_item playlist__info">
+                    <div>
+                        <p class="playlist__title">Playlist Title</p>
+                        <p class="playlist__song-count">Number of Songs</p>
+                    </div>
+                </a>
+                <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="playlist__options_dropdown">
+                        <a href="#">Edit Playlist</a>
+                        <a href="#">Delete Playlist</a>
+                    </div>
+                </div>
             </div>
         </section>
-
         <div class="divider">
         </div>
         <!--Song Listings for each Playlist-->
@@ -61,7 +82,12 @@
                         <p class="song__time">3:00</p>
                     </div>
                 </a>
-                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a></div>
+                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="song__options_dropdown">
+                        <a href="#">Song Info</a>
+                        <a href="#">Remove Song</a>
+                    </div>
+                </div>
             </div>
             <div class="song">
                 <div class="song_item song__image">
@@ -74,7 +100,12 @@
                         <p class="song__time">3:00</p>
                     </div>
                 </a>
-                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a></div>
+                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="song__options_dropdown">
+                        <a href="#">Song Info</a>
+                        <a href="#">Remove Song</a>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -97,7 +128,7 @@
                     <input type="file" id="playlist__image" name="playlist__image">
                 </div>
                 <div class="form-submit">
-                    <input type="submit" value="Create" name="createplaylist">
+                    <input type="submit" value="Create" name="createplaylist" class="create_button">
                 </div>
             </form>
         </div>

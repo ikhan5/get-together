@@ -1,0 +1,85 @@
+/***************General********************/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    background: #f2f2f2;
+    max-width: 370px;
+    font-size: 16px;
+}
+/******************Payment Icons********************/
+.fab{
+    font-size: 3em;
+}
+.fa-cc-amex{
+    color: #007bc1;
+}
+
+.fa-cc-visa{
+    color: #0157a2;
+}
+.fa-cc-mastercard{
+    color:#0a3a82;
+}
+
+.fa-cc-paypal{
+    color:#253b80;
+}
+
+#payment__form {
+    display: flex;
+    flex-flow: column; 
+}
+
+.payment-method label{
+    display: flex;
+}
+
+.payment-method label input{
+    margin-right: 30px;
+}
+
+.payment-method label i{
+    margin-right: 5px;
+}
+
+.payment-method__credit,.payment-method__paypal {
+    background: white;
+    padding: 10px 15px;
+    margin: 0 auto;
+    width: 370px;
+}
+
+.payment-method__credit div {
+    margin-bottom: 10px;
+}
+
+.payment-method__credit input {
+    padding: 10px 5px;
+    font-size: 1.1em;
+}
+
+div[class^="credit"]{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between
+}
+
+.row input{
+    width: 150px;
+}
+
+.payment-method__paypal{
+    display: none;
+}
+
+.stripe-button-el,#paypal-submit{
+    float: right;
+}

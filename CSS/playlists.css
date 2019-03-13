@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     padding: 0;
-    background: #05E5E5;
+    background: #f2f2f2;
     max-width: 340px;
     font-size: 16px;
 }
@@ -13,7 +13,7 @@ body {
     background: none;
     height: 30px;
     border-radius: 25px;
-    border: solid 0px white;
+    border: solid 0px #000;
     width: 0;
     -webkit-transition: 0.1s ease-out;
     transition: 0.5s ease-out;
@@ -21,7 +21,7 @@ body {
 
 .searchbar:hover {
     width: 100%;
-    border: solid 2px white;
+    border: solid 1px #000;
     transition: 0.5s ease-in;
 }
 
@@ -36,7 +36,7 @@ body {
 .searchbar__input {
     border: none;
     padding: 0px;
-    color: white;
+    color: #000;
     font-size: 16px;
     background: transparent;
     width: 80%;
@@ -44,7 +44,7 @@ body {
 }
 
 .searchbar__button {
-    color: white;
+    color: #000;
     float: right;
     width: 30px;
     height: 30px;
@@ -75,7 +75,7 @@ body {
 }
 
 #playlist-page__header {
-    color: white;
+    color: #000;
 }
 
 .playlist-page__create {
@@ -100,6 +100,7 @@ body {
 .playlist,
 .song {
     display: flex;
+    position: relative;
     border: solid 1px #ccc;
     border-radius: 10px;
     background: white;
@@ -109,6 +110,11 @@ body {
     justify-content: center;
     margin-bottom: 10px;
     transition: box-shadow 0.3s ease-in-out;
+}
+
+.active{
+    border: solid 2px black;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .playlist:hover {
@@ -124,7 +130,7 @@ body {
 }
 
 .playlist:active {
-    transform: translateY(2px);
+    box-shadow: none;
 }
 
 .playlist_item,
@@ -165,7 +171,7 @@ body {
 }
 
 .fa-ellipsis-v {
-    color: #aaa;
+    color: #f6dc7a;
     font-size: 25px;
 }
 
@@ -183,6 +189,51 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.playlist__options,.song__options{
+    position: relative;
+    display: inline-block;
+
+}
+
+.playlist__options_dropdown,.song__options_dropdown{
+    display: none;
+    position: absolute;
+    background-color: #f6dc7a;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.playlist__options_dropdown a, .song__options_dropdown a{
+    float: none;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+
+.playlist__options_dropdown a:hover,.song__options_dropdown a:hover{
+    background-color: #000;
+    color: white;
+}
+
+/* .divider{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;  
+    height:600px;
+    border-left: solid 1px red;
+} */
+
+.to-songs{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: -10%;
+    top: 40%;
 }
 
 /************Create Playlist Form**************/

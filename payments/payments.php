@@ -11,13 +11,15 @@
 </head>
 
 <body>
-    <h1>Payment</h1>
-    <form action="" name="payment">
+    <p>You are paying <span id="amount-to-pay">$10</span> towards <span id="event-name">Ryan's Party</span></p>
+    <form action="" name="payment" id="payment__form">
         <div class="payment-method">
             <h2>Select payment method</h2>
             <label>
                 <input type="radio" name="method" value="Credit" checked>
-                <i class="far fa-credit-card"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
             </label>
             <label>
                 <input type="radio" name="method" value="PayPal">
@@ -34,23 +36,29 @@
                 <label for="name">Cardholder Name</label>
                 <input type="text" id="name" placeholder="John Doe" />
             </div>
-            <div class="credit__expiration">
-                <label for="expiration">Expiration Date</label>
-                <input type="text" id="expiration" placeholder="MM/DD" />
+            <div class="row">
+                <div class="credit__expiration">
+                    <label for="expiration">Expiration Date</label>
+                    <input type="text" id="expiration" placeholder="MM/DD" />
+                </div>
+                <div class="credit__cv">
+                    <label for="security">Security Code</label>
+                    <input type="text" id="security" placeholder="123" />
+                </div>
             </div>
-            <div class="credit__cv">
-                <label for="CVV">CVV/CVC</label>
-                <input type="text" id="CVV" placeholder="123" />
-            </div>
-            <!-- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="sk_YOUR_SECRET_KEY">
-            </script> -->
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="sk_YOUR_SECRET_KEY">
+            </script>
+        </div>
+        <div class="payment__email">
+            <input type="hidden" id="email" name="email" />
         </div>
         <div class="payment-method__paypal">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="johndoe@example.com" />
+            <p>You will now be redirected to PayPal portal to complete the payment process</p>
+            <input type="submit" value="Proceed to Portal" id="paypal-submit">
         </div>
-        <div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="../scripts/payments.js"></script>
 </body>
 
 </html> 
