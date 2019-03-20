@@ -16,7 +16,8 @@ if ($action == 'list_events') {
 	$events = EventDB::getAllEvents();
 	include('list.php');
 } else if ($action == 'show_add_form') {
-    header('Location: ./add.php');
+    // header('Location: ./add.php');
+    header('Location: ./addplus.php');
 } else if ($action == 'add_event') {
     $title = filter_input(INPUT_POST, 'title');
     // $description = filter_input(INPUT_POST, 'description');
