@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Playlists</title>
     <link rel="stylesheet" href="../CSS/playlists.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
 </head>
 
 <body>
@@ -28,87 +29,15 @@
     </header>
     <div class="playlists__layout">
         <!--Playlist Listings-->
-        <section id="playlists">
-            <div class="playlist">
-                <div class="playlist_item playlist__image">
-                    <i class="fas fa-headphones-alt playlist-icon"></i>
-                </div>
-                <a href="#" class="playlist_item playlist__info">
-                    <div>
-                        <p class="playlist__title">Playlist Title</p>
-                        <p class="playlist__song-count">Number of Songs</p>
-                    </div>
-                </a>
-                <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    <div class="playlist__options_dropdown">
-                        <a href="#">Edit Playlist</a>
-                        <a href="#">Delete Playlist</a>
-                    </div>
-                </div>
-            </div>
-            <div class="playlist">
-                <div class="playlist_item playlist__image">
-                    <i class="fas fa-headphones-alt playlist-icon"></i>
-                </div>
-                <a href="#" class="playlist_item playlist__info">
-                    <div>
-                        <p class="playlist__title">Playlist Title</p>
-                        <p class="playlist__song-count">Number of Songs</p>
-                    </div>
-                </a>
-                <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    <div class="playlist__options_dropdown">
-                        <a href="#">Edit Playlist</a>
-                        <a href="#">Delete Playlist</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="playlists"></section>
         <div class="divider">
         </div>
         <!--Song Listings for each Playlist-->
-        <section id="songs" class="sortable">
-            <h2>Songs</h2>
-            <div class="song">
-                <div class="song_item song__image">
-                    <i class="fas fa-headphones-alt playlist-icon"></i>
-                </div>
-                <a href="#" class="song_item song__info">
-                    <div>
-                        <p class="song__title">Song Title 1</p>
-                        <p class="song__artist">Artist</p>
-                        <p class="song__time">3:00</p>
-                    </div>
-                </a>
-                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    <div class="song__options_dropdown">
-                        <a href="#">Song Info</a>
-                        <a href="#">Remove Song</a>
-                    </div>
-                </div>
-            </div>
-            <div class="song">
-                <div class="song_item song__image">
-                    <i class="fas fa-headphones-alt playlist-icon"></i>
-                </div>
-                <a href="#" class="song_item song__info">
-                    <div>
-                        <p class="song__title">Song Title 2</p>
-                        <p class="song__artist">Artist</p>
-                        <p class="song__time">3:00</p>
-                    </div>
-                </a>
-                <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    <div class="song__options_dropdown">
-                        <a href="#">Song Info</a>
-                        <a href="#">Remove Song</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <h2 id="songs_header">Songs</h2>
+        <section id="songs" class="sortable"></section>
     </div>
     <!--Create a new Playlist Modal-->
-    <section id="createPlaylist">
+    <section id="playlistForm">
         <div class="playlistForm">
             <span class="close">X</span>
             <h2>Create a New Playlist</h2>
@@ -119,21 +48,23 @@
                 </div>
                 <div class="form-field">
                     <label for="playlist__description">Description: </label>
-                    <textarea name="playlist__description" id="playlist__description" cols="16" rows="5"></textarea>
+                    <textarea name="playlist__desc" id="playlist__desc" cols="16" rows="5"></textarea>
                 </div>
                 <div class="form-field">
                     <label for="playlist__image">Image:</label>
                     <input type="file" id="playlist__image" name="playlist__image">
                 </div>
                 <div class="form-submit">
-                    <input type="submit" value="Create" name="createplaylist" class="create_button">
+                    <input type="submit" value="Create" class="create_button">
                 </div>
             </form>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
     <script src="../scripts/playlists.js"></script>
 </body>
 
-</html> 
+</html>

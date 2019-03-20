@@ -65,10 +65,6 @@ body {
     max-width: 330px;
 }
 
-#songs {
-    visibility: hidden;
-}
-
 #playlist-page__head {
     display: flex;
     justify-content: space-between;
@@ -112,7 +108,7 @@ body {
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.active{
+.active {
     border: solid 2px black;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -140,6 +136,7 @@ body {
 
 .playlist__title,
 .song__title {
+    color: black;
     margin-bottom: 0;
     font-size: 1.2em;
 }
@@ -191,13 +188,15 @@ body {
     justify-content: center;
 }
 
-.playlist__options,.song__options{
+.playlist__options,
+.song__options {
     position: relative;
     display: inline-block;
 
 }
 
-.playlist__options_dropdown,.song__options_dropdown{
+.playlist__options_dropdown,
+.song__options_dropdown {
     display: none;
     position: absolute;
     background-color: #f6dc7a;
@@ -205,7 +204,15 @@ body {
     z-index: 1;
 }
 
-.playlist__options_dropdown a, .song__options_dropdown a{
+.nostyle {
+    background: none;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+.nostyle,
+.song__options_dropdown a {
     float: none;
     color: #000;
     text-decoration: none;
@@ -214,7 +221,8 @@ body {
     margin: 3px;
 }
 
-.playlist__options_dropdown a:hover,.song__options_dropdown a:hover{
+.nostyle:hover,
+.song__options_dropdown a:hover {
     background-color: #000;
     color: white;
 }
@@ -228,7 +236,7 @@ body {
     border-left: solid 1px red;
 } */
 
-.to-songs{
+.to-songs {
     display: none;
     position: absolute;
     z-index: 1;
@@ -238,7 +246,7 @@ body {
 
 /************Create Playlist Form**************/
 /* Code Referenced from https://www.w3schools.com/howto/howto_css_modals.asp */
-#createPlaylist {
+#playlistForm {
     display: none;
     position: fixed;
     z-index: 1;
@@ -312,13 +320,17 @@ body {
     background: white;
 }
 
-.close{
+.close {
     float: right;
 }
 
 @media only screen and (min-width: 675px) {
     body {
         max-width: 660px;
+    }
+
+    #songs_header {
+        display: none;
     }
 
     .playlist,
@@ -361,6 +373,11 @@ body {
 
     .playlist,
     .song {
-        width: 375px;
+        width: 380px;
+    }
+
+    #playlists,
+    #songs {
+        max-width: 380px;
     }
 }

@@ -6,7 +6,7 @@ class Database
     private static $user = 'gettogthr';
     private static $pass = 'partytime';
     private static $db = 'get-together';
-    private static $dsn = 'mysql:host=localhost;dbname=get-together';
+    private static $dsn = 'mysql:host=localhost;dbname=get_together';
     private static $dbcon;
 
     private function __construct()

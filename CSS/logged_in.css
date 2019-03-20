@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+body {
+  max-width: 1200px;
+  background: #f2f2f2;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  padding: 0;
+}
+
+.hidden {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+nav {
+  background-color: #22C9D4;
+}
+
+.header-logo {
+  max-width: 250px;
+}
+
+.btn {
+  background-color: #2d959c;
+  border: #000000;
+}
+
+.btn:hover {
+  background-color: #215757;
+}
+
+.navbar-custom {
+  text-transform: uppercase;
+  font-size: 1em;
+}
