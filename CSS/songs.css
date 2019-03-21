@@ -1,0 +1,58 @@
+/************************Search Bar***************************/
+.searchbar {
+    display: flex;
+    margin-top: 50px;
+    background: none;
+    height: 30px;
+    border-radius: 25px;
+    border: solid 0px #000;
+    width: 0;
+    -webkit-transition: 0.1s ease-out;
+    transition: 0.5s ease-out;
+}
+
+.searchbar:hover {
+    width: 100%;
+    border: solid 1px #000;
+    transition: 0.5s ease-in;
+}
+
+.searchbar:hover>.searchbar__button {
+    border: none;
+}
+
+.searchbar:enabled {
+    width: 100%;
+}
+
+.searchbar__input {
+    border: none;
+    padding: 0px;
+    color: #000;
+    font-size: 16px;
+    background: transparent;
+    width: 80%;
+    margin-left: 10px;
+}
+
+.searchbar__button {
+    color: #000;
+    float: right;
+    width: 30px;
+    height: 30px;
+    padding: 2px 7px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+/***************Songs Listing*******************/
+.add-song {
+    text-align: center;
+}
+
+.selected {
+    color: green;
+}

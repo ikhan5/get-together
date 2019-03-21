@@ -174,18 +174,23 @@ $("#playlistForm").on("submit", function(event) {
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   var event = 2;
 
-  $.post(
-    "addplaylist.php",
-    {
+  $.ajax({
+    url: "addplaylist.php",
+    method: "POST",
+    dataType: "json",
+    data: {
       name: name,
       desc: desc,
       date: date,
       event: event
     },
-    function(data) {
-      console.log(data);
+    success: function(response) {
+      console.log(response);
+    },
+    error: function(response) {
+      console.log(response);
     }
-  );
+  });
 });
 
 function newPosition(playlist_id) {

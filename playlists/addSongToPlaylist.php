@@ -1,6 +1,14 @@
 <?php
-include "getAllSongs.php";
+require_once '../model/database.php';
+require_once '../model/playlist_db.php';
+if(isset($_POST['addsong'])){
+    
+}
+$array = [1,2,3,5];
+$p = new PlaylistDB();
+$c = $p->addSongsToPlaylist($array, 2);
 
+echo $c;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +17,7 @@ include "getAllSongs.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Playlists</title>
+    <title>Songs</title>
     <link rel="stylesheet" href="../CSS/songs.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
