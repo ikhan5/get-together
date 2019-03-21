@@ -29,7 +29,8 @@ if(isset($_POST['updfood'])){
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href=""/>
+<link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
+
 <div class="inputform">
 <form action="" method="post">
     <h2 class="h-style">Edit Food</h2>
