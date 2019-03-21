@@ -2,7 +2,7 @@
 body{
     max-width: 1200px;
     background: #f2f2f2;
-    margin: 0 7%;
+    margin: 0 3%;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     padding: 0;
@@ -12,28 +12,37 @@ body{
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
+    flex-direction: row;
+    align-items: stretch;
 }
 .inputform {
     order:1;
     background-color: white;
-    width: 30%;
-    padding: 2.5%;
+    width: 37%;
+    padding: 2%;
     margin: 0;
 }
 .display{
     order:1;
     background-color: white;
-    width: 55%;
-    padding: 2.5%;
+    width: 53%;
+    padding: 2%;
+    margin: 0;
+}
+.recdrinklist{
+    order:2;
+    background-color: white;
+    width: 37%;
+    padding: 2%;
     margin: 0;
 }
 
 /* styling for headline */
-.heading-style,.heading-style2 {
+.heading-style,.heading-style2,.heading-style3 {
   position: relative;
   z-index: 1;
 }
-.heading-style:before,.heading-style2:before  {
+.heading-style:before,.heading-style2:before,.heading-style3:before  {
   content: "";
   margin: 0;
   position: absolute;
@@ -50,6 +59,10 @@ body{
 .heading-style2:before {
   border-top: 23px solid #05e5e5;
   width: 30%;
+}
+.heading-style3:before {
+  border-top: 23px solid #ff4e4e;
+  width: 75%;
 }
 
 /* button styling */
@@ -79,7 +92,6 @@ body{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
     margin: 2px;
     cursor: pointer;
     font-size: 12.5px;
@@ -108,12 +120,15 @@ body{
 input[type=text] {
     width: 100%;
     padding: 5px 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     box-sizing: border-box;
     font-size: 15px;
 }
 p{
-    margin: 5px 0;
+    margin: 3px 0;
+}
+.errors{
+    color: red;
 }
 .dropbtn{
   background-color: black;
@@ -123,25 +138,30 @@ p{
   border: none;
   cursor: pointer;
 }
-#table{
+#table,#table2{
     border-collapse: collapse;
     width: 100%;
 }
-#table td{
+#table td,#table2 td{
     font-size: 13px;
     padding:3px 8px;
 }
-#table th {
+#table th, #table2 th {
     padding: 10px 8px;
     text-align: left;
-    background-color: black;
     color: white;
     font-size: 15px;
     font-weight: 600;
 }
+#table th {
+    background-color: black;
+}
+#table2 th {
+    background-color: #505050;
+}
 
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 1000px){
     .container{
         flex-direction: column;
     }
@@ -150,6 +170,10 @@ p{
         width: 100%;
     }
     .display{
+        order:3;
+        width: 100%;
+    }
+    .recdrinklist{
         order:2;
         width: 100%;
     }

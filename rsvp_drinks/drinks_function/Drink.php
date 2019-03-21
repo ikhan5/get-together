@@ -70,4 +70,47 @@ class Drink
         return $count;
     }
     
+    //recommended drinks
+    public function getAllRecDrinks($dbcon)
+    {
+        $sql = "SELECT * FROM userrsvp.recdrinklist";
+        $pdostm = $dbcon->prepare($sql);
+        $pdostm->execute();
+        $recdrinks= $pdostm->fetchAll(PDO::FETCH_OBJ);
+
+        return $recdrinks;
+    }
+    
+    public function getRecDrinkById($id, $db){
+        $sql = "SELECT * FROM userrsvp.recdrinklist WHERE recdrink_id = :id ";
+        $pst = $db->prepare($sql);
+        $pst->bindParam(':id', $id);
+
+        $pst->execute();
+
+        $drink =  $pst->fetch(PDO::FETCH_OBJ);
+
+        return $drink;
+    }
+    
+    // later for API
+    /*public function insertRecDrink($name, $type, $size, $qty ,$db)
+    {
+        $sql = "INSERT INTO userrsvp.drinklist(drink_name,drink_type,drink_size, drink_qty) 
+        values(:name,:type,:size,:qty)";
+        $pst = $db->prepare($sql);
+        $pst->bindParam(':name', $name);
+        $pst->bindParam(':type', $type);
+        $pst->bindParam(':size', $size);
+        $pst->bindParam(':qty', $qty);
+        $count = $pst->execute();
+
+        if($count){
+            header('location: ../drinks_index.php');
+        }else{
+            $message = 'Failed to add recommended drinks.';
+        }
+        return $message;
+    } */
+    
 }

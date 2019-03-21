@@ -27,19 +27,25 @@
         <label>Quantity : </label><input type="text" name="qty"/><br/>
         <button type="submit" name="save" class='btn'>Save</button>
         </form>
+        <p class="errormsg">whyyy</p>
     </div>
     <div class="display">
         <h2 class="heading-style2">List of Drinks</h2>
-    <?php 
-        include "drinks_function/listdrinks.php";
-    ?>
+        <?php 
+            include "drinks_function/listdrinks.php";
+        ?>
     </div>
     <div class="recdrinklist">
-        <h2 class="heading-style3">Our Recommandations</h2>
-    <?php 
-        include "drinks_function/listrecdrinks.php";
-    ?>
+        <h2 class="heading-style3">Our Recommendations</h2>
+        <?php 
+            include "drinks_function/listrecdrinks.php";
+        ?>
     </div>
     </div>
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="js/drink_recid.js"></script>
 </body>
 </html>
