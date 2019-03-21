@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>List of Food</title>
-    <link rel="stylesheet" type="text/css" href=""/>
+    <link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
 </head>
 <body>
     <div class="container">
     <div class="inputform">
-        <h2 class="h-style">Add food to your event</h2>
+        <h2 class="h-style-add">Add food to your event</h2>
         <form method="post" action="addfood.php">
         <label>Name : </label><input type="text" name="name"/><br/>
         <label>Type : </label><br/>
@@ -28,13 +28,13 @@
         </form>
     </div>
     <div class="display">
-        <h2 class="h-style">List of Food</h2>
+        <h2 class="h-style-list">List of Food</h2>
     <?php 
         include "listfood.php";
     ?>
     </div>
     <div class="recomlist">
-        <h2 class="h-style">Recommandations from us</h2>
+        <h2 class="h-style-rec">Recommandations from us</h2>
     <?php 
         include "listrecfood.php";
     ?>
