@@ -1,40 +1,30 @@
 $.getJSON("getAllSongs.php", function(data) {
   $.each(data, function(index, value) {
     let song = `<tr class="song_info">
-        <td class="add-song"><i id=${
+        <td class="add-song"><input type="checkbox" value=${
           value.song_id
-        } class="fas fa-check-circle not-selected"></i><input class="song_id" type="hidden" value="${
-      value.song_id
-    }"/></td>
+        } name="songs"> </td>
         <td>${value.title}</td>
         <td>${value.artist}</td>
         <td>${value.length}</td></tr>`;
     $("tbody").append(song);
   });
 
-  $(".song_info").click(function() {
-    $(this)
-      .find("i")
-      .toggleClass("selected")
-      .toggleClass("not-selected");
-
-    let songs = $(this).find("id");
-  });
-
-  $("#addform").submit(function(event) {
+  $("#addToPlaylist").submit(function(event) {
     event.preventDefault();
-    let pid = $("#pid").val();
-
+    var songs_added = [];
+    $.each($("input[name='songs']:checked"), function() {
+      songs_added.push($(this).val());
+    });
+    console.log(songs_added);
     $.ajax({
-      url: "addSongToPlaylist.php",
+      url: "addSongsToPlaylist.php",
       method: "POST",
       dataType: "text",
       data: {
         addsongs: 1,
-        songs: songs_added,
-        playlist_id: pid
-      },
-      success: function(response) {}
+        songs_added: songs_added
+      }
     });
   });
 });

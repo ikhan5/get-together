@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Playlists</title>
-    <link rel="stylesheet" href="../CSS/playlists.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-</head>
+<?php
+    include "playlistHeader.php";
+?>
 
 <body>
     <!--Search Bar and Header-->
@@ -21,7 +14,7 @@
             <input class="searchbar__input" type="search" placeholder="Search...">
         </div>
         <div id="playlist-page__head">
-            <h1 id="playlist-page__header">Playlists</h1>
+            <h1 class="heading-style">Playlists</h1>
             <span class="playlist-page__create">
                 <i class="fas fa-plus-circle"></i>
                 <h3>Create A Playlist</h3>

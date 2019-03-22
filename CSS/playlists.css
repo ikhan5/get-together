@@ -6,6 +6,15 @@ body {
     font-size: 16px;
 }
 
+#container {
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+    padding: 50px;
+    max-width: 95vw;
+    font-size: 20px;
+}
+
 /************************Search Bar***************************/
 .searchbar {
     display: flex;
@@ -70,8 +79,22 @@ body {
     justify-content: space-between;
 }
 
-#playlist-page__header {
-    color: #000;
+.heading-style {
+    position: relative;
+    z-index: 1;
+}
+
+.heading-style:before {
+    content: "";
+    margin: 0;
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-top: 23px solid #05E5E5;
+    width: 100%;
 }
 
 .playlist-page__create {
@@ -269,6 +292,9 @@ body {
     border: solid 1.5px #ff2222;
 }
 
+.form-action {
+    float: right;
+}
 
 /************Create Playlist Form**************/
 /* Code Referenced from https://www.w3schools.com/howto/howto_css_modals.asp */

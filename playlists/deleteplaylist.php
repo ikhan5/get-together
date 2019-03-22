@@ -15,13 +15,19 @@ if (isset($_POST['delete_playlist'])) {
     header("Location: playlists.php");
     exit;
 }
+include "playlistHeader.php";
 ?>
 <!-- Form for editting a payment -->
-<h2>Delete Playlist: </h2>
-<form method="post" action="">
-    <input type="hidden" name="playlist_id" value="<?= $playlist->playlist_id; ?>" />
-    <p>Are you sure you want to delete the following playlist? </p>
-    <label for="name">Playlist Name: </label>
-    <input type="text" name="name" value='<?= $playlist->name ?>'><br />
-    <input type="submit" name="delete_playlist" value="Delete Playlist">
-</form>
+
+<div id="container">
+    <h2 class="heading-style">Delete Playlist: </h2>
+    <form method="post" action="">
+        <input type="hidden" name="playlist_id" value="<?= $playlist->playlist_id; ?>" />
+        <p>Are you sure you want to delete the following playlist? </p>
+        <div>
+            <label for="name">Playlist Name: </label>
+            <?= htmlspecialchars($playlist->name) ?>
+        </div>
+        <input class="btn form-action" type="submit" name="delete_playlist" value="Delete Playlist">
+    </form>
+</div>

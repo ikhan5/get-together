@@ -18,15 +18,18 @@ if (isset($_POST['edit_playlist'])) {
     header("Location: playlists.php");
     exit;
 }
+include "playlistHeader.php";
 ?>
 <!-- Form for editting a payment -->
-<h2>Edit Playlist: </h2>
-<form method="post" action="">
-    <input type="hidden" name="playlist_id" value="<?= htmlspecialchars($playlist->playlist_id); ?>" />
-    <label for="name">Playlist Name: </label>
-    <input type="text" name="name" value='<?= htmlspecialchars($playlist->name) ?>'><br />
-    <label for="name">Playlist Description: </label>
-    <input type="text" name="desc" value='<?= htmlspecialchars($playlist->description) ?>'><br />
-    <input type="hidden" name="date" value='<?=htmlspecialchars(date("Y-m-d"))?>' /> <br />
-    <input type="submit" name="edit_playlist" value="Update Playlist">
-</form>
+<div id="container">
+    <h2 class="heading-style">Edit Playlist: </h2>
+    <form method="post" action="">
+        <input type="hidden" name="playlist_id" value="<?= htmlspecialchars($playlist->playlist_id); ?>" />
+        <label for="name">Playlist Name: </label>
+        <input type="text" name="name" value='<?= htmlspecialchars($playlist->name) ?>'><br />
+        <label for="name">Playlist Description: </label>
+        <input type="text" name="desc" value='<?= htmlspecialchars($playlist->description) ?>'><br />
+        <input type="hidden" name="date" value='<?=htmlspecialchars(date("Y-m-d"))?>' /> <br />
+        <input class="btn form-action" type="submit" name="edit_playlist" value="Update Playlist">
+    </form>
+</div>

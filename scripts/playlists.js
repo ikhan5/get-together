@@ -2,8 +2,25 @@
 add appends each playlist to the playlists container in the
 playlists.php file.
 */
+var newData = [];
 $.getJSON("getAllPlaylists.php", function(data) {
   $.each(data, function(index, value) {
+    $.ajax({
+      url: "getSongsCount.php",
+      method: "POST",
+      dataType: "text",
+      data: {
+        pid: value.playlist_id
+      },
+      success: function(data) {
+        myJson = JSON.parse(data);
+        newData.push(myJson.Song_Count);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+
     let playlist = `<div class="playlist">
                     <input type="hidden" name="playlistID" class="playlistID" value=${
                       value.playlist_id
@@ -14,7 +31,7 @@ $.getJSON("getAllPlaylists.php", function(data) {
                     <a href="javascript:void(0);" class="playlist_item playlist__info">
                     <div>
                         <p class="playlist__title">${value.name}</p>
-                        <p class="playlist__song-count">Number of Songs</p>
+                        <p class="playlist__song-count"></p>
                     </div>
                     </a>
                     <div class="playlist_item playlist__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
@@ -81,8 +98,12 @@ playlists.php file.
           </a>
           <div class="song_item song__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
               <div class="song__options_dropdown">
-                  <a href="javascript:void(0);">Song Info</a>
-                  <a href="javascript:void(0);">Remove Song</a>
+              <form action='deleteSongFromPlaylist.php' method='post'>
+              <input type="hidden" name="playlistID" class="playlistID" value=${id}>
+              <input type="hidden" name="songID" class="songID" value=${
+                value.song_id
+              }>
+              <input class="nostyle" type='submit' value='Remove Song' name='deletesong' /></form>
               </div>
           </div>
       </div>`;
@@ -136,21 +157,6 @@ playlists.php file.
     $("#playlistForm").hide();
   });
 
-  //Search Bar
-  // $(".searchbar__input").on("keyup", function() {
-  //   var playlist = $(this)
-  //     .val()
-  //     .toLowerCase();
-  //   $("#playlists").filter(function() {
-  //     $(this).toggle(
-  //       $(this),
-  //       text()
-  //         .toLowerCase()
-  //         .indexOf(playlist) > -1
-  //     );
-  //   });
-  // });
-
   //set active playlist
   $(".playlist").bind("click", function() {
     $(".active").removeClass("active");
@@ -191,11 +197,9 @@ $("#playlistForm").on("submit", function(event) {
       event: event
     },
     success: function(response) {
-      console.log(response);
+      location.reload();
     },
-    error: function(response) {
-      console.log(response);
-    }
+    error: function(response) {}
   });
 });
 
