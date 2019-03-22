@@ -17,7 +17,7 @@ $.getJSON("getAllPlaylists.php", function(data) {
                         <p class="playlist__song-count">Number of Songs</p>
                     </div>
                     </a>
-                    <div class="playlist_item playlist__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="playlist_item playlist__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
                         <div class="playlist__options_dropdown">
                         
                         <form action='editplaylist.php' method='post'>
@@ -45,7 +45,12 @@ the songs that respective playlist contains*/
     var id = $(this)
       .find(".playlistID")
       .val();
-
+    $("#songs").append(
+      `<form method="get" action="addSongToPlaylist.php">
+          <input type="hidden" name="pid" value=${id} />
+          <button type="submit" class='btn'>Add Songs</button>
+        </form>`
+    );
     /*Gets all the songs from the Get_Together Database
 add appends each song to the songs container in the
 playlists.php file.
@@ -74,7 +79,7 @@ playlists.php file.
                   <p class="song__time">${value.length}</p>
               </div>
           </a>
-          <div class="song_item song__options"> <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+          <div class="song_item song__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
               <div class="song__options_dropdown">
                   <a href="javascript:void(0);">Song Info</a>
                   <a href="javascript:void(0);">Remove Song</a>
@@ -83,6 +88,7 @@ playlists.php file.
       </div>`;
           $("#songs").append(song);
         });
+
         $(".song__options").on("click", function() {
           $(this)
             .find(".song__options_dropdown")
@@ -95,7 +101,7 @@ playlists.php file.
     });
   }); //end of playlist click event
 
-  /*Apply the */
+  /*Makes the songs sortable, i.e can be dragged around to change the order of the playlist*/
   $(".sortable").sortable({
     update: function(event, ui) {
       $(this)
@@ -174,18 +180,23 @@ $("#playlistForm").on("submit", function(event) {
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   var event = 2;
 
-  $.post(
-    "addplaylist.php",
-    {
+  $.ajax({
+    url: "addplaylist.php",
+    method: "POST",
+    dataType: "json",
+    data: {
       name: name,
       desc: desc,
       date: date,
       event: event
     },
-    function(data) {
-      console.log(data);
+    success: function(response) {
+      console.log(response);
+    },
+    error: function(response) {
+      console.log(response);
     }
-  );
+  });
 });
 
 function newPosition(playlist_id) {

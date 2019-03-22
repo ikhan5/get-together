@@ -2,23 +2,16 @@
 
 class PlaylistDB
 {
-    public static function addSongsToPlaylist($items, $playlist_id){
-        $dbcon = Database::getDB();
-        $items = array();
-        $sql='';
-        foreach($items as $item){
-            $sql .= "INSERT INTO playlists_songs (song_id, playlist_id) 
-            VALUES (:song_id, :playlist_id);";
-            $pst->bindParam(':song_id', $item);
-            $pst->bindParam(':playlist_id', $playlist_id);
-        }
-        echo $sql;
-        // $pst = $dbcon->prepare($sql);
-        // $pst->bindParam(':song_id', $item);
-        // $pst->bindParam(':event_id', $playlist_id);
+    public static function addSongsToPlaylist($song, $playlist_id){
+        $dbcon = Database::getDb();
 
-        // $count = $pst->execute();
-        // return $count;
+            $sql = "INSERT INTO playlists_songs (song_id, playlist_id) 
+            VALUES (:song_id, :playlist_id)";
+            $pst = $dbcon->prepare($sql);
+            $pst->bindParam(':song_id', $song);
+            $pst->bindParam(':playlist_id', $playlist_id);
+            $count = $pst->execute();
+            return $count;
     }
 
     public static function getAllSongs() {
@@ -49,7 +42,7 @@ class PlaylistDB
 
     public function editSongOrder($playlist_id,$song_id ,$position)
     {
-        $dbcon = Database::getDB();
+        $dbcon = Database::getDb();
         $sql = "UPDATE playlists_songs set playlists_songs.position=:position 
         WHERE playlist_id = :playlist_id AND song_id= :song_id";
         $pst = $dbcon->prepare($sql);
