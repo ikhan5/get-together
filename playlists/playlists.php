@@ -24,6 +24,7 @@
             <h1 id="playlist-page__header">Playlists</h1>
             <span class="playlist-page__create">
                 <i class="fas fa-plus-circle"></i>
+                <h3>Create A Playlist</h3>
             </span>
         </div>
     </header>

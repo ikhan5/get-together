@@ -1,31 +1,38 @@
 $.getJSON("getAllSongs.php", function(data) {
   $.each(data, function(index, value) {
-    let song = `<tr>
-        <td class="add-song"><i class="fas fa-check not-selected"></i><input class="song_id" type="hidden" value="${
+    let song = `<tr class="song_info">
+        <td class="add-song"><i id=${
           value.song_id
-        }"/></td>
+        } class="fas fa-check-circle not-selected"></i><input class="song_id" type="hidden" value="${
+      value.song_id
+    }"/></td>
         <td>${value.title}</td>
         <td>${value.artist}</td>
-        <td>${value.length}</td>`;
+        <td>${value.length}</td></tr>`;
     $("tbody").append(song);
   });
-  $(".add-song").click(function() {
+
+  $(".song_info").click(function() {
     $(this)
       .find("i")
       .toggleClass("selected")
       .toggleClass("not-selected");
 
-    let id = $(this)
-      .find(".song_id")
-      .val();
+    let songs = $(this).find("id");
+  });
+
+  $("#addform").submit(function(event) {
+    event.preventDefault();
+    let pid = $("#pid").val();
 
     $.ajax({
       url: "addSongToPlaylist.php",
       method: "POST",
       dataType: "text",
       data: {
-        getsongs: 1,
-        playlist_id: id
+        addsongs: 1,
+        songs: songs_added,
+        playlist_id: pid
       },
       success: function(response) {}
     });

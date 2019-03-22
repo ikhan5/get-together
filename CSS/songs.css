@@ -1,7 +1,16 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    background: #f2f2f2;
+    max-width: 95vw;
+    font-size: 20px;
+}
+
 /************************Search Bar***************************/
 .searchbar {
     display: flex;
     margin-top: 50px;
+    margin-bottom: 20px;
     background: none;
     height: 30px;
     border-radius: 25px;
@@ -50,9 +59,44 @@
 
 /***************Songs Listing*******************/
 .add-song {
+    padding-left: 20px;
+    width: 10vw;
+}
+
+#song-listings__header {
     text-align: center;
+}
+
+#song_listings {
+    background: white;
+    padding: 15px;
+}
+
+.not-selected {
+    color: white;
+    border: solid 2px black;
+    border-radius: 50%;
 }
 
 .selected {
     color: green;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.song_info:hover {
+    background-color: #ccc;
+}
+
+tbody td {
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+th {
+    text-align: left;
 }

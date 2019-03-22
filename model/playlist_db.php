@@ -2,19 +2,16 @@
 
 class PlaylistDB
 {
-    public static function addSongsToPlaylist($items, $playlist_id){
+    public static function addSongsToPlaylist($song, $playlist_id){
         $dbcon = Database::getDb();
-        $items = array();
-        $sql='';
-        foreach($items as $item){
-            $sql .= "INSERT INTO playlists_songs (song_id, playlist_id) 
-            VALUES (:song_id, :playlist_id);";
-            $pst->bindParam(':song_id', $item);
-            $pst->bindParam(':playlist_id', $playlist_id);
+
+            $sql = "INSERT INTO playlists_songs (song_id, playlist_id) 
+            VALUES (:song_id, :playlist_id)";
             $pst = $dbcon->prepare($sql);
+            $pst->bindParam(':song_id', $song);
+            $pst->bindParam(':playlist_id', $playlist_id);
             $count = $pst->execute();
             return $count;
-        }
     }
 
     public static function getAllSongs() {
