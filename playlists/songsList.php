@@ -1,20 +1,14 @@
 <?php
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
-$playlist_id = $_GET['pid'] ?: 1;
 
-if(isset($_POST['addsongs'])){
-    $songs = $_POST['songs_added'];
-    $p = new PlaylistDB();
-    foreach($songs as $song){
-        $c = $p->addSongsToPlaylist($song, $playlist_id);
-        header("Location: playlists.php");
-    exit;
-    }
-}
+$playlist_id = $_GET['pid'] ?? 1;
+$p = new PlaylistDB();
+$playlist = $p->getPlaylistByID($playlist_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,24 +18,19 @@ if(isset($_POST['addsongs'])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
+
 <body>
-    <!--Search Bar and Header-->
-    <header>
-        <div class="searchbar">
-            <a class="searchbar__button" href="#">
-                <i class="fas fa-search"></i>
-            </a>
-            <input class="searchbar__input" type="search" placeholder="Search...">
-        </div>
-    </header>
     <section id="song_listings">
-        <a href="playlists.php">
+        <a href="index.php">
             <i class="fas fa-arrow-left"> Back to Playlists</i>
         </a>
+        <p class="confirmation"></p>
         <h1 class="heading-style" id="song-listings__header">Add songs to your playlist!</h1>
-
-        <form method="POST" id="addToPlaylist">
-            <input type="submit" class='btn' value='Add Songs' />
+        <h2>Playlist: <?=$playlist->name?></h2>
+        <p><?=$playlist->description?></p>
+        <form action="" method="POST" id="addToPlaylist">
+            <input type="hidden" id="pid" value="<?=$playlist_id?>" />
+            <input type="submit" class='btn float-right' value='Add Songs' />
         </form>
 
         <table>

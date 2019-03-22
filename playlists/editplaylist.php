@@ -15,14 +15,17 @@ if (isset($_POST['edit_playlist'])) {
     $date = $_POST['date'];
     $playlist_id = $_POST['playlist_id'];
     $p->editPlaylist($name, $desc, $date, $playlist_id);
-    header("Location: playlists.php");
+    header("Location: index.php");
     exit;
 }
 include "playlistHeader.php";
 ?>
 <!-- Form for editting a payment -->
 <div id="container">
-    <h2 class="heading-style">Edit Playlist: </h2>
+    <a href="index.php" id="to-playlists">
+        <i class="fas fa-arrow-left"> Back to Playlists</i>
+    </a>
+    <h2 class="heading-style2">Edit Playlist: </h2>
     <form method="post" action="">
         <input type="hidden" name="playlist_id" value="<?= htmlspecialchars($playlist->playlist_id); ?>" />
         <label for="name">Playlist Name: </label>
@@ -30,6 +33,6 @@ include "playlistHeader.php";
         <label for="name">Playlist Description: </label>
         <input type="text" name="desc" value='<?= htmlspecialchars($playlist->description) ?>'><br />
         <input type="hidden" name="date" value='<?=htmlspecialchars(date("Y-m-d"))?>' /> <br />
-        <input class="btn form-action" type="submit" name="edit_playlist" value="Update Playlist">
+        <input class="btn2 form-action" type="submit" name="edit_playlist" value="Update Playlist">
     </form>
 </div>

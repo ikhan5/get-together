@@ -12,18 +12,24 @@ $.getJSON("getAllSongs.php", function(data) {
 
   $("#addToPlaylist").submit(function(event) {
     event.preventDefault();
+    let playlist_id = $("#pid").val();
     var songs_added = [];
     $.each($("input[name='songs']:checked"), function() {
       songs_added.push($(this).val());
     });
-    console.log(songs_added);
+
     $.ajax({
+      type: "POST",
       url: "addSongsToPlaylist.php",
-      method: "POST",
-      dataType: "text",
       data: {
-        addsongs: 1,
-        songs_added: songs_added
+        pid: playlist_id,
+        songs: songs_added
+      },
+      success: function(data) {
+        $(".confirmation").html("Song(s) added Successfully!");
+      },
+      error: function(data) {
+        $(".confirmation").html("Problem adding songs, please try again!");
       }
     });
   });
