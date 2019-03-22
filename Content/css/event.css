@@ -34,7 +34,7 @@
 }
 
 .event-detail {
-    max-width: 500px;
+    /* max-width: 500px; */
     font-size: 1.5rem;
     font-weight: lighter;
 }

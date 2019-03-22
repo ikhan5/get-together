@@ -4,7 +4,7 @@
     <header>
         <h1 class="display-4">Update '<?= $event->getTitle() ?>'</h1>
     </header>
-    <form action="index.php" method="post" class="container" id="form-update-event">
+    <form action="index.php" method="post" class="container py-5" id="form-update-event">
         <input type="hidden" name="action" value="update_event">
         <input type="hidden" name="id" value="<?= $event->getId() ?>">
         <div class="form-group">

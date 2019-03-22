@@ -4,7 +4,7 @@ class EventDB
 {
     public static function getAllEvents() {
         $dbcon = Database::getDb();
-        $sql = "SELECT * FROM event";
+        $sql = "SELECT * FROM events";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->execute();
         $rows = $pdostm->fetchAll();
@@ -28,7 +28,7 @@ class EventDB
         $start_time = $event->getStartTime();
         $end_time = $event->getEndTime();
 
-        $sql = "INSERT INTO event (title, location, date, start_time, end_time) 
+        $sql = "INSERT INTO events (title, location, date, start_time, end_time) 
               VALUES (:title, :location, :date, :start_time, :end_time) ";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':title', $title);
@@ -43,7 +43,7 @@ class EventDB
     public static function getEvent($id) {
         $dbcon = Database::getDb();
 
-        $sql = "SELECT * FROM event WHERE id = :id";
+        $sql = "SELECT * FROM events WHERE id = :id";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':id', $id);
         $pdostm->execute();
@@ -65,7 +65,7 @@ class EventDB
         $start_time = $event->getStartTime();
         $end_time = $event->getEndTime();
 
-        $sql = "UPDATE event SET title = :title, location = :location, date = :date, start_time = :start_time, end_time = :end_time WHERE id = :id";
+        $sql = "UPDATE events SET title = :title, location = :location, date = :date, start_time = :start_time, end_time = :end_time WHERE id = :id";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':title', $title);
         $pdostm->bindParam(':location', $location);
@@ -80,7 +80,7 @@ class EventDB
     public static function deleteEvent($id) {
         $dbcon = Database::getDb();
 
-        $sql = "DELETE FROM event WHERE id = :id";
+        $sql = "DELETE FROM events WHERE id = :id";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':id', $id);
         $pdostm->execute();
