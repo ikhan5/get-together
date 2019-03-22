@@ -4,9 +4,9 @@ require_once 'Drink.php';
 
 $dbcon = Database::getDB();
 $d = new Drink();
-$mydrink = $d->getAllDrinks(Database::getDB());
+$mydrink = $d->getAllRecDrinks($dbcon);
 
-echo "<table id='table'><tr>
+echo "<table id='table2'><tr>
         <th>Name</th>
         <th>Type</th>
         <th>Size</th>
@@ -14,15 +14,13 @@ echo "<table id='table'><tr>
         <th> </th>
     </tr>";
 foreach($mydrink as $drink){
-    echo "<tr><td>".$drink->drink_name."</td>".
-        "<td>".$drink->drink_type."</td>".
-        "<td>".$drink->drink_size."</td>".
-        "<td>".$drink->drink_qty."</td>".
-        "<td><form action='drinks_function/updatedrink.php' method='post'>" .
-        "<input type='hidden' value='$drink->drink_id' name='id' />".
-        "<input type='submit' value='Update' name='update' class='btn1'/>".
-        "</form></td>" .
-        "<td><form action='drinks_function/addrecdrink.php' method='post'>" .
+    echo "<tr class='recdrink'><td>".$drink->recdrink_name."</td>".
+        "<td>".$drink->recdrink_type."</td>".
+        "<td>".$drink->recdrink_size."</td>".
+        "<td>".$drink->recdrink_qty."</td>".
+        "<td class='add_rec'><form class='recPost' action='' method='post'>".
+        "<input type='hidden' value='$drink->recdrink_id' class='rec_id' />".
+        "<input type='submit' value='Add' name='insert' class='btn2'/>".
         "</form></td></tr>";
 }
 echo "</table>";
