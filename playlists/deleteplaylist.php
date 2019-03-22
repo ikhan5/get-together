@@ -12,7 +12,7 @@ if (isset($_POST['delete_playlist'])) {
     $p = new PlaylistDB();
     $playlist_id = $_POST['playlist_id'];
     $p->deletePlaylist($playlist_id);
-    header("Location: playlists.php");
+    header("Location: index.php");
     exit;
 }
 include "playlistHeader.php";
@@ -20,7 +20,10 @@ include "playlistHeader.php";
 <!-- Form for editting a payment -->
 
 <div id="container">
-    <h2 class="heading-style">Delete Playlist: </h2>
+    <a href="index.php">
+        <i class="fas fa-arrow-left" id="to-playlists"> Back to Playlists</i>
+    </a>
+    <h2 class="heading-style3">Delete Playlist: </h2>
     <form method="post" action="">
         <input type="hidden" name="playlist_id" value="<?= $playlist->playlist_id; ?>" />
         <p>Are you sure you want to delete the following playlist? </p>

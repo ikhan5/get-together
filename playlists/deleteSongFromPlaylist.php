@@ -7,5 +7,5 @@ if(isset($_POST['deletesong'])){
     $sid = $_POST['songID'];
     $p = new PlaylistDB;
     $playlist = $p->deleteSongFromPlaylist($sid,$pid);
-    header("Location: playlists.php");
+    header("Location: index.php");
 }

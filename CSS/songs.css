@@ -58,9 +58,6 @@ body {
 }
 
 /***************Songs Listing*******************/
-#addsongs {
-    float: right;
-}
 
 .heading-style {
     position: relative;
@@ -92,7 +89,8 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 2px;
+    margin: 10px 0;
+
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
@@ -107,11 +105,10 @@ body {
     border: solid 1.5px #ff2222;
 }
 
-#song-listings__header {}
-
 #song_listings {
     background: white;
     padding: 15px;
+    margin-top: 50px;
 }
 
 .not-selected {

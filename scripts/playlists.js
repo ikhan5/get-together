@@ -20,7 +20,7 @@ $.getJSON("getAllPlaylists.php", function(data) {
         console.log(response);
       }
     });
-
+    let date = value.created.substring(0, 10);
     let playlist = `<div class="playlist">
                     <input type="hidden" name="playlistID" class="playlistID" value=${
                       value.playlist_id
@@ -31,19 +31,19 @@ $.getJSON("getAllPlaylists.php", function(data) {
                     <a href="javascript:void(0);" class="playlist_item playlist__info">
                     <div>
                         <p class="playlist__title">${value.name}</p>
-                        <p class="playlist__song-count"></p>
+                        <p class="playlist__song-count">${date}</p>
                     </div>
                     </a>
                     <div class="playlist_item playlist__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
                         <div class="playlist__options_dropdown">
                         
-                        <form action='editplaylist.php' method='post'>
+                        <form action='editPlaylist.php' method='post'>
                         <input type="hidden" name="playlistID" class="playlistID" value=${
                           value.playlist_id
                         }>
                         <input class="nostyle" type='submit' value='Edit Playlist' name='editplaylist' /></form>
                         
-                        <form action='deleteplaylist.php' method='post'>
+                        <form action='deletePlaylist.php' method='post'>
                         <input type="hidden" name="playlistID" class="playlistID" value=${
                           value.playlist_id
                         }>
@@ -63,9 +63,9 @@ the songs that respective playlist contains*/
       .find(".playlistID")
       .val();
     $("#songs").append(
-      `<form method="get" action="addSongToPlaylist.php">
+      `<form method="get" action="songsList.php">
           <input type="hidden" name="pid" value=${id} />
-          <button type="submit" class='btn'>Add Songs</button>
+          <button type="submit" class='btn addsong'>Add Songs</button>
         </form>`
     );
     /*Gets all the songs from the Get_Together Database
@@ -174,32 +174,6 @@ playlists.php file.
     $(this)
       .find(".playlist__options_dropdown")
       .toggle(150);
-  });
-});
-
-$("#playlistForm").on("submit", function(event) {
-  event.preventDefault();
-  var name = $("#playlist__name").val();
-  var desc = $("#playlist__desc").val();
-  var today = new Date();
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var event = 2;
-
-  $.ajax({
-    url: "addplaylist.php",
-    method: "POST",
-    dataType: "json",
-    data: {
-      name: name,
-      desc: desc,
-      date: date,
-      event: event
-    },
-    success: function(response) {
-      location.reload();
-    },
-    error: function(response) {}
   });
 });
 
