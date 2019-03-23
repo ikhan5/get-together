@@ -34,5 +34,9 @@ Files:
 
 -----------------------------------------
 
-Bibek Man Shrestha - Events Feature:
-Files:
+Bibek Shrestha
+
+Feature: Events 
+Feature link: <root>/events/
+CSS link: <root>/Content/css/event.css
+Model link: <root>/event_db.php, <root>/event.php
