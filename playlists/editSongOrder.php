@@ -10,6 +10,5 @@ if(isset($_POST['update'])){
 
         $o = new PlaylistDB;
         $o->editSongOrder($playlist_id, $song_id, $newPosition);
-
     }
 }
