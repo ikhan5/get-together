@@ -19,17 +19,16 @@ model/playlist_db.php, model/playlist.php
 
 -----------------------------------------
 Jennifer Wong - Drinks Feature:
-Files: 
+
+Files: drinks/*
 
 
 
 -----------------------------------------
 
 Mariia Korolenko - Food Feature:
+
 Files: food_list/*
-
-
-
 
 
 -----------------------------------------
