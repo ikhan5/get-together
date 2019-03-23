@@ -5,14 +5,7 @@
 ?>
 
 <body>
-    <!--Search Bar and Header-->
     <header>
-        <div class="searchbar">
-            <a class="searchbar__button" href="#">
-                <i class="fas fa-search"></i>
-            </a>
-            <input class="searchbar__input" type="search" placeholder="Search...">
-        </div>
         <div id="playlist-page__head">
             <h1 class="heading-style2">Playlists</h1>
             <span class="playlist-page__create">
@@ -33,15 +26,18 @@
     <!--Create a new Playlist Modal-->
     <section id="playlistForm">
         <div class="playlistForm">
+            <div class="required">* Required Fields <span class="errorDisplay"></span></div>
             <span class="close">X</span>
             <h2>Create a New Playlist</h2>
             <form action="addPlaylist.php" method="post" id="createplaylist">
                 <div class="form-field">
+                    <span class="required">*</span>
                     <label for="playlist__name">Name: </label>
-                    <input type="text" value="Playlist" id="playlist__name" name="playlist__name">
+                    <input type="text" value="Playlist" id="playlist__name" name="playlist__name" maxlength="15">
                 </div>
                 <div class="form-field">
-                    <label for="playlist__description">Description: </label>
+                    <span class="required">*</span>
+                    <label for="playlist__desc">Description: </label>
                     <textarea name="playlist__desc" id="playlist__desc" cols="16" rows="5"></textarea>
                 </div>
                 <input type="hidden" name="playlist__date" value="<?=date('Y-m-d H:i:s')?>" />

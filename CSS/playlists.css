@@ -75,6 +75,11 @@ body {
     font-size: 0.7em;
 }
 
+.error {
+    color: red;
+    font-size: 2em;
+}
+
 /*******************Heading Styling*********************/
 .heading-style,
 .heading-style2,
