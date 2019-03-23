@@ -4,7 +4,7 @@ PHP Final Project - The Get Together project will allow users to organize and ma
 
 Project Feature One - Echo $Friends
 
-Imzan Khan - Playlists Feature: 
+Imzan Khan - Playlists Feature
 Files: playlists/* , 
 CSS/playlists.css , CSS/songs.css , 
 scripts/playlists.js, scripts/songs.js, 
