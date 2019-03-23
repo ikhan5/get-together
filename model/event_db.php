@@ -12,7 +12,7 @@ class EventDB
         // $events = $pdostm->fetchAll(PDO::FETCH_OBJ);
         $events = array();
         foreach($rows as $row){
-            $event = new Event($row['title'], $row['location'], $row['date'], $row['start_time'], $row['end_time']);
+            $event = new Event($row['title'],$row['description'], $row['location'], $row['date'], $row['start_time'], $row['end_time']);
             $event->setId($row['id']);
             $events[] = $event;
         }
@@ -23,15 +23,17 @@ class EventDB
         $dbcon = Database::getDb();
 
         $title = $event->getTitle();
+        $description = $event->getDescription();
         $location = $event->getLocation();
         $date = $event->getDate();
         $start_time = $event->getStartTime();
         $end_time = $event->getEndTime();
 
-        $sql = "INSERT INTO events (title, location, date, start_time, end_time) 
-              VALUES (:title, :location, :date, :start_time, :end_time) ";
+        $sql = "INSERT INTO events (title, description, location, date, start_time, end_time) 
+              VALUES (:title, :description, :location, :date, :start_time, :end_time) ";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':title', $title);
+        $pdostm->bindParam(':description', $description);
         $pdostm->bindParam(':location', $location);
         $pdostm->bindParam(':date', $date);
         $pdostm->bindParam(':start_time', $start_time);
@@ -50,7 +52,7 @@ class EventDB
         $row = $pdostm->fetch();
         $pdostm->closeCursor();
 
-        $event = new Event($row['title'], $row['location'], $row['date'], $row['start_time'], $row['end_time']);
+        $event = new Event($row['title'], $row['description'], $row['location'], $row['date'], $row['start_time'], $row['end_time']);
         $event->setId($id);
         return $event;
     }
@@ -60,14 +62,16 @@ class EventDB
 
         $id = $event->getId();
         $title = $event->getTitle();
+        $description = $event->getDescription();
         $location = $event->getLocation();
         $date = $event->getDate();
         $start_time = $event->getStartTime();
         $end_time = $event->getEndTime();
 
-        $sql = "UPDATE events SET title = :title, location = :location, date = :date, start_time = :start_time, end_time = :end_time WHERE id = :id";
+        $sql = "UPDATE events SET title = :title, description = :description, location = :location, date = :date, start_time = :start_time, end_time = :end_time WHERE id = :id";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':title', $title);
+        $pdostm->bindParam(':description', $description);
         $pdostm->bindParam(':location', $location);
         $pdostm->bindParam(':date', $date);
         $pdostm->bindParam(':start_time', $start_time);
