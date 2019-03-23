@@ -5,6 +5,8 @@ asterik = all files within the specified folder
 
 Project Feature One - Echo $Friends
 
+-----------------------------------------
+
 Imzan Khan 
 
 Feature : Playlists 
