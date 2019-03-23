@@ -1,5 +1,5 @@
 <?php 
-require_once 'database/Database.php';
+require_once 'database.php';
 require_once 'Drink.php';
 
 $dbcon = Database::getDB();
