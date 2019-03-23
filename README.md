@@ -18,7 +18,9 @@ model/playlist_db.php, model/playlist.php
 
 
 -----------------------------------------
-Jennifer Wong - Drinks Feature:
+Jennifer Wong - 
+
+Feature: Drinks
 
 Files: drinks/*
 
@@ -26,13 +28,17 @@ Files: drinks/*
 
 -----------------------------------------
 
-Mariia Korolenko - Food Feature:
+Mariia Korolenko - 
+
+Feature: Food
 
 Files: food_list/*
 
 
 -----------------------------------------
 
-Bibek Man Shrestha - Events Feature:
+Bibek Man Shrestha - 
+
+Feature: Events
 
 Files: events/*
