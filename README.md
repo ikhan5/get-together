@@ -34,4 +34,5 @@ Files: food_list/*
 -----------------------------------------
 
 Bibek Man Shrestha - Events Feature:
-Files:
+
+Files: events/*
