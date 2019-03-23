@@ -8,11 +8,8 @@ Project Feature One - Echo $Friends
 Imzan Khan - Playlists Feature
 
 Files: playlists/* ,
-
 CSS/playlists.css , CSS/songs.css , 
-
 scripts/playlists.js, scripts/songs.js,
-
 model/playlist_db.php, model/playlist.php
 
 Jennifer Wong - Drinks Feature:
