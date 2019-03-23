@@ -1,9 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+
 body {
     margin: 0 auto;
     padding: 0;
     background: #f2f2f2;
     max-width: 340px;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+}
+
+#container {
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+    padding: 50px;
+    max-width: 95vw;
+    font-size: 20px;
 }
 
 /************************Search Bar***************************/
@@ -57,22 +69,53 @@ body {
 }
 
 
-/***********Playlist Listings**************/
-#playlists,
-#songs {
-    display: flex;
-    flex-direction: column;
-    max-width: 330px;
+/*************Validation Styling ***********************/
+.required {
+    color: red;
+    font-size: 0.7em;
 }
 
-#playlist-page__head {
-    display: flex;
-    justify-content: space-between;
+/*******************Heading Styling*********************/
+.heading-style,
+.heading-style2,
+.heading-style3 {
+    position: relative;
+    z-index: 1;
 }
 
-#playlist-page__header {
-    color: #000;
+.heading-style:before,
+.heading-style2:before,
+.heading-style3:before {
+    content: "";
+    margin: 0;
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
+
+.heading-style:before {
+    border-top: 23px solid #F6DC7A;
+    width: 25%;
+}
+
+.heading-style2:before {
+    border-top: 23px solid #05e5e5;
+    width: 95%
+}
+
+.heading-style3:before {
+    border-top: 23px solid #ff4e4e;
+    width: 95%;
+}
+
+.playlist-page__create h3 {
+    margin-left: 5px;
+}
+
+/***********Button Stylings**************/
 
 .playlist-page__create {
     display: flex;
@@ -84,10 +127,6 @@ body {
     cursor: pointer;
 }
 
-.playlist-page__create h3 {
-    margin-left: 5px;
-}
-
 .playlist-page__create:hover {
     font-size: 20px;
     transition: 0.4s;
@@ -95,6 +134,69 @@ body {
 
 .playlist-page__create:active {
     color: #ff2222;
+}
+
+.btn,
+.btn2 {
+    border: none;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.btn {
+    color: white;
+    border: solid 1.5px #ff2222;
+    background-color: #ff2222;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #ff2222;
+    border: solid 1.5px #ff2222;
+}
+
+.btn2 {
+    color: white;
+    border: solid 1.5px #05E5E5;
+    background-color: #05E5E5;
+}
+
+.btn2:hover {
+    background-color: white;
+    color: #05E5E5;
+    border: solid 1.5px #05E5E5;
+}
+
+.form-action {
+    float: right;
+}
+
+#to-playlists {
+    text-decoration: none;
+    color: #000;
+}
+
+.addsong {
+    margin-bottom: 5px;
+}
+
+/***********Playlist/Song Styling**************/
+#playlists,
+#songs {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+
+#playlist-page__head {
+    display: flex;
+    justify-content: space-between;
 }
 
 .playlist,
@@ -105,7 +207,7 @@ body {
     border-radius: 10px;
     background: white;
     height: 75px;
-    width: 330px;
+    width: 360px;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
@@ -138,11 +240,16 @@ body {
     flex: 1 1 auto;
 }
 
-.playlist__title,
-.song__title {
+.playlist__title {
     color: black;
     margin-bottom: 0;
     font-size: 1.2em;
+}
+
+.song__title {
+    color: black;
+    margin-bottom: 0;
+    font-size: 1em;
 }
 
 .playlist__song-count,
@@ -240,36 +347,6 @@ body {
     border-left: solid 1px red;
 } */
 
-.to-songs {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    right: -10%;
-    top: 40%;
-}
-
-.btn {
-    border: none;
-    padding: 6px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 2px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    color: white;
-    border: solid 1.5px #ff2222;
-    background-color: #ff2222;
-}
-
-.btn:hover {
-    background-color: white;
-    color: #ff2222;
-    border: solid 1.5px #ff2222;
-}
-
-
 /************Create Playlist Form**************/
 /* Code Referenced from https://www.w3schools.com/howto/howto_css_modals.asp */
 #playlistForm {
@@ -350,6 +427,7 @@ body {
     float: right;
 }
 
+/************Media Queries**************/
 @media only screen and (min-width: 675px) {
     body {
         max-width: 660px;
@@ -359,10 +437,15 @@ body {
         display: none;
     }
 
+    #playlists {
+        margin-top: 45px;
+        margin-right: 10px;
+    }
+
     .playlist,
     .song {
         min-height: 0;
-        width: 300px;
+        width: 330px;
     }
 
     .playlists__layout {
@@ -393,7 +476,6 @@ body {
     }
 
     .playlists__layout {
-        margin-top: 10px;
         justify-content: space-between;
     }
 
@@ -402,9 +484,6 @@ body {
         max-width: 380px;
     }
 
-    #playlists {
-        margin-top: 35px;
-    }
 
     .song,
     #songs {

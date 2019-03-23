@@ -1,9 +1,10 @@
 <?php
 class Event {
-    private $id, $title, $location, $date, $start_time, $end_time;
+    private $id, $title, $description, $location, $date, $start_time, $end_time;
 
-    public function __construct($title, $location, $date, $start_time, $end_time) {
+    public function __construct($title, $description, $location, $date, $start_time, $end_time) {
         $this->setTitle($title);
+        $this->setDescription($description);
         $this->setLocation($location);
         $this->setDate($date);
         $this->setStartTime($start_time);
@@ -49,6 +50,14 @@ class Event {
     public function setTitle($value) {
         $this->title = $value;
     }
+
+    public function getDescription() {
+      return $this->description;
+  }
+
+  public function setDescription($value) {
+      $this->description = $value;
+  }
 
     public function getLocation() {
         return $this->location;

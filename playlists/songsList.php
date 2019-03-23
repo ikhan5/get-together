@@ -2,16 +2,9 @@
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
-$playlist_id = $_GET['pid'];
-
-if(isset($_POST['addsongs'])){
-    $songs= $_POST['songs'];
-    $p = new PlaylistDB();
-    foreach ($songs as $song){
-    $c = $p->addSongsToPlaylist($song, $playlist_id);
-    }
-}
-    
+$playlist_id = $_GET['pid'] ?? 1;
+$p = new PlaylistDB();
+$playlist = $p->getPlaylistByID($playlist_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,24 +20,19 @@ if(isset($_POST['addsongs'])){
 </head>
 
 <body>
-    <!--Search Bar and Header-->
-    <header>
-        <div class="searchbar">
-            <a class="searchbar__button" href="#">
-                <i class="fas fa-search"></i>
-            </a>
-            <input class="searchbar__input" type="search" placeholder="Search...">
-        </div>
-    </header>
     <section id="song_listings">
-        <input id="pid" type="hidden" value=<?=$playlist_id?> />
-        <h1 id="song-listings__header">Add songs to your playlist!</h1>
-        <span>
-            <form method="POST" id="addsongs">
-                <input type="hidden" name="pid" value=${id} />
-                <button type="submit" class='btn'>Add Songs</button>
-            </form>
-        </span>
+        <a href="index.php">
+            <i class="fas fa-arrow-left"> Back to Playlists</i>
+        </a>
+        <p class="confirmation"></p>
+        <h1 class="heading-style" id="song-listings__header">Add songs to your playlist!</h1>
+        <h2>Playlist: <?=$playlist->name?></h2>
+        <p><?=$playlist->description?></p>
+        <form action="" method="POST" id="addToPlaylist">
+            <input type="hidden" id="pid" value="<?=$playlist_id?>" />
+            <input type="submit" class='btn float-right' value='Add Songs' />
+        </form>
+
         <table>
             <thead>
                 <tr>

@@ -24,10 +24,9 @@
             echo '</select>';
         ?></p><br/>
         <label>Size : </label><input type="text" name="size"/><br/>
-        <label>Quantity : </label><input type="text" name="qty"/><br/>
+        <label>Quantity : </label><input type="text" name="qty" /><br/>
         <button type="submit" name="save" class='btn'>Save</button>
         </form>
-        <p class="errormsg">whyyy</p>
     </div>
     <div class="display">
         <h2 class="heading-style2">List of Drinks</h2>

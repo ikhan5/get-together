@@ -16,21 +16,21 @@ if ($action == 'list_events') {
 	$events = EventDB::getAllEvents();
 	include('list.php');
 } else if ($action == 'show_add_form') {
-    // header('Location: ./add.php');
-    header('Location: ./addplus.php');
+    header('Location: ./add.php');
+    // header('Location: ./addplus.php');
 } else if ($action == 'add_event') {
     $title = filter_input(INPUT_POST, 'title');
-    // $description = filter_input(INPUT_POST, 'description');
-    $location = filter_input(INPUT_POST, 'location');
+    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $date = filter_input(INPUT_POST, 'date');
     $start_time = filter_input(INPUT_POST, 'start-time');
     $end_time = filter_input(INPUT_POST, 'end-time');
 
-    if ($title == null || $location == null || $date == null || $start_time == null || $end_time == null) {
+    if ($title == null || $description == null || $location == null || $date == null || $start_time == null || $end_time == null) {
         $error = "Incomplete data. Please enter information on all fields.";
-        include('../errors/error.php');
+        include('../errors/eventError.php');
     } else {
-        $event = new Event($title, $location, $date, $start_time, $end_time);
+        $event = new Event($title, $description, $location, $date, $start_time, $end_time);
         EventDB::addEvent($event);
         header('Location: .');
     }
@@ -44,16 +44,17 @@ if ($action == 'list_events') {
 } else if ($action == 'update_event') {
     $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
     $title = filter_input(INPUT_POST, 'title');
+    $description = filter_input(INPUT_POST, 'description');
     $location = filter_input(INPUT_POST, 'location');
     $date = filter_input(INPUT_POST, 'date');
     $start_time = filter_input(INPUT_POST, 'start-time');
     $end_time = filter_input(INPUT_POST, 'end-time');
 
-    if ($id == null || $id == false || $title == null || $location == null || $date == null || $start_time == null || $end_time == null) {
+    if ($id == null || $description == null || $id == false || $title == null || $location == null || $date == null || $start_time == null || $end_time == null) {
         $error = "Incomplete data. Please enter information on all fields.";
         include('../errors/error.php');
     } else {
-        $event = new Event($title, $location, $date, $start_time, $end_time);
+        $event = new Event($title, $description, $location, $date, $start_time, $end_time);
         $event->setId($id);
         EventDB::updateEvent($event);
         header('Location: .');

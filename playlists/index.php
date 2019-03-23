@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Playlists</title>
-    <link rel="stylesheet" href="../CSS/playlists.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-</head>
+<?php
+    include "playlistHeader.php";
+?>
 
 <body>
     <!--Search Bar and Header-->
@@ -21,7 +14,7 @@
             <input class="searchbar__input" type="search" placeholder="Search...">
         </div>
         <div id="playlist-page__head">
-            <h1 id="playlist-page__header">Playlists</h1>
+            <h1 class="heading-style2">Playlists</h1>
             <span class="playlist-page__create">
                 <i class="fas fa-plus-circle"></i>
                 <h3>Create A Playlist</h3>
@@ -34,7 +27,7 @@
         <div class="divider">
         </div>
         <!--Song Listings for each Playlist-->
-        <h2 id="songs_header">Songs</h2>
+        <h2 id="songs_header" class="heading-style">Songs</h2>
         <section id="songs" class="sortable"></section>
     </div>
     <!--Create a new Playlist Modal-->
@@ -42,7 +35,7 @@
         <div class="playlistForm">
             <span class="close">X</span>
             <h2>Create a New Playlist</h2>
-            <form action="" method="post" id="createplaylist">
+            <form action="addPlaylist.php" method="post" id="createplaylist">
                 <div class="form-field">
                     <label for="playlist__name">Name: </label>
                     <input type="text" value="Playlist" id="playlist__name" name="playlist__name">
@@ -51,10 +44,9 @@
                     <label for="playlist__description">Description: </label>
                     <textarea name="playlist__desc" id="playlist__desc" cols="16" rows="5"></textarea>
                 </div>
-                <div class="form-field">
-                    <label for="playlist__image">Image:</label>
-                    <input type="file" id="playlist__image" name="playlist__image">
-                </div>
+                <input type="hidden" name="playlist__date" value="<?=date('Y-m-d H:i:s')?>" />
+                <input type="hidden" name="playlist__event" value="2" />
+
                 <div class="form-submit">
                     <input type="submit" value="Create" class="create_button">
                 </div>

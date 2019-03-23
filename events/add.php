@@ -1,19 +1,19 @@
 <?php include('header.php') ?>
 
-<main class="container">
-    <header>
-        <h1 class="display-4">Create a new event</h1>
+<main class="events__container">
+    <header class="container">
+        <h1 class="display-4 text-center"><span class="heading-style">Create a new event</span></h1>
     </header>
-    <form action="index.php" method="post" class="container" id="form-add-event">
+    <form action="index.php" method="post" class="container py-5" id="form-add-event">
         <input type="hidden" name="action" value="add_event">
         <div class="form-group">
             <label for="event-title">Title</label>
             <input type="text" class="form-control" id="event-title" name="title">
         </div>
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label for="event-description">Detail</label>
             <textarea name="description" id="event-description" class="form-control"></textarea>
-        </div> -->
+        </div>
         <div class="form-group">
             <label for="event-location">Location</label>
             <input type="text" class="form-control" id="event-location" name="location">

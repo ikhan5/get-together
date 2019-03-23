@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 body{
-  max-width: 1200px;
-  background: #f2f2f2;
-  margin: 0 7%;
-  font-size: 16px;
-  font-family: "Open Sans", sans-serif;
-  padding: 0;
+    max-width: 1200px;
+    background: #f2f2f2;
+    margin: 0 3%;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    padding: 0;
 }
 /* layout */
 .container{
@@ -13,36 +13,36 @@ body{
     justify-content: space-between;
     flex-flow: wrap;
     flex-direction: row;
+    align-items: stretch;
 }
 .inputform {
     order:1;
     background-color: white;
-    width: 35%;
+    width: 37%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0;
 }
 .display{
     order:1;
     background-color: white;
-    width: 55%;
+    width: 53%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0;
 }
-.sendtoguest{
+.recdrinklist{
     order:2;
     background-color: white;
-    width: 35%;
+    width: 37%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0;
 }
 
 /* styling for headline */
-.heading-style,.heading-style2,.heading-style3  {
+.heading-style,.heading-style2,.heading-style3 {
   position: relative;
   z-index: 1;
 }
-
-.heading-style:before,.heading-style2:before, .heading-style3:before {
+.heading-style:before,.heading-style2:before,.heading-style3:before  {
   content: "";
   margin: 0;
   position: absolute;
@@ -53,16 +53,16 @@ body{
   z-index: -1;
 }
 .heading-style:before {
-    border-top: 23px solid #F6DC7A;
-    width: 90%;
+  border-top: 23px solid #F6DC7A;
+  width: 95%;
 }
 .heading-style2:before {
-    border-top: 23px solid #05e5e5;
-    width: 20%;
+  border-top: 23px solid #05e5e5;
+  width: 30%;
 }
 .heading-style3:before {
-    border-top: 23px solid #ff4e4e;
-    width: 100%;
+  border-top: 23px solid #ff4e4e;
+  width: 75%;
 }
 
 /* button styling */
@@ -120,28 +120,48 @@ body{
 input[type=text] {
     width: 100%;
     padding: 5px 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     box-sizing: border-box;
     font-size: 15px;
 }
-#table{
-  border-collapse: collapse;
-  width: 100%;
+p{
+    margin: 3px 0;
 }
-#table td{
+.errors{
+    color: red;
+}
+.dropbtn{
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+#table,#table2{
+    border-collapse: collapse;
+    width: 100%;
+}
+#table td,#table2 td{
     font-size: 13px;
     padding:3px 8px;
 }
-#table th {
+#table th, #table2 th {
     padding: 10px 8px;
     text-align: left;
-    background-color: black;
     color: white;
     font-size: 15px;
     font-weight: 600;
 }
+#table th {
+    background-color: black;
+}
+#table2 th {
+    background-color: #505050;
+}
 
-@media only screen and (max-width: 900px){
+
+@media only screen and (max-width: 1000px){
     .container{
         flex-direction: column;
     }
@@ -150,21 +170,18 @@ input[type=text] {
         width: 100%;
     }
     .display{
-        order:2;
-        width: 100%;
-    }
-    .sendtoguest{
         order:3;
         width: 100%;
     }
+    .recdrinklist{
+        order:2;
+        width: 100%;
+    }
     .heading-style:before {
-        width: 90%;
+        width: 70%;
     }
     .heading-style2:before {
         width: 40%;
-    }
-    .heading-style3:before {
-        width: 95%;
     }
     body{
         font-size: 14px
