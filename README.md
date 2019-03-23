@@ -6,9 +6,13 @@ asterik = all files within the specified folder
 Project Feature One - Echo $Friends
 
 Imzan Khan - Playlists Feature
-Files: playlists/* , 
+
+Files: playlists/* ,
+
 CSS/playlists.css , CSS/songs.css , 
-scripts/playlists.js, scripts/songs.js, 
+
+scripts/playlists.js, scripts/songs.js,
+
 model/playlist_db.php, model/playlist.php
 
 Jennifer Wong - Drinks Feature:
