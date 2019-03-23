@@ -71,6 +71,7 @@
   border-radius: 5px;
 }
 
-/* .container>h1 {
-  margin: auto;
-} */
+.error_message {
+  color: red;
+  font-style: italic;
+}

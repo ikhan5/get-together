@@ -26,9 +26,9 @@ if ($action == 'list_events') {
     $start_time = filter_input(INPUT_POST, 'start-time');
     $end_time = filter_input(INPUT_POST, 'end-time');
 
-    if ($title == null || $description == null || $location == null || $date == null || $start_time == null || $end_time == null) {
+    if ($title == false || $description == false || $location == false || $date == false || $start_time == false || $end_time == false) {
         $error = "Incomplete data. Please enter information on all fields.";
-        include('../errors/eventError.php');
+        include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
     } else {
         $event = new Event($title, $description, $location, $date, $start_time, $end_time);
         EventDB::addEvent($event);
@@ -52,7 +52,7 @@ if ($action == 'list_events') {
 
     if ($id == null || $description == null || $id == false || $title == null || $location == null || $date == null || $start_time == null || $end_time == null) {
         $error = "Incomplete data. Please enter information on all fields.";
-        include('../errors/error.php');
+        include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
     } else {
         $event = new Event($title, $description, $location, $date, $start_time, $end_time);
         $event->setId($id);
