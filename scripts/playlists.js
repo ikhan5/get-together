@@ -122,27 +122,7 @@ playlists.php file.
     });
   }); //end of playlist click event
 
-  /*Makes the songs sortable, i.e can be dragged around to change the order of the playlist*/
-  $(".sortable").sortable({
-    update: function(event, ui) {
-      $(this)
-        .children()
-        .each(function(index) {
-          if ($(this).attr("data-position") != index + 1) {
-            $(this)
-              .attr("data-position", index + 1)
-              .addClass("updated");
-          }
-        });
-
-      newPosition(
-        $(this)
-          .children()
-          .attr("data-playlist")
-      );
-    }
-  });
-
+  $(".song").sortable();
   $(".playlist__info").click(function() {});
 
   $(".playlist-page__create").on("click", function() {
@@ -176,6 +156,31 @@ playlists.php file.
       .toggle(150);
   });
 });
+/***************** Create Playlist Validation *************/
+let playlist_name = $.trim($("#playlist__name"));
+let playlist_desc = $("#playlist__desc").val();
+
+/*Makes the songs sortable, i.e can be dragged around to change the order of the playlist
+ WORK IN PROGRESS */
+$(".sortable").sortable({
+  update: function(event, ui) {
+    $(this)
+      .children()
+      .each(function(index) {
+        if ($(".ui-sortable-helper").attr("data-position") != index + 1) {
+          $(this)
+            .attr("data-position", index + 1)
+            .addClass("updated");
+        }
+      });
+
+    newPosition(
+      $(this)
+        .children()
+        .attr("data-playlist")
+    );
+  }
+});
 
 function newPosition(playlist_id) {
   var positions = [];
@@ -195,8 +200,6 @@ function newPosition(playlist_id) {
     data: {
       update: 1,
       positions: positions
-    },
-    success: function(response) {},
-    error: function(response) {}
+    }
   });
 }

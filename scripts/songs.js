@@ -26,10 +26,15 @@ $.getJSON("getAllSongs.php", function(data) {
         songs: songs_added
       },
       success: function(data) {
-        $(".confirmation").html("Song(s) added Successfully!");
+        $(".confirmation").empty();
+        $(".confirmation")
+          .html("Song(s) added Successfully!")
+          .css("color", "green");
       },
       error: function(data) {
-        $(".confirmation").html("Problem adding songs, please try again!");
+        $(".confirmation")
+          .html("Problem adding songs, please try again!")
+          .css("color", "red");
       }
     });
   });
