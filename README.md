@@ -37,8 +37,9 @@ Files: food_list/*
 
 -----------------------------------------
 
-Bibek Man Shrestha - 
+Bibek Shrestha
 
-Feature: Events
-
-Files: events/*
+Feature: Events 
+Feature link: <root>/events/
+CSS link: <root>/Content/css/event.css
+Model link: <root>/event_db.php, <root>/event.php
