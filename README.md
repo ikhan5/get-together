@@ -26,7 +26,7 @@ Files:
 -----------------------------------------
 
 Mariia Korolenko - Food Feature:
-Files:
+Files: food_list/*
 
 
 
