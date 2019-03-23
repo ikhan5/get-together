@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
-
-body {
+body{
     max-width: 1200px;
     background: #f2f2f2;
     margin: 0 3%;
@@ -8,34 +7,30 @@ body {
     font-family: "Open Sans", sans-serif;
     padding: 0;
 }
-
 /* layout */
-.container {
+.container{
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
     flex-direction: row;
     align-items: stretch;
 }
-
 .inputform {
-    order: 1;
+    order:1;
     background-color: white;
     width: 37%;
     padding: 2%;
     margin: 0;
 }
-
-.display {
-    order: 1;
+.display{
+    order:1;
     background-color: white;
     width: 53%;
     padding: 2%;
     margin: 0;
 }
-
-.recdrinklist {
-    order: 2;
+.recdrinklist{
+    order:2;
     background-color: white;
     width: 37%;
     padding: 2%;
@@ -43,43 +38,35 @@ body {
 }
 
 /* styling for headline */
-.heading-style,
-.heading-style2,
-.heading-style3 {
-    position: relative;
-    z-index: 1;
+.heading-style,.heading-style2,.heading-style3 {
+  position: relative;
+  z-index: 1;
 }
-
-.heading-style:before,
-.heading-style2:before,
-.heading-style3:before {
-    content: "";
-    margin: 0;
-    position: absolute;
-    top: 33%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+.heading-style:before,.heading-style2:before,.heading-style3:before  {
+  content: "";
+  margin: 0;
+  position: absolute;
+  top: 33%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
-
 .heading-style:before {
-    border-top: 23px solid #F6DC7A;
-    width: 95%;
+  border-top: 23px solid #F6DC7A;
+  width: 95%;
 }
-
 .heading-style2:before {
-    border-top: 23px solid #05e5e5;
-    width: 30%;
+  border-top: 23px solid #05e5e5;
+  width: 30%;
 }
-
 .heading-style3:before {
-    border-top: 23px solid #ff4e4e;
-    width: 75%;
+  border-top: 23px solid #ff4e4e;
+  width: 75%;
 }
 
 /* button styling */
-.btn {
+.btn{
     background-color: black;
     border: none;
     color: white;
@@ -89,10 +76,9 @@ body {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight:600;
 }
-
-.btn:hover {
+.btn:hover{
     background-color: white;
     border: solid 2px black;
     color: black;
@@ -100,8 +86,7 @@ body {
     padding: 6px 10px;
 }
 
-.btn1,
-.btn2 {
+.btn1, .btn2{
     border: none;
     padding: 6px 10px;
     text-align: center;
@@ -110,28 +95,24 @@ body {
     margin: 2px;
     cursor: pointer;
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight:600;
 }
-
-.btn1 {
+.btn1{
     color: #05e5e5;
     border: solid 1.5px #05e5e5;
 }
-
-.btn1:hover {
+.btn1:hover{
     background-color: #05e5e5;
     color: black;
     border: solid 1.5px #05e5e5;
 }
-
-.btn2 {
+.btn2{
     color: #ff2222;
     border: solid 1.5px #ff2222;
 }
-
-.btn2:hover {
+.btn2:hover{
     background-color: #ff2222;
-    color: white;
+    color:white;
     border: solid 1.5px #ff2222;
 }
 
@@ -143,97 +124,77 @@ input[type=text] {
     box-sizing: border-box;
     font-size: 15px;
 }
-
-p {
+p{
     margin: 3px 0;
 }
-
-.errors {
+.errors{
     color: red;
 }
-
-.dropbtn {
-    background-color: black;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.dropbtn{
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
-
-#table,
-#table2 {
+#table,#table2{
     border-collapse: collapse;
     width: 100%;
 }
-
-#table td,
-#table2 td {
+#table td,#table2 td{
     font-size: 13px;
-    padding: 3px 8px;
+    padding:3px 8px;
 }
-
-#table th,
-#table2 th {
+#table th, #table2 th {
     padding: 10px 8px;
     text-align: left;
     color: white;
     font-size: 15px;
     font-weight: 600;
 }
-
 #table th {
     background-color: black;
 }
-
 #table2 th {
     background-color: #505050;
 }
 
 
-@media only screen and (max-width: 1000px) {
-    .container {
+@media only screen and (max-width: 1000px){
+    .container{
         flex-direction: column;
     }
-
     .inputform {
-        order: 1;
+        order:1;
         width: 100%;
     }
-
-    .display {
-        order: 3;
+    .display{
+        order:3;
         width: 100%;
     }
-
-    .recdrinklist {
-        order: 2;
+    .recdrinklist{
+        order:2;
         width: 100%;
     }
-
     .heading-style:before {
         width: 70%;
     }
-
     .heading-style2:before {
         width: 40%;
     }
-
-    body {
+    body{
         font-size: 14px
     }
-
-    input[type=text] {
-        padding: 2px 5px;
+    input[type=text]{
+        padding:2px 5px;
     }
-
-    #table td {
+    #table td{
         font-size: 12px;
-        padding: 2px;
+        padding:2px;
     }
-
     #table th {
-        padding: 3px;
+        padding:3px;
         font-size: 12px;
     }
 }
