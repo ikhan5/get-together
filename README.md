@@ -1,6 +1,6 @@
 # get-together
 PHP Final Project - The Get Together project will allow users to organize and manage parties easier
-* = all files within the specified folder
+asterik = all files within the specified folder
 
 Project Feature One - Echo $Friends
 
