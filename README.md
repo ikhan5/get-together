@@ -4,7 +4,7 @@ PHP Final Project - The Get Together project will allow users to organize and ma
 asterik = all files within the specified folder
 
 Project Feature One - Echo $Friends
-
+http://get-together.gq/
 -----------------------------------------
 
 Imzan Khan 
@@ -40,6 +40,7 @@ Files: food_list/*
 Bibek Shrestha
 
 Feature: Events 
+
 Feature link: <root>/events/
 CSS link: <root>/Content/css/event.css
 Model link: <root>/event_db.php, <root>/event.php
