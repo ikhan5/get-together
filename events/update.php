@@ -1,8 +1,8 @@
 <?php include('header.php') ?>
 
-<main class="container">
-    <header>
-        <h1 class="display-4">Update '<?= $event->getTitle() ?>'</h1>
+<main class="events__container">
+    <header class="container">
+        <h1 class="display-4 text-center"><span class="heading-style">Update '<?= $event->getTitle() ?>'</span></h1>
     </header>
     <form action="index.php" method="post" class="container py-5" id="form-update-event">
         <input type="hidden" name="action" value="update_event">
@@ -10,6 +10,10 @@
         <div class="form-group">
             <label for="event-title">Title</label>
             <input type="text" class="form-control" id="event-title" name="title" value="<?= $event->getTitle() ?>">
+        </div>
+        <div class="form-group">
+            <label for="event-description">Detail</label>
+            <textarea name="description" id="event-description" class="form-control"><?= $event->getDescription() ?></textarea>
         </div>
         <div class="form-group">
             <label for="event-location">Location</label>

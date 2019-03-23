@@ -1,8 +1,8 @@
 <?php include('header.php') ?>
 
-<main class="container">
-    <header>
-        <h1 class="display-4">Create a new event</h1>
+<main class="events__container">
+    <header class="container">
+        <h1 class="display-4 text-center"><span class="heading-style">Create a new event</span></h1>
     </header>
     <form action="index.php" method="post" class="container py-5" id="form-add-event">
         <input type="hidden" name="action" value="add_event">

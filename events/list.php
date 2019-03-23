@@ -1,8 +1,8 @@
 <?php include('header.php') ?>
 
-<main>
+<main class="events__container">
     <header class="container">
-        <h1 class="display-4">Events</h1>
+        <h1 class="display-4 text-center"><span class="heading-style">Events</span></h1>
     </header>
     <div class="container">
         <a href="?action=show_add_form" class="btn btn-outline-secondary btn-sm float-right event-action-btn">Add new event</a>
