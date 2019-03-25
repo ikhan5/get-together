@@ -7,50 +7,58 @@ body {
     margin: 0 auto;
     padding: 0;
     background: #f2f2f2;
-    max-width: 370px;
+    max-width: 90vw;
     font-size: 16px;
 }
+
 /******************Payment Icons********************/
-.fab{
+.fab {
     font-size: 3em;
 }
-.fa-cc-amex{
+
+.fa-cc-amex {
     color: #007bc1;
 }
 
-.fa-cc-visa{
+.fa-cc-visa {
     color: #0157a2;
 }
-.fa-cc-mastercard{
-    color:#0a3a82;
+
+.fa-cc-mastercard {
+    color: #0a3a82;
 }
 
-.fa-cc-paypal{
-    color:#253b80;
+.fa-cc-paypal {
+    color: #253b80;
 }
 
 #payment__form {
     display: flex;
-    flex-flow: column; 
+    flex-flow: column;
 }
 
-.payment-method label{
+.payment-method label {
     display: flex;
 }
 
-.payment-method label input{
+.payment-method label input {
     margin-right: 30px;
 }
 
-.payment-method label i{
+.payment-method label i {
     margin-right: 5px;
 }
 
-.payment-method__credit,.payment-method__paypal {
+.payment-method__credit,
+.payment-method__paypal {
     background: white;
     padding: 10px 15px;
     margin: 0 auto;
-    width: 370px;
+    width: 80vw;
+}
+
+.credit__info {
+    margin: 0 auto;
 }
 
 .payment-method__credit div {
@@ -62,24 +70,109 @@ body {
     font-size: 1.1em;
 }
 
-div[class^="credit"]{
+div[class^="credit"] {
     display: flex;
     flex-direction: column;
 }
 
-.row{
+.row {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
-.row input{
+.row input {
     width: 150px;
 }
 
-.payment-method__paypal{
+.payment-method__paypal {
     display: none;
 }
 
-.stripe-button-el,#paypal-submit{
+.payment-method {
+    margin-bottom: 20px;
+}
+
+.stripe-button-el,
+#paypal-submit,
+#credit-submit {
     float: right;
+}
+
+
+/* ******* Payments View ***********/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: solid 1px black;
+    text-align: left;
+    padding: 10px;
+}
+
+tr:nth-child(2n) {
+    background-color: #ccc;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#create_payment {
+    text-align: right;
+    margin: 25px;
+}
+
+.payment_option {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.button-link {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    border-bottom: 1px solid blue;
+}
+
+/***********Media Queries ****************/
+@media only screen and (min-width: 675px) {
+    #payment__form {
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+
+    .payment-method {
+        width: 40vw;
+    }
+
+    .payment-method__credit,
+    .payment-method__paypal {
+        width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 968px) {
+    .payment-method {
+        width: 30vw;
+    }
+
+    .payment-method__credit,
+    .payment-method__paypal {
+        width: 70vw;
+    }
 }
