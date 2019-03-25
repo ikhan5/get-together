@@ -41,7 +41,7 @@ class PlaylistDB
     {
         $dbcon = Database::getDb();
         
-        $sql = "SELECT songs.* from songs inner join playlists_songs 
+        $sql = "SELECT songs.*, playlists_songs.playlist_song_id from songs inner join playlists_songs 
         on songs.song_id = playlists_songs.song_id 
         where playlists_songs.playlist_id = :playlist_id
         order by playlists_songs.position";
@@ -69,14 +69,12 @@ class PlaylistDB
         return $count;
     }
 
-    public function deleteSongFromPlaylist($song_id,$playlist_id)
+    public function deleteSongFromPlaylist($id)
     {
         $dbcon = Database::getDB();
-        $sql = "DELETE FROM playlists_songs WHERE playlists_songs.playlist_id = :playlist_id AND 
-        playlists_songs.song_id = :song_id;";
+        $sql = "DELETE FROM playlists_songs WHERE playlists_songs.playlist_song_id= :id";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':playlist_id', $playlist_id);
-        $pst->bindParam(':song_id', $song_id);
+        $pst->bindParam(':id', $id);
         $count = $pst->execute();
 
         return $count;

@@ -84,7 +84,7 @@ playlists.php file.
         var data = response;
         $.each(data, function(index, value) {
           let song = `<div class="song" data-playlist=${id} data-index="${
-            value.song_id
+            value.playlist_song_id
           }" data-position="${value.position}">
           <div class="song_item song__image">
               <i class="fas fa-headphones-alt playlist-icon"></i>
@@ -99,9 +99,8 @@ playlists.php file.
           <div class="song_item song__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
               <div class="song__options_dropdown">
               <form action='deleteSongFromPlaylist.php' method='post'>
-              <input type="hidden" name="playlistID" class="playlistID" value=${id}>
-              <input type="hidden" name="songID" class="songID" value=${
-                value.song_id
+              <input type="hidden" name="ID" class="playlistID" value=${
+                value.playlist_song_id
               }>
               <input class="nostyle" type='submit' value='Remove Song' name='deletesong' /></form>
               </div>
