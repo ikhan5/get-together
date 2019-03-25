@@ -2,21 +2,20 @@
 // When the 'Delete' link is clicked on the payment_list page
 // the Delete page is directed to, and allows the user to remove a payment's info
 // from the 'payments' table based on the row ID passed by the payment_list form
-require_once '../model/database.php';
-require_once '../model/payment_db.php';
+
+require_once 'header.php';
 
 if (isset($_POST['delete'])) {
-    $db_handler = Database::getDB();
     $p = new Payment();
-    $payment_id = $_POST['id'];
-    $payment = $p->selectPayment($db_handler, $payment_id);
+    $id = $_POST['id'];
+    $payment = $p->selectPayment($id);
 }
 
 if (isset($_POST['delete_payment'])) {
-    $db_handler = Database::getDB();
     $p = new Payment();
-    $payment_id = $_POST['payment_id'];
-    $p->deletePayment($db_handler, $payment_id);
+    $event_id = $_SESSION['event_id'];
+    $id = $_POST['payment_id'];
+    $p->deletePayment($event_id, $id);
     header("Location: payment_list.php");
     exit;
 }
@@ -33,18 +32,18 @@ if (isset($_POST['cancel'])) {
         <div class="payment-detail">
             <label for="email">Email:</label>
             <span id="email">
-                <?php echo $payment->email ?></span>
+                <?= htmlspecialchars($payment->id) ?></span>
         </div>
         <div class="payment-detail">
             <label for="amount">Amount Paid:</label>
             <span id="amount">
                 $
-                <?php echo $payment->amount ?></span>
+                <?= htmlspecialchars($payment->amount) ?></span>
         </div>
         <div class="payment-detail">
             <label for="payment-method">Amount Paid:</label>
             <span id="payment-method">
-                <?php echo $payment->payment_method ?></span>
+                <?=htmlspecialchars($payment->payment_method) ?></span>
         </div>
     </div>
     <input type="submit" name="delete_payment" value="Delete">

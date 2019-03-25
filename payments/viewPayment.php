@@ -8,27 +8,27 @@ require_once '../model/payment_db.php';
 if (isset($_POST['view'])) {
     $db_handler = Database::getDB();
     $p = new Payment();
-    $pool_id = $_POST['id'];
-    $payment = $p->selectPayment($db_handler, $pool_id);
+    $id = $_POST['id'];
+    $payment = $p->selectPayment($id);
 }
-
 ?>
+
 <!-- Display for Viewing a payment  -->
 <h2>Viewing Payment</h2>
 <div id="payment_info">
     <div class="user-detail">
         <label for="email">Email:</label>
         <span id="email">
-            <?php echo $payment->email ?></span>
+            <?=htmlspecialchars($payment->email) ?></span>
     </div>
     <div class="user-detail">
         <label for="amount">Amount Paid:</label>
         <span id="amount">
-            $<?php echo $payment->amount ?></span>
+            $<?=htmlspecialchars($payment->amount) ?></span>
     </div>
     <div class="user-detail">
         <label for="payment-method">Amount Paid:</label>
         <span id="payment-method">
-            <?php echo $payment->payment_method ?></span>
+            <?=htmlspecialchars($payment->payment_method) ?></span>
     </div>
 </div>

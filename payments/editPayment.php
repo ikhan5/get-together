@@ -2,34 +2,35 @@
 // When the 'Edit' link is clicked on the payment_list page
 // the Edit page is directed to, and allows the user to edit a payment's info
 // from the 'payments' table based on the row ID passed by the payment_list form
-require_once '../model/database.php';
-require_once '../model/payment_db.php';
-
+require_once 'header.php';
+if(isset($_SESSION['user_id'])){
 if (isset($_POST['edit'])) {
     $db_handler = Database::getDB();
     $p = new Payment();
-    $payment_id = $_POST['id'];
-    $payment = $p->selectPayment($db_handler, $payment_id);
+    $id = $_POST['id'];
+    $payment = $p->selectPayment($id);
 }
 
 if (isset($_POST['editpayment'])) {
     $db_handler = Database::getDB();
     $p = new Payment();
-    $email = $_POST['email'];
-    $amount = $_POST['amount'];
-    $payment_method = $_POST['payment_method'];
-    $payment_id = $_POST['payment_id'];
-    $p->updatePayment($db_handler, $email, $amount, $payment_method, $payment_id);
+    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $amount = filter_input(INPUT_POST, 'amount', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $method = $_POST['payment_method'];
+    $p->updatePayment($amount, $method, $id);
     header("Location: payment_list.php");
     exit;
+}
+}else{
+    echo "Need to login to view this page";
 }
 ?>
 <!-- Form for editting a payment -->
 <h2>Editting Payment: </h2>
 <form method="post" action="">
-    <input type="hidden" name="payment_id" value="<?= $payment->payment_id; ?>" />
+    <input type="hidden" name="id" value="<?= $payment->id; ?>" />
     <label for="email">Email: </label>
-    <input type="email" name="email" id="email" value='<?= $payment->email ?>'><br />
+    <input type="hidden" name="email" id="email" value='<?= $_SESSION['user_id']; ?>'><br />
     <label for="amount">Amount Paid: $</label>
     <input type="number" name="amount" id="amount" min="1" step=".01" value='<?= $payment->amount ?>' /> <br />
     <label for="payment_method">Choose a Payment Method:</label>
@@ -37,8 +38,10 @@ if (isset($_POST['editpayment'])) {
         <?php 
         if ($payment->payment_method === 'PayPal') {
             echo "<option value='PayPal' selected='selected'>PayPal</option>";
+            echo "<option value='Credit Card'>Credit Card</option>";
         } else {
             echo "<option value='Credit Card' selected='selected'>Credit Card</option>";
+            echo "<option value='PayPal'>PayPal</option>";
         }
         ?>
     </select>
