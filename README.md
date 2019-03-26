@@ -32,7 +32,7 @@ Mariia Korolenko -
 
 Feature: Food
 
-Files: food_list/*
+Files: food_list/* , CSS/foodlist.css
 
 
 -----------------------------------------
