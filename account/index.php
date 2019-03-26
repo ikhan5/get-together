@@ -36,7 +36,33 @@ if ($action == 'list_users') {
     $tmp_name = explode(' ',$name);
     $last_name = end($tmp_name);
     $user = new User($first_name, $last_name, $email);
-    AccountDB::registerUser($user);
-    // header('Location: /');
+    $reg_status = AccountDB::registerUser($user);
+    if ($reg_status == 'User with the email already exist') {
+      $error = $reg_status;
+      include('errors\customError.php');
+      exit();
+    } else if (intval($reg_status)) {
+      $user_id = intval($reg_status);
+    } else {
+      $error = 'There was an error during registration';
+      include('errors\customError.php');
+      exit();
+    }
+
+    $login = new Login($password, $password, $user_id);
+    $login_status = AccountDB::loginUser($login);
+    
+    
+    
+    // else {
+    //   header('Location: ./index.php');
+    // }
   }
+} else if ($action == 'login_user') {
+  $email = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_EMAIL);
+  $password = filter_input(INPUT_POST, 'user-password');
+
+  // Getting user with the email
+  $user = AccountDB::validateEmail($email);
+  $user_id = $user->getId();
 }
