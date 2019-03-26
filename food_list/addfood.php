@@ -1,5 +1,5 @@
 <?php
-require_once './model/Database.php';
+require_once '../model/database.php';
 require_once './model/Food.php';
 
 echo "<h3>Add Food</h3>";
@@ -13,7 +13,8 @@ if (isset($_POST['save'])) {
     $f = new Food();
     $food = $f->insertFood($name, $type, $size, $qty, $db);
 
-    if($s){
+    if($f){
+        header("Location: foodindex.php");
         echo "Food added sucessfully!";
     } else {
         echo "Error adding to list of food.";
@@ -26,5 +27,5 @@ if (isset($_POST['save'])) {
     Type : <input type="text" name="type" /><br />
     Size : <input type="text" name="size" /><br />
     Quantity : <input type="text" name="type" /><br />
-    <input type="submit" name="addpoll" value="Add Poll">
+    <input type="submit" name="addfood" value="AddFood">
 </form>
