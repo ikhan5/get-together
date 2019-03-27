@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../model/database.php');
 require_once('../model/account/login.php');
 require_once('../model/account/role_user.php');
@@ -62,7 +63,7 @@ if ($action == 'list_users') {
     }
   }
 } else if ($action == 'login_user') {
-  $email = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_EMAIL);
+  $email = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
   $password = filter_input(INPUT_POST, 'user-password');
 
   // Getting user with the email
@@ -70,12 +71,24 @@ if ($action == 'list_users') {
   if ($user) {
     $user_id = $user->getId();
   } else {
-    $error = 'No account with this email address';
+    $error = 'Invalid email';
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
     exit();
   }
 
   // verifying password
   $status = AccountDB::validatePassword($user_id, $password);
-
+  if ($status) {
+    $_SESSION['userid'] = $user_id;
+    $_SESSION['username'] = $user->getFirstName()." ".$user->getLastName();
+    header('Location: ./');
+  } else {
+    $error = 'Invalid email or password';
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+    exit();
+  }
+} else if ($action == 'logout_user') {
+  unset($_SESSION['userid']);
+  unset($_SESSION['username']);
+  header('Location: /');
 }

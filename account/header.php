@@ -47,7 +47,11 @@
             <a class="nav-link navbar-custom" href="#">Contact us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link navbar-custom" href="#"><strong>Login/Register</strong></a>
+            <?php if(isset($_SESSION['userid'])): ?>
+              <span class="nav-link navbar-custom"><strong><?= $_SESSION['username'] ?></strong></span>
+            <?php else: ?>
+              <a class="nav-link navbar-custom" href="/account?action=show_add_form"><strong>Login/Register</strong></a>
+            <?php endif; ?>
           </li>
         </ul>
       </div>

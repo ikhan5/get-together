@@ -66,19 +66,22 @@ class AccountDB
 
   public static function validateEmail($email) {
     $dbcon = Database::getDB();
-
-    $sql = "SELECT * FROM users WHERE email like :email";
+    // var_dump($email);
+    $sql = "SELECT * FROM users WHERE email = :email";
     $pdostm = $dbcon->prepare($sql);
     $pdostm->bindParam(':email', $email);
     $pdostm->execute();
     $row = $pdostm->fetch();
     $pdostm->closeCursor();
     
+    // var_dump($row);
+    
     if($row) {
       $user = new User($row['first_name'],$row['last_name'], $row['email']);
       $user->setId($row['id']);
       return $user;
     } else {
+      exit();
       return false;
     }
   }

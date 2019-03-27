@@ -1,6 +1,6 @@
 <?php include('header.php') ?>
 
-<main class="accounts__container">
+<main class="users__container">
     <header class="container">
         <h1 class="display-4 text-center"><span class="heading-style">Users</span></h1>
     </header>
