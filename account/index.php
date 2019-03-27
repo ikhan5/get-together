@@ -36,27 +36,30 @@ if ($action == 'list_users') {
     $tmp_name = explode(' ',$name);
     $last_name = end($tmp_name);
     $user = new User($first_name, $last_name, $email);
-    $reg_status = AccountDB::registerUser($user);
-    if ($reg_status == 'User with the email already exist') {
+    $reg_status = AccountDB::addUser($user);
+    if ($reg_status == 'User with the email already exists') {
       $error = $reg_status;
-      include('errors\customError.php');
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
       exit();
-    } else if (intval($reg_status)) {
+    } else if ($reg_status) {
       $user_id = intval($reg_status);
+      // echo(intval($reg_status));
     } else {
       $error = 'There was an error during registration';
-      include('errors\customError.php');
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
       exit();
     }
 
     $login = new Login($password, $password, $user_id);
-    $login_status = AccountDB::loginUser($login);
+    $login_status = AccountDB::addLogin($login);
     
-    
-    
-    // else {
-    //   header('Location: ./index.php');
-    // }
+    if(!$login_status) {
+      $error = 'There was an error during registration';
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+      exit();
+    } else {
+      header('Location: ./');
+    }
   }
 } else if ($action == 'login_user') {
   $email = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_EMAIL);
@@ -64,5 +67,15 @@ if ($action == 'list_users') {
 
   // Getting user with the email
   $user = AccountDB::validateEmail($email);
-  $user_id = $user->getId();
+  if ($user) {
+    $user_id = $user->getId();
+  } else {
+    $error = 'No account with this email address';
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+    exit();
+  }
+
+  // verifying password
+  $status = AccountDB::validatePassword($user_id, $password);
+
 }

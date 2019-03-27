@@ -18,7 +18,7 @@ class AccountDB
     return $users;
   }
 
-  public static function registerUser($user) {
+  public static function addUser($user) {
     $dbcon = Database::getDb();
 
     $first_name = $user->getFirstName();
@@ -27,7 +27,7 @@ class AccountDB
     
     $tmp_usr = AccountDB::validateEmail($email);
     if($tmp_usr) {
-      return "User with the email already exist";
+      return "User with the email already exists";
     }
 
     $sql = "INSERT INTO users (first_name, last_name, email) 
@@ -41,37 +41,27 @@ class AccountDB
     $pdostm->closeCursor();
     
     $tmp_usr = AccountDB::validateEmail($email);
-    if($tmp_usr) {
-      return $tmp_usr->getId();
-    }
+    return $tmp_usr->getId();
   }
 
-  public static function loginUser($login) {
+  public static function addLogin($login) {
     $dbcon = Database::getDb();
 
     $password = $login->getPasswordHash();
     $salt = $login->getPasswordSalt();
-    $user_id = $login->getEmail();
-    
-    $tmp_usr = AccountDB::validateEmail($email);
-    if($tmp_usr) {
-      return "login with the email already exist";
-    }
+    $user_id = $login->getUserId();
 
     $sql = "INSERT INTO logins (password_hash, password_salt, user_id) 
           VALUES (:password, :salt, :user_id) ";
     
     $pdostm = $dbcon->prepare($sql);
-    $pdostm->bindParam(':first_name', $first_name);
-    $pdostm->bindParam(':last_name', $last_name);
-    $pdostm->bindParam(':email', $email);
-    $pdostm->execute();
+    $pdostm->bindParam(':password', $password);
+    $pdostm->bindParam(':salt', $salt);
+    $pdostm->bindParam(':user_id', $user_id);
+    var_dump($pdostm);
+    $status = $pdostm->execute();
     $pdostm->closeCursor();
-    
-    $tmp_usr = AccountDB::validateEmail($email);
-    if($tmp_usr) {
-      return $tmp_usr->getId();
-    }
+    return $status;
   }
 
   public static function validateEmail($email) {
@@ -86,25 +76,25 @@ class AccountDB
     
     if($row) {
       $user = new User($row['first_name'],$row['last_name'], $row['email']);
+      $user->setId($row['id']);
       return $user;
     } else {
       return false;
     }
   }
 
-  public static function validatePassword($password) {
+  public static function validatePassword($user_id, $password) {
     $dbcon = Database::getDB();
 
-    $sql = "SELECT * FROM users WHERE email like :email";
+    $sql = "SELECT * FROM logins WHERE user_id like :user_id";
     $pdostm = $dbcon->prepare($sql);
-    $pdostm->bindParam(':email', $email);
+    $pdostm->bindParam(':user_id', $user_id);
     $pdostm->execute();
     $row = $pdostm->fetch();
     $pdostm->closeCursor();
     
-    if($row) {
-      $user = new User($row['first_name'],$row['last_name'], $row['email']);
-      return $user;
+    if($password == $row['password_hash']) {
+      return true;
     } else {
       return false;
     }
