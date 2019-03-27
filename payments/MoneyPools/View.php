@@ -32,10 +32,10 @@ if (isset($_POST['view'])) {
             "<input class='button-link' type='submit' value='$payment->user_id' name='view' /></form></td>";
         echo "<td>" . $payment->amount . "</td>";
         echo "<td>" . $payment->payment_method . "</td>";
-        echo "<td><form action='Edit.php' method='post'>" .
+        echo "<td><form action='../editPayment.php' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
-        echo "<td><form action='Delete.php' method='post'>" .
+        echo "<td><form action='../deletePayment.php' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='Delete' name='delete' /></td></form>";
         echo "</tr>";

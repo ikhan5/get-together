@@ -9,7 +9,6 @@ $pools = $mp->poolsList();
 <link rel="stylesheet" href="../../CSS/money_pools.css" />
 
 <div class="container">
-
     <body>
         <h2>View Money Pools</h2>
         <div id="create_payment">

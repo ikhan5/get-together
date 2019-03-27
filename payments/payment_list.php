@@ -7,7 +7,7 @@ $p = new Payment();
 $payments = $p->paymentsList($_SESSION['event_id']);
 ?>
 
-<body>
+<div class="container">
     <h2>View Payments (Admin View)</h2>
     <a href="MoneyPools/pool_list.php">
         <i class="fas fa-arrow-left"> Back to Pools</i>
@@ -40,7 +40,7 @@ $payments = $p->paymentsList($_SESSION['event_id']);
         ?>
         </tbody>
     </table>
-</body>
+</div>
 
 <?php
     include "footer.php";

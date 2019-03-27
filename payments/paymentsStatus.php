@@ -4,8 +4,9 @@
 require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
+$event_id = $_SESSION['event_id'];
 $mp = new Payment();
-$payments = $mp->getPaymentStatus($user_id);
+$payments = $mp->getPaymentStatus($event_id);
 ?>
 
 <div class="container">
