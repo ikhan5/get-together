@@ -79,12 +79,11 @@ class Payment
         return $message;
     }
     //Used to remove a certain payment from the 'payments' table based on ID
-    public function deletePayment($money_pool_id, $id)
+    public function deletePayment($id)
     {
         $dbcon = Database::getDb();
-        $sql = "DELETE from funds WHERE money_pool_id=:pool_id AND id=:id;";
+        $sql = "DELETE from funds WHERE id=:id;";
         $pdostm = $dbcon->prepare($sql);
-        $pdostm->bindParam(':pool_id', $money_pool_id);
         $pdostm->bindParam(':id', $id);
         $pdostm->execute();
         $pdostm->closeCursor();
@@ -103,11 +102,11 @@ class Payment
         return $events;
     }
 
-    public function getPaymentStatus($user_id){
+    public function getPaymentStatus($event_id){
         $dbcon = Database::getDB();
-        $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* from money_pools inner join funds on funds.money_pool_id = money_pools.id where funds.user_id = :user_id group by funds.money_pool_id ";
+        $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* from money_pools LEFT join funds on funds.money_pool_id = money_pools.id where event_id = :event_id group by funds.money_pool_id ";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':user_id', $user_id);
+        $pst->bindParam(':event_id', $event_id);
         $pst->execute();
         $status = $pst->fetchAll(PDO::FETCH_OBJ);
         $pst->closeCursor();

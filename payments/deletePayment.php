@@ -15,12 +15,12 @@ if (isset($_POST['delete_payment'])) {
     $p = new Payment();
     $event_id = $_SESSION['event_id'];
     $id = $_POST['payment_id'];
-    $p->deletePayment($event_id, $id);
-    header("Location: payment_list.php");
+    $p->deletePayment($id);
+    header("Location: MoneyPools/pool_list.php");
     exit;
 }
 if (isset($_POST['cancel'])) {
-    header("Location: payment_list.php");
+    header("Location: MoneyPools/pool_list.php");
     exit;
 }
 ?>
