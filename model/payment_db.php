@@ -4,26 +4,36 @@
 class Payment
 {
     //Used to retrive all individual payment rows from the 'payments' table
-    public function paymentsList($event_id)
+    public function paymentsList($pool_id)
     {
         $dbcon = Database::getDb();
-        $sql = "SELECT * FROM funds where event_id = :event_id";
+        $sql = "SELECT * FROM funds where money_pool_id = :id";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':event_id', $event_id);
+        $pst->bindParam(':id', $pool_id);
         $pst->execute();
         $payments = $pst->fetchAll(PDO::FETCH_OBJ);
         $pst->closeCursor();
         return $payments;
     }
 
+    public function moneyCollected(){
+        $dbcon = Database::getDb();
+        $sql = "SELECT SUM(amount) FROM funds";
+        $pst = $dbcon->prepare($sql);
+        $pst->execute();
+        $total = $pst->fetchAll(PDO::FETCH_OBJ);
+        $pst->closeCursor();
+        return $total;
+    }
+
     //Used to insert a new payment into the 'payments' table
-    public function insertPayment($event_id, $amount, $payment_method, $user_id)
+    public function insertPayment($pool_id, $amount, $payment_method, $user_id)
     {
         $dbcon = Database::getDb();
-        $sql = "INSERT INTO funds (event_id, amount, payment_method, user_id) 
-        values(:event_id,:amount,:payment_method, :user_id)";
+        $sql = "INSERT INTO funds (money_pool_id, amount, payment_method, user_id) 
+        values(:pool_id,:amount,:payment_method, :user_id)";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':event_id', $event_id);
+        $pst->bindParam(':pool_id', $pool_id);
         $pst->bindParam(':amount', $amount);
         $pst->bindParam(':payment_method', $payment_method);
         $pst->bindParam(':user_id', $user_id);
@@ -44,9 +54,9 @@ class Payment
         $pdostm = $dbcon->prepare($sql);
         $pdostm->bindParam(':id', $id);
         $pdostm->execute();
-        $payments = $pdostm->fetch(PDO::FETCH_OBJ);
+        $payment = $pdostm->fetch(PDO::FETCH_OBJ);
         $pdostm->closeCursor();
-        return $payments;
+        return $payment;
     }
     //Used to edit a certain payment from the 'payments' table based on ID
     public function updatePayment($amount, $payment_method, $id)
@@ -69,12 +79,12 @@ class Payment
         return $message;
     }
     //Used to remove a certain payment from the 'payments' table based on ID
-    public function deletePayment($event_id, $id)
+    public function deletePayment($money_pool_id, $id)
     {
         $dbcon = Database::getDb();
-        $sql = "DELETE from funds WHERE event_id=:event_id AND id=:id;";
+        $sql = "DELETE from funds WHERE money_pool_id=:pool_id AND id=:id;";
         $pdostm = $dbcon->prepare($sql);
-        $pdostm->bindParam(':event_id', $event_id);
+        $pdostm->bindParam(':pool_id', $money_pool_id);
         $pdostm->bindParam(':id', $id);
         $pdostm->execute();
         $pdostm->closeCursor();
@@ -91,5 +101,16 @@ class Payment
         $events = $pst->fetchAll(PDO::FETCH_OBJ);
         $pst->closeCursor();
         return $events;
+    }
+
+    public function getPaymentStatus($user_id){
+        $dbcon = Database::getDB();
+        $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* from money_pools inner join funds on funds.money_pool_id = money_pools.id where funds.user_id = :user_id group by funds.money_pool_id ";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(':user_id', $user_id);
+        $pst->execute();
+        $status = $pst->fetchAll(PDO::FETCH_OBJ);
+        $pst->closeCursor();
+        return $status;
     }
 }

@@ -9,6 +9,9 @@ $payments = $p->paymentsList($_SESSION['event_id']);
 
 <body>
     <h2>View Payments (Admin View)</h2>
+    <a href="MoneyPools/pool_list.php">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
     <div id="create_payment">
         <a href="payments.php">+ Create a Payment</a>
     </div>
@@ -28,10 +31,10 @@ $payments = $p->paymentsList($_SESSION['event_id']);
             echo "<td>" . $payment->payment_method . "</td>";
             echo "<td><form action='editPayment.php' method='post'>" .
                 "<input type='hidden' value='$payment->id' name='id' />" .
-                "<input type='submit' value='Edit' name='edit' /></form></td>";
+                "<input class='button-link' type='submit' value='Edit' name='edit' /></form></td>";
             echo "<td><form action='deletePayment.php' method='post'>" .
                 "<input type='hidden' value='$payment->id' name='id' />" .
-                "<input type='submit' value='Delete' name='delete' /></form></td>";
+                "<input class='button-link' type='submit' value='Delete' name='delete' /></form></td>";
             echo "</tr>";
         }
         ?>

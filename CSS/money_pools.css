@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+
+body {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    padding: 50px;
+    max-width: 95vw;
+    font-size: 20px;
+}
+
+h2 {
+    margin: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: solid 1px black;
+    text-align: left;
+    padding: 10px;
+}
+
+tr:nth-child(n) {
+    background-color: white;
+}
+
+tr:nth-child(2n) {
+    background-color: #ccc;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#create_payment {
+    text-align: right;
+    margin: 25px;
+}
+
+.payment_option {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.button-link {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    border-bottom: 1px solid blue;
+}
