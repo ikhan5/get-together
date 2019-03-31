@@ -4,7 +4,7 @@ class Drink
 {
     public function getAllDrinks($dbcon)
     {
-        $sql = "SELECT * FROM userrsvp.drinklist";
+        $sql = "SELECT * FROM drinklist";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->execute();
         $drinks= $pdostm->fetchAll(PDO::FETCH_OBJ);
@@ -14,7 +14,7 @@ class Drink
     
     public function insertDrink($name, $type, $size, $qty ,$db)
     {
-        $sql = "INSERT INTO userrsvp.drinklist(drink_name,drink_type,drink_size, drink_qty) 
+        $sql = "INSERT INTO drinklist(drink_name,drink_type,drink_size, drink_qty) 
         values(:name,:type,:size,:qty)";
         $pst = $db->prepare($sql);
         $pst->bindParam(':name', $name);
@@ -32,7 +32,7 @@ class Drink
     }
     
     public function getDrinkById($id, $db){
-        $sql = "SELECT * FROM userrsvp.drinklist WHERE drink_id = :id ";
+        $sql = "SELECT * FROM drinklist WHERE drink_id = :id ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
 
@@ -44,7 +44,7 @@ class Drink
     }
     
     public function updateDrink($id, $name, $type, $size, $qty, $db){
-        $sql = "UPDATE userrsvp.drinklist
+        $sql = "UPDATE drinklist
                 SET drink_name = :name,
                 drink_type = :type,
                 drink_size = :size,
@@ -62,7 +62,7 @@ class Drink
     }
     
     public function deleteDrink($id, $db){
-        $sql = "DELETE FROM userrsvp.drinklist WHERE drink_id = :id";
+        $sql = "DELETE FROM drinklist WHERE drink_id = :id";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
         $count = $pst->execute();
@@ -73,7 +73,7 @@ class Drink
     //recommended drinks
     public function getAllRecDrinks($dbcon)
     {
-        $sql = "SELECT * FROM userrsvp.recdrinklist";
+        $sql = "SELECT * FROM recdrinklist";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->execute();
         $recdrinks= $pdostm->fetchAll(PDO::FETCH_OBJ);
@@ -82,7 +82,7 @@ class Drink
     }
     
     public function getRecDrinkById($id, $db){
-        $sql = "SELECT * FROM userrsvp.recdrinklist WHERE recdrink_id = :id ";
+        $sql = "SELECT * FROM recdrinklist WHERE recdrink_id = :id ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
 

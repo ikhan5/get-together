@@ -2,10 +2,10 @@
 class Database
 {
      //__construct access modifier private and properties static
-    private static $user = 'root';
-    private static $pass = 'root';
-    private static $db = 'userrsvp';
-    private static $dsn = 'mysql:localhost;dbname=userrsvp';
+     private static $user = 'root';
+     private static $pass = 'root';
+     private static $db = 'techenth_gettogether';
+     private static $dsn = 'mysql:localhost;dbname=techenth_gettogether';
     private static $dbcon;
     
     private function __construct()

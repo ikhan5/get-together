@@ -1,15 +1,15 @@
 <?php 
 require_once '../../model/database.php';
-require_once 'Drink.php';
+require_once 'Guest.php';
 
 if(isset($_POST['delete'])){
     $id= $_POST['id'];
     $dbcon = Database::getDb();
-    $d = new Drink();
-    $count = $d->deleteDrink($id, $dbcon);
+    $g = new Guest();
+    $count = $g->deleteGuest($id, $dbcon);
 
     if($count){
-        header("Location: ../drinks_index.php");
+        header("Location: ../rsvp_index.php");
     }
 }
 
