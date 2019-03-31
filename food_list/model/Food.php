@@ -4,7 +4,7 @@ class Food
 {
     public function getAllFood($dbcon)
     {
-        $sql = "SELECT * FROM food.foodlist";
+        $sql = "SELECT * FROM foodlist";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->execute();
         $food = $pdostm->fetchAll(PDO::FETCH_OBJ);
@@ -14,7 +14,7 @@ class Food
     
     public function insertFood($name, $type, $size, $qty ,$db)
     {
-        $sql = "INSERT INTO food.foodlist(food_name,food_type,food_size,food_qty) 
+        $sql = "INSERT INTO foodlist(food_name,food_type,food_size,food_qty) 
         values(:name,:type,:size,:qty)";
         $pst = $db->prepare($sql);
         $pst->bindParam(':name', $name);
@@ -32,7 +32,7 @@ class Food
     }
     
     public function getFoodById($id, $db){
-        $sql = "SELECT * FROM food.foodlist WHERE food_id = :id ";
+        $sql = "SELECT * FROM foodlist WHERE food_id = :id ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
 
@@ -44,7 +44,7 @@ class Food
     }
     
     public function updateFood($id, $name, $type, $size, $qty, $db){
-        $sql = "UPDATE food.foodlist
+        $sql = "UPDATE foodlist
                 SET food_name = :name,
                 food_type = :type,
                 food_size = :size,
@@ -62,7 +62,7 @@ class Food
     }
     
     public function deleteFood($id, $db){
-        $sql = "DELETE FROM food.foodlist WHERE food_id = :id";
+        $sql = "DELETE FROM foodlist WHERE food_id = :id";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
         $count = $pst->execute();

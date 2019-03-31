@@ -1,5 +1,5 @@
 <?php 
-require_once './model/Database.php';
+require_once '../model/database.php';
 require_once './model/Food.php';
 
 if(isset($_POST['update'])){
@@ -22,7 +22,7 @@ if(isset($_POST['updfood'])){
     $count = $f->updateFood($id, $name, $type, $size, $qty, $dbcon);
 
     if($count){
-        header("Location: ../foodindex.php");
+        header("Location: foodindex.php");
     } else {
         echo  "Error updating.";
     }

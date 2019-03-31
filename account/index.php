@@ -1,68 +1,94 @@
-<?php include('../header.php') ?>
+<?php
+session_start();
+require_once('../model/database.php');
+require_once('../model/account/login.php');
+require_once('../model/account/role_user.php');
+require_once('../model/account/role.php');
+require_once('../model/account/user.php');
+require_once('../model/account/account_db.php');
 
-    <main class="container">
-        <div class="row py-3">
-            <div class="col-sm py-4 pr-5" id="registration-block">
-                <h2 class="display-4 text-center mb-4">Registration</h2>
-                <form action="" method="post">
-                    <div class="form-group row">
-                      <label for="user-name" class="col-sm-4 col-form-label">Name</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="user-name" id="user-name" placeholder="Full name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="user-email" class="col-sm-4 col-form-label">Email</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="user-email" id="user-email" placeholder="Your email">
-                      </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                      <label for="user-username" class="col-sm-4 col-form-label">Username</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="user-sername" id="user-sername" placeholder="Choose username">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="user-password" class="col-sm-4 col-form-label">Password</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="user-password" id="user-password" placeholder="Choose password">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="user-confirm-password" class="col-sm-4 col-form-label">Confirm password</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="user-confirm-password" id="user-confirm-password" placeholder="Repeat password">
-                      </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-8 offset-sm-4">
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-sm py-4 pl-5">
-                <h2 class="display-4 text-center mb-4">Login</h2>
-                <div class="form-group row mt-4">
-                    <label for="user-username" class="col-sm-4 col-form-label">Username</label>
-                    <div class="col-sm-8">
-                    <input type="text" class="form-control" name="user-sername" id="user-sername" placeholder="Your username">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="user-password" class="col-sm-4 col-form-label">Password</label>
-                    <div class="col-sm-8">
-                    <input type="text" class="form-control" name="user-password" id="user-password" placeholder="Your password">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-8 offset-sm-4">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+$action = filter_input(INPUT_POST, 'action');
+if ($action == null) {
+  $action = filter_input(INPUT_GET, 'action');
+  if ($action == null) {
+    $action = 'list_users';
+  }
+}
 
-<?php include('../footer.php') ?>
+if ($action == 'list_users') {
+  $users = AccountDB::getAllUsers();
+  include('list_users.php');
+} else if ($action == 'show_add_form') {
+  header('Location: ./login_register.php');
+} else if ($action == 'register_user') {
+  $name = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  $email = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
+  $password = filter_input(INPUT_POST, 'user-password');
+  $confirm_password = filter_input(INPUT_POST, 'user-confirm-password');
+
+  if ($name == false || $email == false || $password == false || $confirm_password == false) {
+    $error = "Incomplete data. Please enter information on all fields.";
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+  } else if ($password != $confirm_password) {
+    $error = "Your passwords don't match";
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+  } else {
+    $first_name = explode(' ',$name)[0];
+    $tmp_name = explode(' ',$name);
+    $last_name = end($tmp_name);
+    $user = new User($first_name, $last_name, $email);
+    $reg_status = AccountDB::addUser($user);
+    if ($reg_status == 'User with the email already exists') {
+      $error = $reg_status;
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+      exit();
+    } else if ($reg_status) {
+      $user_id = intval($reg_status);
+      // echo(intval($reg_status));
+    } else {
+      $error = 'There was an error during registration';
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+      exit();
+    }
+
+    $login = new Login($password, $password, $user_id);
+    $login_status = AccountDB::addLogin($login);
+    
+    if(!$login_status) {
+      $error = 'There was an error during registration';
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+      exit();
+    } else {
+      header('Location: ./');
+    }
+  }
+} else if ($action == 'login_user') {
+  $email = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
+  $password = filter_input(INPUT_POST, 'user-password');
+
+  // Getting user with the email
+  $user = AccountDB::validateEmail($email);
+  if ($user) {
+    $user_id = $user->getId();
+  } else {
+    $error = 'Invalid email';
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+    exit();
+  }
+
+  // verifying password
+  $status = AccountDB::validatePassword($user_id, $password);
+  if ($status) {
+    $_SESSION['userid'] = $user_id;
+    $_SESSION['username'] = $user->getFirstName()." ".$user->getLastName();
+    header('Location: ./');
+  } else {
+    $error = 'Invalid email or password';
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+    exit();
+  }
+} else if ($action == 'logout_user') {
+  unset($_SESSION['userid']);
+  unset($_SESSION['username']);
+  header('Location: /');
+}
