@@ -70,7 +70,7 @@ Jennifer Wong -
 
 Feature: 
 
-Files: drinks/*
+Files: 
 
 
 
@@ -80,7 +80,7 @@ Mariia Korolenko -
 
 Feature: 
 
-Files: food_list/* , CSS/foodlist.css
+Files: 
 
 
 -----------------------------------------
@@ -89,10 +89,10 @@ Bibek Shrestha
 
 Feature:  
 
-Feature link: <root>/events/
+Feature link: <root>/
   
-CSS link: <root>/Content/css/event.css
+CSS link: <root>/
   
-Model link: <root>/event_db.php, <root>/event.php
+Model link: <root>/, <root>/
   
   
