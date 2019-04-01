@@ -81,7 +81,6 @@ class AccountDB
       $user->setId($row['id']);
       return $user;
     } else {
-      exit();
       return false;
     }
   }

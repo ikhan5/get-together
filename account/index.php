@@ -81,7 +81,7 @@ if ($action == 'list_users') {
   if ($status) {
     $_SESSION['userid'] = $user_id;
     $_SESSION['username'] = $user->getFirstName()." ".$user->getLastName();
-    header('Location: ./');
+    header('Location: /');
   } else {
     $error = 'Invalid email or password';
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
