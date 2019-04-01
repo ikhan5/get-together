@@ -312,4 +312,10 @@ input[type=checkbox] {
   }
 }
 
+.show>.btn-primary.dropdown-toggle, .btn-primary.dropdown-toggle:focus, .btn-primary.dropdown-toggle:active, .btn-primary.dropdown-toggle:active:focus {
+  color: #fff;
+  background-color: #04b7b7;
+  border-color: #04b7b7;
+}
+
 /*# sourceMappingURL=style.css.map */

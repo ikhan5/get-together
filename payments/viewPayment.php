@@ -27,7 +27,7 @@ if (isset($_POST['view'])) {
             $<?=htmlspecialchars($payment->amount) ?></span>
     </div>
     <div class="user-detail">
-        <label for="payment-method">Amount Paid:</label>
+        <label for="payment-method">Payment Method:</label>
         <span id="payment-method">
             <?=htmlspecialchars($payment->payment_method) ?></span>
     </div>
