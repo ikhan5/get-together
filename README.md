@@ -68,9 +68,9 @@ model/payment_db.php, model/pools_db.php
 -----------------------------------------
 Jennifer Wong - 
 
-Feature: 
+Feature: RSVP
 
-Files: 
+Files: rsvp/*
 
 
 
