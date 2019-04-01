@@ -48,15 +48,13 @@ class AccountDB
     $dbcon = Database::getDb();
 
     $password = $login->getPasswordHash();
-    $salt = $login->getPasswordSalt();
     $user_id = $login->getUserId();
 
-    $sql = "INSERT INTO logins (password_hash, password_salt, user_id) 
-          VALUES (:password, :salt, :user_id) ";
+    $sql = "INSERT INTO logins (password_hash, user_id) 
+          VALUES (:password, :user_id) ";
     
     $pdostm = $dbcon->prepare($sql);
     $pdostm->bindParam(':password', $password);
-    $pdostm->bindParam(':salt', $salt);
     $pdostm->bindParam(':user_id', $user_id);
     var_dump($pdostm);
     $status = $pdostm->execute();
@@ -95,7 +93,7 @@ class AccountDB
     $row = $pdostm->fetch();
     $pdostm->closeCursor();
     
-    if($password == $row['password_hash']) {
+    if(password_verify($password, $row['password_hash'])) {
       return true;
     } else {
       return false;
