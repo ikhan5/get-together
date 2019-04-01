@@ -47,7 +47,7 @@ Feature link: <root>/events/
   
 CSS link: <root>/Content/css/event.css
   
-Model link: <root>/event_db.php, <root>/event.php
+Model link: <root>/model/event_db.php, <root>/model/event.php
   
 ------------------------------------------------------------------------------------------------------------ 
   
@@ -87,12 +87,12 @@ Files: food_list/* , CSS/foodlist.css
 
 Bibek Shrestha
 
-Feature:  
+Feature: Account (Registration and Login)
 
-Feature link: <root>/events/
+Feature link: <root>/account/
   
-CSS link: <root>/Content/css/event.css
+CSS link: <root>/Content/css/account.css
   
-Model link: <root>/event_db.php, <root>/event.php
+Model link: <root>/model/account
   
   
