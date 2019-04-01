@@ -26,25 +26,28 @@ if (isset($_POST['editpayment'])) {
 }
 ?>
 <!-- Form for editting a payment -->
-<h2>Editting Payment: </h2>
-<form method="post" action="">
-    <input type="hidden" name="id" value="<?= $payment->id; ?>" />
-    <label for="email">Email: </label>
-    <input type="hidden" name="email" id="email" value='<?= $_SESSION['user_id']; ?>'><br />
-    <label for="amount">Amount Paid: $</label>
-    <input type="number" name="amount" id="amount" min="1" step=".01" value='<?= $payment->amount ?>' /> <br />
-    <label for="payment_method">Choose a Payment Method:</label>
-    <select name="payment_method" id="payment_method">
-        <?php 
+<div class="container">
+    <h2>Editting Payment: </h2>
+    <form method="post" action="">
+        <input type="hidden" name="id" value="<?= $payment->id; ?>" />
+        <label for="email">Email: </label>
+        <input type="hidden" name="email" id="email" value='<?= $_SESSION['user_id']; ?>'><br />
+        <label for="amount">Amount Paid: $</label>
+        <input type="number" name="amount" id="amount" min="1" step=".01" value='<?= $payment->amount ?>' required />
+        <br />
+        <label for="payment_method">Choose a Payment Method:</label>
+        <select name="payment_method" id="payment_method">
+            <?php 
         if ($payment->payment_method === 'PayPal') {
             echo "<option value='PayPal' selected='selected'>PayPal</option>";
-            echo "<option value='Credit Card'>Credit Card</option>";
+            echo "<option value='Credit'>Credit</option>";
         } else {
-            echo "<option value='Credit Card' selected='selected'>Credit Card</option>";
+            echo "<option value='Credit' selected='selected'>Credit</option>";
             echo "<option value='PayPal'>PayPal</option>";
         }
         ?>
-    </select>
-    <br />
-    <input type="submit" name="editpayment" value="Update Payment">
-</form>
+        </select>
+        <br />
+        <input type="submit" name="editpayment" value="Update Payment">
+    </form>
+</div>

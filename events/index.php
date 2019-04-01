@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require('../model/database.php');
 require('../model/event.php');
 require('../model/event_db.php');
@@ -19,7 +19,7 @@ if ($action == 'list_events') {
     header('Location: ./add.php');
     // header('Location: ./addplus.php');
 } else if ($action == 'add_event') {
-    $title = filter_input(INPUT_POST, 'title');
+    $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $date = filter_input(INPUT_POST, 'date');

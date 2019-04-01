@@ -48,16 +48,7 @@
           </li>
           <li class="nav-item">
             <?php if(isset($_SESSION['userid'])): ?>
-              <div class="dropdown">
-                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?= $_SESSION['username'] ?>
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Dashboard</a>
-                  <a class="dropdown-item" href="/account?action=logout_user">Logout</a>
-                </div>
-              </div>
+              <span class="nav-link navbar-custom"><strong><?= $_SESSION['username'] ?></strong></span>
             <?php else: ?>
               <a class="nav-link navbar-custom" href="/account?action=show_add_form"><strong>Login/Register</strong></a>
             <?php endif; ?>
