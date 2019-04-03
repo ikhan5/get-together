@@ -33,9 +33,9 @@ if ($action == 'list_users') {
     $error = "Your passwords don't match";
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
   } else {
-    $first_name = explode(' ',$name)[0];
     $tmp_name = explode(' ',$name);
-    $last_name = end($tmp_name);
+    $first_name = $tmp_name[0];
+    $last_name = (sizeof($tmp_name)>1)? end($tmp_name): "";
     $user = new User($first_name, $last_name, $email);
     $reg_status = AccountDB::addUser($user);
     if ($reg_status == 'User with the email already exists') {
@@ -51,7 +51,8 @@ if ($action == 'list_users') {
       exit();
     }
 
-    $login = new Login($password, $password, $user_id);
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $login = new Login($password_hash, $user_id);
     $login_status = AccountDB::addLogin($login);
     
     if(!$login_status) {
@@ -59,7 +60,7 @@ if ($action == 'list_users') {
       include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
       exit();
     } else {
-      header('Location: ./');
+      header('Location: ./login_register.php');
     }
   }
 } else if ($action == 'login_user') {
@@ -81,7 +82,7 @@ if ($action == 'list_users') {
   if ($status) {
     $_SESSION['userid'] = $user_id;
     $_SESSION['username'] = $user->getFirstName()." ".$user->getLastName();
-    header('Location: ./');
+    header('Location: /');
   } else {
     $error = 'Invalid email or password';
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');

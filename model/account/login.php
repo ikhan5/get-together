@@ -1,10 +1,9 @@
 <?php
 class Login {
-  private $id, $password_hash, $password_salt, $user_id;
+  private $id, $password_hash, $user_id;
 
-  public function __construct($password_hash, $password_salt, $user_id) {
+  public function __construct($password_hash, $user_id) {
     $this->setPasswordHash($password_hash);
-    $this->setPasswordSalt($password_salt);
     $this->setUserId($user_id);
   }
 
@@ -14,14 +13,6 @@ class Login {
 
   public function setPasswordHash($value) {
     $this->password_hash = $value;
-  }
-
-  public function getPasswordSalt() {
-    return $this->password_salt;
-  }
-
-  public function setPasswordSalt($value) {
-    $this->password_salt = $value;
   }
 
   public function getUserId() {
