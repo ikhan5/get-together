@@ -1,5 +1,11 @@
 <?php
-date_default_timezone_set('Etc/UTC');
+  session_start();
+  include "../model/database.php";
+  include "../model/notification_db.php";
+$user_id = $_SESSION['user_id'];
+$event_id = $_SESSION['event_id'];
+
+date_default_timezone_set('America/Toronto');
 require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -28,8 +34,14 @@ if(isset($_POST['sendemail'])){
         $mail->WordWrap = 50;
         $mail->isHTML(true);
         $mail->Subject = $subject;
-        $mail->Body = "<p>".  $content; "</p>";
+        $mail->Body = "<p style='font-size:22px;'>Hello ".$user['name'].",<br/><br/>"
+                        .$content; "</p>";
         $mail->AltBody = '';
+
+        $time = date("Y-m-d H:i:s");
+
+        $u = new Notification();
+        $u->insertNotification($subject,$content, $user_id, $event_id, $time);
 
         if(!isset($subject)){
             echo "Please enter a subject";
@@ -41,14 +53,12 @@ if(isset($_POST['sendemail'])){
             exit;
         }
 
-
     $result = $mail->Send();
     
     if($result["code"] == '400')
     {
         $output .= html_entity_decode($result['full_error']);
     }
-
 }
    
    if($output == '')

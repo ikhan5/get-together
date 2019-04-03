@@ -58,23 +58,23 @@ $users = $u->getUsersByEventID($event_id);
                                     <td>
                                         <input type="checkbox" name="single_email" class="single_email" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
                                     </td>
-                                    <td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button" id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" data-action="single">Send</button></td>
+                                    <td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" data-action="single">Send</button></td>
                                     </tr>
                                     ';
                                     }
                                     ?>
                         </table>
                         <div class="form-group float-right">
-                            <input type="button" id="select-all" class="btn1" name="all_guests"
+                            <input type="button" id="all_guests" class="btn1" name="all_guests"
                                 value="Select All Guests">
-                            <input type="button" id="deselect-all" class="btn btn3" name="deselect_guests"
+                            <input type="button" id="deselect_all" class="btn btn3" name="deselect_guests"
                                 value="Deselect Guests">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group float-right">
-                <button data-action="bulk" data-event='<?=$event_id?>' type="button" class="btn btn2 mb-2 email_button"
+            <div class="form-group float-right ">
+                <button data-action="bulk" data-event='<?=$event_id?>' type="button" class="btn btn2 email_button"
                     id="select_all">
                     Notify Selected Users</button>
             </div>

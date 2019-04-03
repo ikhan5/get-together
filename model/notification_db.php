@@ -2,22 +2,32 @@
 
 class Notification 
 {
-    public function insertNotification()
+    public static function getAllNotifications() {
+        $dbcon = Database::getDb();
+        $sql = "SELECT * FROM notifications";
+        $pst = $dbcon->prepare($sql);
+        $pst->execute();
+        $notifications = $pst->fetchAll(PDO::FETCH_OBJ);
+        return $notifications;
+    }
+
+    public function insertNotification($subject,$message,$user_id, $event_id, $time)
     {
         $dbcon = Database::getDb();
-        $sql = "INSERT INTO funds (money_pool_id, amount, payment_method, user_id) 
-        values(:pool_id,:amount,:payment_method, :user_id)";
+        $sql = "INSERT INTO notifications (notification_subject,notification_message, user_id, event_id, time) 
+        values(:subject,:message,:user_id,:event_id, :time)";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':pool_id', $pool_id);
-        $pst->bindParam(':amount', $amount);
-        $pst->bindParam(':payment_method', $payment_method);
+        $pst->bindParam(':subject', $subject);
+        $pst->bindParam(':message', $message);
         $pst->bindParam(':user_id', $user_id);
+        $pst->bindParam(':event_id', $event_id);
+        $pst->bindParam(':time', $time);
         $count = $pst->execute();
 
         if ($count) {
-            $message = 'Payment Successful!';
+            $message = 'Insert Successful!';
         } else {
-            $message = 'Payment Failed...';
+            $message = 'Insert Failed...';
         }
         return $message;
     }
