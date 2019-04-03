@@ -40,7 +40,7 @@ body {
 
 
 /***********Button Stylings**************/
-.btn,
+.btn1,
 .btn2,
 .btn3 {
     border: none;
@@ -54,13 +54,13 @@ body {
     font-weight: 600;
 }
 
-.btn {
+.btn1 {
     color: white;
     border: solid 1.5px #ff2222;
     background-color: #ff2222;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: white;
     color: #ff2222;
     border: solid 1.5px #ff2222;
