@@ -2,10 +2,18 @@
 
 class Notification 
 {
-    public static function getAllNotifications() {
+    public static function getAllNotificationsByUserID($user_id, $limit = 0) {
         $dbcon = Database::getDb();
-        $sql = "SELECT * FROM notifications";
-        $pst = $dbcon->prepare($sql);
+        $sql = "SELECT * FROM notifications where user_id =:user_id order by time desc ";
+        if($limit){
+            $sql .= " LIMIT :limit";
+            $pst = $dbcon->prepare($sql);
+            $pst->bindValue(":limit",$limit,PDO::PARAM_INT);
+        }
+        else{
+            $pst = $dbcon->prepare($sql);
+        }
+        $pst->bindParam(":user_id", $user_id);
         $pst->execute();
         $notifications = $pst->fetchAll(PDO::FETCH_OBJ);
         return $notifications;
@@ -30,6 +38,26 @@ class Notification
             $message = 'Insert Failed...';
         }
         return $message;
+    }
+
+    public function getNotificationById($id){
+        $dbcon = Database::getDB();
+        $sql =  "SELECT * from notifications where 
+        id=:id";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(":id",$id);
+        $pst->execute();
+        $notification = $pst->fetch(PDO::FETCH_OBJ);
+        return $notification;
+    }
+
+    public function deleteNotification($id){
+        $dbcon = Database::getDB();
+        $sql = "DELETE from notifications where id=:id";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(":id",$id);
+        $pst->execute();
+        $pst->closeCursor();
     }
 
     public function getUsersByEventID($event_id){

@@ -38,6 +38,12 @@ body {
     width: 70%;
 }
 
+.heading-style2:before {
+    border-top: 23px solid #F6DC7A;
+    width: 60%;
+}
+
+
 
 /***********Button Stylings**************/
 .btn1,
@@ -88,4 +94,23 @@ body {
     background-color: white;
     color: grey;
     border: solid 1.5px grey;
+}
+
+.button-link {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    border-bottom: 1px solid blue;
+}
+
+/*********** View Notification ************/
+
+#message {
+    font-size: 1.4em;
 }
