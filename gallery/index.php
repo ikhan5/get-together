@@ -1,3 +1,26 @@
+<?php
+    require_once "database.php";
+    include "validation.php";
+    include "Gallery.php";
+
+    $db = Database::getDB();
+    $errors="";
+
+    if(isset($_POST['submit']))
+    {   
+        $filetitle = $_POST['filetitle'];
+        $filedes = $_POST['filedes'];
+        $images = $_FILES['image']['name'];
+
+        $errors = validateForm($filetitle,$images);
+
+        if (empty($errors)){
+            $g = new Gallery();
+            $errors.=$g->addPhoto($filetitle,$filedes,$images,$db);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,48 +34,24 @@
         <div class="wrapper">
             <h2 class="heading-style">Photo Gallery</h2>
             <div class="gallery-container">
-                <a href="#">
-                    <div class="image"></div>
-                    <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
-                <a href="#">
-                    <div class="image"></div>
-                    <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
-                <a href="#">
-                    <div class="image"></div>
-                    <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
-                <a href="#">
-                    <div class="image"></div>
-                   <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
-                <a href="#">
-                    <div class="image"></div>
-                    <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
-                <a href="#">
-                    <div class="image"></div>
-                    <h3>Title</h3>
-                    <p>paragraph</p>
-                </a>
+                <div class="images">
+                <?php
+                    
+                ?>
+                </div>
             </div>
 
             <div class="gallery-upload">
             <h2 class="heading-style2">Share your photos</h2>
-                <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
-                    <input type="text" name="filename" placeholder="File name">
+                <form method="post" enctype="multipart/form-data">
                     <input type="text" name="filetitle" placeholder="Image title">
-                    <input type="text" name="filedesc" placeholder="Image description">
-                    <input type="file" name="file">
+                    <input type="text" name="filedes" placeholder="Image description">
+                    <input type="file" name="image" accept="*/image">
                     <button type="submit" name="submit" class="btn">Upload</button>
+                    <p><?= $errors ?></p>
                 </form>
             </div>
+
         </div>
     </section>
 </body>
