@@ -1,5 +1,5 @@
 <?php
-    // include "../dashboard/dashboard.php";
+    include "../dashboard/dashboard.php";
     include "../model/database.php";
     include "../model/notification_db.php";
     require_once 'startSession.php';
@@ -18,7 +18,7 @@ $users = $u->getUsersByEventID($event_id);
 <body>
     <section id="notification" class="mt-5 p-4 mb-5">
         <h2 class="col-sm-6 mb-4 heading-style">Alert Other Guests</h2>
-
+        <p id="successMsg" style="color:green"></p>
         <p id="errorMsg" style="color:red;"><?= $error ?></p>
         <form action="" method=" POST" class="container-fluid">
             <div class="row">
@@ -45,23 +45,22 @@ $users = $u->getUsersByEventID($event_id);
                                 <th>Send</th>
                             </tr>
                             <?php
-                                    foreach($users as $user)
+                                foreach($users as $user)
                                     {
-                                    echo '
-                                    <tr>';
-                                    if($user->is_host){
-                                        echo '<td style="color:green;">'.$user->first_name.' (host)</td>';
-                                    }else{
-                                        echo '<td>'.$user->first_name.'</td>';
+                                        if($user->is_host){
+                                            echo '<input id="host" type="hidden" value='.$user->first_name.' />';
+                                        }
+                                        else{
+                                            echo '<tr>';  
+                                            echo '<td>'.$user->first_name.'</td>';
+                                            echo '<td>'.$user->email.'</td>
+                                            <td>
+                                                <input type="checkbox" name="single_email" class="single_email" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
+                                            </td>
+                                            <td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" data-action="single">Send</button></td>
+                                            </tr>';
                                     }
-                                    echo '<td>'.$user->email.'</td>
-                                    <td>
-                                        <input type="checkbox" name="single_email" class="single_email" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
-                                    </td>
-                                    <td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" data-action="single">Send</button></td>
-                                    </tr>
-                                    ';
-                                    }
+                                }
                                     ?>
                         </table>
                         <div class="form-group float-right">

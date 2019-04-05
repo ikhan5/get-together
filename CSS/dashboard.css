@@ -8,6 +8,7 @@ body {
     max-width: 200px;
     min-height: 100vh;
     align-items: stretch;
+    z-index: 10000;
 }
 
 #logo h3,

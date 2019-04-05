@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+
 body {
   max-width: 1200px;
   background: #f2f2f2;
@@ -14,6 +15,7 @@ body {
   left: -9999px !important;
 }
 
+header,
 nav {
   background-color: #22c9d4;
 }
@@ -22,12 +24,12 @@ nav {
   max-width: 250px;
 }
 
-.btn {
+.btn1 {
   background-color: #2d959c;
   border: #000000;
 }
 
-.btn:hover {
+.btn1:hover {
   background-color: #215757;
 }
 

@@ -19,9 +19,9 @@
 
 <body>
     <?php
-    include "../header-logged-in.php";
+    include "../header.php";
 ?>
-    <div id="page-wrapper">
+    <div id="page-wrapper" class="position-fixed">
         <nav id="dashboard">
             <div id="logo">
                 <h3>Get Together</h3>
