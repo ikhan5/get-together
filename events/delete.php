@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+$pagetitle = $title . ' - Delete Event';
+include('header.php');
+?>
 
 <main class="events__container event-delete-container">
     <header class="container">

@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+$pagetitle = 'All Users';
+include('header.php');
+?>
 
 <main class="users__container">
     <header class="container">

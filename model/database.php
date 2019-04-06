@@ -3,16 +3,16 @@
 class Database
 {
     //properties
-    private static $user = 'gettogthr';
-    private static $pass = 'partytime';
-    private static $dsn = 'mysql:host=localhost;dbname=gettogether';
-    private static $dbcon;
-
-    // private static $user = 'techenth_get-to';
-    // private static $pass = '@t?Q)?i3K*wj';
-    // private static $db = 'get-together';
-    // private static $dsn = 'mysql:host=198.46.191.78;dbname=techenth_gettogether';
+    // private static $user = 'gettogthr';
+    // private static $pass = 'partytime';
+    // private static $dsn = 'mysql:host=localhost;dbname=gettogether';
     // private static $dbcon;
+
+    private static $user = 'techenth_get-to';
+    private static $pass = '@t?Q)?i3K*wj';
+    private static $db = 'get-together';
+    private static $dsn = 'mysql:host=198.46.191.78;dbname=techenth_gettogether';
+    private static $dbcon;
 
     private function __construct()
     {

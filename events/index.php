@@ -13,7 +13,8 @@ if ($action == NULL) {
 }
 
 if ($action == 'list_events') {
-	$events = EventDB::getAllEvents();
+  $events = EventDB::getAllEvents();
+  
 	include('list.php');
 } else if ($action == 'show_add_form') {
     header('Location: ./add.php');
