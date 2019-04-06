@@ -94,3 +94,49 @@ Feature link: <root>/account/
 CSS link: <root>/Content/css/account.css
   
 Model link: <root>/model/account
+  
+  
+  
+  ------------------------------------------------------------------------------------------------------------ 
+  
+Project Feature Three - Echo $Friends
+
+------------------------------------------------------------------------------------------------------------
+
+Imzan Khan 
+
+Feature : Notifications 
+
+Files: notifications/*
+model/notification_db.phpq
+
+
+-----------------------------------------
+Jennifer Wong - 
+
+Feature: Image Gallery
+
+Files: gallery/*
+
+
+
+-----------------------------------------
+
+Mariia Korolenko - 
+
+Feature: To Do List
+
+Files: todo/*
+
+
+-----------------------------------------
+
+Bibek Shrestha
+
+Feature: Carpool Chat
+
+Feature link: <root>
+  
+CSS link: <root>
+  
+Model link: <root>

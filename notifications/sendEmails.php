@@ -17,6 +17,7 @@ function format($input){
 }
 
 if(isset($_POST['sendemail'])){
+    $host = $_POST['host'];
     $output ='';
     foreach($_POST['user_info'] as $user){
         $subject = format($user['subject']);
@@ -35,7 +36,7 @@ if(isset($_POST['sendemail'])){
         $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body = "<p style='font-size:22px;'>Hello ".$user['name'].",<br/><br/>"
-                        .$content; "</p>";
+                        .$content. "<br/><br/> Sincerely,<br/>".$host."</p>";
         $mail->AltBody = '';
 
         $time = date("Y-m-d H:i:s");

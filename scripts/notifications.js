@@ -1,25 +1,11 @@
 $(document).ready(function() {
   $("#all_guests").click(function() {
-    $("input:checkbox").prop("checked", this.checked);
+    $("input[name=single_email]").prop("checked", true);
   });
 
-  function clearAllButtonStylings() {
-    $("#select_all").text("Notify Selected Users");
-    $("#select_all").addClass("btn1");
-    $("#select_all").css("background-color", "#05E5E5");
-
-    $(".single_buttons").text("Send");
-    $(".single_buttons").removeClass("btn-success");
-    $(".single_buttons").removeClass("btn-error");
-    $(".single_buttons").addClass("btn-primary");
-  }
-
-  function clearAllSingleSend() {
-    $(".single_buttons").text("Send");
-    $(".single_buttons").removeClass("btn-success");
-    $(".single_buttons").removeClass("btn-error");
-    $(".single_buttons").addClass("btn-primary");
-  }
+  $("#deselect_all").click(function() {
+    $("input[name=single_email]").prop("checked", false);
+  });
 
   function clearBulkSend() {
     $("#select_all").text("Notify Selected Users");
@@ -27,25 +13,15 @@ $(document).ready(function() {
     $("#select_all").css("background-color", "#05E5E5");
   }
 
-  function clearSingleSend(id) {
-    $("#" + id).text("Send");
-    $("#" + id).removeClass("btn-success");
-    $("#" + id).addClass("btn-primary");
-  }
-
-  $("#deselect_all").click(function() {
-    clearAllSingleSend();
-  });
-
   $(".email_button").click(function() {
     let subject = $("#notification__subject").val();
     let content = $("#notification__message").val();
+    let host = $("#host").val();
     let errorMsg = $("#errorMsg");
     var id = $(this).attr("id");
     var action = $(this).data("action");
     var user_info = [];
 
-    clearSingleSend(id);
     clearBulkSend();
 
     if (subject == "" || content == "") {
@@ -77,19 +53,18 @@ $(document).ready(function() {
         url: "sendEmails.php",
         method: "POST",
         dataType: "text",
-        data: { sendemail: 1, user_info: user_info },
+        data: { sendemail: 1, host: host, user_info: user_info },
+        beforeSend: function(data) {
+          $("#successMsg").html("Sending...");
+        },
         success: function(data) {
           if (data === "Success") {
             errorMsg.empty();
-            if (id === "select_all") {
-              $("#select_all").text("Sent. Click to send again!");
-              $("#select_all").removeClass("btn1");
-              $("#select_all").css("background-color", "green");
-            } else {
-              $("#" + id).text("Sent");
-              $("#" + id).addClass("btn-success");
-            }
+            $("#successMsg").html(
+              "Message(s) sent successfully! Click to send again."
+            );
           } else {
+            $("#successMsg").empty();
             if (id === "select_all") {
               errorMsg.html("Choose email(s) to send.");
               $("#select_all").text("Error. Click to try again.");
