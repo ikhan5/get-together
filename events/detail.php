@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+$pagetitle = $event->getTitle() . ' - Event';
+include('header.php');
+?>
 
 <main class="events__container">
   <header>
@@ -7,6 +10,7 @@
   <div class="row container justify-content-end">
     <a href=".?action=show_update_form&id=<?= $event->getId() ?>" class="btn btn-sm btn-outline-primary">Update</a>
     <a href="." class="btn btn-sm btn-outline-primary">Go to event list</a>
+    <a href="/carpool?eid=<?= $event->getId() ?>" class="btn btn-sm btn-outline-secondary">Carpool chat for the event</a>
   </div>
   <div class="event-description container text-center pt-3 px-5"><?= $event->getDescription() ?></div>
   <div class="container event-detail p-5">

@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+$pagetitle = 'Create Event';
+include('header.php');
+?>
 
 <main class="events__container">
     <header class="container">

@@ -19,6 +19,7 @@
 
 #chat-container {
     background-color: white;
+    margin: 0 auto;
 }
 
 #chat-header {
@@ -34,4 +35,115 @@
 
 #chat-display {
     flex-grow: 2;
+}
+
+.chat-thead {
+  color: #027272;
+}
+
+#form-add-chat, #form-update-chat {
+  max-width: 500px;
+}
+
+.btn-primary {
+  background-color: #05e5e5;
+  border-color: #05e5e5;
+}
+
+.btn-primary:hover {
+  background-color: #04b7b7;
+  border-color: #04b7b7;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.btn-default {
+  border-color: #ccc;
+}
+
+.chat-action-btn {
+  margin: 5px 0 10px;
+}
+
+.chat-action-link {
+  padding-right: 10px;
+}
+
+.chat-detail {
+  /* max-width: 500px; */
+  font-size: 1.3rem;
+  font-weight: lighter;
+}
+
+.chat-description {
+font-size: 1.5em;
+font-weight: 300;
+}
+
+#registration-block {
+  border-right: 2px solid #04b7b7;
+}
+
+.chat-delete-container {
+  margin-bottom: 40vh;
+}
+
+.chat-delete-container h1 {
+font-size: 2.6em;
+}
+
+.display-4 {
+  font-size: 3rem;
+}
+
+.heading-style:before {
+width: 100%;
+}
+
+.carpoolchats__container {
+background-color: white;
+padding: 10px 0;
+margin: 30px 0;
+border-radius: 5px;
+}
+
+.error_message {
+color: red;
+font-style: italic;
+}
+
+
+.chatmsg-container {
+  height: 100vh;
+}
+
+.chatmsg {
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0px 0px 2px 1px rgba(211,211,211,1);
+  -moz-box-shadow: inset 0px 0px 2px 1px rgba(211,211,211,1);
+  box-shadow: inset 0px 0px 2px 1px rgba(211,211,211,1);
+  overflow: auto;
+}
+
+.chatmsg-date {
+  color: grey;
+  font-weight: lighter;
+  font-size: .9em;
+}
+
+.chatmsg-chat-other, .chatmsg-user-other {
+  border-radius: 5px;
+  background-color: #ECEFF1;
+}
+
+.chatmsg-chat, .chatmsg-user {
+  border-radius: 5px;
+  background-color: #E0F7FA;
+}
+
+footer p {
+  margin: 0;
 }

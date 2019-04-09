@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+$pagetitle = 'Register/Login Page';
+include('header.php');
+?>
 
 <main class="login_register__container">
   <div class="row p-4">

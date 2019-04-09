@@ -37,15 +37,6 @@ nav {
   max-width: 250px;
 }
 
-.btn {
-  background-color: #2d959c;
-  border: #000000;
-}
-
-.btn:hover {
-  background-color: #215757;
-}
-
 #main-container {
   position: relative;
   height: 500px;
