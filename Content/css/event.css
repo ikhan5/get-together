@@ -38,9 +38,31 @@
     font-weight: lighter;
 }
 
+#event-detail-main {
+  border: 2px solid #22C9D4;
+  margin: 20px;
+  border-radius: 50px 10px 0px 10px;
+}
+
 .event-description {
   font-size: 1.5em;
   font-weight: 300;
+}
+
+.card-deck {
+  margin-bottom: 30px;
+}
+
+.card-deck .col-1 {
+  max-width: 10%;
+}
+
+.card-img-top {
+  padding: 10px 0;
+}
+
+.card-body {
+  padding: 0;
 }
 
 #registration-block {

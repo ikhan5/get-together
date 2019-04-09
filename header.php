@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./Content/css/event.css">
   <link rel="stylesheet" href="./Content/css/carpoolchat.css">
   <link rel="stylesheet" href="./Content/style.css">
-  <link rel="icon" href="./Content/Images/favicon.png">
+  <link rel="icon" href="./Content/Images/favicon.ico">
 
 </head>
 
