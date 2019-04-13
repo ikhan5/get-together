@@ -46,7 +46,7 @@ include('header.php');
     </div>
     <div class="col-sm p-5" id="login-block">
       <h2 class="display-4 text-center mb-4">Login</h2>
-      <form action="index.php" method="post">
+      <form action="index.php<?php if(isset($return_url)) echo('?return_url=' . urlencode($return_url)) ?>" method="post">
         <input type="hidden" name="action" value="login_user">
         <div class="form-group row">
           <label for="login-user-email" class="col-sm-4 col-form-label">Email</label>

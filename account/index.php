@@ -17,14 +17,15 @@ if ($action == null) {
 
 $return_url = filter_input(INPUT_GET, 'return_url');
 
-echo($return_url);
-exit();
+// echo($return_url);
+// exit();
 
 if ($action == 'list_users') {
   $users = AccountDB::getAllUsers();
   include('list_users.php');
 } else if ($action == 'show_add_form') {
-  header('Location: ./login_register.php?return_url=' . $return_url);
+  // header('Location: ./login_register.php?return_url=' . $return_url);
+  include('./login_register.php');
 } else if ($action == 'register_user') {
   $name = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
   $email = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
@@ -99,11 +100,12 @@ if ($action == 'list_users') {
 
     $user_role = AccountDB::userRole($user_id);
     $_SESSION['userrole'] = $user_role;
-
     if(isset($return_url)){
-      header('Location: ' . $return_url);
+      $url = $_SERVER['document_root'] . $return_url;
+      header("Location: $url");
+    } else {
+      header('Location: /events');
     }
-    header('Location: /events');
   } else {
     $error = 'Invalid email or password';
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
