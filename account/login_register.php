@@ -1,4 +1,6 @@
 <?php
+session_start();
+$successmess = $_SESSION['successmess']? $_SESSION['successmess'] : "";
 $pagetitle = 'Register/Login Page';
 include('header.php');
 ?>
@@ -40,21 +42,22 @@ include('header.php');
           </div>
         </div>
       </form>
+      <?= $successmess ?>
     </div>
     <div class="col-sm p-5" id="login-block">
       <h2 class="display-4 text-center mb-4">Login</h2>
       <form action="index.php" method="post">
         <input type="hidden" name="action" value="login_user">
         <div class="form-group row">
-          <label for="user-email" class="col-sm-4 col-form-label">Email</label>
+          <label for="login-user-email" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="user-email" id="user-email" placeholder="Your email">
+            <input type="text" class="form-control" name="user-email" id="login-user-email" placeholder="Your email">
           </div>
         </div>
         <div class="form-group row">
-          <label for="user-password" class="col-sm-4 col-form-label">Password</label>
+          <label for="login-user-password" class="col-sm-4 col-form-label">Password</label>
           <div class="col-sm-8">
-            <input type="password" class="form-control" name="user-password" id="user-password"
+            <input type="password" class="form-control" name="user-password" id="login-user-password"
               placeholder="Your password">
           </div>
         </div>

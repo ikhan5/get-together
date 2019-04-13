@@ -90,4 +90,19 @@ class EventDB
         $pdostm->execute();
         $pdostm->closeCursor();
     }
+
+    public static function IsHost($user_id, $event_id){
+      $dbcon = Database::getDB();
+      $sql =  "SELECT is_host FROM events_users WHERE user_id=:user_id AND event_id=:event_id";
+      $pdostm = $dbcon->prepare($sql);
+      $pdostm->bindParam(":user_id",$user_id);
+      $pdostm->bindParam(":event_id",$event_id);
+      $pdostm->execute();
+      $row = $pdostm->fetch();
+      if ($row["is_host"]) {
+        return true;
+      } else {
+        return false;
+      }
+  }
 }
