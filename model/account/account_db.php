@@ -18,6 +18,17 @@ class AccountDB
     return $users;
   }
 
+  public static function getUser($uid) {
+    $dbcon = Database::getDb();
+    $sql = "SELECT * FROM users WHERE id = :uid";
+    $pdostm = $dbcon->prepare($sql);
+    $pdostm->bindParam(':uid', $uid);
+    $pdostm->execute();
+    $user = $pdostm->fetch(PDO::FETCH_OBJ);
+    $pdostm->closeCursor();
+    return $user;
+  }
+
   public static function addUser($user) {
     $dbcon = Database::getDb();
 
@@ -56,7 +67,19 @@ class AccountDB
     $pdostm = $dbcon->prepare($sql);
     $pdostm->bindParam(':password', $password);
     $pdostm->bindParam(':user_id', $user_id);
-    var_dump($pdostm);
+    $status = $pdostm->execute();
+    $pdostm->closeCursor();
+    return $status;
+  }
+
+  public static function addUserRole($user_id) {
+    $dbcon = Database::getDb();
+
+    $sql = "INSERT INTO roles_users (user_id, role_id) 
+          VALUES (:user_id, 4) ";
+    
+    $pdostm = $dbcon->prepare($sql);
+    $pdostm->bindParam(':user_id', $user_id);
     $status = $pdostm->execute();
     $pdostm->closeCursor();
     return $status;
@@ -97,6 +120,37 @@ class AccountDB
       return true;
     } else {
       return false;
+    }
+  }
+
+  public static function userRole($user_id){
+    $dbcon = Database::getDB();
+
+    $sql = "SELECT role_id FROM roles_users WHERE user_id = :user_id";
+    $pdostm = $dbcon->prepare($sql);
+    $pdostm->bindParam(':user_id', $user_id);
+    $pdostm->execute();
+    $row = $pdostm->fetch();
+    $pdostm->closeCursor();
+
+    switch ($row['role_id']) {
+      case '1':
+        return 'superadmin';
+        break;
+      
+      case '2':
+        return 'admin';
+        break;
+
+      case '3':
+        return 'moderator';
+        break;
+
+      case '4':
+        return 'user';
+        break;
+      default:
+        break;
     }
   }
 

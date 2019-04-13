@@ -15,11 +15,16 @@ if ($action == null) {
   }
 }
 
+$return_url = filter_input(INPUT_GET, 'return_url');
+
+echo($return_url);
+exit();
+
 if ($action == 'list_users') {
   $users = AccountDB::getAllUsers();
   include('list_users.php');
 } else if ($action == 'show_add_form') {
-  header('Location: ./login_register.php');
+  header('Location: ./login_register.php?return_url=' . $return_url);
 } else if ($action == 'register_user') {
   $name = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
   $email = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
@@ -55,12 +60,21 @@ if ($action == 'list_users') {
     $login = new Login($password_hash, $user_id);
     $login_status = AccountDB::addLogin($login);
     
+
     if(!$login_status) {
       $error = 'There was an error during registration';
       include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
       exit();
     } else {
-      header('Location: ./login_register.php');
+      $role_status = AccountDB::addUserRole($user_id);
+      if (!$role_status){
+        $error = 'There was an error during registration';
+        include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
+        exit();
+      } else {
+        $_SESSION['successmess'] = "You have successfully registered. You can login now.";
+        header('Location: ./login_register.php');
+      }
     }
   }
 } else if ($action == 'login_user') {
@@ -82,7 +96,14 @@ if ($action == 'list_users') {
   if ($status) {
     $_SESSION['userid'] = $user_id;
     $_SESSION['username'] = $user->getFirstName()." ".$user->getLastName();
-    header('Location: /');
+
+    $user_role = AccountDB::userRole($user_id);
+    $_SESSION['userrole'] = $user_role;
+
+    if(isset($return_url)){
+      header('Location: ' . $return_url);
+    }
+    header('Location: /events');
   } else {
     $error = 'Invalid email or password';
     include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
@@ -91,5 +112,6 @@ if ($action == 'list_users') {
 } else if ($action == 'logout_user') {
   unset($_SESSION['userid']);
   unset($_SESSION['username']);
+  unset($_SESSION['userrole']);
   header('Location: /');
 }

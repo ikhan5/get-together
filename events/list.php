@@ -7,9 +7,11 @@ include('header.php');
     <header class="container">
         <h1 class="display-4 text-center"><span class="heading-style">Events</span></h1>
     </header>
-    <div class="container">
-        <a href="?action=show_add_form" class="btn btn-outline-secondary btn-sm float-right event-action-btn">Add new event</a>
-    </div>
+    <?php if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin'): ?>
+      <div class="container">
+          <a href="?action=show_add_form" class="btn btn-outline-secondary btn-sm float-right event-action-btn">Add new event</a>
+      </div>
+    <?php endif; ?>
     <div class="container pt-5 my-5">
       <table class="table container">
           <thead class="event-thead">

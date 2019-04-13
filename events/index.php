@@ -4,6 +4,14 @@ require('../model/database.php');
 require('../model/event.php');
 require('../model/event_db.php');
 
+$userid = $_SESSION['userid'];
+$userrole = $_SESSION['userrole'];
+
+if(!isset($userid)) {
+  $return_url = '"' .$_SERVER['REQUEST_URI'] . '"';
+  header('Location: /account/?action=show_add_form&return_url=' . $return_url);
+}
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -13,7 +21,9 @@ if ($action == NULL) {
 }
 
 if ($action == 'list_events') {
-  $events = EventDB::getAllEvents();
+  if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
+    $events = EventDB::getAllEvents();
+  }
   
 	include('list.php');
 } else if ($action == 'show_add_form') {
@@ -69,8 +79,9 @@ if ($action == 'list_events') {
     EventDB::deleteEvent($id);
     header('Location: .');
 } else if ($action == 'show_event') {
-    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
-    $event = EventDB::getEvent($id);
-    include('detail.php');
+    $eid = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
+      $event = EventDB::getEvent($eid);
+      include('detail.php');
+    }
 }

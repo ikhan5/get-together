@@ -65,6 +65,19 @@
   padding: 0;
 }
 
+#event_detail_cards .card {
+  color: grey;
+}
+
+#event_detail_cards .card:hover {
+  border-color: #22C9D4;
+  color: #22C9D4;
+  text-decoration: none;
+}
+
+#event_detail_cards a:hover{
+}
+
 #registration-block {
     border-right: 2px solid #04b7b7;
 }
