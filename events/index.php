@@ -8,7 +8,7 @@ $userid = $_SESSION['userid'];
 $userrole = $_SESSION['userrole'];
 
 if(!isset($userid)) {
-  $return_url = '"' .$_SERVER['REQUEST_URI'] . '"';
+  $return_url = urlencode($_SERVER['REQUEST_URI']);
   header('Location: /account/?action=show_add_form&return_url=' . $return_url);
 }
 
