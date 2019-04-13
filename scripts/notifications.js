@@ -7,12 +7,6 @@ $(document).ready(function() {
     $("input[name=single_email]").prop("checked", false);
   });
 
-  function clearBulkSend() {
-    $("#select_all").text("Notify Selected Users");
-    $("#select_all").addClass("btn1");
-    $("#select_all").css("background-color", "#05E5E5");
-  }
-
   $(".email_button").click(function() {
     let subject = $("#notification__subject").val();
     let content = $("#notification__message").val();
@@ -21,8 +15,6 @@ $(document).ready(function() {
     var id = $(this).attr("id");
     var action = $(this).data("action");
     var user_info = [];
-
-    clearBulkSend();
 
     if (subject == "" || content == "") {
       errorMsg.text("Enter all fields");
@@ -66,10 +58,7 @@ $(document).ready(function() {
           } else {
             $("#successMsg").empty();
             if (id === "select_all") {
-              errorMsg.html("Choose email(s) to send.");
-              $("#select_all").text("Error. Click to try again.");
-              $("#select_all").removeClass("btn1");
-              $("#select_all").css("background-color", "red");
+              errorMsg.html("Select Notification Recipient(s).");
             } else {
               errorMsg.html(data);
               $("#" + id).text("Error");

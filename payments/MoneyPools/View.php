@@ -27,7 +27,7 @@ if (isset($_POST['view'])) {
     echo "</thead><tbody>";
     foreach ($payments as $payment) {
         echo "<tr>";
-        echo "<td><form action='View.php' method='post'>" .
+        echo "<td><form action='../viewPayment.php' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='$payment->user_id' name='view' /></form></td>";
         echo "<td>" . $payment->amount . "</td>";

@@ -2,13 +2,16 @@
 // Displays a list of all the Money Pools in the database, and allows to Create, View, Edit and Delete
 // each of the individual money pool rows 
 require_once 'header.php';
+$event_id = $_SESSION['event_id'];
 $mp = new MoneyPool();
-$pools = $mp->poolsList();
+$pools = $mp->poolsList($event_id);
+
 ?>
 
 <link rel="stylesheet" href="../../CSS/money_pools.css" />
 
 <div class="container">
+
     <body>
         <h2>View Money Pools</h2>
         <div id="create_payment">

@@ -85,7 +85,7 @@ playlists.php file.
         $.each(data, function(index, value) {
           let song = `<div class="song" data-playlist=${id} data-index="${
             value.playlist_song_id
-          }" data-position="${value.position}">
+          }" data-position="${value.position}" data-youtube="${value.url}">
           <div class="song_item song__image">
               <i class="fas fa-headphones-alt playlist-icon"></i>
           </div>
@@ -114,6 +114,12 @@ playlists.php file.
             .find(".song__options_dropdown")
             .toggle(150);
         });
+
+        $(".song").on("click", function() {
+          let song = $(this).data("youtube");
+          $("iframe").attr("src", "https://www.youtube.com/embed/");
+          $("iframe").attr("src", $("iframe").attr("src") + song);
+        });
       },
       error: function(response) {
         console.log(response);
@@ -138,8 +144,8 @@ playlists.php file.
 
   //set active playlist
   $(".playlist").bind("click", function() {
-    $(".active").removeClass("active");
-    $(this).addClass("active");
+    $(".activePlay").removeClass("activePlay");
+    $(this).addClass("activePlay");
   });
 
   $(".playlist").on("click", function() {
