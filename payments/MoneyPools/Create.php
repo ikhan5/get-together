@@ -3,10 +3,7 @@
 // the Create page is directed to, and allows the user to insert a new money pool
 // into the 'money_pools' table 
 require_once 'header.php';
-
-// $event_id = $_SESSION['event_id'];
-
-$event_id =2;
+$event_id = $_SESSION['event_id'];
 
 if (isset($_POST['addpool'])) {
     $reason = $_POST['reason'];
@@ -15,7 +12,6 @@ if (isset($_POST['addpool'])) {
 
     $p = new MoneyPool();
     $pool = $p->createPool($reason, $per_person, $event_id);
-
 
     header("Location: pool_list.php");
     exit;

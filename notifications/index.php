@@ -1,20 +1,17 @@
 <?php
-    include "../dashboard/dashboard.php";
-    include "../model/database.php";
-    include "../model/notification_db.php";
-    require_once 'startSession.php';
-$error = '';
-$user_id = $_SESSION['user_id'];
-$event_id = $_SESSION['event_id'];
-$u = new Notification();
-$users = $u->getUsersByEventID($event_id);
+/* Author: Imzan Khan
+ * Feature: Notifications
+ * Description: Allows the host to send custom notifications
+ *              to their guests via Email. Hosts can either 
+ *              send a single email to one specific guest or
+ *              send a bulk email to multiple guests. This page
+ *              is only accessible to Event Hosts.              
+ * Date Created: April 1st, 2019
+ * Last Modified: April 11th, 2019
+ * Recent Changes: Refactored Code, moved PHP code to separate file
+ */
+include "header.php";
 ?>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<link rel="stylesheet" href="../CSS/notifications.css">
-
 <body>
     <section id="notification" class="mt-5 p-4 mb-5">
         <h2 class="col-sm-6 mb-4 heading-style">Alert Other Guests</h2>
@@ -44,24 +41,7 @@ $users = $u->getUsersByEventID($event_id);
                                 <th>Select</th>
                                 <th>Send</th>
                             </tr>
-                            <?php
-                                foreach($users as $user)
-                                    {
-                                        if($user->is_host){
-                                            echo '<input id="host" type="hidden" value='.$user->first_name.' />';
-                                        }
-                                        else{
-                                            echo '<tr>';  
-                                            echo '<td>'.$user->first_name.'</td>';
-                                            echo '<td>'.$user->email.'</td>
-                                            <td>
-                                                <input type="checkbox" name="single_email" class="single_email" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
-                                            </td>
-                                            <td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'" data-action="single">Send</button></td>
-                                            </tr>';
-                                    }
-                                }
-                                    ?>
+                            <?php include "displayEventGuests.php" ?>
                         </table>
                         <div class="form-group float-right">
                             <input type="button" id="all_guests" class="btn1" name="all_guests"
@@ -80,7 +60,6 @@ $users = $u->getUsersByEventID($event_id);
         </form>
     </section>
 </body>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

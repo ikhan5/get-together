@@ -1,15 +1,14 @@
 <?php
-    require_once "startSession.php";
     include "header.php";
     $user_id = $_SESSION['user_id'];
-    // if(!isset($_POST['id'])){
-    //     echo "Must be apart of an event with a Payment Pool";
-    //     exit;
-    // }
-    // $event_id = $_POST['id'];
-    $id= 2;
+    if(isset($_POST['payment'])){
+        $pool_id= $_POST['id'];
+    }else{
+        header("Location: paymentsStatus.php");
+    }
+    
     $p = new MoneyPool();
-    $pool = $p->selectPool($id);
+    $pool = $p->selectPool($pool_id);
 ?>
 <form action="addPayment.php" name="payment" id="payment__form" method="POST">
     <div class="payment__event">
