@@ -35,14 +35,13 @@ body {
 
 .heading-style:before {
     border-top: 23px solid #F6DC7A;
-    width: 70%;
+    width: 70% !important;
 }
 
 .heading-style2:before {
     border-top: 23px solid #F6DC7A;
-    width: 60%;
+    width: 60% !important;
 }
-
 
 
 /***********Button Stylings**************/
@@ -105,9 +104,6 @@ body {
     cursor: pointer;
 }
 
-.button-link:hover {
-    border-bottom: 1px solid blue;
-}
 
 /*********** View Notification ************/
 

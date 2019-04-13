@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
     include "playlistHeader.php";
 ?>
@@ -14,6 +12,13 @@
             </span>
         </div>
     </header>
+
+    <section class="embed-container">
+        <center> <iframe width="640" height="480" src="https://www.youtube.com/embed/" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe></center>
+    </section>
+
     <div class="playlists__layout">
         <!--Playlist Listings-->
         <section id="playlists"></section>
@@ -49,6 +54,7 @@
             </form>
         </div>
     </section>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"

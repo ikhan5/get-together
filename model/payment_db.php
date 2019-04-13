@@ -1,9 +1,20 @@
 <?php 
-//The Payment Class acts as the interface between the Payment Views and the Database
-//The queries in each function are prepared, binded, and executed to prevent sql injections
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: The Payment Class acts as the interface between the Payment
+ *              Views and the Database. The queries in each function are prepared, binded,
+ *              and executed to prevent sql injections            
+ * Date Created: April 1st, 2019
+ * Last Modified: April 12th, 2019
+ * Recent Changes: Refactored Code, added Comments
+ */
 class Payment
 {
-    //Used to retrive all individual payment rows from the 'payments' table
+/* Description: Used to retrive all individual payment 
+                rows from the 'payments' table
+ * Input: Money Pool ID
+ * Output: All payments matching that Money Pool ID
+ */
     public function paymentsList($pool_id)
     {
         $dbcon = Database::getDb();
@@ -15,7 +26,10 @@ class Payment
         $pst->closeCursor();
         return $payments;
     }
-
+/* Description: Get the summation of all funds 
+ * Input: None
+ * Output: Sum of all the funds
+ */
     public function moneyCollected(){
         $dbcon = Database::getDb();
         $sql = "SELECT SUM(amount) FROM funds";
@@ -26,7 +40,12 @@ class Payment
         return $total;
     }
 
-    //Used to insert a new payment into the 'payments' table
+/* Description: Inserts a single Payment based on the Input Parameters into
+                a certain Money Pool 
+ * Input: Money Pool ID, Payment Amount, Payment Method, User who made the
+ *        payment.
+ * Output: Payment Insert Status (Was it inserted into the funds DB or not)
+ */
     public function insertPayment($pool_id, $amount, $payment_method, $user_id)
     {
         $dbcon = Database::getDb();
@@ -46,7 +65,10 @@ class Payment
         }
         return $message;
     }
-    //Used to select a certain payment from the 'payments' table based on ID
+/* Description: Get a single Payment based on that payment ID 
+ * Input: Payment ID
+ * Output: The Paymemnt matching that Payment ID
+ */
     public function selectPayment($id)
     {
         $dbcon = Database::getDb();
@@ -58,7 +80,10 @@ class Payment
         $pdostm->closeCursor();
         return $payment;
     }
-    //Used to edit a certain payment from the 'payments' table based on ID
+/* Description: Updates a single Payment based on the Input Parameters 
+ * Input: Payment ID, Payment Amount, Payment Method
+ * Output: Payment Update Status (Was it updated in the funds DB or not)
+ */
     public function updatePayment($amount, $payment_method, $id)
     {
         $dbcon = Database::getDb();
@@ -78,7 +103,10 @@ class Payment
         }
         return $message;
     }
-    //Used to remove a certain payment from the 'payments' table based on ID
+/* Description: Delete a payment
+ * Input: Payment ID
+ * Output: None
+ */
     public function deletePayment($id)
     {
         $dbcon = Database::getDb();
@@ -89,7 +117,13 @@ class Payment
         $pdostm->closeCursor();
     }
 
-    /*****Events Interaction***** */
+    /*****Events Interaction******/
+
+/* Description: Gets all the Events Payment Pools for a specific 
+                user based on User ID 
+ * Input: User ID 
+ * Output: All Events that have a Money Pool
+ */
     public function getEventsWithPoolsByID($user_id){
         $dbcon = Database::getDB();
         $sql = "SELECT * from events INNER JOIN events_users on events.id = events_users.event_id
@@ -101,15 +135,35 @@ class Payment
         $pst->closeCursor();
         return $events;
     }
-
+/* Description: Gets all the Events Payment Pools for a specific 
+                event, and display a sum of all the payments for each of 
+                the Payment Pools
+ * Input: Event ID 
+ * Output: All Money Pool's information, with summation of the payments
+ */
     public function getPaymentStatus($event_id){
         $dbcon = Database::getDB();
-        $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* from money_pools LEFT join funds on funds.money_pool_id = money_pools.id where event_id = :event_id group by funds.money_pool_id ";
+        $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* 
+        from money_pools LEFT join funds on funds.money_pool_id = money_pools.id
+         where event_id = :event_id group by funds.money_pool_id";
         $pst = $dbcon->prepare($sql);
         $pst->bindParam(':event_id', $event_id);
         $pst->execute();
         $status = $pst->fetchAll(PDO::FETCH_OBJ);
         $pst->closeCursor();
         return $status;
+    }
+/* Description: Delete all the payments within a pool
+                to remove all foreign key restraints.
+ * Input: Money Pool ID
+ * Output: None
+ */
+    public function deleteAllPaymentsInPool($pool_id){
+        $dbcon = Database::getDB();
+        $sql = "DELETE from funds where money_pool_id= :pool_id";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(":pool_id",$pool_id);
+        $pst->execute();
+        $pst->closeCursor();
     }
 }

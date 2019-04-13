@@ -11,9 +11,14 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['delete_pool'])) {
-    $p = new MoneyPool();
     $pool_id = $_POST['pool_id'];
+
+    $pay = new Payment();
+    $pay->deleteAllPaymentsInPool($pool_id);
+
+    $p = new MoneyPool();
     $p->deletePool($pool_id);
+    
     header("Location: pool_list.php");
     exit;
 }

@@ -17,7 +17,7 @@ if(isset($_SESSION['user_id'])){
 
         $mp = new MoneyPool();
         $mp->updateTotal($amount, $pool_id);
-        header("Location: MoneyPools/pool_list.php");
+        header("Location: paymentsStatus.php");
     }
 }else{
     echo "You need to be logged in to view this page";

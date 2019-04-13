@@ -1,25 +1,42 @@
 <?php 
-//The MoneyPool Class acts as the interface between the Pool Views and the Database
-//The queries in each function are prepared, binded, and executed to prevent sql injections
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: The Pool Class acts as the interface between the Money Pool
+ *              Views and the Database. The queries in each function are prepared, binded,
+ *              and executed to prevent sql injections            
+ * Date Created: April 1st, 2019
+ * Last Modified: April 12th, 2019
+ * Recent Changes: Refactored Code, added Comments
+ */
 class MoneyPool
 {
-    //Used to retrive all individual money pool rows from the 'money_pools' table
-    public function poolsList()
+/* Description: Used to retrive all individual money pool
+                rows from the 'money_pools' table
+ * Input: Event ID
+ * Output: All Money Pools
+ */
+    public function poolsList($event_id)
     {
         $dbcon = Database::getDb();
-        $sql = "SELECT * FROM money_pools";
-        $pdostm = $dbcon->prepare($sql);
-        $pdostm->execute();
-        $payments = $pdostm->fetchAll(PDO::FETCH_OBJ);
-        $pdostm->closeCursor();
+        $sql = "SELECT * FROM money_pools where event_id = :event_id";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(':event_id', $event_id);
+        $pst->execute();
+        $payments = $pst->fetchAll(PDO::FETCH_OBJ);
+        $pst->closeCursor();
         return $payments;
     }
-    //Used to insert a new moey pool into the 'money_pools' table
+/* Description: Used to insert a new money pool into 
+                the 'money_pools' table
+ * Input: Reason for the Money Pool, How much each person 
+ *        needs to pay, Event ID
+ * Output: Money Pool Creation confirmation
+ */
     public function createPool($reason, $per_person, $event_id)
     {
         $dbcon = Database::getDb();
-        $insert_query = "INSERT INTO money_pools (reason, per_person_amount, event_id) 
-        values(:reason,:per_person,:event_id)";
+        $insert_query = "INSERT INTO money_pools (reason, per_person_amount, 
+        event_id, amount_collected) values(:reason,:per_person,:event_id,0)";
         $pst = $dbcon->prepare($insert_query);
         $pst->bindParam(':reason', $reason);
         $pst->bindParam(':per_person', $per_person);
@@ -29,11 +46,15 @@ class MoneyPool
         if ($count) {
             $message = 'Pool added Successful!';
         } else {
-            $message = 'Poal not added...';
+            $message = 'Pool not added...';
         }
         return $message;
     }
-    //Used to select a certain money pool from the 'money_pool' table based on ID
+/* Description: Used to select a certain money pool from 
+                the 'money_pool' table based on ID
+ * Input: Money Pool ID
+ * Output: Money Pool based on ID
+ */
     public function selectPool($id)
     {
         $dbcon = Database::getDb();
@@ -45,7 +66,12 @@ class MoneyPool
         $pdostm->closeCursor();
         return $pools;
     }
-    //Used to edit a certain money pool from the 'money_pools' table based on ID
+/* Description: Used to update an exisiting money pool from 
+                the 'money_pools' table
+ * Input: Reason for the Money Pool, How much each person 
+ *        needs to pay, Money Pool ID
+ * Output: Money Pool Update confirmation
+ */
     public function updatePool($reason, $per_person, $id)
     {
         $dbcon = Database::getDb();
@@ -69,7 +95,7 @@ class MoneyPool
     public function updateTotal($amount, $pool_id)
     {
         $dbcon = Database::getDb();
-        $update_query = "UPDATE money_pools SET amount_collected= amount_collected + :amount 
+        $update_query = "UPDATE money_pools SET amount_collected = amount_collected + :amount 
         WHERE id=:id";
 
         $pst = $dbcon->prepare($update_query);
