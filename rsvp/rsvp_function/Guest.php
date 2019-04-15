@@ -22,7 +22,7 @@ class Guest
         $count = $pst->execute();
 
         if($count){
-            header('location: ../rsvp_index.php');
+            header('location: ../index.php');
         }else{
             $message = 'Failed...';
         }

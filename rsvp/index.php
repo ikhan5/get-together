@@ -1,3 +1,9 @@
+<?php
+
+$event_id = $_GET['id'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +34,7 @@
     ?>
     <h2 class="heading-style3">Are you ready to send invitations?</h2>
     <form method="post" action="rsvp_function/sendinvites.php">
+    <input type="hidden" name="eventid" value="<?= $event_id ?>">
         <button type="submit" name="sendinvite" class='btn'>Yes, send now!</button>
     </form>
     </div>

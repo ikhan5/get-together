@@ -20,7 +20,7 @@ if(isset($_POST['updguest'])){
     $count = $g->updateGuest($id, $name, $email, $dbcon);
 
     if($count){
-        header("Location: ../rsvp_index.php");
+        header("Location: ../index.php");
     } else {
         echo  "Update error.";
     }
