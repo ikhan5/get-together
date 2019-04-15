@@ -63,7 +63,7 @@ include('header.php');
         <h6 class="card-title text-center">Fund Pool</h6>
       </div>
     </a>
-    <a href="/carpool/?eid=<?= $id ?>" class="card col-1">
+    <a href="/carpool/?action=show_chat&eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/car.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Carpool</h6>

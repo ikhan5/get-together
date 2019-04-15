@@ -30,7 +30,7 @@ if ($action == 'list_chats') {
   CarpoolChatDB::addCarpoolChat($chat);
   header('Location: .');
 } else if ($action == 'show_chat') {
-  $id = filter_input(INPUT_GET, 'id');
+  $id = filter_input(INPUT_GET, 'eid');
   $chat = CarpoolChatDB::getChat($id);
   $event = EventDB::getEvent($chat->getEventId());
   include('chatroom.php');
