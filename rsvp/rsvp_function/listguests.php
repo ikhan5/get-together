@@ -13,7 +13,7 @@ echo "<table id='table'><tr>
         <th> </th>
         <th> </th>
     </tr>";
-foreach(g){
+foreach($myguest as $guest){
     echo "<tr><td>".$guest->guest_name."</td>".
         "<td>".$guest->guest_email."</td>".
         "<td><form action='rsvp_function/updateguest.php' method='post'>" .
