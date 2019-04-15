@@ -1,45 +1,48 @@
 <?php
+
 require_once '../../model/database.php';
 require_once 'Guest.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+date_default_timezone_set('America/Toronto');
+
 $dbcon = Database::getDB();
 $g = new Guest();
 $guests = $g->getAllGuests(Database::getDB());
 
-while($row = $guests->fetch()){
-    $email = $row['guest_email'];
-    $name = $row['guest_name'];
+$eid = $_POST['eventid'];
 
-    $mail->AddAddress($email,$name);
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+$mail = new PHPMailer();
+
+foreach($guests as $row){
+$gid = password_hash($row->guest_id,1);
+    
+$mail->isSMTP();
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'ssl';
+$mail->Host = 'smtp.gmail.com';
+$mail->Port = '465';
+$mail->isHTML(true);
+$mail->Username = 'gettogether53@gmail.com';
+$mail->Password = 'mmizqonzfvdfpipq';
+$mail->SetFrom('gettogether53@gmail.com','Get Together');
+$mail->Subject = 'Lets Get Together!';
+$mail->Body = '<h2>Hi '.$row->guest_name.' ! You are invited to a gathering!</h2><br/>
+                <p>Click <a href="http://get-together.gq/account/login_register.php?eid='.$eid.'&gid='.$gid.'">here</a> to reply!</p>';
+$mail->addAddress($row->guest_email,$row->guest_name);
+
+$result = $mail->Send();
+    
+    if($result["code"] == '400')
+    {
+        $output .= html_entity_decode($result['full_error']);
+    }
 };
 
-function sendEmail($email,$name){
-
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
-
-    $mail = new PHPMailer();
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'ssl';
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = '465';
-    $mail->isHTML(true);
-    $mail->Username = 'gettogetherinvitation@gmail.com';
-    $mail->Password = 'echo$Friends';
-    $mail->SetFrom('gettogetherinvitation@gmail.com');
-    $mail->Subject = 'Lets Get Together!';
-    $mail->Body = '<h2>Hi '.$name.' ! You are invited to a gethering!</h2><br/>
-                <p>Click <a href="#">here</a> to reply!</p>';
-    $mail->AddAddress($email);
-
-    if(!$mail->send()){
-        echo 'Invitations cannot be sent.';
-    } else {
-        echo 'Invitations sent!';
-    }
-}
+header("Location: ../index.php");
