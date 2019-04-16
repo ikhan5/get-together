@@ -33,7 +33,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <h6 class="card-title text-center">Guest List</h6>
       </div>
     </a>
-    <a href="/todo/index.php" class="card col-1">
+    <a href="/todo/?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/to-do-list.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">To-Do List</h6>
@@ -45,19 +45,19 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <h6 class="card-title text-center">Food List</h6>
       </div>
     </a>
-    <a href="/drinks/drinks_index.php" class="card col-1">
+    <a href="/drinks/?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/drink.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Drink List</h6>
       </div>
     </a>
-    <a href="/poll/pollindex.php" class="card col-1">
+    <a href="/poll/pollindex.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/poll.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Poll</h6>
       </div>
     </a>
-    <a href="" class="card col-1">
+    <a href="/payments/paymentsStatus.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/fund_pool.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Fund Pool</h6>
@@ -69,7 +69,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <h6 class="card-title text-center">Carpool</h6>
       </div>
     </a>
-    <a href="/playlists" class="card col-1">
+    <a href="/playlists?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/playlist.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Music Playlist</h6>
