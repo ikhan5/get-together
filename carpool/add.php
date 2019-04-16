@@ -3,7 +3,7 @@ require_once('../model/database.php');
 require_once('../model/event_db.php');
 require_once('../model/event.php');
 $pagetitle = 'Create Carpool Chat';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 $events = EventDB::getAllEvents();
 ?>
 
@@ -31,4 +31,4 @@ $events = EventDB::getAllEvents();
     </form>
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

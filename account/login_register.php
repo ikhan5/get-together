@@ -2,7 +2,7 @@
 session_start();
 $successmess = $_SESSION['successmess']? $_SESSION['successmess'] : "";
 $pagetitle = 'Register/Login Page';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="login_register__container">
@@ -71,4 +71,4 @@ include('header.php');
   </div>
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>
