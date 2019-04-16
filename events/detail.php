@@ -1,6 +1,6 @@
 <?php
 $pagetitle = $event->getTitle() . ' - Event';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="events__container">
@@ -27,49 +27,49 @@ include('header.php');
   </div>
 
   <div class="card-deck mx-4 d-flex justify-content-center" id="event_detail_cards">
-    <a href="/rsvp/rsvp_index.php" class="card col-1">
+    <a href="/rsvp?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/guest_list.png" class="card-img-top" alt="..." >
       <div class="card-body">
         <h6 class="card-title text-center">Guest List</h6>
       </div>
     </a>
-    <a href="/todo/index.php" class="card col-1">
+    <a href="/todo/?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/to-do-list.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">To-Do List</h6>
       </div>
     </a>
-    <a href="/food_list/foodindex.php" class="card col-1">
+    <a href="/food_list/foodindex.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/food.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Food List</h6>
       </div>
     </a>
-    <a href="/drinks/drinks_index.php" class="card col-1">
+    <a href="/drinks/?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/drink.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Drink List</h6>
       </div>
     </a>
-    <a href="/poll/pollindex.php" class="card col-1">
+    <a href="/poll/pollindex.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/poll.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Poll</h6>
       </div>
     </a>
-    <a href="" class="card col-1">
+    <a href="/payments/paymentsStatus.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/fund_pool.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Fund Pool</h6>
       </div>
     </a>
-    <a href="/carpool/?eid=<?= $id ?>" class="card col-1">
+    <a href="/carpool/?action=show_chat&eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/car.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Carpool</h6>
       </div>
     </a>
-    <a href="/playlists" class="card col-1">
+    <a href="/playlists?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/playlist.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Music Playlist</h6>
@@ -79,4 +79,4 @@ include('header.php');
 
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

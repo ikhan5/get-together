@@ -34,7 +34,7 @@ include('header.php');
                       </a>
                   </td>
                   <td>
-                    <a href="?id=<?= $chat->getId() ?>"><?= $chat->getFileName() ?></td></a>
+                    <a href="?action=show_chat&eid=<?= $chat->getEventId() ?>"><?= $chat->getFileName() ?></td></a>
                   <td>
                       <a href=".?action=show_update_form&id=<?= $chat->getId() ?>" class="chat-action-link">Edit</a>
                       <a href=".?action=confirm_delete&id=<?= $chat->getId() ?>&title=<?= $chat->getEventId() ?>" class="event-action-link">Delete</a>

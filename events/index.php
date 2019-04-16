@@ -2,6 +2,7 @@
 session_start();
 require('../model/database.php');
 require('../model/event.php');
+require('../model/event_user.php');
 require('../model/event_db.php');
 
 $userid = $_SESSION['userid'];
@@ -23,11 +24,14 @@ if ($action == NULL) {
 if ($action == 'list_events') {
   if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
     $events = EventDB::getAllEvents();
+  } else {
+    $events = EventDB::getEventsByUser($userid);
   }
   
 	include('list.php');
 } else if ($action == 'show_add_form') {
-    header('Location: ./add.php');
+    include('add.php');
+    // header('Location: ./add.php');
     // header('Location: ./addplus.php');
 } else if ($action == 'add_event') {
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -42,7 +46,10 @@ if ($action == 'list_events') {
         include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
     } else {
         $event = new Event($title, $description, $location, $date, $start_time, $end_time);
-        EventDB::addEvent($event);
+        $eid = EventDB::addEvent($event);
+
+        $event_user = new EventUser($userid, $eid, 1, 1);
+        EventDB::addEventUser($event_user);
         header('Location: .');
     }
 } else if ($action == 'show_update_form') {
@@ -75,13 +82,22 @@ if ($action == 'list_events') {
     $title = filter_input(INPUT_GET, 'title');
     include('delete.php');
 } else if ($action == 'delete_event') {
-    $id = filter_input(INPUT_POST, 'id');
-    EventDB::deleteEvent($id);
+    $eid = filter_input(INPUT_POST, 'id');
+    EventDB::deleteEvent($eid);
     header('Location: .');
 } else if ($action == 'show_event') {
     $eid = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
+    $userevents = EventDB::getEventsByUser($userid);
+    $isValid = false;
+    foreach($userevents as $event) {
+      if ($event->getId() == $eid){
+        $isValid = true;
+      }
+    }
+    if($isValid || $_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
       $event = EventDB::getEvent($eid);
       include('detail.php');
+    } else {
+      include($_SERVER['DOCUMENT_ROOT'].'/errors/404Error.php');
     }
 }

@@ -33,19 +33,10 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link navbar-custom" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link navbar-custom" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-custom" href="#">Who we are</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-custom" href="#">What we do</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-custom" href="#">How does it work</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-custom" href="#">Contact us</a>
+          <li class="nav-item active">
+            <a class="nav-link navbar-custom" href="/events">Events<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <?php if(isset($_SESSION['userid'])): ?>
