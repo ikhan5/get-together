@@ -2,27 +2,29 @@
 
 class Guest
 {
-    public function getAllGuests($dbcon)
+    public function getAllGuests($dbcon,$eid)
     {
-        $sql = "SELECT * FROM guestlist";
-        $pdostm = $dbcon->prepare($sql);
-        $pdostm->execute();
-        $guests = $pdostm->fetchAll(PDO::FETCH_OBJ);
+        $sql = "SELECT * FROM guestlist WHERE event_id = :eid ";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(':eid', $eid);
+        $pst->execute();
+        $guests = $pst->fetchAll(PDO::FETCH_OBJ);
 
         return $guests;
     }
     
-    public function insertGuest($name, $email,$db)
+    public function insertGuest($name,$email,$eid,$db)
     {
-        $sql = "INSERT INTO guestlist(guest_name,guest_email) 
-        values(:name,:email)";
+        $sql = "INSERT INTO guestlist(guest_name,guest_email,event_id) 
+        values(:name,:email,:eid)";
         $pst = $db->prepare($sql);
         $pst->bindParam(':name', $name);
         $pst->bindParam(':email', $email);
+        $pst->bindParam(':eid', $eid);
         $count = $pst->execute();
 
         if($count){
-            header('location: ../index.php');
+            header("Location: ../rsvp/?eid='$eid'");
         }else{
             $message = 'Failed...';
         }
