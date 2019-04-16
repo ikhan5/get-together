@@ -10,7 +10,6 @@
  * Recent Changes: Refactored Code, added comments
 */
 require_once 'header.php';
-$event_id = $_SESSION['event_id'];
 if(isset($_SESSION['user_name'])){
     if (isset($_POST['addpool'])) {
         $reason = $_POST['reason'];

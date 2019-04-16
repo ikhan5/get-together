@@ -13,7 +13,7 @@ $user_id = $_SESSION['user_id'];
 if(isset($_POST['payment'])){
     $pool_id= $_POST['id'];
 }else{
-    header("Location: paymentsStatus.php");
+    header("Location: paymentsStatus.php?eid=".$event_id);
 }
     
 $p = new MoneyPool();

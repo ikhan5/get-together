@@ -25,7 +25,7 @@ if (isset($_POST['editpayment'])) {
     $amount = filter_input(INPUT_POST, 'amount', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $method = $_POST['payment_method'];
     $p->updatePayment($amount, $method, $id);
-    header("Location: payment_list.php");
+    header("Location: payment_list.php?eid=".$event_id);
     exit;
 }
 }else{

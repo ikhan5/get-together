@@ -8,7 +8,6 @@
  * Recent Changes: Refactored Code, added comments
  */
 require_once 'header.php';
-$event_id = $_SESSION['event_id'];
 $mp = new MoneyPool();
 $pools = $mp->poolsList($event_id);
 ?>

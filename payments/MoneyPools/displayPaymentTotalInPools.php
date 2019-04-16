@@ -17,7 +17,7 @@
  */
 
 $user_id = $_SESSION['user_id'];
-$event_id = $_SESSION['event_id'];
+$event_id = $_GET['eid'];
 $mp = new Payment();
 $payments = $mp->getPaymentStatus($event_id);
         foreach ($payments as $payment) {
@@ -30,7 +30,7 @@ $payments = $mp->getPaymentStatus($event_id);
             }else{
                 echo "<td style='color:red;'>Not Reached</td>";
             }
-            echo "<td><form action='payments.php' method='post'>" .
+            echo "<td><form action='payments.php?eid=$event_id' method='post'>" .
                 "<input type='hidden' value='$payment->id' name='id' />";
                 if($payment->total_paid >= $payment->per_person_amount){
             echo "<input style='color:grey;' class='button-link' type='submit' value='Pay Now' disabled/>";
