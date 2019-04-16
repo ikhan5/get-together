@@ -8,7 +8,7 @@
 <body>
     <div class="container">
     <div class="inputform">
-        <h2 class="h-style-add">Add new poll</h2> 
+        <h2 class="h-style-add heading-style">Add new poll</h2> 
     <form action="addpoll.php" method="post">
         Question: <input type="text" name="poll_question" /><br/>
         Answer: <input type="text" name="poll_answer" /><br />
@@ -16,7 +16,7 @@
     </form>
     </div>
     <div class="display">
-        <h2 class="h-style-list">List of polls</h2>
+        <h2 class="h-style-list heading-style2">List of polls</h2>
     <?php 
         include "listpolls.php";
     ?>

@@ -9,7 +9,7 @@ require_once './model/Poll.php';
         $mydata = $p->deletePoll($id, $db);
 
         if($mydata){
-            header("Location: listpolls.php");
+            header("Location: pollindex.php");
         }
     }
 ?>
