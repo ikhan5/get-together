@@ -1,7 +1,13 @@
 <?php
-// When the 'Edit' link is clicked on the payment_list page
-// the Edit page is directed to, and allows the user to edit a payment's info
-// from the 'payments' table based on the row ID passed by the payment_list form
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: When the 'Edit' link is clicked on the payment_list page
+ *              the Edit page is directed to, and allows the user to edit a payment's info
+ *              from the 'payments' table based on the row ID passed by the payment_list form     
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
 require_once 'header.php';
 
 if (isset($_POST['edit'])) {

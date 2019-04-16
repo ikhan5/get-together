@@ -4,7 +4,7 @@
  * Description: The Payment Class acts as the interface between the Payment
  *              Views and the Database. The queries in each function are prepared, binded,
  *              and executed to prevent sql injections            
- * Date Created: April 1st, 2019
+ * Date Created: March 26th, 2019
  * Last Modified: April 12th, 2019
  * Recent Changes: Refactored Code, added Comments
  */
@@ -139,8 +139,8 @@ class Payment
                 event, and display a sum of all the payments for each of 
                 the Payment Pools
  * Input: Event ID 
- * Output: All Money Pool's information, with summation of the payments
- */
+ * Output: All Money Pool's information, with summation of the payments 
+ * */
     public function getPaymentStatus($event_id){
         $dbcon = Database::getDB();
         $sql = "SELECT SUM(funds.amount) as total_paid, money_pools.* 
@@ -157,7 +157,7 @@ class Payment
                 to remove all foreign key restraints.
  * Input: Money Pool ID
  * Output: None
- */
+*/
     public function deleteAllPaymentsInPool($pool_id){
         $dbcon = Database::getDB();
         $sql = "DELETE from funds where money_pool_id= :pool_id";
