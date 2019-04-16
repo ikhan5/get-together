@@ -1,13 +1,22 @@
 <?php
-// When the Event name hyperlink is clicked on the payment_list page
-// the View page is directed to, and allows the user to View a payment's info
-// from the 'payments' table based on the row ID passed by the payment_list form
-require_once 'header.php';
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: When the Event name hyperlink is clicked on the payment_list page
+ *              the View page is directed to, and allows the user to View a payment's info
+ *              from the 'payments' table based on the row ID passed by the payment_list form           
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
 
+require_once 'header.php';
+require_once '../../model/account/account_db.php';
 if (isset($_POST['view'])) {
     $p = new Payment();
     $pool_id = $_POST['id'];
     $payments = $p->paymentsList($pool_id);
+}else{
+    header("Location: pool_list.php");
 }
 ?>
 
@@ -26,10 +35,14 @@ if (isset($_POST['view'])) {
     echo "<th colspan='2'>Table Options</th>";
     echo "</thead><tbody>";
     foreach ($payments as $payment) {
+        $u = new AccountDB();
+        $user = $u->getUser($payment->user_id);
+
         echo "<tr>";
         echo "<td><form action='../viewPayment.php' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
-            "<input class='button-link' type='submit' value='$payment->user_id' name='view' /></form></td>";
+            "<input type='hidden' value='$user->email' name='email' />" .
+            "<input class='button-link' type='submit' value='$user->email' name='view' /></form></td>";
         echo "<td>" . $payment->amount . "</td>";
         echo "<td>" . $payment->payment_method . "</td>";
         echo "<td><form action='../editPayment.php' method='post'>" .

@@ -1,4 +1,21 @@
 <?php
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: Retreives a list of all the Money Pools for a 
+ *              specific event. The reason for the Money Pool, 
+ *              how much in total is required(goal) for that Pool
+ *              and how much has been paid so far are returned.
+ *  
+ *              Note: Initially I was going to make it so it was
+ *              individual payments, as in each user would pay 
+ *              individual fees, but decided that a larger Money Pool
+ *              would be better suited. 
+ * 
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
+
 $user_id = $_SESSION['user_id'];
 $event_id = $_SESSION['event_id'];
 $mp = new Payment();

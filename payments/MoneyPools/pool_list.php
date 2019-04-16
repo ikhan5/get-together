@@ -1,15 +1,18 @@
 <?php 
-// Displays a list of all the Money Pools in the database, and allows to Create, View, Edit and Delete
-// each of the individual money pool rows 
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: Displays a list of all the Money Pools in the database, and allows to Create, View, Edit and Delete
+ *              each of the individual money pool rows     
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
 require_once 'header.php';
 $event_id = $_SESSION['event_id'];
 $mp = new MoneyPool();
 $pools = $mp->poolsList($event_id);
-
 ?>
-
 <link rel="stylesheet" href="../../CSS/money_pools.css" />
-
 <div class="container">
 
     <body>

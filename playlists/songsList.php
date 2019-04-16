@@ -1,8 +1,25 @@
 <?php
+/* Author: Imzan Khan
+ * Feature: Playlists
+ * Description: Displays all the songs from the database
+ *              and allows the users to add songs to the 
+ *              select playlist. A success message is displayed 
+ *              when a song is added to the playlist, and the user
+ *              can either select more songs or go back to index
+ *              page.
+ * 
+ *              Note: For future implentation, I would use the 
+ *              YouTube API to get more songs in the database
+ *              as well as allow the songs to play in order of
+ *              position. Songs are currently added manually.
+ * Date Created: March 20th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+*/
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
-$playlist_id = $_GET['pid'] ?? 1;
+$playlist_id = $_GET['pid'];
 $p = new PlaylistDB();
 $playlist = $p->getPlaylistByID($playlist_id);
 ?>

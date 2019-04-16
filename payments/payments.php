@@ -1,14 +1,23 @@
 <?php
-    include "header.php";
-    $user_id = $_SESSION['user_id'];
-    if(isset($_POST['payment'])){
-        $pool_id= $_POST['id'];
-    }else{
-        header("Location: paymentsStatus.php");
-    }
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: Allows the users to make a payment towards a certain 
+ *              Money Pool     
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+*/
+
+include "header.php";
+$user_id = $_SESSION['user_id'];
+if(isset($_POST['payment'])){
+    $pool_id= $_POST['id'];
+}else{
+    header("Location: paymentsStatus.php");
+}
     
-    $p = new MoneyPool();
-    $pool = $p->selectPool($pool_id);
+$p = new MoneyPool();
+$pool = $p->selectPool($pool_id);
 ?>
 <form action="addPayment.php" name="payment" id="payment__form" method="POST">
     <div class="payment__event">
@@ -76,6 +85,7 @@
 ?>
 
 <script>
+    //Removes Credit Card Validation when the PayPal option is selected
     $("input[type='submit']").click(function () {
         var radioValue = $("input[name='method']:checked").val();
         if (radioValue == 'PayPal') {

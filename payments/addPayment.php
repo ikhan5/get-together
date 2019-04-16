@@ -1,10 +1,18 @@
 <?php
-// When the '+ Create a Money Pool' link is clicked on the payment_list page
-// the Create page is directed to, and allows the user to insert a new payment
-// into the 'payments' table 
-session_start();
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: When the '+ Create a Money Pool' link is 
+ *              clicked on the payment_list page the Create 
+ *              page is directed to, and allows the user to insert 
+ *              a new payment into the 'payments' table.            
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
+
+ session_start();
  include "header.php";
-$user_id = $_SESSION['user_id'];
+ $user_id = $_SESSION['user_id'];
 
 
 if(isset($_SESSION['user_id'])){

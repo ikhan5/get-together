@@ -1,6 +1,14 @@
 <?php 
-// Displays a list of all the Payments in the database, and allows to Create, View, Edit and Delete
-// each of the individual payment rows 
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: Displays a list of all the Payments in the database, 
+ *              and allows to Create, View, Edit and Delete each of the 
+ *              individual payment rows     
+ * Date Created: March 26th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
+
 require_once 'header.php';
 
 $p = new Payment();
