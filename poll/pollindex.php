@@ -8,19 +8,18 @@
 <body>
     <div class="container">
     <div class="inputform">
-        <h2 class="h-style-add heading-style">Add new poll</h2> 
-    <form action="addpoll.php" method="post">
-        Question: <input type="text" name="poll_question" /><br/>
-        Answer: <input type="text" name="poll_answer" /><br />
-        <input type="submit" name="addpoll" class='btn'>
-    </form>
+    <h2 class="h-style-add heading-style">Add Poll Question</h2> 
+    <?php include 'addquestion.php';?>
     </div>
+
     <div class="display">
-        <h2 class="h-style-list heading-style2">List of polls</h2>
-    <?php 
-        include "listpolls.php";
-    ?>
+    <h2 class="h-style-list heading-style2">Add Poll Answers</h2>
+    <?php include "addanswer.php";?>
     </div>
+
+    <div class="display">
+    <h2 class="h-style-list heading-style2">List of polls</h2>
+    <?php include "listpolls.php";?>
     </div>
 </body>
 </html>

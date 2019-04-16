@@ -12,11 +12,12 @@ class Food
         return $food;
     }
     
-    public function insertFood($name, $type, $size, $qty ,$db)
+    public function insertFood($event_id, $name, $type, $size, $qty ,$db)
     {
-        $sql = "INSERT INTO foodlist(food_name,food_type,food_size,food_qty) 
-        values(:name,:type,:size,:qty)";
+        $sql = "INSERT INTO foodlist(event_id,food_name,food_type,food_size,food_qty) 
+        values(:event_id,:name,:type,:size,:qty)";
         $pst = $db->prepare($sql);
+        $pst->bindParam(':event_id', $event_id);
         $pst->bindParam(':name', $name);
         $pst->bindParam(':type', $type);
         $pst->bindParam(':size', $size);
@@ -24,18 +25,18 @@ class Food
         $count = $pst->execute();
 
         if($count){
-            header('location: ../foodindex.php');
+            header('location: foodindex.php?eid='.$event_id);
         }else{
             $message = 'Failed to add dishes.';
         }
         return $message;
     }
     
-    public function getFoodById($id, $db){
-        $sql = "SELECT * FROM foodlist WHERE food_id = :id ";
+    public function getFoodById($id, $event_id, $db){
+        $sql = "SELECT * FROM foodlist WHERE food_id = :id AND event_id = :event_id";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
-
+        $pst->bindParam(':event_id', $event_id);
         $pst->execute();
 
         $food =  $pst->fetch(PDO::FETCH_OBJ);
@@ -43,15 +44,18 @@ class Food
         return $food;
     }
     
-    public function updateFood($id, $name, $type, $size, $qty, $db){
+    public function updateFood($id, $event_id, $name, $type, $size, $qty, $db){
         $sql = "UPDATE foodlist
                 SET food_name = :name,
                 food_type = :type,
                 food_size = :size,
                 food_qty = :qty
-                WHERE food_id = :id";
+                WHERE food_id = :id 
+                AND event_id = :event_id"
+                ;
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
+        $pst->bindParam(':event_id', $event_id);
         $pst->bindParam(':name', $name);
         $pst->bindParam(':type', $type);
         $pst->bindParam(':size', $size);
