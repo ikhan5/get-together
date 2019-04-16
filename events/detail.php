@@ -1,6 +1,6 @@
 <?php
 $pagetitle = $event->getTitle() . ' - Event';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="events__container">
@@ -27,7 +27,7 @@ include('header.php');
   </div>
 
   <div class="card-deck mx-4 d-flex justify-content-center" id="event_detail_cards">
-    <a href="/rsvp/rsvp_index.php" class="card col-1">
+    <a href="/rsvp?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/guest_list.png" class="card-img-top" alt="..." >
       <div class="card-body">
         <h6 class="card-title text-center">Guest List</h6>
@@ -39,7 +39,7 @@ include('header.php');
         <h6 class="card-title text-center">To-Do List</h6>
       </div>
     </a>
-    <a href="/food_list/foodindex.php" class="card col-1">
+    <a href="/food_list/foodindex.php?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/food.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Food List</h6>
@@ -79,4 +79,4 @@ include('header.php');
 
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>
