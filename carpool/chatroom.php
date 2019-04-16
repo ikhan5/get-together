@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
 
 <?php 
 $pagetitle = 'Carpool Chat Page';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
 
@@ -120,4 +120,4 @@ include('header.php');
         </div> -->
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

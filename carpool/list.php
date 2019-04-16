@@ -3,7 +3,7 @@ require_once('../model/database.php');
 require_once('../model/event.php');
 require_once('../model/event_db.php');
 $pagetitle = 'Carpool Chats';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="carpoolchats__container">
@@ -46,4 +46,4 @@ include('header.php');
     </div>
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

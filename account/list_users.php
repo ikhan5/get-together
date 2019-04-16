@@ -1,6 +1,6 @@
 <?php
 $pagetitle = 'All Users';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="users__container">
@@ -39,4 +39,4 @@ include('header.php');
     </div>
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

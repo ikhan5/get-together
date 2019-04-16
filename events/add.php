@@ -1,6 +1,6 @@
 <?php
 $pagetitle = 'Create Event';
-include('header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
 <main class="events__container">
@@ -40,4 +40,4 @@ include('header.php');
     </form>
 </main>
 
-<?php include('footer.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>
