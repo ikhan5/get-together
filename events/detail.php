@@ -75,6 +75,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <h6 class="card-title text-center">Music Playlist</h6>
       </div>
     </a>
+    <a href="/gallery?eid=<?= $event->getId() ?>" class="card col-1">
+      <img src="/Content/Images/playlist.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h6 class="card-title text-center">Photo Gallery</h6>
+      </div>
+    </a>
   </div>
 
 </main>
