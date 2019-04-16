@@ -12,7 +12,7 @@ foreach($mypoll as $poll){
         "<form action='editpoll.php' method='post'>" .
         "<input type='hidden' value='$poll->id' name='id' />". 
         "<input type='submit' value='Edit' name='edit' class='btn1' />" . 
-        "</form>" .
+       
         "<form action='deletepoll.php' method='post'>" . 
         "<input type='hidden' value='$poll->id' name='id' />". 
         "<input type='submit' value='Delete' name='delete' class='btn2' />".
