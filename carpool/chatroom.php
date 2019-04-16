@@ -1,6 +1,6 @@
 <?php
 session_start();
-$event_id = $_GET['id'];
+$event_id = $_GET['eid'];
 $uid = $_SESSION['userid'];
 $uname = $_SESSION['username'];
 setcookie('userid', $uid);
@@ -13,6 +13,16 @@ if(isset($_POST['submit'])){
   $doc->preserveWhiteSpace = false;
   $file_name = 'carpoolchat_n' . str_pad($event_id, 5, '0', STR_PAD_LEFT) . '.xml';
   $doc->load("./chats/" . $file_name);
+  if(!($doc->documentURI)){
+    $chatfile = fopen("chats/$file_name", "w");
+    $roomid = str_pad($event_id, 5, '0', STR_PAD_LEFT);
+    $starttext = "<?xml version='1.0' encoding='utf-8'?>
+    <chats xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' roomId='$roomid'
+      xsi:noNamespaceSchemaLocation='chatroom.xsd'></chats>";
+    fwrite($chatfile, $starttext);
+    fclose($chatfile);
+    $doc->load("./chats/" . $file_name);
+  }
   $message_input = $_POST['chat-input'];
 
   date_default_timezone_set('America/Toronto');

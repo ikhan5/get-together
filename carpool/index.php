@@ -6,6 +6,15 @@ require_once('../model/carpool/carpool.php');
 require_once('../model/event_db.php');
 require_once('../model/event.php');
 
+$userid = $_SESSION['userid'];
+$userrole = $_SESSION['userrole'];
+
+if(!isset($userid)) {
+  $return_url = urlencode($_SERVER['REQUEST_URI']);
+  header('Location: /account/?action=show_add_form&return_url=' . $return_url);
+}
+
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == null) {
   $action = filter_input(INPUT_GET, 'action');
@@ -19,19 +28,37 @@ if ($action == null) {
 }
 
 if ($action == 'list_chats') {
-  $chats = CarpoolChatDB::getAllChats();
+  if($_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
+    $chats = CarpoolChatDB::getAllChats();
+  } else {
+    $chats = CarpoolChatDB::getChatsByUser($userid);
+  }
   include('list.php');
 } else if ($action == 'show_add_form') {
   header('Location: ./add.php');
 } else if ($action == 'add_chat') {
   $event_id = filter_input(INPUT_POST, 'event_id');
-  $file_name = 'carpoolchat_n' . str_pad($event_id, 5, '0', STR_PAD_LEFT);
-  $chat = new CarpoolChat($event_id, $file_name);
-  CarpoolChatDB::addCarpoolChat($chat);
+  $chatid = addNewChat($event_id);
   header('Location: .');
 } else if ($action == 'show_chat') {
-  $id = filter_input(INPUT_GET, 'eid');
-  $chat = CarpoolChatDB::getChat($id);
-  $event = EventDB::getEvent($chat->getEventId());
-  include('chatroom.php');
+  $eid = filter_input(INPUT_GET, 'eid');
+  $isValid = EventDB::validateUserEvent($userid, $eid);
+
+  if($isValid || $_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
+    $chat = CarpoolChatDB::getChatByEventId($eid);
+    if(!$chat){
+      $chatid = addNewChat($eid);
+    }
+    $event = EventDB::getEvent($eid);
+    include('chatroom.php');
+  } else {
+    include($_SERVER['DOCUMENT_ROOT'].'/errors/404Error.php');
+  }
+}
+
+function addNewChat($eid) {
+  $file_name = 'carpoolchat_n' . str_pad($eid, 5, '0', STR_PAD_LEFT);
+  $chat = new CarpoolChat($eid, $file_name);
+  $chatid = CarpoolChatDB::addCarpoolChat($chat);
+  return $chatid;
 }

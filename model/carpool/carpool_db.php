@@ -54,6 +54,31 @@ class CarpoolChatDB
         }
   }
 
+  public static function getChatsByUser($uid) {
+    $dbcon = Database::getDb();
+
+    $sql = "SELECT * 
+            FROM carpool_chats cc
+            JOIN events_users eu
+            ON cc.event_id = eu.event_id
+            WHERE eu.user_id = :uid";
+    $pdostm = $dbcon->prepare($sql);
+    $pdostm->bindParam(':uid', $uid);
+    $pdostm->execute();
+    $rows = $pdostm->fetchAll();
+    // var_dump($rows);
+    // exit();
+    $pdostm->closeCursor();
+
+    $chats = array();
+    foreach($rows as $row) {
+      $chat = new CarpoolChat($row['event_id'], $row['file_name']);
+      $chat->setId($row['id']);
+      $chats[] = $chat;
+    }
+    return $chats;
+  }
+
   public static function addCarpoolChat($chat) {
     $dbcon = Database::getDb();
 
@@ -74,5 +99,7 @@ class CarpoolChatDB
     $pdostm->bindParam(':file_name', $file_name);
     $pdostm->execute();
     $pdostm->closeCursor();
+    $chatid = $dbcon->lastInsertId();
+    return ($chatid);
   }
 }
