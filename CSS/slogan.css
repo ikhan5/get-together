@@ -1,0 +1,55 @@
+/* slogan animation */
+@keyframes writing {
+    100% {
+    stroke-dashoffset: 0;
+    }
+}
+/* animation for L */
+#L_x5F_line1 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 2s linear forwards;
+}
+/* animation for et */
+#et_x5F_line2 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 2.5s linear forwards .5s;
+}
+/* animation for ' */
+#com_x5F_line3 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 1s linear forwards 1.25s;
+}
+/* animation for s */
+#s_x5F_line4 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 2.5s linear forwards 1.75s;
+}
+/* animation for get */
+#get_x5F_line5 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 3s linear forwards 2s;
+}
+/* animation for together */
+#together_x5F_line6 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 3.5s linear forwards 3.25s;
+}
+/* animation for ! */
+#ex_x5F_line7 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 15;
+    animation: writing 1s linear forwards 7s;
+}

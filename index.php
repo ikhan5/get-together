@@ -10,8 +10,7 @@ include "header.php";
 <main>
         <div id="main-container">
             <section id="canvas-main">
-                <h1>Jen's section with slogan and button to create event</h1>
-                <!-- Jen's Section  -->
+                <?php include "slogan.php" ?>
             </section>
             <canvas id="canvas"></canvas>
         </div>
