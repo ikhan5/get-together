@@ -1,31 +1,12 @@
-<?php
-
-// work sample
-
-
-$eid = password_hash($_POST['eventid'],1);
-
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require './PHPMailer/src/Exception.php';
-require './PHPMailer/src/PHPMailer.php';
-require './PHPMailer/src/SMTP.php';
-
-$mail = new PHPMailer();
-$mail->isSMTP();
-$mail->SMTPAuth = true;
-$mail->SMTPSecure = 'ssl';
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = '465';
-$mail->isHTML(true);
-$mail->Username = 'gettogether53@gmail.com';
-$mail->Password = 'mmizqonzfvdfpipq';
-$mail->SetFrom('gettogether53@gmail.com');
-$mail->Subject = 'Lets Get Together!';
-$mail->Body ='
-<table align="center"  cellpadding="0" cellspacing="0" width="600"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Lets get together!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin: 0; padding: 0;">
+    <table align="center"  cellpadding="0" cellspacing="0" width="600"
     style="font-family: Arial, sans-serif;text-align:center;">
         <tr>
          <td align="center" bgcolor="#ff4e4e" style="padding: 30px 0 60px 0;">
@@ -42,7 +23,7 @@ $mail->Body ='
                 </tr>
                 <tr>
                 <td style="padding: 5px 0;">
-                You are invited to a gathering!
+                You're invited to a gathering!
                 </td>
                 </tr>
                 <tr>
@@ -53,7 +34,7 @@ $mail->Body ='
                 </tr>
                 <tr>
                 <td style="padding: 10px 0 30px 0;">
-                If you wish to attend, please register or login <a href="http://get-together.gq/account/login_register.php?='.$eid.'">here</a>
+                If you wish to attend, please register or login <a href="#">here</a>
                 </td>
                 </tr>
                 </table> 
@@ -73,9 +54,10 @@ $mail->Body ='
          </td>
         </tr>
        </table>
-       ';
-$mail->AddAddress('gettogether53@gmail.com');
+   </body>
+</html>
 
-$mail->Send();
-
-?>
+<!--
+$mail->Body = '<h2>You are invited to a gethering!</h2><br/>
+<p>Click <a href="http://get-together.gq/account/login_register.php?='.$eid.'">here</a> to reply!</p>';
+-->

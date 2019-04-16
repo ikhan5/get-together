@@ -1,31 +1,53 @@
-<?php
+<?php 
 
 class Gallery
 {
-    public function addPhoto($filetitle, $filedes, $images, $db){
+    public function getAllPhotos($dbcon)
+    {
+        $sql = "SELECT * FROM gallery ORDER BY id DESC";
 
-    $images = $_FILES['image']['name'];
-    $tmp_dir = $_FILES['image']['tmp_name'];
-    $imageSize = $_FILES['image']['size'];
-    $filepath = "photos/".$_FILES['image']['name'];
+        $stmt = $dbcon->prepare($sql);
+        $stmt->execute();
 
-    $upload_dir = 'photos/';
-    $imgExt = strtolower(pathinfo($images,PATHINFO_EXTENSION));
-    $valid_ext = array('jpeg','jpg','png','gif');
-    move_uploaded_file($tmp_dir, $upload_dir.$images);
+        $result = $stmt->fetchAll();
 
-    $stmt = $db->prepare('INSERT INTO gallery(title,description,path) VALUES(:imgtitle, :imgdes, :filepath)');
-    $stmt->bindParam(':imgtitle',$filetitle);
-    $stmt->bindParam(':imgdes',$filedes);
-    $stmt->bindParam(':filepath',$filepath);
-    $count = $stmt->execute();
-
-    if($count){
-        $errors = "added photo";
-    } else{
-        $errors ="error adding phoho.";
+        return $result;
     }
-    return $errors;
+
+    public function selectPhotoById($id,$dbcon)
+    {
+        $sql = "SELECT * FROM gallery 
+                    WHERE id = :id ";
+
+        $stmt = $dbcon->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
+    public function deletePhoto($id, $dbcon)
+    {
+        $sql = "DELETE FROM gallery WHERE id = :id ";
+        $stmt = $dbcon->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $count = $stmt->execute();
+
+        return $count;
+    }
+
+    function selectOldImage($dbcon,$id)
+    {
+        $sql = "SELECT photo_name FROM gallery WHERE id = :id ";
+        $stmt = $dbcon->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        foreach($result as $row)
+        {
+            return $result->photo_name;
+        }
+    }
     
-    }
 }
