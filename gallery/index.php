@@ -1,58 +1,50 @@
-<?php
-    require_once "database.php";
-    include "validation.php";
-    include "Gallery.php";
-
-    $db = Database::getDB();
-    $errors="";
-
-    if(isset($_POST['submit']))
-    {   
-        $filetitle = $_POST['filetitle'];
-        $filedes = $_POST['filedes'];
-        $images = $_FILES['image']['name'];
-
-        $errors = validateForm($filetitle,$images);
-
-        if (empty($errors)){
-            $g = new Gallery();
-            $errors.=$g->addPhoto($filetitle,$filedes,$images,$db);
-        }
-    }
-?>
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Photo Gallery</title>
-    <link rel="stylesheet" type="text/css" href="style/gallery_style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-</head>
-<body>
-    <section class="gallery-links">
-        <div class="wrapper">
-            <h2 class="heading-style">Photo Gallery</h2>
-            <div class="gallery-container">
-                <div class="images">
-                <?php
-                    
-                ?>
-                </div>
-            </div>
-
-            <div class="gallery-upload">
-            <h2 class="heading-style2">Share your photos</h2>
-                <form method="post" enctype="multipart/form-data">
-                    <input type="text" name="filetitle" placeholder="Image title">
-                    <input type="text" name="filedes" placeholder="Image description">
-                    <input type="file" name="image" accept="*/image">
-                    <button type="submit" name="submit" class="btn">Upload</button>
-                    <p><?= $errors ?></p>
-                </form>
-            </div>
-
+<html>
+    <head>
+        <title>Gallery</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+    <br/>
+    <div class="container">
+    <div class="header">
+        <h2 class="heading-style">Gallery</h2>
+    </div>
+    <div id="uploadModal" class="inputform">
+        <div class="upload-header">
+            <h3 class="heading-style2">Upload photos</h3>
         </div>
-    </section>
-</body>
+        <div class="upload-form">
+            <input type="file" name="multiple_files" id="multiple_files" multiple />
+        </div>
+        <div class="upload-msg">
+            <span id="multiple_files_error"></span>
+        </div>
+    </div>
+    </div>
+    <div class="display" id="image_table">
+
+    </div>
+    </div>
+    </body>
 </html>
+
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <form method="POST" id="edit_image_form">
+                <button type="button" class="close" id="closebtn" data-dismiss="modal">&times;</button>
+                <div class="editbody">
+                    <h3 class="heading-style3">Edit Photo Details</h3>
+                    <label>Title</label>
+                    <input type="text" name="title" id="title" class="form-control" /><br/>
+                    <div id="validerror"><div>
+                    <input type="hidden" name="photo_name" id="photo_name" />
+                    <input type="hidden" name="id" id="id" value="" />
+                    <input type="submit" name="submit" class="btn btn-info" id="savebtn" value="Save" />
+                </div>
+        </form>
+    </div>
+</div>
