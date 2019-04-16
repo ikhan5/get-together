@@ -1,5 +1,5 @@
 <?php
-require_once './model/Database.php';
+require_once '../model/database.php';
 require_once './model/Poll.php';
 
 echo "<h3>Edit Poll</h3>";

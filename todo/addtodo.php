@@ -4,7 +4,7 @@ require_once '../model/database.php';
 require_once 'Todo.php';
 
 if (isset($_POST['addtodo'])){
-    $event_id = 1;
+    $event_id = $_GET['id'];
     $task = $_POST['task'];
     $is_done = 0;
 
@@ -12,9 +12,8 @@ if (isset($_POST['addtodo'])){
     $t = new Todo();
     $task= $t->insertTodo($event_id, $task, $is_done, $db);
 
-// $event_id = $_GET['id'];
-}
 
+}
 ?>
 
 <form action="" method="post" style="margin-bottom: 10px;">

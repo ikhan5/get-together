@@ -4,6 +4,7 @@ require_once './model/Food.php';
 
 echo "<h3>Add Food</h3>";
 if (isset($_POST['save'])) {
+    $event_id = $_GET['eid'];
     $name = $_POST['name'];
     $type = $_POST['type'];
     $size = $_POST['size'];
@@ -11,10 +12,10 @@ if (isset($_POST['save'])) {
 
     $db = Database::getDB();
     $f = new Food();
-    $food = $f->insertFood($name, $type, $size, $qty, $db);
+    $food = $f->insertFood($event_id, $name, $type, $size, $qty, $db);
 
     if($f){
-        header("Location: foodindex.php");
+        header('location: foodindex.php?eid='.$event_id);
         echo "Food added sucessfully!";
     } else {
         echo "Error adding to list of food.";
@@ -23,7 +24,7 @@ if (isset($_POST['save'])) {
 ?>
 
 <form action="" method="post">
-    Name : <input type="text" name="name" /><br/>
+    Name of food: <input type="text" name="name" /><br/>
     Type : <input type="text" name="type" /><br />
     Size : <input type="text" name="size" /><br />
     Quantity : <input type="text" name="type" /><br />
