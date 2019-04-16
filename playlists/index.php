@@ -1,5 +1,23 @@
 <?php
+/* Author: Imzan Khan
+ * Feature: Playlists
+ * Description: Displays all the playlists from the event
+ *              and provides the users with all the playlist
+ *              options. When a playlist is selected, the 
+ *              playlists respective songs are displayed 
+ *              and can be played via the YouTube container 
+ *              when a song is selected.
+ * 
+ *              Note: For future implentation, I would use the 
+ *              YouTube API to get more songs in the database
+ *              as well as allow the songs to play in order of
+ *              position. 
+ * Date Created: March 20th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+*/
     include "playlistHeader.php";
+    $event_id =  $_GET['id'];
 ?>
 
 <body>
@@ -46,9 +64,9 @@
                     <textarea name="playlist__desc" id="playlist__desc" cols="16" rows="5"></textarea>
                 </div>
                 <input type="hidden" name="playlist__date" value="<?=date('Y-m-d H:i:s')?>" />
-                <input type="hidden" name="playlist__event" value="2" />
+                <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
 
-                <div class="form-submit">
+                <div class=" form-submit">
                     <input type="submit" value="Create" class="create_button">
                 </div>
             </form>

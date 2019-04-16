@@ -4,7 +4,8 @@
  * Description: Sets up the email settings for the notifications
  *              feature, the user_info array contains the emails
  *              subject, content as well as the users name and 
- *              email for use in the notification email.              
+ *              email for use in the notification email. Also, 
+ *              sends the notification details to the database.            
  * Date Created: April 1st, 2019
  * Last Modified: April 5th, 2019
  * Recent Changes: Add form validation and input sanitization

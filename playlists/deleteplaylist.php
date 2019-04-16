@@ -1,4 +1,13 @@
 <?php
+/* Author: Imzan Khan
+ * Feature: Playlists
+ * Description: Gets desired Playlist information
+ *              and confirms whether or not the user
+ *              wants to delete the playlist.           
+ * Date Created: March 20th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comments
+ */
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 

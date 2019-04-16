@@ -1,4 +1,13 @@
 <?php
+/* Author: Imzan Khan
+ * Feature: Payments
+ * Description: Gets the header from the root of the
+ *              document, as well as its associating
+ *              style file.             
+ * Date Created: April 11th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Added comments.
+ */
 require_once '../startSession.php';
 require_once '../../model/database.php';
 require_once '../../model/payment_db.php';

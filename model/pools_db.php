@@ -13,8 +13,8 @@ class MoneyPool
 /* Description: Used to retrive all individual money pool
                 rows from the 'money_pools' table
  * Input: Event ID
- * Output: All Money Pools
- */
+ * Output: All Money Pools from that event
+*/
     public function poolsList($event_id)
     {
         $dbcon = Database::getDb();
@@ -91,7 +91,11 @@ class MoneyPool
         }
         return $message;
     }
-
+/* Description: Used to update an exisiting money pool amount
+                collected from payments made to a specific pool.
+ * Input: Amount being added to a pool, Pool ID
+ * Output: Money Pool Update confirmation
+ */
     public function updateTotal($amount, $pool_id)
     {
         $dbcon = Database::getDb();
@@ -110,8 +114,10 @@ class MoneyPool
         }
         return $message;
     }
-
-    //Used to remove a certain money pool from the 'money_pools' table based on ID
+/* Description: Used to delete an exisiting money pool
+ * Input: Pool ID
+ * Output: None
+ */
     public function deletePool($id)
     {
         $dbcon = Database::getDb();
