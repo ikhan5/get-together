@@ -21,7 +21,8 @@ require 'PHPMailer/src/SMTP.php';
 $mail = new PHPMailer();
 
 foreach($guests as $row){
-$gid = password_hash($row->guest_id,1);
+$gid = $row->guest_id;
+$egid = password_hash($gid,1);
     
 $mail->isSMTP();
 $mail->SMTPAuth = true;
@@ -34,7 +35,7 @@ $mail->Password = 'mmizqonzfvdfpipq';
 $mail->SetFrom('gettogether53@gmail.com','Get Together');
 $mail->Subject = 'Lets Get Together!';
 $mail->Body = '<h2>Hi '.$row->guest_name.' ! You are invited to a gathering!</h2><br/>
-                <p>Click <a href="http://get-together.gq/account/login_register.php?eid='.$eid.'&gid='.$gid.'">here</a> to reply!</p>';
+                <p>Click <a href="http://get-together.gq/account/login_register.php?eid='.$eid.'&gid='.$gid.'&egid='.$egid.'">here</a> to reply!</p>';
 $mail->addAddress($row->guest_email,$row->guest_name);
 
 $result = $mail->Send();
