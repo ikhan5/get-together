@@ -6,14 +6,15 @@
  *              remove a payment's info from the 'payments' table based on 
  *              the row ID passed by the payment_list form         
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 
 require_once 'header.php';
 
 if (isset($_POST['delete'])) {
     $p = new Payment();
+    $email = $_POST['email'];
     $id = $_POST['id'];
     $payment = $p->selectPayment($id);
 }
@@ -35,15 +36,18 @@ if (isset($_POST['cancel'])) {
 }
 ?>
 <!-- Form for deleting a payment  -->
-<div class="container">
+<div class="payments_container">
+    <a href="MoneyPools/pool_list.php?eid=<?=$event_id?>">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
     <form method="post" action="">
-        <h2>Are you sure you want to Delete this Payment?</h2>
+        <h2 class="heading-style">Are you sure you want to Delete this Payment?</h2>
         <input type="hidden" name="payment_id" value="<?= $payment->id; ?>" />
         <div id="payment_info">
             <div class="payment-detail">
                 <label for="email">Email:</label>
                 <span id="email">
-                    <?= htmlspecialchars($payment->id) ?></span>
+                    <?= $email ?>
             </div>
             <div class="payment-detail">
                 <label for="amount">Amount Paid:</label>
@@ -57,7 +61,11 @@ if (isset($_POST['cancel'])) {
                     <?=htmlspecialchars($payment->payment_method) ?></span>
             </div>
         </div>
-        <input class="btn" type="submit" name="delete_payment" value="Delete">
+        <input class="btn1" type="submit" name="delete_payment" value="Delete">
         <input type="submit" name="cancel" value="Cancel">
     </form>
 </div>
+
+<?php
+    include "footer.php";
+?>

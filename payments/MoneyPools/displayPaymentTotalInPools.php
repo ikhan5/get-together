@@ -12,8 +12,8 @@
  *              would be better suited. 
  * 
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 
 $user_id = $_SESSION['userid'];

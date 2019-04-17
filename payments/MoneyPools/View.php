@@ -5,8 +5,8 @@
  *              the View page is directed to, and allows the user to View a payment's info
  *              from the 'payments' table based on the row ID passed by the payment_list form           
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 
 require_once 'header.php';
@@ -21,14 +21,14 @@ if (isset($_POST['view'])) {
 ?>
 
 <!-- Display for Viewing a payment  -->
-<div class="container">
+<div class="payments_container">
     <a href="pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
-    <h2>Viewing Payments in Pool</h2>
-    <table>
+    <h2 class="heading-style">Viewing Payments in Pool</h2>
+    <table class="payments_table">
         <?php 
-    echo "<table><thead>";
+    echo "<thead>";
     echo "<th>User</th>";
     echo "<th>Amount Paid</th>";
     echo "<th>Payment Method</th>";
@@ -46,15 +46,20 @@ if (isset($_POST['view'])) {
         echo "<td>" . $payment->amount . "</td>";
         echo "<td>" . $payment->payment_method . "</td>";
         echo "<td><form action='../editPayment.php?eid=$event_id' method='post'>" .
+            "<input type='hidden' value='$user->email' name='email' />" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
-        echo "<td><form action='../deletePayment.php' method='post'>" .
+        echo "<td><form action='../deletePayment.php?eid=$event_id' method='post'>" .
+            "<input type='hidden' value='$user->email' name='email' />" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='Delete' name='delete' /></td></form>";
         echo "</tr>";
     }
-    echo "</table>";
     ?>
         </tbody>
     </table>
 </div>
+
+<?php
+    include "../footer.php";
+?>

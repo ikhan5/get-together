@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
-body {
+.payments_body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0;
@@ -9,7 +9,7 @@ body {
     font-size: 16px;
 }
 
-.container {
+.payments_container {
     margin: 0 auto;
     padding: 0;
     background: white;
@@ -22,23 +22,23 @@ h2 {
     margin: 10px;
 }
 
-table {
+.payments_table {
     border-collapse: collapse;
     width: 100%;
 }
 
-td,
-th {
+.payments_table td,
+.payments_table th {
     border: solid 1px black;
     text-align: left;
     padding: 10px;
 }
 
-tr:nth-child(n) {
+.payments_table tr:nth-child(n) {
     background-color: white;
 }
 
-tr:nth-child(2n) {
+.payments_table tr:nth-child(2n) {
     background-color: #ccc;
 }
 

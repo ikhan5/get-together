@@ -49,6 +49,9 @@ $pool = $p->selectPool($pool_id);
         </div>
     </div>
     <div class="payment-method__credit">
+        <a href="paymentsStatus.php?eid=<?=$event_id?>">
+            <i class="fas fa-arrow-left"> Back to Pools</i>
+        </a>
         <h2 class='heading-style3'>Payment Details</h2>
         <div class="credit__info">
             <div class="credit__number">
@@ -73,14 +76,17 @@ $pool = $p->selectPool($pool_id);
                 </div>
             </div>
         </div>
-        <input class='btn' type="submit" value="Proceed to Portal" id="credit-submit" name="process__payment">
+        <input class='btn1' type="submit" value="Proceed to Portal" id="credit-submit" name="process__payment">
         <!-- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="sk_YOUR_SECRET_KEY">
             </script> -->
     </div>
     <div class="payment-method__paypal">
+        <a href="paymentsStatus.php?eid=<?=$event_id?>">
+            <i class="fas fa-arrow-left"> Back to Pools</i>
+        </a>
         <h2 class='heading-style3'>Payment Details</h2>
         <p>You will now be redirected to PayPal portal to complete the payment process</p>
-        <input class='btn' type="submit" value="Proceed to Portal" id="paypal-submit" name="process__payment">
+        <input class='btn1' type="submit" value="Proceed to Portal" id="paypal-submit" name="process__payment">
     </div>
 </form>
 <?php

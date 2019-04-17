@@ -6,8 +6,8 @@
  *              page is directed to, and allows the user to insert 
  *              a new payment into the 'payments' table.            
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 
  session_start();

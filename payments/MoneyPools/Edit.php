@@ -5,8 +5,8 @@
  *              the Edit page is directed to, and allows the user to edit a payment's info
  *              from the 'payments' table based on the row ID passed by the payment_list form     
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 require_once 'header.php';
 
@@ -28,16 +28,23 @@ if (isset($_POST['editpool'])) {
 }
 ?>
 <!-- Form for editting a payment -->
-<div class="container">
-    <h2>Editting Payment: </h2>
+<div class="payments_container">
+    <a href="pool_list.php?eid=<?=$event_id?>">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
+    <h2 class="heading-style2">Editting Pool: </h2>
     <form method="post" action="">
         <input type="hidden" name="payment_id" value="<?= $pool->id; ?>" />
         <label for="reason">Purpose of the Pool: </label>
         <input type="text" name="reason" value='<?= $pool->reason ?>' required /> <br />
-        <label for="per_person">How much does each person need to pay? $</label>
+        <label for="per_person">How much are you trying to raise $</label>
         <input type="number" name="per_person" id="per_person" min="1" step=".01"
-            value=' <?= $pool->per_person_amount ?>' required />
+            value='<?= $pool->per_person_amount ?>' required />
         <br />
-        <input type="submit" name="editpool" value="Update Pool">
+        <input class="btn2" type="submit" name="editpool" value="Update Pool">
     </form>
 </div>
+
+<?php
+    include "../footer.php";
+?>

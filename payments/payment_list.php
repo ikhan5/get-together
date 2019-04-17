@@ -15,7 +15,7 @@ $p = new Payment();
 $payments = $p->paymentsList($event_id);
 ?>
 
-<div class="container">
+<div class="payments_container">
     <h2>View Payments (Admin View)</h2>
     <a href="MoneyPools/pool_list.php">
         <i class="fas fa-arrow-left"> Back to Pools</i>
