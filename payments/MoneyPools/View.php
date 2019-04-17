@@ -22,7 +22,7 @@ if (isset($_POST['view'])) {
 
 <!-- Display for Viewing a payment  -->
 <div class="container">
-    <a href="pool_list.php">
+    <a href="pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
     <h2>Viewing Payments in Pool</h2>
@@ -39,13 +39,13 @@ if (isset($_POST['view'])) {
         $user = $u->getUser($payment->user_id);
 
         echo "<tr>";
-        echo "<td><form action='../viewPayment.php' method='post'>" .
+        echo "<td><form action='../viewPayment.php?eid=$event_id' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input type='hidden' value='$user->email' name='email' />" .
             "<input class='button-link' type='submit' value='$user->email' name='view' /></form></td>";
         echo "<td>" . $payment->amount . "</td>";
         echo "<td>" . $payment->payment_method . "</td>";
-        echo "<td><form action='../editPayment.php' method='post'>" .
+        echo "<td><form action='../editPayment.php?eid=$event_id' method='post'>" .
             "<input type='hidden' value='$payment->id' name='id' />" .
             "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
         echo "<td><form action='../deletePayment.php' method='post'>" .

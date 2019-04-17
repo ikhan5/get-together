@@ -12,7 +12,7 @@
 require_once 'header.php';
 
 $p = new Payment();
-$payments = $p->paymentsList($_SESSION['event_id']);
+$payments = $p->paymentsList($event_id);
 ?>
 
 <div class="container">

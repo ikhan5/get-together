@@ -114,6 +114,26 @@ class MoneyPool
         }
         return $message;
     }
+
+    public function reduceTotal($amount, $pool_id)
+    {
+        $dbcon = Database::getDb();
+        $update_query = "UPDATE money_pools SET amount_collected = amount_collected - :amount 
+        WHERE id=:id";
+
+        $pst = $dbcon->prepare($update_query);
+        $pst->bindParam(':amount', $amount);
+        $pst->bindParam(':id', $pool_id);
+        $count = $pst->execute();
+
+        if ($count) {
+            $message = 'Updated Pool Successfully!';
+        } else {
+            $message = 'Updated Pool Failed...';
+        }
+        return $message;
+    }
+
 /* Description: Used to delete an exisiting money pool
  * Input: Pool ID
  * Output: None

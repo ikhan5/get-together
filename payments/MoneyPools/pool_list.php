@@ -8,9 +8,8 @@
  * Recent Changes: Refactored Code, added comments
  */
 require_once 'header.php';
-$event_id = $_SESSION['event_id'];
-$mp = new MoneyPool();
-$pools = $mp->poolsList($event_id);
+$p = new Payment();
+$payments = $p->getPaymentStatus($event_id);
 ?>
 <link rel="stylesheet" href="../../CSS/money_pools.css" />
 <div class="container">
@@ -25,23 +24,28 @@ $pools = $mp->poolsList($event_id);
         echo "<table><thead>";
         echo "<th>Reason</th>";
         echo "<th>Amount Collected</th>";
-        echo "<th>Amount Per Person</th>";
-        echo "<th colspan='2'>Table Options</th>";
+        echo "<th>Goal</th>";
+        echo "<th>Goal Status</th>";
+        echo "<th colspan='2'>Pool Options</th>";
         echo "</thead><tbody>";
-        foreach ($pools as $pool) {
+        foreach ($payments as $payment) {
             echo "<tr>";
-            echo "<td><form action='View.php' method='post'>" .
-                "<input type='hidden' value='$pool->id' name='id' />" .
-                "<input class='button-link' type='submit' value='$pool->reason' name='view' /></form></td>";
-            echo "<td>$" . $pool->amount_collected . "</td>";
-            echo "<td>$" . $pool->per_person_amount . "</td>";
-            echo "<td><form action='Edit.php' method='post'>" .
-                "<input type='hidden' value='$pool->id' name='id' />" .
-                "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
+            echo "<td><form action='View.php?eid=$event_id' method='post'>" .
+                    "<input type='hidden' value='$payment->id' name='id' />" .
+                    "<input class='button-link' type='submit' value='$payment->reason' name='view' /></form></td>";
+            echo "<td>$".$payment->total_paid."</td>";
+            echo "<td>$" . $payment->per_person_amount . "</td>";
+            if($payment->total_paid >= $payment->per_person_amount){
+                echo "<td style='color:green;'>Attained</td>";
+            }else{
+                echo "<td style='color:red;'>Not Reached</td>";
+            }
+            echo "<td><form action='Edit.php?eid=$event_id' method='post'>" .
+                    "<input type='hidden' value='$payment->id' name='id' />" .
+                    "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
             echo "<td><form action='Delete.php' method='post'>" .
-                "<input type='hidden' value='$pool->id' name='id' />" .
-                "<input class='button-link' type='submit' value='Delete' name='delete' /></td></form>";
-            echo "</tr>";
+                    "<input type='hidden' value='$payment->id' name='id' />" .
+                    "<input class='button-link' type='submit' value='Delete' name='delete' /></td></form>";
         }
         echo "</table>";
         ?>

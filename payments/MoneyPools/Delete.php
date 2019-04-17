@@ -25,11 +25,11 @@ if (isset($_POST['delete_pool'])) {
     $p = new MoneyPool();
     $p->deletePool($pool_id);
     
-    header("Location: pool_list.php");
+    header("Location: pool_list.php?eid=$event_id");
     exit;
 }
 if (isset($_POST['cancel'])) {
-    header("Location: pool_list.php");
+    header("Location: pool_list.php?eid=$event_id");
     exit;
 }
 ?>
