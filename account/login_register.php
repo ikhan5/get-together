@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!$_SESSION){
+  session_start();
+}
 $successmess = $_SESSION['successmess']? $_SESSION['successmess'] : "";
 $pagetitle = 'Register/Login Page';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');

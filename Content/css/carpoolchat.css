@@ -1,5 +1,5 @@
 #carpool-chat-container {
-    min-height: 70vh;
+    min-height: 90vh;
 }
 
 #carpool-chat-container>*:nth-child(2n+1) {
