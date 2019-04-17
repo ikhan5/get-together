@@ -14,6 +14,16 @@
   <link rel="stylesheet" href="/Content/css/event.css">
   <link rel="stylesheet" href="/Content/css/account.css">
   <link rel="stylesheet" href="/Content/css/carpoolchat.css">
+  <link rel="stylesheet" href="/CSS/money_pools.css">
+  <link rel="stylesheet" href="/CSS/notifications.css">
+  <link rel="stylesheet" href="/CSS/payments.css">
+  <link rel="stylesheet" href="/CSS/playlists.css">
+  <link rel="stylesheet" href="/CSS/songs.css">
+  <link rel="stylesheet" href="/CSS/poll.css">
+  <link rel="stylesheet" href="/CSS/todo.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/rsvp_style.css"/>
+  <link rel="stylesheet" type="text/css" href="/CSS/gallery.css"/>
+  <link rel="stylesheet" href="/CSS/drinks_style.css">
   <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/Content/Images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="style/rsvp_style.css"/>
@@ -44,7 +54,6 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Dashboard</a>
                   <a class="dropdown-item" href="/account?action=logout_user">Logout</a>
                 </div>
               </div>

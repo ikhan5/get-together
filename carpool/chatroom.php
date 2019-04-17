@@ -58,8 +58,8 @@ $pagetitle = 'Carpool Chat Page';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-
-<main class="container-fluid d-flex flex-row p-0" id="carpool-chat-container">
+<h3 class="text-center display-4">Carpool Chat - <?= $event->getTitle(); ?></h3>
+<main class="container-fluid d-flex flex-row p-0 mb-5 mt-1" id="carpool-chat-container">
         <!-- <div id="chats" class="col-sm-3 p-0">
             <ul class="list-unstyled list-group components">
                 <li class="list-group-item" id="chats-header">
