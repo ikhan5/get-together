@@ -3,12 +3,6 @@ $(document).ready(function(){
     load_image_data();
     $("#edit_image_form").css("display","none");
 
-    //show title & actions on photos
-    $(".photo-sec").click(function(){
-        $(".photo-info").slideDown("slow");
-    });
-
-
     //photo list
     function load_image_data()
     {

@@ -1,48 +1,48 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
-.drinks_body{
-    max-width: 1200px;
-    background: #f2f2f2;
-    margin: 0 3%;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 0;
+.rsvp_body{
+  max-width: 1200px;
+  background: #f2f2f2;
+  margin: 0 7%;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  padding: 0;
 }
 /* layout */
-.drinks_container{
+.rsvp_container{
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
     flex-direction: row;
-    align-items: stretch;
 }
-.drinks_inputform {
+.rsvp_inputform {
     order:1;
     background-color: white;
-    width: 37%;
+    width: 35%;
     padding: 2%;
-    margin: 0;
+    margin: 0 0.5%;
 }
-.drinks_display{
+.rsvp_display{
     order:1;
     background-color: white;
-    width: 53%;
+    width: 55%;
     padding: 2%;
-    margin: 0;
+    margin: 0 0.5%;
 }
-.drinks_recdrinklist{
+.rsvp_sendtoguest{
     order:2;
     background-color: white;
-    width: 37%;
+    width: 35%;
     padding: 2%;
-    margin: 0;
+    margin: 0 0.5%;
 }
 
 /* styling for headline */
-.drinks_heading-style,.drinks_heading-style2,.drinks_heading-style3 {
+.rsvp_heading-style,.rsvp_heading-style2,.rsvp_heading-style3  {
   position: relative;
   z-index: 1;
 }
-.drinks_heading-style:before,.drinks_heading-style2:before,.drinks_heading-style3:before  {
+
+.rsvp_heading-style:before,.rsvp_heading-style2:before, .rsvp_heading-style3:before {
   content: "";
   margin: 0;
   position: absolute;
@@ -52,21 +52,21 @@
   bottom: 0;
   z-index: -1;
 }
-.drinks_heading-style:before {
-  border-top: 23px solid #F6DC7A;
-  width: 95%;
+.rsvp_heading-style:before {
+    border-top: 23px solid #F6DC7A;
+    width: 90%;
 }
-.drinks_heading-style2:before {
-  border-top: 23px solid #05e5e5;
-  width: 30%;
+.rsvp_heading-style2:before {
+    border-top: 23px solid #05e5e5;
+    width: 20%;
 }
-.drinks_heading-style3:before {
-  border-top: 23px solid #ff4e4e;
-  width: 75%;
+.rsvp_heading-style3:before {
+    border-top: 23px solid #ff4e4e;
+    width: 100%;
 }
 
 /* button styling */
-.drinks_btn{
+.rsvp_btn{
     background-color: black;
     border: none;
     color: white;
@@ -78,7 +78,7 @@
     cursor: pointer;
     font-weight:600;
 }
-.drinks_btn:hover{
+.rsvp_btn:hover{
     background-color: white;
     border: solid 2px black;
     color: black;
@@ -86,7 +86,7 @@
     padding: 6px 10px;
 }
 
-.drinks_btn1, .drinks_btn2{
+.rsvp_btn1, .rsvp_btn2{
     border: none;
     padding: 6px 10px;
     text-align: center;
@@ -97,103 +97,86 @@
     font-size: 12.5px;
     font-weight:600;
 }
-.drinks_btn1{
+.rsvp_btn1{
     color: #05e5e5;
     border: solid 1.5px #05e5e5;
 }
-.drinks_btn1:hover{
+.rsvp_btn1:hover{
     background-color: #05e5e5;
     color: black;
     border: solid 1.5px #05e5e5;
 }
-.drinks_btn2{
+.rsvp_btn2{
     color: #ff2222;
     border: solid 1.5px #ff2222;
 }
-.drinks_btn2:hover{
+.rsvp_btn2:hover{
     background-color: #ff2222;
     color:white;
     border: solid 1.5px #ff2222;
 }
 
 /* form styling */
-.drinks_inputform input[type=text] {
+.rsvp_sendtoguest input[type=text] {
     width: 100%;
     padding: 5px 10px;
-    margin: 8px 0;
+    margin: 10px 0;
     box-sizing: border-box;
     font-size: 15px;
 }
-p{
-    margin: 3px 0;
+#rsvp_table{
+  border-collapse: collapse;
+  width: 100%;
 }
-.errors{
-    color: red;
-}
-.drinks_dropbtn{
-  background-color: black;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-#drinks_table,#drinks_table2{
-    border-collapse: collapse;
-    width: 100%;
-}
-#drinks_table td,#drinks_table2 td{
+#rsvp_table td{
     font-size: 13px;
     padding:3px 8px;
 }
-#drinks_table th, #drinks_table2 th {
+#rsvp_table th {
     padding: 10px 8px;
     text-align: left;
+    background-color: black;
     color: white;
     font-size: 15px;
     font-weight: 600;
 }
-#drinks_table th {
-    background-color: black;
-}
-#drinks_table2 th {
-    background-color: #505050;
-}
 
-
-@media only screen and (max-width: 1000px){
-    .drinks_container{
+@media only screen and (max-width: 900px){
+    .rsvp_container{
         flex-direction: column;
     }
-    .drinks_inputform {
+    .rsvp_inputform {
         order:1;
         width: 100%;
     }
-    .drinks_display{
-        order:3;
-        width: 100%;
-    }
-    .recdrinklist{
+    .rsvp_display{
         order:2;
         width: 100%;
     }
-    .drinks_heading-style:before {
-        width: 70%;
+    .rsvp_sendtoguest{
+        order:3;
+        width: 100%;
     }
-    .drinks_heading-style2:before {
+    .rsvp_heading-style:before {
+        width: 90%;
+    }
+    .rsvp_heading-style2:before {
         width: 40%;
     }
-    .drinks_body{
+    .rsvp_heading-style3:before {
+        width: 95%;
+    }
+    .rsvp_body{
         font-size: 14px
     }
-    input[type=text]{
+    .rsvp_sendtoguest input[type=text]{
         padding:2px 5px;
     }
-    #drinks_table td{
+    #rsvp_table td{
         font-size: 12px;
         padding:2px;
     }
-    #drinks_table th {
+    #rsvp_table th {
         padding:3px;
         font-size: 12px;
     }

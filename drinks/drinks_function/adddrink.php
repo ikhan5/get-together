@@ -8,10 +8,11 @@ if (isset($_POST['save'])) {
     $type = $_POST['type'];
     $size = $_POST['size'];
     $qty = $_POST['qty'];
+    $eid = $_POST['eid'];
 
     $db = Database::getDB();
     $d = new Drink();
-    $drinks = $d->insertDrink($name,$type,$size,$qty,$db);
+    $drinks = $d->insertDrink($name,$type,$size,$qty,$eid,$db);
 
     if($drinks){
         echo "Added drink sucessfully!";

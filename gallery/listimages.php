@@ -33,13 +33,9 @@ if($myphoto > 0)
 }
 else{
     $output.='
-    <tr>
-        <td colspan="6" align="center">No Data Found</td>
-    </tr>
+    <p>No photos at the moment</p>
     ';
 }
-
-$output.='</table>';
 
 echo $output;
 

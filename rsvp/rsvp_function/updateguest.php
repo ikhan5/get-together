@@ -13,7 +13,7 @@ if(!isset($userid)) {
   header('Location: /account/?action=show_add_form&return_url=' . $return_url);
 }
 
-$pagetitle = 'Invite Guest';
+$pagetitle = 'Update Guest Information';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 
@@ -44,8 +44,7 @@ if(isset($_POST['updguest'])){
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href="../style/rsvp_style.css"/>
-<div class="inputform">
+<div class="rsvp_inputform">
 <form action="" method="post">
     <h2 class="heading-style">Edit guest's information</h2>
     <input type="hidden" name="eid" value="<?= $eid; ?>">
