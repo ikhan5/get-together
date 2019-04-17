@@ -15,24 +15,25 @@ $pagetitle = 'Invite Guest';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-<body>
-    <div class="container">
-    <div class="inputform">
-        <h2 class="heading-style">Who would you like to invite?</h2>
+<link rel="stylesheet" type="text/css" href="../CSS/rsvp_style.css"/>
+<body class="rsvp_body">
+    <div class="rsvp_container">
+    <div class="rsvp_inputform">
+        <h2 class="rsvp_heading-style">Who would you like to invite?</h2>
         <form method="post" action="rsvp_function/addguest.php?eid=<?= $eid ?>">
         <label>Name : </label><input type="text" name="name"/> <br/>
         <label>Email : </label><input type="text" name="email"/><br/>
         <button type="submit" name="save" class='rsvp_btn'>Save</button>
         </form>
     </div>
-    <div class="display">
-        <h2 class="heading-style2">Guest List</h2>
+    <div class="rsvp_display">
+        <h2 class="rsvp_heading-style2">Guest List</h2>
     <?php 
         include "rsvp_function/listguests.php";
     ?>
     </div>
-    <div class="sendtoguest">
-    <h2 class="heading-style3">Are you ready to send invitations?</h2>
+    <div class="rsvp_sendtoguest">
+    <h2 class="rsvp_heading-style3">Are you ready to send invitations?</h2>
     <form method="post" action="rsvp_function/sendinvites.php">
     <input type="hidden" name="eventid" value="<?= $eid ?>">
         <button type="submit" name="sendinvite" class='rsvp_btn'>Yes, send now!</button>

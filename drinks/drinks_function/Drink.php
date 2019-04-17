@@ -2,29 +2,31 @@
 
 class Drink
 {
-    public function getAllDrinks($dbcon)
+    public function getAllDrinks($dbcon,$eid)
     {
-        $sql = "SELECT * FROM drinklist";
-        $pdostm = $dbcon->prepare($sql);
-        $pdostm->execute();
-        $drinks= $pdostm->fetchAll(PDO::FETCH_OBJ);
+        $sql = "SELECT * FROM drinklist WHERE event_id = :eid";
+        $pst = $dbcon->prepare($sql);
+        $pst->bindParam(':eid', $eid);
+        $pst->execute();
+        $drinks= $pst->fetchAll(PDO::FETCH_OBJ);
 
         return $drinks;
     }
     
-    public function insertDrink($name, $type, $size, $qty ,$db)
+    public function insertDrink($name,$type,$size,$qty,$eid,$db)
     {
-        $sql = "INSERT INTO drinklist(drink_name,drink_type,drink_size, drink_qty) 
-        values(:name,:type,:size,:qty)";
+        $sql = "INSERT INTO drinklist(drink_name,drink_type,drink_size,drink_qty,event_id) 
+        values(:name,:type,:size,:qty,:eid)";
         $pst = $db->prepare($sql);
         $pst->bindParam(':name', $name);
         $pst->bindParam(':type', $type);
         $pst->bindParam(':size', $size);
         $pst->bindParam(':qty', $qty);
+        $pst->bindParam(':eid', $eid);
         $count = $pst->execute();
 
         if($count){
-            header('location: ../drinks_index.php');
+            header("location: ../drinks/?eid='$eid'");
         }else{
             $message = 'Failed to add drinks.';
         }

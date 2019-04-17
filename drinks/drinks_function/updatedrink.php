@@ -2,15 +2,32 @@
 require_once '../../model/database.php';
 require_once 'Drink.php';
 
+session_start();
+
+$eid = $_GET['eid'];
+$userid = $_SESSION['userid'];
+$userrole = $_SESSION['userrole'];
+
+if(!isset($userid)) {
+  $return_url = urlencode($_SERVER['REQUEST_URI']);
+  header('Location: /account/?action=show_add_form&return_url=' . $return_url);
+}
+
+$pagetitle = 'Update Drink item';
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
+
+
 if(isset($_POST['update'])){
     $id = $_POST['id'];
+    $eid = $_POST['eid'];
     
     $dbcon = Database::getDB();
     $d = new Drink();
-    $drink = $d->getDrinkById($id, $dbcon);
+    $drink = $d->getDrinkById($id,$eid,$dbcon);
 }
 
 if(isset($_POST['upddrink'])){
+    $eid = $_POST['eid'];
     $id= $_POST['did'];
     $name = $_POST['name'];
     $type = $_POST['type'];
@@ -22,17 +39,18 @@ if(isset($_POST['upddrink'])){
     $count = $d->updateDrink($id, $name, $type, $size, $qty, $dbcon);
 
     if($count){
-        header("Location: ../drinks_index.php");
+        header("Location: ../drinks/?eid='$eid'");
     } else {
         echo  "Update error.";
     }
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href="../style/drinks_style.css"/>
-<div class="inputform">
+
+<div class="drinks_inputform">
 <form action="" method="post">
-    <h2 class="heading-style2">Edit Drink</h2>
+    <h2 class="drinks_heading-style2">Edit Drink</h2>
+    <input type="hidden" name="eid" value="<?= $eid; ?>">
     <input type="hidden" name="did" value="<?= $drink->drink_id; ?>" />
     Name : <input type="text" name="name" value="<?= $drink->drink_name; ?>" /><br/>
     Type : <br/>
@@ -47,6 +65,6 @@ if(isset($_POST['upddrink'])){
     ?><br/>
     Size : <input type="text" name="size" value="<?= $drink->drink_size; ?>" /><br/>
     Quantity : <input type="text" name="qty" value="<?= $drink->drink_qty; ?>" /><br/>
-    <button type="submit" name="upddrink" value="UpdateDrink" class='btn'>Update</button>
+    <button type="submit" name="upddrink" value="UpdateDrink" class='drinks_btn'>Update</button>
 </form>
 </div>

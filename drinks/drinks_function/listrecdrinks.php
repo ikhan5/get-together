@@ -6,7 +6,7 @@ $dbcon = Database::getDB();
 $d = new Drink();
 $mydrink = $d->getAllRecDrinks($dbcon);
 
-echo "<table id='table2'><tr>
+echo "<table id='drinks_table2'><tr>
         <th>Name</th>
         <th>Type</th>
         <th>Size</th>
@@ -20,7 +20,7 @@ foreach($mydrink as $drink){
         "<td>".$drink->recdrink_qty."</td>".
         "<td class='add_rec'><form class='recPost' action='' method='post'>".
         "<input type='hidden' value='$drink->recdrink_id' class='rec_id' />".
-        "<input type='submit' value='Add' name='insert' class='btn2'/>".
+        "<input type='submit' value='Add' name='insert' class='drinks_btn2'/>".
         "</form></td></tr>";
 }
 echo "</table>";

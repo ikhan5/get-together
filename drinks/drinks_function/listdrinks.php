@@ -2,11 +2,13 @@
 require_once '../model/database.php';
 require_once 'Drink.php';
 
+$eid = $_GET['eid'];
+
 $dbcon = Database::getDB();
 $d = new Drink();
-$mydrink = $d->getAllDrinks(Database::getDB());
+$mydrink = $d->getAllDrinks(Database::getDB(),$eid);
 
-echo "<table id='table'><tr>
+echo "<table id='drinks_table'><tr>
         <th>Name</th>
         <th>Type</th>
         <th>Size</th>
@@ -19,13 +21,13 @@ foreach($mydrink as $drink){
         "<td>".$drink->drink_type."</td>".
         "<td>".$drink->drink_size."</td>".
         "<td>".$drink->drink_qty."</td>".
-        "<td><form action='drinks_function/updatedrink.php' method='post'>" .
+        "<td><form action='drinks_function/updatedrink.php?eid=$eid' method='post'>" .
         "<input type='hidden' value='$drink->drink_id' name='id' />".
-        "<input type='submit' value='Update' name='update' class='btn1'/>".
+        "<input type='submit' value='Update' name='update' class='drinks_btn1'/>".
         "</form></td>" .
-        "<td><form action='drinks_function/deletedrink.php' method='post'>" .
+        "<td><form action='drinks_function/deletedrink.php?eid=$eid' method='post'>" .
         "<input type='hidden' value='$drink->drink_id' name='id' />".
-        "<input type='submit' value='Delete' name='delete' class='btn2' />".
+        "<input type='submit' value='Delete' name='delete' class='drinks_btn2' />".
         "</form></td></tr>";
 }
 echo "</table>";

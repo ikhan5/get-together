@@ -8,7 +8,7 @@ $dbcon = Database::getDB();
 $g = new Guest();
 $myguest = $g->getAllGuests(Database::getDB(),$eid);
 
-echo "<table id='table'><tr>
+echo "<table id='rsvp_table'><tr>
         <th>Name</th>
         <th>Email</th>
         <th> </th>
