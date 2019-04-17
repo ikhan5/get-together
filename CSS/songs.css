@@ -1,4 +1,4 @@
-body {
+.songs_body {
     margin: 0 auto;
     padding: 0;
     background: #f2f2f2;
@@ -83,7 +83,7 @@ body {
     width: 10vw;
 }
 
-.btn {
+.btn1 {
     border: none;
     padding: 6px 10px;
     text-align: center;
@@ -99,7 +99,7 @@ body {
     background-color: #ff2222;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: white;
     color: #ff2222;
     border: solid 1.5px #ff2222;
@@ -121,7 +121,7 @@ body {
     color: green;
 }
 
-table {
+.songs_table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
@@ -131,11 +131,11 @@ table {
     background-color: #ccc;
 }
 
-tbody td {
+.songs_table tbody td {
     cursor: pointer;
     padding: 0 10px;
 }
 
-th {
+.songs_table th {
     text-align: left;
 }

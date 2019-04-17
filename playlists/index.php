@@ -17,13 +17,14 @@
  * Recent Changes: Refactored Code, added comments
 */
     include "playlistHeader.php";
-    $event_id =  $_GET['id'];
+    $event_id =  $_GET['eid'];
 ?>
 
 <body>
     <header>
         <div id="playlist-page__head">
             <h1 class="heading-style2">Playlists</h1>
+            <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
             <span class="playlist-page__create">
                 <i class="fas fa-plus-circle"></i>
                 <h3>Create A Playlist</h3>
@@ -65,7 +66,6 @@
                 </div>
                 <input type="hidden" name="playlist__date" value="<?=date('Y-m-d H:i:s')?>" />
                 <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
-
                 <div class=" form-submit">
                     <input type="submit" value="Create" class="create_button">
                 </div>

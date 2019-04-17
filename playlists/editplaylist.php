@@ -13,6 +13,7 @@ require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 $errormsg =$newname=$newdesc='';
 if(isset($_POST['editplaylist'])){
+    $event_id =  $_POST['eid'];
     $id = $_POST['playlistID'];
     $p = new PlaylistDB;
     $playlist = $p->getPlaylistByID($id);
@@ -26,6 +27,7 @@ if (isset($_POST['edit_playlist'])) {
     $name = filter_input(INPUT_POST, 'name');
     $desc = filter_input(INPUT_POST, 'desc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $date = $_POST['date'];
+    $event_id =  $_POST['event_id'];
     $playlist_id = $_POST['playlist_id'];
 
     if ($name == null || $desc == null) {
@@ -37,20 +39,21 @@ if (isset($_POST['edit_playlist'])) {
     }
     else{
         $p->editPlaylist($name, $desc, $date, $playlist_id);
-        header("Location: index.php");
+        header("Location: index.php?eid=$event_id");
     }
 }
 include "playlistHeader.php";
 ?>
 <!-- Form for editting a payment -->
-<div id="container">
-    <a href="index.php" id="to-playlists">
+<div id="playlists_container">
+    <a href="index.php?eid=<?=$event_id?>" id="to-playlists">
         <i class="fas fa-arrow-left"> Back to Playlists</i>
     </a>
     <h2 class="heading-style2">Edit Playlist: </h2>
     <div class="required">* Required Fields <span class="errorDiplay"><?=$errormsg?></span></div>
     <form method="post" action="">
         <input type="hidden" name="playlist_id" value="<?= htmlspecialchars($newid); ?>" />
+        <input type="hidden" name="event_id" value="<?= htmlspecialchars($event_id); ?>" />
         <label for="name">Playlist Name: </label>
         <span class="required">*</span>
         <input type="text" name="name" value='<?= htmlspecialchars($newname) ?>' maxlength="15"><br />
