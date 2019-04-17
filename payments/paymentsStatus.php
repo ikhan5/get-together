@@ -16,9 +16,9 @@
 require_once 'header.php';
 ?>
 
-<div class="container">
-    <h2>View Pools</h2>
-    <table>
+<div class="payments_container">
+    <h2 class="heading-style">View Pools</h2>
+    <table class="payments_table">
 
         <thead>
             <th>Reason</th>

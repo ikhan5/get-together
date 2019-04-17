@@ -4,24 +4,21 @@
  * Description: Displays a list of all the Money Pools in the database, and allows to Create, View, Edit and Delete
  *              each of the individual money pool rows     
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 require_once 'header.php';
 $p = new Payment();
 $payments = $p->getPaymentStatus($event_id);
 ?>
-<link rel="stylesheet" href="../../CSS/money_pools.css" />
-<div class="container">
-
-    <body>
-        <h2>View Money Pools</h2>
-        <div id="create_payment">
-            <a href="Create.php">+ Create a Money Pool</a>
-        </div>
-        <table>
-            <?php 
-        echo "<table><thead>";
+<div class="payments_container">
+    <h2 class="heading-style2">View Money Pools</h2>
+    <div id="create_payment">
+        <a href="Create.php?eid=<?=$event_id?>">+ Create a Money Pool</a>
+    </div>
+    <table class="payments_table">
+        <?php 
+        echo "<thead>";
         echo "<th>Reason</th>";
         echo "<th>Amount Collected</th>";
         echo "<th>Goal</th>";
@@ -43,13 +40,15 @@ $payments = $p->getPaymentStatus($event_id);
             echo "<td><form action='Edit.php?eid=$event_id' method='post'>" .
                     "<input type='hidden' value='$payment->id' name='id' />" .
                     "<input class='button-link' type='submit' value='Edit' name='edit' /></td></form>";
-            echo "<td><form action='Delete.php' method='post'>" .
+            echo "<td><form action='Delete.php?eid=$event_id' method='post'>" .
                     "<input type='hidden' value='$payment->id' name='id' />" .
                     "<input class='button-link' type='submit' value='Delete' name='delete' /></td></form>";
         }
-        echo "</table>";
         ?>
-            </tbody>
-        </table>
-    </body>
+        </tbody>
+    </table>
 </div>
+
+<?php
+    include "../footer.php";
+?>

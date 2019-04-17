@@ -22,7 +22,10 @@ if (isset($_POST['view'])) {
 ?>
 
 <!-- Display for Viewing a payment  -->
-<div class="container">
+<div class="payments_container">
+    <a href="MoneyPools/pool_list.php?eid=<?=$event_id?>">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
     <h2 class="heading-style2">Viewing Payment</h2>
     <div id="payment_info">
         <div class="user-detail">
@@ -42,3 +45,7 @@ if (isset($_POST['view'])) {
         </div>
     </div>
 </div>
+
+<?php
+    include "footer.php";
+?>

@@ -6,8 +6,8 @@
  *              and allows the user to insert a new money pool
  *              into the 'money_pools' table  
  * Date Created: March 26th, 2019
- * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
 */
 require_once 'header.php';
     if (isset($_POST['addpool'])) {
@@ -23,8 +23,11 @@ require_once 'header.php';
     }
 
 ?>
-<div class="container">
+<div class="payments_container">
     <!-- Form for creating a new money pool  -->
+    <a href="pool_list.php?eid=<?=$event_id?>">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
     <h2 class="heading-style">Create a new Money Pool</h2>
     <form method="post" action="">
         <div class="form-group">
@@ -41,3 +44,7 @@ require_once 'header.php';
         <input class="btn2" type="submit" name="addpool" value="Create Pool">
     </form>
 </div>
+
+<?php
+    include "../footer.php";
+?>

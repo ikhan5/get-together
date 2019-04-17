@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-body {
+.payments_body {
     margin: 0 auto;
     padding: 0;
     background: #f2f2f2;
@@ -52,7 +52,7 @@ body {
 }
 
 /***********Button Stylings**************/
-.btn,
+.btn1,
 .btn2 {
     border: none;
     padding: 6px 10px;
@@ -65,13 +65,13 @@ body {
     font-weight: 600;
 }
 
-.btn {
+.btn1 {
     color: white;
     border: solid 1.5px #ff2222;
     background-color: #ff2222;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: white;
     color: #ff2222;
     border: solid 1.5px #ff2222;
@@ -155,7 +155,7 @@ div[class^="credit"] {
 
 .row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .row input {
@@ -179,19 +179,19 @@ div[class^="credit"] {
 
 
 /* ******* Payments View ***********/
-table {
+.payments_table {
     border-collapse: collapse;
     width: 100%;
 }
 
-td,
-th {
+.payments_table td,
+.payments_table th {
     border: solid 1px black;
     text-align: left;
     padding: 10px;
 }
 
-tr:nth-child(2n) {
+.payments_table tr:nth-child(2n) {
     background-color: #ccc;
 }
 

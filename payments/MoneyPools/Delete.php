@@ -6,7 +6,8 @@
  *              from the 'pools' table based on the row ID passed by the pool_list form      
  * Date Created: March 26th, 2019
  * Last Modified: April 15th, 2019
- * Recent Changes: Refactored Code, added comments
+ * Last Modified: April 16th, 2019
+ * Recent Changes: Added URL variable
  */
 require_once 'header.php';
 
@@ -34,9 +35,12 @@ if (isset($_POST['cancel'])) {
 }
 ?>
 <!-- Form for deleting a payment  -->
-<div class="container">
+<div class="payments_container">
+    <a href="pool_list.php?eid=<?=$event_id?>">
+        <i class="fas fa-arrow-left"> Back to Pools</i>
+    </a>
     <form method="post" action="">
-        <h2>Are you sure you want to Delete this Payment?</h2>
+        <h2 class="heading-style2">Are you sure you want to Delete this Pool?</h2>
         <input type="hidden" name="pool_id" value="<?= $pool->id; ?>" />
         <div id="pool_info">
             <div class="pool-detail">
@@ -51,12 +55,16 @@ if (isset($_POST['cancel'])) {
                     <?=htmlspecialchars($pool->amount_collected) ?></span>
             </div>
             <div class="pool-detail">
-                <label for="payment-method">Amount Per Person:</label>
+                <label for="payment-method">Goal:</label>
                 <span id="payment-method">
                     <?=htmlspecialchars($pool->per_person_amount) ?></span>
             </div>
         </div>
-        <input type="submit" name="delete_pool" value="Delete">
+        <input class="btn1" type="submit" name="delete_pool" value="Delete">
         <input type="submit" name="cancel" value="Cancel">
     </form>
 </div>
+
+<?php
+    include "../footer.php";
+?>
