@@ -7,11 +7,12 @@ require('startSession.php');
 
 $userid = $_SESSION['userid'];
 $userrole = $_SESSION['userrole'];
+$event_id = $_GET['eid'];
 
 $user_role = EventDB::IsHost($userid,$event_id);
-
+var_dump($user_role);
 if($user_role){
-    include 'MoneyPools/pool_list.php';
+    header("Location: MoneyPools/pool_list.php?eid=$event_id");
 }else{
-    include 'paymentsStatus.php';
+    header("Location: paymentsStatus.php?eid=$event_id");
 }

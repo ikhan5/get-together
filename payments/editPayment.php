@@ -10,7 +10,7 @@
  */
 
 require_once 'header.php';
-if(isset($_SESSION['user_id'])){
+if(isset($_SESSION['userid'])){
 if (isset($_POST['edit'])) {
     $db_handler = Database::getDB();
     $p = new Payment();

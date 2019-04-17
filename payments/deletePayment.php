@@ -22,11 +22,15 @@ if (isset($_POST['delete_payment'])) {
     $p = new Payment();
     $id = $_POST['payment_id'];
     $p->deletePayment($id);
-    header("Location: MoneyPools/pool_list.php?eid=".$event_id);
+
+    $pool = new MoneyPool();
+    $pool->reduceTotal($payment->pool_id,$id);
+
+    header("Location: MoneyPools/pool_list.php?eid=$event_id");
     exit;
 }
 if (isset($_POST['cancel'])) {
-    header("Location: MoneyPools/pool_list.php?eid=".$event_id);
+    header("Location: MoneyPools/pool_list.php?eid=$event_id");
     exit;
 }
 ?>

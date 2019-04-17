@@ -16,7 +16,7 @@
  * Recent Changes: Refactored Code, added comments
  */
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['userid'];
 $event_id = $_GET['eid'];
 $mp = new Payment();
 $payments = $mp->getPaymentStatus($event_id);
