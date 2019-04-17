@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/CSS/drinks_style.css">
   <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/Content/Images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="style/rsvp_style.css"/>
 
 </head>
 <body>

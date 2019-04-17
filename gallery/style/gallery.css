@@ -39,25 +39,52 @@ body{
 .display{
     background-color: white;
     width: 90%;
+    min-height: 50px;
     padding: 2%;
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: wrap;
-    flex-direction: row;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 /* gallery style */
-.photo-container{
-    width: 215px;
-    height: 300px;
-    align-content: stretch;
-    padding: 15px;
+.display .photo-container{
+    position: relative;
+    width: 230px;
+    height: 230px;
+    margin: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
 }
-.photo{
-    width: 215px;
-    height: 215px;
+.display .photo-container .photo-sec{
+    position: relative;
+    overflow: hidden;
 }
+.display .photo-container .photo-sec img{
+    max-width: 150%;
+}
+.display .photo-container .photo-info{
+    position: absolute;
+    top:7px;
+    left:7px;
+    bottom:7px;
+    right:7px;
+    background: rgba(225,225,225,0.7);
+    transform: scaleY(0);
+    transition: transform .5s;
+}
+.display .photo-container:hover .photo-info{
+    transform: scaleY(1);
+}
+.display .photo-container .photo-info .photo-content .photo-text{
+    position: absolute;
+    padding:10px;
+    margin:0;
+    font-weight: 600;
+    font-size: 18px;
+}
+
 /*edit and delete buttons */
 .edit {
     background-color: #F6DC7A;
@@ -67,6 +94,9 @@ body{
     font-size: 12px;
     cursor: pointer;
     font-weight: 600;
+    position: absolute;
+    bottom:10px;
+    right:70px;
 }
 .edit:hover {
     background-color: #ff4e4e;
@@ -81,6 +111,9 @@ body{
     font-size: 12px;
     cursor: pointer;
     font-weight: 600;
+    position: absolute;
+    bottom:10px;
+    right:10px;
 }
 .delete:hover{
     background-color: #ff4e4e;

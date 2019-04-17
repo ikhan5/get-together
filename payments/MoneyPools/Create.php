@@ -10,8 +10,6 @@
  * Recent Changes: Refactored Code, added comments
 */
 require_once 'header.php';
-$event_id = $_SESSION['event_id'];
-if(isset($_SESSION['user_name'])){
     if (isset($_POST['addpool'])) {
         $reason = $_POST['reason'];
         $per_person = $_POST['per_person'];
@@ -20,10 +18,10 @@ if(isset($_SESSION['user_name'])){
         $p = new MoneyPool();
         $pool = $p->createPool($reason, $per_person, $event_id);
 
-        header("Location: pool_list.php");
+        header("Location: pool_list.php?eid=$event_id");
         exit;
     }
-}
+
 ?>
 <div class="container">
     <!-- Form for creating a new money pool  -->

@@ -9,11 +9,11 @@
 */
 
 include "header.php";
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['userid'];
 if(isset($_POST['payment'])){
     $pool_id= $_POST['id'];
 }else{
-    header("Location: paymentsStatus.php");
+    header("Location: paymentsStatus.php?eid=$event_id");
 }
     
 $p = new MoneyPool();
@@ -25,6 +25,9 @@ $pool = $p->selectPool($pool_id);
     </div>
     <div class="payment__user">
         <input type="hidden" name="user_id" value="<?=$user_id?>" />
+    </div>
+    <div class="payment__event">
+        <input type="hidden" name="event_id" value="<?=$event_id?>" />
     </div>
     <div class="payment-method">
         <h2 class='heading-style'>Select payment method</h2>
@@ -40,7 +43,7 @@ $pool = $p->selectPool($pool_id);
         </label>
         <h2 class='heading-style2'>You are paying:</h2>
         <div>
-            <span id="amount-to-pay">$ <input type="text" id="amount" name="amount" maxLength="6"
+            <span id="amount-to-pay">$ <input pattern="\d*" type="text" id="amount" name="amount" maxLength="6"
                     required='true'></span><span id="event-name">towards
                 <?=$pool->reason?></span>
         </div>
@@ -83,7 +86,6 @@ $pool = $p->selectPool($pool_id);
 <?php
     include "footer.php";
 ?>
-
 <script>
     //Removes Credit Card Validation when the PayPal option is selected
     $("input[type='submit']").click(function () {

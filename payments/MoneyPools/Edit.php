@@ -23,7 +23,7 @@ if (isset($_POST['editpool'])) {
     $per_person = $_POST['per_person'];
     $pool_id = $_POST['payment_id'];
     $p->updatePool($reason, $per_person, $pool_id);
-    header("Location: pool_list.php");
+    header("Location: pool_list.php?eid=$event_id");
     exit;
 }
 ?>

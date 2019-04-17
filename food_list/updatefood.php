@@ -4,14 +4,15 @@ require_once './model/Food.php';
 
 if(isset($_POST['update'])){
     $id = $_POST['id'];
-    
+    $event_id = $_GET['eid'];
     $dbcon = Database::getDB();
     $f = new Food();
-    $food = $f->getFoodById($id, $dbcon);
+    $food = $f->getFoodById($id, $event_id, $dbcon);
 }
 
 if(isset($_POST['updfood'])){
     $id= $_POST['fid'];
+    $event_id = $_GET['eid'];
     $name = $_POST['name'];
     $type = $_POST['type'];
     $size = $_POST['size'];
@@ -19,10 +20,10 @@ if(isset($_POST['updfood'])){
 
     $dbcon = Database::getDb();
     $f = new Food();
-    $count = $f->updateFood($id, $name, $type, $size, $qty, $dbcon);
+    $count = $f->updateFood($id, $event_id, $name, $type, $size, $qty, $dbcon);
 
     if($count){
-        header("Location: foodindex.php");
+        header('location: foodindex.php?eid='.$event_id);
     } else {
         echo  "Error updating.";
     }

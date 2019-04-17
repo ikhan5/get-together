@@ -1,3 +1,7 @@
+<?php
+    $event_id = $_GET['eid'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +13,7 @@
     <div class="container">
     <div class="inputform">
         <h2 class="h-style-add">Add food to your event</h2>
-        <form method="post" action="addfood.php">
-        <label>Name : </label><input type="text" name="name"/><br/>
+        <form method="post" action="addfood.php?eid=<?=$event_id?>">
         <label>Type : </label><br/>
         <p>
         <?php
@@ -22,6 +25,7 @@
             }
             echo '</select>';
         ?></p><br/>
+        <label>Description: </label><input type="text" name="name"/><br/>
         <label>Size : </label><input type="text" name="size"/><br/>
         <label>Quantity : </label><input type="text" name="qty"/><br/>
         <button type="submit" name="save" class='btn'>Save</button>

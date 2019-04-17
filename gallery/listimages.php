@@ -17,13 +17,15 @@ if($myphoto > 0)
         $count ++;
         $output.='
         <div class="photo-container">
-        <div class="photo-sec">    
-            <img scr="files/'.$row["photo_name"].'" class="photo"/>
-        </div>
+            <div class="photo-sec">    
+            <img src="files/'.$row["photo_name"].'" class="photo"/>
+            </div>
             <div class="photo-info">
+                <div class="photo-content">
                 <p class="photo-text">'.$row["title"].'</p>
                 <button type="button" class="edit" id="'.$row["id"].'">Edit</button>
                 <button type="button" class="delete" id="'.$row["id"].'"data-photo_name="'.$row["photo_name"].'">Delete</button>
+                </div>
             </div>
         </div><br/>
         ';
