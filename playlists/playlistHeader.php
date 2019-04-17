@@ -19,3 +19,5 @@
 <link rel="stylesheet" href="../Content/style.css">
 <link rel="icon" href="../Content/Images/favicon.ico">
 <link rel="stylesheet" href="../CSS/playlists.css">
+
+<body class="playlists_body">

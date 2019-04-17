@@ -10,7 +10,7 @@
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
-$event_id = $_GET['eventid'];
+$event_id = $_GET['eid'];
 $p = new PlaylistDB();
 $playlists = $p->getAllPlaylists($event_id);
 $jsonprod = json_encode($playlists);

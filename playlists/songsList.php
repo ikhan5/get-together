@@ -19,7 +19,8 @@
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
-$playlist_id = $_GET['pid'];
+$event_id = $_POST['eid'];
+$playlist_id = $_POST['pid'];
 $p = new PlaylistDB();
 $playlist = $p->getPlaylistByID($playlist_id);
 ?>
@@ -36,9 +37,9 @@ $playlist = $p->getPlaylistByID($playlist_id);
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="songs_body">
     <section id="song_listings">
-        <a href="index.php">
+        <a href="index.php?eid=<?=$event_id?>">
             <i class="fas fa-arrow-left"> Back to Playlists</i>
         </a>
         <p class="confirmation"></p>
@@ -47,10 +48,10 @@ $playlist = $p->getPlaylistByID($playlist_id);
         <p><?=$playlist->description?></p>
         <form action="" method="POST" id="addToPlaylist">
             <input type="hidden" id="pid" value="<?=$playlist_id?>" />
-            <input type="submit" class='btn float-right' value='Add Songs' />
+            <button type="submit" class='btn1 float-right'>Add Songs</button>
         </form>
 
-        <table>
+        <table class="songs_table">
             <thead>
                 <tr>
                     <th>Add to Playlist</th>

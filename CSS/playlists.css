@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
-body {
+.playlists_body {
     margin: 0 auto;
     padding: 0;
     background: #f2f2f2;
@@ -9,7 +9,7 @@ body {
     font-size: 16px;
 }
 
-#container {
+#playlists_container {
     margin: 0 auto;
     padding: 0;
     background-color: white;
@@ -18,7 +18,7 @@ body {
     font-size: 20px;
 }
 
-a:hover {
+.playlists__layout a:hover {
     text-decoration: none !important;
 }
 
@@ -145,7 +145,7 @@ a:hover {
     color: #ff2222;
 }
 
-.btn,
+.btn1,
 .btn2 {
     border: none;
     padding: 6px 10px;
@@ -158,13 +158,13 @@ a:hover {
     font-weight: 600;
 }
 
-.btn {
+.btn1 {
     color: white;
     border: solid 1.5px #ff2222;
     background-color: #ff2222;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: white;
     color: #ff2222;
     border: solid 1.5px #ff2222;
@@ -383,6 +383,7 @@ a:hover {
 
 .close {
     right: 0;
+    cursor: pointer;
     display: inline;
     text-align: right;
     color: white;
@@ -425,11 +426,6 @@ a:hover {
     background: white;
 }
 
-.close {
-    float: right;
-}
-
-
 /* https://embedresponsively.com */
 
 .embed-container {
@@ -453,7 +449,7 @@ a:hover {
 
 /************Media Queries**************/
 @media only screen and (min-width: 675px) {
-    body {
+    .playlists_body {
         max-width: 660px;
     }
 
@@ -484,7 +480,7 @@ a:hover {
 }
 
 @media only screen and (min-width: 860px) {
-    body {
+    .playlists_body {
         max-width: 835px;
     }
 
@@ -495,7 +491,7 @@ a:hover {
 }
 
 @media only screen and (min-width: 1050px) {
-    body {
+    .playlists_body {
         max-width: 1040px;
     }
 

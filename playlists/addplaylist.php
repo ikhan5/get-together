@@ -16,7 +16,7 @@ require_once '../model/playlist_db.php';
 $name = filter_input(INPUT_POST, 'playlist__name');
 $desc = filter_input(INPUT_POST, 'playlist__desc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $date = $_POST['playlist__date'] ?? date('Y-m-d H:i:s');
-$event = $_POST['playlist__event'];
+$event_id = $_POST['playlist__event'];
 
 if ($name == null || $desc == null) {
     $error = "Incomplete data. Please enter information in all fields.";
@@ -27,12 +27,12 @@ if ($name == null || $desc == null) {
 }elseif(strlen($desc > 250)){
     $error = "Description must be less than 250 Characters";
     include('errorHandler.php');
-}elseif($event == null){
+}elseif($event_id == null){
     $error = "Error with event. Please select the event you wish to create the playlist for";
     include('errorHandler.php');
 }
 else{
     $p = new PlaylistDB();
-    $c = $p->addPlaylist($name, $desc, $date, $event);
-    header("Location: index.php");
+    $c = $p->addPlaylist($name, $desc, $date, $event_id);
+    header("Location: index.php?eid=$event_id");
 }

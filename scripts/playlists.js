@@ -3,33 +3,27 @@ add appends each playlist to the playlists container in the
 playlists.php file.
 */
 var newData = [];
-
 var eventid = $(".playlist__event").val();
-$.getJSON(
-  "getAllPlaylists.php",
-  {
-    eventid: eventid
-  },
-  function(data) {
-    console.log(eventid);
-    $.each(data, function(index, value) {
-      $.ajax({
-        url: "getSongsCount.php",
-        method: "POST",
-        dataType: "text",
-        data: {
-          pid: value.playlist_id
-        },
-        success: function(data) {
-          myJson = JSON.parse(data);
-          newData.push(myJson.Song_Count);
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      });
-      let date = value.created.substring(0, 10);
-      let playlist = `<div class="playlist">
+$.getJSON("getAllPlaylists.php?eid=" + eventid, function(data) {
+  console.log(eventid);
+  $.each(data, function(index, value) {
+    $.ajax({
+      url: "getSongsCount.php",
+      method: "POST",
+      dataType: "text",
+      data: {
+        pid: value.playlist_id
+      },
+      success: function(data) {
+        myJson = JSON.parse(data);
+        newData.push(myJson.Song_Count);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+    let date = value.created.substring(0, 10);
+    let playlist = `<div class="playlist">
                     <input type="hidden" name="playlistID" class="playlistID" value=${
                       value.playlist_id
                     }>
@@ -45,13 +39,15 @@ $.getJSON(
                     <div class="playlist_item playlist__options"> <a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
                         <div class="playlist__options_dropdown">
                         
-                        <form action='editPlaylist.php' method='post'>
+                        <form action='editplaylist.php' method='post'>
+                        <input type="hidden" name="eid" value=${eventid} />
                         <input type="hidden" name="playlistID" class="playlistID" value=${
                           value.playlist_id
                         }>
                         <input class="nostyle" type='submit' value='Edit Playlist' name='editplaylist' /></form>
                         
-                        <form action='deletePlaylist.php' method='post'>
+                        <form action='deleteplaylist.php' method='post'>
+                        <input type="hidden" name="eid" value=${eventid} />
                         <input type="hidden" name="playlistID" class="playlistID" value=${
                           value.playlist_id
                         }>
@@ -60,40 +56,41 @@ $.getJSON(
                         </div>
                     </div>
                 </div> `;
-      $("#playlists").append(playlist);
-    });
-    /*The ID is hidden within the playlist
+    $("#playlists").append(playlist);
+  });
+  /*The ID is hidden within the playlist
 for use when the user clicks on a playlist, they are able to see
 the songs that respective playlist contains*/
-    $(".playlist").click(function() {
-      $("#songs").empty();
-      var id = $(this)
-        .find(".playlistID")
-        .val();
-      $("#songs").append(
-        `<form method="get" action="songsList.php">
+  $(".playlist").click(function() {
+    $("#songs").empty();
+    var id = $(this)
+      .find(".playlistID")
+      .val();
+    $("#songs").append(
+      `<form method="POST" action="songsList.php">
           <input type="hidden" name="pid" value=${id} />
-          <button type="submit" class='btn addsong'>Add Songs</button>
+          <input type="hidden" name="eid" value=${eventid} />
+          <button type="submit" class='btn1 addsong'>Add Songs</button>
         </form>`
-      );
-      /*Gets all the songs from the Get_Together Database
+    );
+    /*Gets all the songs from the Get_Together Database
 add appends each song to the songs container in the
 playlists.php file.
 */
-      $.ajax({
-        url: "getSongsByID.php",
-        method: "POST",
-        dataType: "json",
-        data: {
-          getsongs: 1,
-          playlist_id: id
-        },
-        success: function(response) {
-          var data = response;
-          $.each(data, function(index, value) {
-            let song = `<div class="song" data-playlist=${id} data-index="${
-              value.playlist_song_id
-            }" data-position="${value.position}" data-youtube="${value.url}">
+    $.ajax({
+      url: "getSongsByID.php",
+      method: "POST",
+      dataType: "json",
+      data: {
+        getsongs: 1,
+        playlist_id: id
+      },
+      success: function(response) {
+        var data = response;
+        $.each(data, function(index, value) {
+          let song = `<div class="song" data-playlist=${id} data-index="${
+            value.playlist_song_id
+          }" data-position="${value.position}" data-youtube="${value.url}">
           <div class="song_item song__image">
               <i class="fas fa-headphones-alt playlist-icon"></i>
           </div>
@@ -110,66 +107,66 @@ playlists.php file.
               <input type="hidden" name="ID" class="playlistID" value=${
                 value.playlist_song_id
               }>
+              <input type="hidden" name="eid" value=${eventid} />
               <input class="nostyle" type='submit' value='Remove Song' name='deletesong' /></form>
               </div>
           </div>
       </div>`;
-            $("#songs").append(song);
-          });
+          $("#songs").append(song);
+        });
 
-          $(".song__options").on("click", function() {
-            $(this)
-              .find(".song__options_dropdown")
-              .toggle(150);
-          });
+        $(".song__options").on("click", function() {
+          $(this)
+            .find(".song__options_dropdown")
+            .toggle(150);
+        });
 
-          $(".song").on("click", function() {
-            let song = $(this).data("youtube");
-            $("iframe").attr("src", "https://www.youtube.com/embed/");
-            $("iframe").attr("src", $("iframe").attr("src") + song);
-          });
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      });
-    }); //end of playlist click event
-
-    $(".song").sortable();
-    $(".playlist__info").click(function() {});
-
-    $(".playlist-page__create").on("click", function() {
-      $("#playlistForm").toggle();
+        $(".song").on("click", function() {
+          let song = $(this).data("youtube");
+          $("iframe").attr("src", "https://www.youtube.com/embed/");
+          $("iframe").attr("src", $("iframe").attr("src") + song);
+        });
+      },
+      error: function(response) {
+        console.log(response);
+      }
     });
+  }); //end of playlist click event
 
-    $(".close").on("click", function() {
-      $("#playlistForm").hide();
-    });
+  $(".song").sortable();
+  $(".playlist__info").click(function() {});
 
-    $(".create_button").on("click", function() {
-      $("#playlistForm").hide();
-    });
+  $(".playlist-page__create").on("click", function() {
+    $("#playlistForm").toggle();
+  });
 
-    //set active playlist
-    $(".playlist").bind("click", function() {
-      $(".activePlay").removeClass("activePlay");
-      $(this).addClass("activePlay");
-    });
+  $(".close").on("click", function() {
+    $("#playlistForm").hide();
+  });
 
-    $(".playlist").on("click", function() {
-      $(this)
-        .find(".to-songs")
-        .toggle(150);
-    });
+  $(".create_button").on("click", function() {
+    $("#playlistForm").hide();
+  });
 
-    //playlist options
-    $(".playlist__options").on("click", function(event) {
-      $(this)
-        .find(".playlist__options_dropdown")
-        .toggle(150);
-    });
-  }
-);
+  //set active playlist
+  $(".playlist").bind("click", function() {
+    $(".activePlay").removeClass("activePlay");
+    $(this).addClass("activePlay");
+  });
+
+  $(".playlist").on("click", function() {
+    $(this)
+      .find(".to-songs")
+      .toggle(150);
+  });
+
+  //playlist options
+  $(".playlist__options").on("click", function(event) {
+    $(this)
+      .find(".playlist__options_dropdown")
+      .toggle(150);
+  });
+});
 /***************** Create Playlist Validation *************/
 let playlist_name = $.trim($("#playlist__name"));
 let playlist_desc = $("#playlist__desc").val();
