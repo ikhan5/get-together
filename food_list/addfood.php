@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 ?>
 
 <form action="" method="post">
-    Name of food: <input class="food-input" type="text" name="name" /><br/>
+    Description <input class="food-input" type="text" name="name" /><br/>
     Type : <input class="food-input" type="text" name="type" /><br />
     Size : <input class="food-input" type="text" name="size" /><br />
     Quantity : <input class="food-input" type="text" name="type" /><br />

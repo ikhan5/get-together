@@ -12,7 +12,7 @@
 require_once '../model/database.php';
 require_once './model/Food.php';
 
-$pagetitle = 'Create Event';
+$pagetitle = 'Food List';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 
@@ -62,8 +62,8 @@ if(isset($_POST['updfood'])){
             echo '</select>';
     ?>
     <br/>
-    Size : <input class="food-input" type="text" name="size" value="<?= $food->food_size; ?>" /><br/>
     Quantity : <input class="food-input" type="text" name="qty" value="<?= $food->food_qty; ?>" /><br/>
+    Size : <input class="food-input" type="text" name="size" value="<?= $food->food_size; ?>" /><br/>
     <button type="submit" name="updfood" value="UpdateFood" class='food_btn'>Update</button>
 </form>
 </div>

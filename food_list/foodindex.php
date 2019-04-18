@@ -1,5 +1,7 @@
 <?php
+    session_start();
     $pagetitle = 'Food List';
+
     include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     $event_id = $_GET['eid'];
 ?>
@@ -21,8 +23,8 @@
         ?>
         </p><br/>
         <label>Description: </label><input class="food-input" type="text" name="name"/><br/>
-        <label>Size : </label><input class="food-input" type="text" name="size"/><br/>
         <label>Quantity : </label><input class="food-input" type="text" name="qty"/><br/>
+        <label>Size : </label><input class="food-input" type="text" name="size"/><br/>
         <button type="submit" name="save" class='food_btn'>Save</button>
         </form>
         </div>

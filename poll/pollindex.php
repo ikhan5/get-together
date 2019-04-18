@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $pagetitle = 'Poll';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
