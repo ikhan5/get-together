@@ -13,6 +13,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
       <h2 class="display-4 text-center mb-4">Registration</h2>
       <form action="index.php" method="post">
         <input type="hidden" name="action" value="register_user">
+        <?php if(isset($gid)){ echo($gid); exit(); } ?>
         <div class="form-group row">
           <label for="user-name" class="col-sm-4 col-form-label">Name</label>
           <div class="col-sm-8">
