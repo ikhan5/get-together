@@ -8,11 +8,27 @@ setcookie('username', $uname);
 
 // $chatroom_url = '/views/chatrooms.php';
 
+$doc = new DOMDocument();
+$file_name = 'carpoolchat_n' . str_pad($event_id, 5, '0', STR_PAD_LEFT) . '.xml';
+$doc->load("./chats/" . $file_name);
+if(!($doc->documentURI)){
+  $chatfile = fopen("chats/$file_name", "w");
+  $roomid = str_pad($event_id, 5, '0', STR_PAD_LEFT);
+  $starttext = "<?xml version='1.0' encoding='utf-8'?>
+  <chats xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' roomId='$roomid'
+    xsi:noNamespaceSchemaLocation='chatroom.xsd'></chats>";
+  fwrite($chatfile, $starttext);
+  fclose($chatfile);
+}
+
+
 if(isset($_POST['submit'])){
   $doc = new DOMDocument();
   $doc->preserveWhiteSpace = false;
   $file_name = 'carpoolchat_n' . str_pad($event_id, 5, '0', STR_PAD_LEFT) . '.xml';
   $doc->load("./chats/" . $file_name);
+  var_dump($doc);
+  exit();
   if(!($doc->documentURI)){
     $chatfile = fopen("chats/$file_name", "w");
     $roomid = str_pad($event_id, 5, '0', STR_PAD_LEFT);
