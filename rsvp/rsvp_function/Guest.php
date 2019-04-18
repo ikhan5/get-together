@@ -24,7 +24,7 @@ class Guest
         $count = $pst->execute();
 
         if($count){
-            header("Location: ../rsvp/?eid='$eid'");
+            header("Location: ../?eid=$eid");
         }else{
             $message = 'Failed...';
         }

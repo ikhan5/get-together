@@ -19,11 +19,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 if(isset($_POST['update'])){
     $id = $_POST['id'];
-    $eid = $_POST['eid'];
     
     $dbcon = Database::getDB();
     $g = new Guest();
-    $guest = $g->getGuestById($id, $eid, $dbcon);
+    $guest = $g->getGuestById($id,$dbcon);
 }
 
 if(isset($_POST['updguest'])){
@@ -37,7 +36,7 @@ if(isset($_POST['updguest'])){
     $count = $g->updateGuest($id, $name, $email, $dbcon);
 
     if($count){
-        header("Location: ../rsvp/?eid='$eid'");
+        header("Location: ../?eid=$eid");
     } else {
         echo  "Update error.";
     }
