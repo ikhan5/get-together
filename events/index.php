@@ -95,13 +95,22 @@ if ($action == 'list_events') {
     header('Location: .');
 } else if ($action == 'show_event') {
     $eid = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    $userevents = EventDB::getEventsByUser($userid);
+    
     $isValid = false;
-    foreach($userevents as $event) {
-      if ($event->getId() == $eid){
-        $isValid = true;
+
+    $ishost = EventDB::IsHost($userid, $eid);
+
+    if ($ishost) {
+      $isValid = true;
+    } else {
+      $userevents = EventDB::getEventsByUser($userid);
+      foreach($userevents as $event) {
+        if ($event->getId() == $eid){
+          $isValid = true;
+        }
       }
     }
+    
     if($isValid || $_SESSION['userrole'] == 'superadmin' || $_SESSION['userrole'] == 'admin') {
       $event = EventDB::getEvent($eid);
       include('detail.php');

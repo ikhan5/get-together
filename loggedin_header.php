@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/CSS/songs.css">
   <link rel="stylesheet" href="/CSS/poll.css">
   <link rel="stylesheet" href="/CSS/todo.css">
+  <link rel="stylesheet" href="/CSS/foodlist.css">
   <link rel="stylesheet" type="text/css" href="/CSS/rsvp_style.css"/>
   <link rel="stylesheet" type="text/css" href="/CSS/gallery.css"/>
   <link rel="stylesheet" href="/CSS/drinks_style.css">
