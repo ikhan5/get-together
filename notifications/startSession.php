@@ -9,5 +9,5 @@
  */
 session_start();
 
-$_SESSION['user_id'] = 1;
-$_SESSION['event_id'] = 1;
+$user_id = $_SESSION['userid'];
+$event_id = $_GET['eid'];

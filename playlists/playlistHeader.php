@@ -8,7 +8,7 @@
  * Last Modified: April 11th, 2019
  * Recent Changes: Added related links.
  */
-    include "../header.php";
+    include "../loggedin_header.php";
 ?>
 
 <title>Playlists</title>

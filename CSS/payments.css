@@ -195,11 +195,11 @@ div[class^="credit"] {
     background-color: #ccc;
 }
 
-a {
+.payments_container a {
     text-decoration: none;
 }
 
-a:hover {
+.payments_container a:hover {
     text-decoration: underline;
 }
 

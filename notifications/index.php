@@ -12,9 +12,10 @@
  */
 include "header.php";
 ?>
-<body>
+
+<body class="notifications_body">
     <section id="notification" class="mt-5 p-4 mb-5">
-        <h2 class="col-sm-6 mb-4 heading-style">Alert Other Guests</h2>
+        <h2 class="col-sm-6 mb-4 heading-style">Notify Your Guests</h2>
         <p id="successMsg" style="color:green"></p>
         <p id="errorMsg" style="color:red;"><?= $error ?></p>
         <form action="" method=" POST" class="container-fluid">
