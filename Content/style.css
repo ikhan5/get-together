@@ -49,11 +49,11 @@ nav {
 }
 
 footer {
-  background-color: #1E001F;
+  background-color: black;
 }
 
 #footer-nav {
-  background-color: #1E001F;
+  background-color: black;
   display: flex;
   flex-flow: column nowrap;
 }
