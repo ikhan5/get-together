@@ -11,6 +11,7 @@
  * Recent Changes: Refactored Code, moved PHP code to separate file
  */
 session_start();
+$error ='';
 $pagetitle = 'Send Notification';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
