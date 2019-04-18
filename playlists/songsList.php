@@ -16,6 +16,7 @@
  * Last Modified: April 15th, 2019
  * Recent Changes: Refactored Code, added comments
 */
+session_start();
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
@@ -24,6 +25,7 @@ $playlist_id = $_POST['pid'];
 $p = new PlaylistDB();
 $playlist = $p->getPlaylistByID($playlist_id);
 
+$pagetitle = "Add Songs To Your Playlist";
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 

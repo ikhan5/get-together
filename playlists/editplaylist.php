@@ -42,7 +42,8 @@ if (isset($_POST['edit_playlist'])) {
         header("Location: index.php?eid=$event_id");
     }
 }
-include "playlistHeader.php";
+$pagetitle = "Edit Playlist";
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 <!-- Form for editting a payment -->
 <div id="playlists_container">

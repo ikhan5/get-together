@@ -8,6 +8,7 @@
  * Last Modified: April 15th, 2019
  * Recent Changes: Added comments.
  */
+$pagetitle = "Payment Portal";
 require_once 'startSession.php';
 require_once '../model/database.php';
 require_once '../model/payment_db.php';
