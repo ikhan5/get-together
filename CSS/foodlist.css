@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
+    margin-bottom: 1.90%;
 }
 .food-inputform {
     order:1;
@@ -10,7 +11,8 @@
     width: 30%;
     padding: 2.5%;
     margin: 0;
-    margin-left: 2%;
+    margin-left: 5%;
+    margin-top: 5%;
 }
 .food-display{
     order:1;
@@ -18,7 +20,18 @@
     width: 55%;
     padding: 2.5%;
     margin: 0;
-    margin-right: 2%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+.food-inputform-edit{
+    order:1;
+    background-color: white;
+    width: 30%;
+    padding: 2.5%;
+    margin: 0;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 11.90%;
 }
 
 /* styling for headline */

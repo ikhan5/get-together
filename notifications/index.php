@@ -10,10 +10,12 @@
  * Last Modified: April 11th, 2019
  * Recent Changes: Refactored Code, moved PHP code to separate file
  */
-include "header.php";
+session_start();
+$pagetitle = 'Send Notification';
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 
-<body class="notifications_body">
+<main class="notifications_body">
     <section id="notification" class="mt-5 p-4 mb-5">
         <h2 class="col-sm-6 mb-4 heading-style">Notify Your Guests</h2>
         <p id="successMsg" style="color:green"></p>
@@ -60,11 +62,6 @@ include "header.php";
             </div>
         </form>
     </section>
-</body>
+</main>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
-<script src="../scripts/notifications.js"></script>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

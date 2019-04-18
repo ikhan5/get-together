@@ -15,15 +15,16 @@ $pagetitle = 'Invite Guest';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-<link rel="stylesheet" type="text/css" href="../CSS/rsvp_style.css"/>
-<body class="rsvp_body">
+<body>
     <div class="rsvp_container">
     <div class="rsvp_inputform">
         <h2 class="rsvp_heading-style">Who would you like to invite?</h2>
         <form method="post" action="rsvp_function/addguest.php?eid=<?= $eid ?>">
+        <div class="rsvp_input">
         <label>Name : </label><input type="text" name="name"/> <br/>
         <label>Email : </label><input type="text" name="email"/><br/>
         <button type="submit" name="save" class='rsvp_btn'>Save</button>
+        </div>
         </form>
     </div>
     <div class="rsvp_display">

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'database.php';
+require_once '../model/database.php';
 require_once 'Gallery.php';
 
 if(isset($_POST["id"]))

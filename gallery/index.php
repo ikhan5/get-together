@@ -15,12 +15,10 @@ $pagetitle = 'Photo Gallery';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-<link rel="stylesheet" type="text/css" href="../CSS/gallery.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/gallery.js"></script>
 
-<body class="gallery_body">
+<body>
     <div class="gallery_container">
     <div class="gallery_header">
         <h2 class="gallery_heading-style">Gallery</h2>
@@ -43,6 +41,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     </div>
 </body>
 
+<!-- supposed to edit the title for each photo
 <div id="gallery_imageModal" class="gallery_modal">
     <div class="gallery_modal-content">
         <form method="POST" id="edit_image_form">
@@ -58,3 +57,4 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         </form>
     </div>
 </div>
+-->
