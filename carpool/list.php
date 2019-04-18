@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     View page to see all chatrooms. Admins can see all the chatrooms.
+ *                  Users can only see the ones they are related to.
+ * Date Created:    March 6th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  fix small bugs
+ */
 require_once('../model/database.php');
 require_once('../model/event.php');
 require_once('../model/event_db.php');

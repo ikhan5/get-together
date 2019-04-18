@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     Controller for carpool chat feature.
+ *                  All requests for the feature goes through this page.
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  creates a chatroom record on db if there is none for specific event.
+ */
 session_start();
 require_once('../model/database.php');
 require_once('../model/carpool/carpool_db.php');

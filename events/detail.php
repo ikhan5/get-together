@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     View page for an event details.
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 16th, 2019
+ * Recent Changes:  fix links to different sections of the event
+ */
 $pagetitle = $event->getTitle() . ' - Event';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>

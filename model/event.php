@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     A model class which represents event table of the db
+ * Date Created:    March 4th, 2019
+ * Last Modified:   March 22nd, 2019
+ * Recent Changes:  fix bugs
+ */
+
 class Event {
     private $id, $title, $description, $location, $date, $start_time, $end_time;
 

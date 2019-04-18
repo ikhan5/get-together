@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     A model class which represents event_user table of the db
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  create class
+ */
+
 class EventUser {
     private $id, $user_id, $event_id, $is_host, $has_rsvp;
 

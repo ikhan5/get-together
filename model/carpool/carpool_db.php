@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     A model class to handle all requests from carpool controller to the db
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  fix bugs
+ */
+
 class CarpoolChatDB
 {
   public static function getAllChats() {
