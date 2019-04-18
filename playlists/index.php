@@ -78,6 +78,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="../scripts/playlists.js"></script>
-</body>
 
-</html>
+
+    <?php
+    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
+?>

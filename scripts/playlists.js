@@ -1,11 +1,16 @@
-/*Gets all the playlists from the Get_Together Database
-add appends each playlist to the playlists container in the
-playlists.php file.
+/* Author: Imzan Khan
+ * Feature: Playlists
+ * Description: Gets all the playlists from the Get_Together Database
+ *              add appends each playlist to the playlists container in the
+ *              playlists.php file.
+ * Date Created: March 20th, 2019
+ * Last Modified: April 15th, 2019
+ * Recent Changes: Refactored Code, added comment
+
 */
 var newData = [];
 var eventid = $(".playlist__event").val();
 $.getJSON("getAllPlaylists.php?eid=" + eventid, function(data) {
-  console.log(eventid);
   $.each(data, function(index, value) {
     $.ajax({
       url: "getSongsCount.php",

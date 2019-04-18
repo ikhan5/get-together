@@ -40,7 +40,7 @@ if (isset($_POST['cancel'])) {
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
     <form method="post" action="">
-        <h2 class="heading-style2">Are you sure you want to Delete this Pool?</h2>
+        <h2 class="payments_heading-style2">Are you sure you want to Delete this Pool?</h2>
         <input type="hidden" name="pool_id" value="<?= $pool->id; ?>" />
         <div id="pool_info">
             <div class="pool-detail">

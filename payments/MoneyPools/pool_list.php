@@ -12,7 +12,7 @@ $p = new Payment();
 $payments = $p->getPaymentStatus($event_id);
 ?>
 <div class="payments_container">
-    <h2 class="heading-style2">View Money Pools</h2>
+    <h2 class="payments_heading-style2">View Money Pools</h2>
     <div id="create_payment">
         <a href="Create.php?eid=<?=$event_id?>">+ Create a Money Pool</a>
     </div>
