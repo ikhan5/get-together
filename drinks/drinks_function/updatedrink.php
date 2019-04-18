@@ -19,11 +19,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 if(isset($_POST['update'])){
     $id = $_POST['id'];
-    $eid = $_POST['eid'];
     
     $dbcon = Database::getDB();
     $d = new Drink();
-    $drink = $d->getDrinkById($id,$eid,$dbcon);
+    $drink = $d->getDrinkById($id,$dbcon);
 }
 
 if(isset($_POST['upddrink'])){
@@ -39,7 +38,7 @@ if(isset($_POST['upddrink'])){
     $count = $d->updateDrink($id, $name, $type, $size, $qty, $dbcon);
 
     if($count){
-        header("Location: ../drinks/?eid='$eid'");
+        header("Location: ../?eid=$eid");
     } else {
         echo  "Update error.";
     }

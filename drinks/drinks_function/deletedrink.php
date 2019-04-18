@@ -10,7 +10,7 @@ if(isset($_POST['delete'])){
     $count = $d->deleteDrink($id, $dbcon);
 
     if($count){
-        header("Location: ../drinks/?eid='$eid'");
+        header("Location: ../?eid=$eid");
     }
 }
 

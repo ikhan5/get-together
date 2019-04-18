@@ -2,6 +2,8 @@
 require_once '../model/database.php';
 require_once 'Drink.php';
 
+$eid = $_GET['eid'];
+
 $dbcon = Database::getDB();
 $d = new Drink();
 $mydrink = $d->getAllRecDrinks($dbcon);
@@ -18,8 +20,9 @@ foreach($mydrink as $drink){
         "<td>".$drink->recdrink_type."</td>".
         "<td>".$drink->recdrink_size."</td>".
         "<td>".$drink->recdrink_qty."</td>".
-        "<td class='add_rec'><form class='recPost' action='' method='post'>".
-        "<input type='hidden' value='$drink->recdrink_id' class='rec_id' />".
+        "<td class='add_rec'><form class='recPost' action='addrecdrink.php' method='post'>".
+        "<input type='hidden' name='eid' value='$eid'>".
+        "<input type='hidden' value='$drink->recdrink_id' name='rec_id' />".
         "<input type='submit' value='Add' name='insert' class='drinks_btn2'/>".
         "</form></td></tr>";
 }
