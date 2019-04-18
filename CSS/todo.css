@@ -4,13 +4,17 @@
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
+    margin-top: 5%;
+    margin-bottom: 20.4%;
 }
 .todo-inputform {
     order:1;
     background-color: white;
     width: 60%;
     padding: 2.5%;
-    margin-left: 17%;
+    margin-left: 20%;
+    
+    
 }
 .to-do-h-style-add,.to-do-h-style-list {
   position: relative;
