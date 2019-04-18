@@ -39,7 +39,7 @@ if (isset($_POST['editpayment'])) {
     <a href="MoneyPools/pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
-    <h2 class="heading-style">Editting Payment: </h2>
+    <h2 class="payments_heading-style">Editting Payment: </h2>
     <form method="post" action="">
         <input type="hidden" name="id" value="<?= $payment->id; ?>" />
         <p>Email: <?= $email ?></p>

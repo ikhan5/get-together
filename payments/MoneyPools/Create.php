@@ -28,7 +28,7 @@ require_once 'header.php';
     <a href="pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
-    <h2 class="heading-style">Create a new Money Pool</h2>
+    <h2 class="payments_heading-style">Create a new Money Pool</h2>
     <form method="post" action="">
         <div class="form-group">
             <label for="reason">Purpose of the Pool:</label>

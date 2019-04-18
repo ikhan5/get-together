@@ -25,7 +25,7 @@ if (isset($_POST['view'])) {
     <a href="pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
-    <h2 class="heading-style">Viewing Payments in Pool</h2>
+    <h2 class="payments_heading-style">Viewing Payments in Pool</h2>
     <table class="payments_table">
         <?php 
     echo "<thead>";
@@ -59,7 +59,6 @@ if (isset($_POST['view'])) {
         </tbody>
     </table>
 </div>
-
 <?php
-    include "../footer.php";
+    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
 ?>

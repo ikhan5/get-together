@@ -64,3 +64,7 @@ include "playlistHeader.php";
         <input class="btn2 form-action" type="submit" name="edit_playlist" value="Update Playlist">
     </form>
 </div>
+
+<?php
+    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
+?>

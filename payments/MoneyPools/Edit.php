@@ -32,7 +32,7 @@ if (isset($_POST['editpool'])) {
     <a href="pool_list.php?eid=<?=$event_id?>">
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
-    <h2 class="heading-style2">Editting Pool: </h2>
+    <h2 class="payments_heading-style2">Editting Pool: </h2>
     <form method="post" action="">
         <input type="hidden" name="payment_id" value="<?= $pool->id; ?>" />
         <label for="reason">Purpose of the Pool: </label>

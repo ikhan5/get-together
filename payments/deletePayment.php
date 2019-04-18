@@ -41,7 +41,7 @@ if (isset($_POST['cancel'])) {
         <i class="fas fa-arrow-left"> Back to Pools</i>
     </a>
     <form method="post" action="">
-        <h2 class="heading-style">Are you sure you want to Delete this Payment?</h2>
+        <h2 class="payments_heading-style">Are you sure you want to Delete this Payment?</h2>
         <input type="hidden" name="payment_id" value="<?= $payment->id; ?>" />
         <div id="payment_info">
             <div class="payment-detail">
