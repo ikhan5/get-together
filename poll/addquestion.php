@@ -27,6 +27,6 @@ require_once './model/Poll.php';
 ?>
 
 <form action="" method="post">
-    Question: <input type="text" name="poll_question" /><br/>
+    Question: <input class="poll-input" type="text" name="poll_question" /><br/>
     <input type="submit" name="addpoll" value="Add">
 </form>

@@ -21,7 +21,7 @@ echo "<h3>Add New Poll</h3>";
 ?>
 
 <form action="" method="post">
-    Question: <input type="text" name="poll_question" /><br/>
-    Answer: <input type="text" name="poll_answer" /><br />
+    Question: <input class="poll-input" type="text" name="poll_question" /><br/>
+    Answer: <input class="poll-input" type="text" name="poll_answer" /><br />
     <input type="submit" name="addpoll" value="AddPoll">
 </form>

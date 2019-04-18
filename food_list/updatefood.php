@@ -12,6 +12,10 @@
 require_once '../model/database.php';
 require_once './model/Food.php';
 
+$pagetitle = 'Create Event';
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
+
+
 if(isset($_POST['update'])){
     $id = $_POST['id'];
     $event_id = $_GET['eid'];
@@ -40,17 +44,17 @@ if(isset($_POST['updfood'])){
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
 
-<div class="inputform">
+<link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
+<div class="food-inputform">
 <form action="" method="post">
-    <h2 class="h-style">Edit Food</h2>
+    <h2 class="food-h-style-add">Edit Food</h2>
     <input type="hidden" name="fid" value="<?= $food->food_id; ?>" />
-    Name : <input type="text" name="name" value="<?= $food->food_name; ?>" /><br/>
+    Name : <input class="food-input" type="text" name="name" value="<?= $food->food_name; ?>" /><br/>
     Type : <br/>
         <?php
             $options= array('choose','Vegeterian','Fast Food','Burgers','Pizza','Sushi', 'Salads', 'Deserts');
-            echo '<select name="type" class="dropbtn">';
+            echo '<select name="type" class="food-dropbtn">';
             for ($i=0; $i<count($options);$i++)
             {
                 echo'<option>'.$options[$i].'</option>';
@@ -58,8 +62,9 @@ if(isset($_POST['updfood'])){
             echo '</select>';
     ?>
     <br/>
-    Size : <input type="text" name="size" value="<?= $food->food_size; ?>" /><br/>
-    Quantity : <input type="text" name="qty" value="<?= $food->food_qty; ?>" /><br/>
-    <button type="submit" name="updfood" value="UpdateFood" class='btn'>Update</button>
+    Size : <input class="food-input" type="text" name="size" value="<?= $food->food_size; ?>" /><br/>
+    Quantity : <input class="food-input" type="text" name="qty" value="<?= $food->food_qty; ?>" /><br/>
+    <button type="submit" name="updfood" value="UpdateFood" class='food_btn'>Update</button>
 </form>
 </div>
+  

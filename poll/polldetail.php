@@ -29,11 +29,11 @@ if(isset($_GET['id'])){
     <link rel="stylesheet" type="text/css" href="../CSS/poll.css"/>
 </head>
 <body>
-<form class="inputform" method="post" action="">
+<form class="poll-inputform" method="post" action="">
     <h4><?php echo $poll->poll_question ?></h4>
     <ul>
         <label class='poll_active'>
-            <input type='radio' name='choise' value='0'><?php echo $poll->poll_answer?>
+            <input class="poll-input" type='radio' name='choise' value='0'><?php echo $poll->poll_answer?>
         </label>
     </ul>
     <p class="buttons">

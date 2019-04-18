@@ -28,11 +28,11 @@ foreach($myfood as $food){
         "<td>".$food->food_size."</td>".
         "<td>".$food->food_qty."</td>".
         "<td><form action='updatefood.php?eid=$event_id' method='post'>" .
-        "<input type='hidden' value='$food->food_id' name='id' />".
+        "<input class='food-input' type='hidden' value='$food->food_id' name='id' />".
         "<input type='submit' value='Update' name='update' class='food_btn1'/>".
         "</form></td>" .
         "<td><form action='deletefood.php?eid=$event_id' method='post'>" .
-        "<input type='hidden' value='$food->food_id' name='id' />".
+        "<input class='food-input' type='hidden' value='$food->food_id' name='id' />".
         "<input type='submit' value='Delete' name='delete' class='food_btn2' />".
         "</form></td></tr>";
 }

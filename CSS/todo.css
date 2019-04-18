@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
-body{
-    background: #f2f2f2;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 0;
-}
 .todo-container{
     display: flex;
     justify-content: space-between;
@@ -34,10 +28,10 @@ body{
 }
 .to-do-h-style-list:before {
   border-top: 23px solid #05e5e5;
-  width: 15%;
+  width: 22%;
 }
-input[type=text] {
-    width: 95%;
+.poll-input{
+    width: 96%;
     padding: 5px 10px;
     margin: 10px 0;
     box-sizing: border-box;

@@ -1,25 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
-body{
-    background: #f2f2f2;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 0;
-}
-/* layout */
-.container{
+.poll-container{
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
 }
-.inputform{
+.poll-inputform{
     order:1;
     background-color: white;
     width: 30%;
     padding: 2.5%;
     margin: 0;
 }
-.display{
+.poll-display{
     order:1;
     background-color: white;
     width: 55%;
@@ -109,7 +102,7 @@ body{
 }
 
 /* form styling */
-input[type=text] {
+.poll-input{
     width: 100%;
     padding: 5px 10px;
     margin: 10px 0;
@@ -139,14 +132,14 @@ input[type=text] {
 
 
 @media only screen and (max-width: 900px){
-    .container{
+    .poll-container{
         flex-direction: column;
     }
-    .inputform {
+    .poll-inputform {
         order:1;
         width: 100%;
     }
-    .display{
+    .poll-display{
         order:2;
         width: 100%;
     }

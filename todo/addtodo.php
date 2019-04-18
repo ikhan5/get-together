@@ -23,5 +23,5 @@ if (isset($_POST['addtodo'])){
 
 <form action="" method="post" style="margin-bottom: 10px;">
     <button type='submit' name='addtodo' class='todo-button-link'><i class="fas fa-plus plus"></i></button>
-    <input type="text" name="task" />
+    <input class="poll-input" type="text" name="task" />
 </form>
