@@ -40,9 +40,9 @@
 
 #event-detail-main {
   border: 2px solid #22C9D4;
-  margin: 20px;
+  margin: 20px auto;
   border-radius: 50px 10px 0px 10px;
-  width: inherit;
+  max-width: 90%;
 }
 
 .event-description {
