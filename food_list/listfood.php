@@ -4,7 +4,7 @@
  * Description: Shows inside the form with the list 
  *              of List Food that user created on index page.          
  * Date Created: March 29th, 2019
- * Last Modified: April 17th, 2019
+ * Last Modified: April 18th, 2019
  * Recent Changes: Refactored Code, Added comments
  */
 require_once '../model/database.php';
@@ -36,6 +36,6 @@ foreach($myfood as $food){
         "<input type='submit' value='Delete' name='delete' class='food_btn2' />".
         "</form></td></tr>";
 }
-echo "</food-table>";
+echo "</table>";
 ?>
 

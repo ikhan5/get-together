@@ -1,14 +1,9 @@
 <?php
-$pagetitle = 'Food List';
-include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
-?>
-
-<?php
+    $pagetitle = 'Food List';
+    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     $event_id = $_GET['eid'];
 ?>
-
-
-    <link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
+<main>
     <div class="food-container">
     <div class="food-inputform">
         <h2 class="food-h-style-add">Add food to your event</h2>
@@ -23,19 +18,19 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
                 echo'<option>'.$options[$i].'</option>';
             }
             echo '</select>';
-        ?></p><br/>
+        ?>
+        </p><br/>
         <label>Description: </label><input class="food-input" type="text" name="name"/><br/>
         <label>Size : </label><input class="food-input" type="text" name="size"/><br/>
         <label>Quantity : </label><input class="food-input" type="text" name="qty"/><br/>
         <button type="submit" name="save" class='food_btn'>Save</button>
         </form>
-    </div>
+        </div>
     <div class="food-display">
         <h2 class="food-h-style-list">List of Food</h2>
-    <?php 
-        include "listfood.php";
-    ?>
+    <?php include "listfood.php";?>
     </div>
     </div>
+</main>
 
-
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>

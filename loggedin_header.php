@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/CSS/songs.css">
   <link rel="stylesheet" href="/CSS/poll.css">
   <link rel="stylesheet" href="/CSS/todo.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="/CSS/foodlist.css">
   <link rel="stylesheet" type="text/css" href="/CSS/rsvp_style.css"/>
   <link rel="stylesheet" type="text/css" href="/CSS/gallery.css"/>

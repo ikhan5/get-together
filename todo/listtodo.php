@@ -37,5 +37,5 @@ foreach($tasks as $task){
     "<button type='submit' name='delete' class='todo-button-link todo-delete'><i class='far fa-trash-alt'></i></button>".
     "</form></td></tr>";
 }
-    echo "</todo-table>";
+    echo "</table>";
 ?>
