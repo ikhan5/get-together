@@ -13,8 +13,8 @@
   session_start();
   include "../model/database.php";
   include "../model/notification_db.php";
-$user_id = $_SESSION['user_id'];
-$event_id = $_SESSION['event_id'];
+$user_id = $_SESSION['userid'];
+
 
 date_default_timezone_set('America/Toronto');
 require 'vendor/autoload.php';
@@ -31,6 +31,7 @@ if(isset($_POST['sendemail'])){
     $host = $_POST['host'];
     $output ='';
     foreach($_POST['user_info'] as $user){
+        $event_id = $user['event'];
         $subject = format($user['subject']);
         $content = format($user['content']);
         $mail = new PHPMailer;

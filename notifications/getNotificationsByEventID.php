@@ -17,7 +17,6 @@ require('../model/event_db.php');
 include "../model/notification_db.php";
 require_once 'startSession.php';
 $error = '';
-$user_id = $_SESSION['user_id'];
 $u = new Notification();
 $notifs = $u->getAllNotificationsByUserID($user_id);
 

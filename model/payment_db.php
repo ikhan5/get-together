@@ -127,7 +127,7 @@ class Payment
     public function getEventsWithPoolsByID($user_id){
         $dbcon = Database::getDB();
         $sql = "SELECT * from events INNER JOIN events_users on events.id = events_users.event_id
-        WHERE events_users.user_id = :user_id AND events.has_fund_pool =1";
+        WHERE events_users.user_id = :user_id";
         $pst = $dbcon->prepare($sql);
         $pst->bindParam(':user_id', $user_id);
         $pst->execute();

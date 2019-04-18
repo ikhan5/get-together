@@ -12,7 +12,7 @@ require_once '../startSession.php';
 require_once '../../model/database.php';
 require_once '../../model/payment_db.php';
 require_once '../../model/pools_db.php';
-include "../../header.php";
+include "../../loggedin_header.php";
 ?>
 
 <!DOCTYPE html>

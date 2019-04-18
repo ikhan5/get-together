@@ -15,15 +15,15 @@
     include "../model/notification_db.php";
     require_once 'startSession.php';
 
-$user_id = $_SESSION['user_id'];
-$event_id = $_SESSION['event_id'];
 $u = new Notification();
 $users = $u->getUsersByEventID($event_id);
 
 foreach($users as $user)
     {
+        
         if($user->is_host){
-                echo '<input id="host" type="hidden" value='.$user->first_name.' />';
+            echo '<tr>';  
+                echo '<td id="host" style="color:green;">'.$user->first_name.' (host)</td>';
         }
         else{
             echo '<tr>';  
@@ -33,7 +33,7 @@ foreach($users as $user)
             data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
             </td><td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" 
             id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'"
-             data-action="single">Send</button></td>
-            </tr>';
-    }
+             data-action="single">Send</button></td>';
+        }
+        echo '</tr>';
 }
