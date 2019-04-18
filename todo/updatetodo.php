@@ -1,8 +1,18 @@
-<?php 
+<?php
+/* Author: Maria Korolenko
+ * Feature: To-Do List
+ * Description: When the 'Edit/Done' icon is clicked on the index 
+ *              page form the to-do row text change color to blue 
+ *              and icon shows "done" mark.  
+ * Date Created: April 15th, 2019
+ * Last Modified: April 17th, 2019
+ * Recent Changes: Refactored Code, Added comments
+ */ 
 require_once '../model/database.php';
 require_once 'Todo.php';
 
 if(isset($_POST['update'])){
+    $event_id = $_GET['eid'];
     $id = $_POST['id'];
     
     $dbcon = Database::getDB();
@@ -20,7 +30,7 @@ if(isset($_POST['update'])){
 
     
     if($count){
-        header("Location: index.php");
+        header("Location: index.php?eid=$event_id");
     } else {
         echo  "Error updating";
     }

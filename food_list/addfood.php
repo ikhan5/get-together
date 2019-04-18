@@ -1,4 +1,11 @@
 <?php
+/* Author: Maria Korolenko
+ * Feature: Food List
+ * Description: Allows users to add the food     
+ * Date Created: March 29th, 2019
+ * Last Modified: April 18th, 2019
+ * Recent Changes: Refactored Code, added comments
+*/
 require_once '../model/database.php';
 require_once './model/Food.php';
 

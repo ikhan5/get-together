@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
 body{
-    max-width: 1200px;
     background: #f2f2f2;
-    margin: 0 7%;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     padding: 0;
@@ -14,7 +12,7 @@ body{
     justify-content: space-between;
     flex-flow: wrap;
 }
-.inputform {
+.inputform{
     order:1;
     background-color: white;
     width: 30%;
@@ -28,17 +26,17 @@ body{
     padding: 2.5%;
     margin: 0;
 }
-a{
+.poll-a{
     text-decoration: none;
     color: #000;
 }
 
 /* styling for headline */
-.heading-style,.heading-style2 {
+.poll-heading-style,.poll-heading-style2 {
   position: relative;
   z-index: 1;
 }
-.heading-style:before,.heading-style2:before  {
+.poll-heading-style:before,.poll-heading-style2:before  {
   content: "";
   margin: 0;
   position: absolute;
@@ -48,17 +46,17 @@ a{
   bottom: 0;
   z-index: -1;
 }
-.heading-style:before {
+.poll-heading-style:before {
   border-top: 23px solid #F6DC7A;
   width: 95%;
 }
-.heading-style2:before {
+.poll-heading-style2:before {
   border-top: 23px solid #05e5e5;
   width: 30%;
 }
 
 /* button styling */
-.btn{
+.poll-btn{
     background-color: black;
     border: none;
     color: white;
@@ -70,7 +68,7 @@ a{
     cursor: pointer;
     font-weight:600;
 }
-.btn:hover{
+.poll-btn:hover{
     background-color: white;
     border: solid 2px black;
     color: black;
@@ -78,7 +76,7 @@ a{
     padding: 6px 10px;
 }
 
-.btn1, .btn2{
+.poll-btn1, .poll-btn2{
     border: none;
     padding: 6px 10px;
     text-align: center;
@@ -91,20 +89,20 @@ a{
     font-weight:600;
 }
 
-.btn1{
+.poll-btn1{
     color: #05e5e5;
     border: solid 1.5px #05e5e5;
 }
-.btn1:hover{
+.poll-btn1:hover{
     background-color: #05e5e5;
     color: black;
     border: solid 1.5px #05e5e5;
 }
-.btn2{
+.poll-btn2{
     color: #ff2222;
     border: solid 1.5px #ff2222;
 }
-.btn2:hover{
+.poll-btn2:hover{
     background-color: #ff2222;
     color:white;
     border: solid 1.5px #ff2222;
@@ -118,26 +116,19 @@ input[type=text] {
     box-sizing: border-box;
     font-size: 15px;
 }
-p{
+.poll-p{
     margin: 5px 0;
 }
-.dropbtn{
-  background-color: black;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-#table{
+
+#poll-table{
     border-collapse: collapse;
     width: 100%;
 }
-#table td{
+#poll-table td{
     font-size: 13px;
     padding:3px 8px;
 }
-#table th {
+#poll-table th {
     padding: 10px 8px;
     text-align: left;
     background-color: black;
@@ -159,10 +150,10 @@ p{
         order:2;
         width: 100%;
     }
-    .heading-style:before {
+    .poll-heading-style:before {
         width: 70%;
     }
-    .heading-style2:before {
+    .poll-heading-style2:before {
         width: 40%;
     }
     body{
@@ -171,11 +162,11 @@ p{
     input[type=text]{
         padding:2px 5px;
     }
-    #table td{
+    #poll-table td{
         font-size: 12px;
         padding:2px;
     }
-    #table th {
+    #poll-table th {
         padding:3px;
         font-size: 12px;
     }

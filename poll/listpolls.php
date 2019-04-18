@@ -1,4 +1,12 @@
 <?php
+/* Author: Maria Korolenko
+ * Feature: Poll
+ * Description: 
+ *   
+ * Date Created: April 5th, 2019
+ * Last Modified: April 18th, 2019
+ * Recent Changes: Refactored Code, Added comments
+ */ 
 require_once '../model/database.php';
 require_once './model/Poll.php';
 
@@ -11,11 +19,11 @@ foreach($mypoll as $poll){
     echo "<a href='polldetail.php?id=$poll->id'>" .  $poll->poll_question  . "</a>".
         "<form action='editpoll.php' method='post'>" .
         "<input type='hidden' value='$poll->id' name='id' />". 
-        "<input type='submit' value='Edit' name='edit' class='btn1' />" . 
+        "<input type='submit' value='Edit' name='edit' class='poll-btn1' />" . 
        
         "<form action='deletepoll.php' method='post'>" . 
         "<input type='hidden' value='$poll->id' name='id' />". 
-        "<input type='submit' value='Delete' name='delete' class='btn2' />".
+        "<input type='submit' value='Delete' name='delete' class='poll-btn2' />".
         "</form>" . "</br>";
 }
 

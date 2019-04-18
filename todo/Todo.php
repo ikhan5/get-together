@@ -24,7 +24,7 @@ class Todo
         $count = $pst->execute();
 
         if($count){
-            header('location: index.php');
+            header("location: index.php?eid=$event_id");
         }else{
             $message = 'Failed to add task';
         }
