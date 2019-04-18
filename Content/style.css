@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 body {
   background: #f2f2f2;
-  min-height: 80vh;
   margin: 0 auto;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
@@ -12,6 +11,10 @@ body {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
+}
+
+main {
+  min-height: 70vh;
 }
 
 #canvas-main {
