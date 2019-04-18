@@ -11,7 +11,7 @@ if(isset($_POST['delete'])){
     $count = $g->deleteGuest($id, $dbcon);
 
     if($count){
-        header("Location: ../rsvp/?eid='$eid'");
+        header("Location: ../?eid=$eid");
     }
 }
 
