@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
-.drinks_body{
-    max-width: 1200px;
-    background: #f2f2f2;
-    margin: 0 3%;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 0;
-}
+
 /* layout */
 .drinks_container{
     display: flex;
@@ -124,7 +117,7 @@
     box-sizing: border-box;
     font-size: 15px;
 }
-p{
+.drinks_options{
     margin: 3px 0;
 }
 .errors{

@@ -23,19 +23,9 @@ $event_id = $_POST['eid'];
 $playlist_id = $_POST['pid'];
 $p = new PlaylistDB();
 $playlist = $p->getPlaylistByID($playlist_id);
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Songs</title>
-    <link rel="stylesheet" href="../CSS/songs.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-</head>
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
+?>
 
 <body class="songs_body">
     <section id="song_listings">
@@ -69,6 +59,3 @@ $playlist = $p->getPlaylistByID($playlist_id);
     <?php
     include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
 ?>
-
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>

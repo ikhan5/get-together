@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+
 body {
   background: #f2f2f2;
   margin: 0 auto;
@@ -245,7 +246,7 @@ table {
 }
 
 #add-list a:hover {
-  color:rgb(80, 180, 110);
+  color: rgb(80, 180, 110);
 }
 
 #add-list {
@@ -253,7 +254,7 @@ table {
   align-self: flex-end;
 }
 
-#todo-actions a{
+#todo-actions a {
   margin: 0 5px;
   color: #f2f2f2;
 }
@@ -266,14 +267,9 @@ table {
   transition: color 1s;
 }
 
-#trash:hover{
+#trash:hover {
   color: red;
 }
-
-input[type=checkbox] {
-  visibility: hidden;
-}
-
 
 
 @media only screen and (max-width: 675px) {
@@ -306,7 +302,10 @@ input[type=checkbox] {
   }
 }
 
-.show>.btn-primary.dropdown-toggle, .btn-primary.dropdown-toggle:focus, .btn-primary.dropdown-toggle:active, .btn-primary.dropdown-toggle:active:focus {
+.show>.btn-primary.dropdown-toggle,
+.btn-primary.dropdown-toggle:focus,
+.btn-primary.dropdown-toggle:active,
+.btn-primary.dropdown-toggle:active:focus {
   color: #fff;
   background-color: #04b7b7;
   border-color: #04b7b7;
