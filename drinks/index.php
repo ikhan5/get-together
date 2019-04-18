@@ -17,7 +17,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>
 <link rel="stylesheet" type="text/css" href="../CSS/drinks_style.css"/>
 
-<body class="drinks_body">
+<body>
     <div class="drinks_container">
     <div class="drinks_inputform">
         <h2 class="drinks_heading-style">Add drinks to your event</h2>

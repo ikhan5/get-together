@@ -15,8 +15,7 @@ $pagetitle = 'Invite Guest';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-<link rel="stylesheet" type="text/css" href="../CSS/rsvp_style.css"/>
-<body class="rsvp_body">
+<body>
     <div class="rsvp_container">
     <div class="rsvp_inputform">
         <h2 class="rsvp_heading-style">Who would you like to invite?</h2>
