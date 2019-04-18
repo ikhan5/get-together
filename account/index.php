@@ -24,7 +24,14 @@ if ($action == 'list_users') {
   $users = AccountDB::getAllUsers();
   include('list_users.php');
 } else if ($action == 'show_add_form') {
-  // header('Location: ./login_register.php?return_url=' . $return_url);
+  if(isset($_GET['gid'])){
+    $eid = $_GET['eid'];
+    $gid = $_GET['gid'];
+    $egid = $_GET['egid'];
+    // if(!password_verify($gid, $egid)){
+    //   include($_SERVER['DOCUMENT_ROOT'].'/errors/404Error.php');
+    // }
+  }
   include('./login_register.php');
 } else if ($action == 'register_user') {
   $name = filter_input(INPUT_POST, 'user-name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -73,6 +80,7 @@ if ($action == 'list_users') {
         include($_SERVER['DOCUMENT_ROOT'].'/errors/customError.php');
         exit();
       } else {
+
         $_SESSION['successmess'] = "You have successfully registered. You can login now.";
         header('Location: ./login_register.php');
       }
