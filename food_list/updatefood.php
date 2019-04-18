@@ -46,7 +46,7 @@ if(isset($_POST['updfood'])){
 ?>
 
 <link rel="stylesheet" type="text/css" href="../CSS/foodlist.css"/>
-<div class="food-inputform">
+<div class="food-inputform-edit">
 <form action="" method="post">
     <h2 class="food-h-style-add">Edit Food</h2>
     <input type="hidden" name="fid" value="<?= $food->food_id; ?>" />
@@ -68,3 +68,4 @@ if(isset($_POST['updfood'])){
 </form>
 </div>
   
+<?php include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php'); ?>
