@@ -38,9 +38,6 @@ include "header.php";
         </section>
     </div>
     <div>
-        <section>
-            <!--Maria's Section -->
-        </section>
     </div>
     <div>
         <section id="contact-us">

@@ -28,7 +28,6 @@ if(isset($_POST['update'])){
         $count = $td->updateTodo($id, 1, $dbcon);
     }
 
-    
     if($count){
         header("Location: index.php?eid=$event_id");
     } else {

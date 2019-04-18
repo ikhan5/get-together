@@ -53,7 +53,7 @@ if(isset($_POST['editpoll'])){
             
     </ul>
     <label for="poll_answer">Answer</label>
-    <input type="text" name="poll_answer" id="poll_answer" /><br />
+    <input class="poll-input" type="text" name="poll_answer" id="poll_answer" /><br />
     <input type="submit" name="save" class='poll-btn' value="Edit Poll" />
 </form>
 

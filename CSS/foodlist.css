@@ -1,12 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
-
-body{
-    background: #f2f2f2;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 0;
-}
-/* layout */
 .food-container{
     display: flex;
     justify-content: space-between;
@@ -46,13 +38,12 @@ body{
 }
 .food-h-style-add:before {
   border-top: 23px solid #F6DC7A;
-  width: 60%;
+  width: 90%;
 }
 .food-h-style-list:before {
   border-top: 23px solid #05e5e5;
-  width: 18%;
+  width: 23%;
 }
-
 /* button styling */
 .food_btn{
     background-color: black;
@@ -73,7 +64,6 @@ body{
     margin: 0;
     padding: 6px 10px;
 }
-
 .food_btn1, .food_btn2{
     border: none;
     padding: 6px 10px;
@@ -104,9 +94,8 @@ body{
     color:white;
     border: solid 1.5px #ff2222;
 }
-
 /* form styling */
-input[type=text] {
+.food-input {
     width: 100%;
     padding: 5px 10px;
     margin: 10px 0;
