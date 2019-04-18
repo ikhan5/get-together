@@ -1,4 +1,13 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     View page chatroom. This is where all chats occur.
+ *                  All signed in user can chat in the chatroom of the event they are linked with.
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  fix a bug when there was no chatroom file.
+ *                  Now it creates a chatroom file if there is not one.
+ */
 session_start();
 $event_id = $_GET['eid'];
 $uid = $_SESSION['userid'];

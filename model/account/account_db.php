@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Account/MVP
+ * Description:     A model class to handle all requests from account controller to the db
+ * Date Created:    March 31st, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  fix bugs
+ */
 
 class AccountDB
 {

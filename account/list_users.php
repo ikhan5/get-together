@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Account/MVP
+ * Description:     Lists all the users in the database
+ * Date Created:    March 27th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  List all users
+ */
 $pagetitle = 'All Users';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>

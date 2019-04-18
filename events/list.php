@@ -1,4 +1,12 @@
-<?php 
+<?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     View page for listing all events. Admins can view all events in the db
+ *                  Users can only view events they are related to.
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  changed the view when a user doesn't have any event
+ */
 $pagetitle = 'Events';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>

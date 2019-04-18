@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Account/MVP
+ * Description:     View page for login and registration forms.
+ * Date Created:    March 27th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  Added hidden input tags to know if the user was invited.
+ */
 if(!$_SESSION){
   session_start();
 }
@@ -13,7 +20,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
       <h2 class="display-4 text-center mb-4">Registration</h2>
       <form action="index.php" method="post">
         <input type="hidden" name="action" value="register_user">
-        <?php if(isset($gid)){ echo($gid); exit(); } ?>
+        <?php
+          if(isset($gid)){
+            echo("<input type='hidden' name='gid' value='$gid'>");
+            echo("<input type='hidden' name='eid' value='$eid'>");
+          } 
+        ?>
         <div class="form-group row">
           <label for="user-name" class="col-sm-4 col-form-label">Name</label>
           <div class="col-sm-8">
@@ -51,6 +63,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
       <h2 class="display-4 text-center mb-4">Login</h2>
       <form action="index.php<?php if(isset($return_url)) echo('?return_url=' . urlencode($return_url)) ?>" method="post">
         <input type="hidden" name="action" value="login_user">
+        <?php
+          if(isset($gid)){
+            echo("<input type='hidden' name='gid' value='$gid'>");
+            echo("<input type='hidden' name='eid' value='$eid'>");
+          } 
+        ?>
         <div class="form-group row">
           <label for="login-user-email" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">

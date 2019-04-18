@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     View page for adding carpool chat page. Only admins can add carpool chat pages.
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  form to add carpool chat page
+ */
 require_once('../model/database.php');
 require_once('../model/event_db.php');
 require_once('../model/event.php');

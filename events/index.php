@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     Controller for events feature.
+ *                  All requests for the feature goes through this page.
+ * Date Created:    March 27th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  creates a chatroom record on db if there is none for specific event.
+ */
 session_start();
 require('../model/database.php');
 require('../model/event.php');

@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Account/MVP
+ * Description:     A model class which represents role table of the db
+ * Date Created:    March 31st, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  Create class
+ */
+
 class Role {
   private $id, $type, $description;
 

@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     A model class to handle all requests from event controller to the db
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  fix bugs
+ */
 
 class EventDB
 {

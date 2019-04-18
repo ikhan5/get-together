@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Events
+ * Description:     View page for updating an event.
+ * Date Created:    March 4th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  form to update an event
+ */
 $pagetitle = $event->getTitle() . ' - Update Event';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 ?>

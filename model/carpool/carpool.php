@@ -1,4 +1,11 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Carpool chat
+ * Description:     A model class which represents carpool table of the db
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  create class
+ */
 class CarpoolChat {
   private $id, $event_id, $file_name;
 

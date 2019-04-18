@@ -1,4 +1,12 @@
 <?php
+/* Author:          Bibek Shrestha
+ * Feature:         Account/MVP
+ * Description:     A model class which represents user table of the db
+ * Date Created:    March 31st, 2019
+ * Last Modified:   April 17th, 2019
+ * Recent Changes:  Create class
+ */
+
 class User {
   private $id, $first_name, $last_name, $email;
 
