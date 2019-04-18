@@ -6,6 +6,7 @@
     max-width: 340px;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    margin: 0 auto;
 }
 
 #playlists_container {
@@ -492,6 +493,7 @@
 @media only screen and (min-width: 1050px) {
     .playlists_body {
         max-width: 1200px;
+
     }
 
     .playlists__layout {

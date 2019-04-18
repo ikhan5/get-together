@@ -16,22 +16,22 @@
  * Last Modified: April 15th, 2019
  * Recent Changes: Refactored Code, added comments
 */
-    include "playlistHeader.php";
+session_start();
+$pagetitle = 'Manage Your Playlists';
+include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
+    
     $event_id =  $_GET['eid'];
 ?>
 
-<body>
-    <header>
-        <div id="playlist-page__head">
-            <h1 class="heading-style2">Playlists</h1>
-            <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
-            <span class="playlist-page__create">
-                <i class="fas fa-plus-circle"></i>
-                <h3>Create A Playlist</h3>
-            </span>
-        </div>
-    </header>
-
+<div class="playlists_body">
+    <div id="playlist-page__head">
+        <h1 class="heading-style2">Playlists</h1>
+        <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
+        <span class="playlist-page__create">
+            <i class="fas fa-plus-circle"></i>
+            <h3>Create A Playlist</h3>
+        </span>
+    </div>
     <section class="embed-container">
         <center> <iframe width="640" height="480" src="https://www.youtube.com/embed/" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -72,6 +72,7 @@
             </form>
         </div>
     </section>
-    <?php
+</div>
+<?php
     include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
 ?>

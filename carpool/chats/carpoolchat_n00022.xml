@@ -1,3 +1,2 @@
-<?xml version='1.0' encoding='utf-8'?>
-  <chats xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' roomId='00022'
-    xsi:noNamespaceSchemaLocation='chatroom.xsd'></chats>
+<?xml version="1.0" encoding="utf-8"?>
+<chats xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" roomId="00022" xsi:noNamespaceSchemaLocation="chatroom.xsd"><chat><date>18/04/2019</date><time>1845</time><user userId="29">Imzan </user><message>d</message></chat></chats>
