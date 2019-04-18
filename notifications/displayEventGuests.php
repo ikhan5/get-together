@@ -24,6 +24,12 @@ foreach($users as $user)
         if($user->is_host){
             echo '<tr>';  
                 echo '<td id="host" style="color:green;">'.$user->first_name.' (host)</td>';
+                echo '<td>'.$user->email.'</td><td>
+            <input type="checkbox" name="single_email" class="single_email" data-event="'.$event_id.'" 
+            data-email="'.$user->email.'" data-name="'.$user->first_name.'" />
+            </td><td><button type="button" name="send_email" class="btn btn-primary btn-xs email_button single_buttons" 
+            id="'.$user->id.'" data-event="'.$event_id.'" data-email="'.$user->email.'" data-name="'.$user->first_name.'"
+             data-action="single">Send</button></td>';
         }
         else{
             echo '<tr>';  

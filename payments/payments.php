@@ -90,6 +90,10 @@ $pool = $p->selectPool($pool_id);
     </div>
 </form>
 
+<?php
+    include "footer.php";
+?>
+
 <script>
     //Removes Credit Card Validation when the PayPal option is selected
     $("input[type='submit']").click(function () {
@@ -99,7 +103,3 @@ $pool = $p->selectPool($pool_id);
         }
     });
 </script>
-
-<?php
-    include "footer.php";
-?>
