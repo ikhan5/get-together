@@ -19,6 +19,8 @@ require_once('../model/event.php');
 require_once('../model/event_user.php');
 require_once('../model/event_db.php');
 
+$_SESSION['successmess'] = '';
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == null) {
   $action = filter_input(INPUT_GET, 'action');

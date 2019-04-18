@@ -45,7 +45,7 @@ class AccountDB
     
     $tmp_usr = AccountDB::validateEmail($email);
     if($tmp_usr) {
-      return "User with the email already exists";
+      return "User with the email already exists. Please log in to view your events.";
     }
 
     $sql = "INSERT INTO users (first_name, last_name, email) 
@@ -70,7 +70,8 @@ class AccountDB
 
     $sql = "INSERT INTO logins (password_hash, user_id) 
           VALUES (:password, :user_id) ";
-    
+    echo($user_id);
+    exit();
     $pdostm = $dbcon->prepare($sql);
     $pdostm->bindParam(':password', $password);
     $pdostm->bindParam(':user_id', $user_id);

@@ -17,7 +17,9 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
   <div class="row container justify-content-end">
     <a href=".?action=show_update_form&id=<?= $event->getId() ?>" class="btn btn-sm btn-outline-primary">Update</a>
     <a href="." class="btn btn-sm btn-outline-primary">Go to event list</a>
-    <a href="/notifications?eid=<?= $event->getId() ?>" class="btn btn-sm btn-outline-primary">Send Notification</a>
+    <?php if($ishost): ?>
+      <a href="/notifications?eid=<?= $event->getId() ?>" class="btn btn-sm btn-outline-primary">Send Notification</a>
+    <?php endif; ?>
   </div>
   <div id="event-detail-main" class="container">
     <div class="event-description container text-center pt-3 px-3"><?= $event->getDescription() ?></div>
