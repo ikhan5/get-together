@@ -18,7 +18,7 @@
     font-size: 20px;
 }
 
-h2 {
+.payments_container h2 {
     margin: 10px;
 }
 
@@ -42,11 +42,11 @@ h2 {
     background-color: #ccc;
 }
 
-a {
+.payments_container a {
     text-decoration: none;
 }
 
-a:hover {
+.payments_container a:hover {
     text-decoration: underline;
 }
 

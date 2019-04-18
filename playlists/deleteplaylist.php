@@ -46,3 +46,7 @@ include "playlistHeader.php";
         <input class="btn1 form-action" type="submit" name="delete_playlist" value="Delete Playlist">
     </form>
 </div>
+
+<?php
+    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
+?>

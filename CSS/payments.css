@@ -12,16 +12,16 @@
 }
 
 /*******************Heading Styling*********************/
-.heading-style,
-.heading-style2,
-.heading-style3 {
+.payments_heading-style,
+.payments_heading-style2,
+.payments_heading-style3 {
     position: relative;
     z-index: 1;
 }
 
-.heading-style:before,
-.heading-style2:before,
-.heading-style3:before {
+.payments_heading-style:before,
+.payments_heading-style2:before,
+.payments_heading-style3:before {
     content: "";
     margin: 0;
     position: absolute;
@@ -32,17 +32,17 @@
     z-index: -1;
 }
 
-.heading-style:before {
+.payments_heading-style:before {
     border-top: 23px solid #F6DC7A;
     width: 100%;
 }
 
-.heading-style2:before {
+.payments_heading-style2:before {
     border-top: 23px solid #05e5e5;
     width: 100%
 }
 
-.heading-style3:before {
+.payments_heading-style3:before {
     border-top: 23px solid #ff4e4e;
     width: 25%;
 }
@@ -153,12 +153,12 @@ div[class^="credit"] {
     flex-direction: column;
 }
 
-.row {
+.payments_row {
     display: flex;
     justify-content: space-around;
 }
 
-.row input {
+.payments_row input {
     width: 150px;
 }
 

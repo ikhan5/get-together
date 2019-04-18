@@ -63,7 +63,7 @@ $pool = $p->selectPool($pool_id);
                 <label for="name">Cardholder Name</label>
                 <input type="text" id="credit__name" placeholder="John Doe" required='true' />
             </div>
-            <div class="row">
+            <div class="row payments_row">
                 <div class="credit__expiration">
                     <label for="expiration">Expiration Date</label>
                     <input type="text" id="credit__expiration" placeholder="MMYY" maxlength="4" required='true'
@@ -84,14 +84,12 @@ $pool = $p->selectPool($pool_id);
         <a href="paymentsStatus.php?eid=<?=$event_id?>">
             <i class="fas fa-arrow-left"> Back to Pools</i>
         </a>
-        <h2 class='heading-style3'>Payment Details</h2>
+        <h2 class='payments_heading-style3'>Payment Details</h2>
         <p>You will now be redirected to PayPal portal to complete the payment process</p>
         <input class='btn1' type="submit" value="Proceed to Portal" id="paypal-submit" name="process__payment">
     </div>
 </form>
-<?php
-    include "footer.php";
-?>
+
 <script>
     //Removes Credit Card Validation when the PayPal option is selected
     $("input[type='submit']").click(function () {
@@ -101,3 +99,7 @@ $pool = $p->selectPool($pool_id);
         }
     });
 </script>
+
+<?php
+    include "footer.php";
+?>
