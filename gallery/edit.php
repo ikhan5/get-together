@@ -1,7 +1,5 @@
 <?php
 
-// this is supposed to be an edit button that edit the title of the photos
-
 require_once '../model/database.php';
 require_once 'Gallery.php';
 
@@ -19,3 +17,5 @@ foreach($myphoto as $row)
 }
 
 echo json_encode($output);
+
+?>

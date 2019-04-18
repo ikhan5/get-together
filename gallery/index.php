@@ -11,14 +11,16 @@ if(!isset($userid)) {
   header('Location: /account/?action=show_add_form&return_url=' . $return_url);
 }
 
-$pagetitle = 'Photo Gallery';
+$pagetitle = 'Invite Guest';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/gallery.js"></script>
 
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+    <body>
+    <br/>
     <div class="gallery_container">
     <div class="gallery_header">
         <h2 class="gallery_heading-style">Gallery</h2>
@@ -28,6 +30,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
             <h3 class="gallery_heading-style2">Upload photos</h3>
         </div>
         <div class="gallery_upload-form">
+            <input type="hidden" name="event_id" value="<?= $eid ?>" id="eventid">
             <input type="file" name="multiple_files" id="multiple_files" multiple />
         </div>
         <div class="gallery_upload-msg">
@@ -41,20 +44,18 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     </div>
 </body>
 
-<!-- supposed to edit the title for each photo
-<div id="gallery_imageModal" class="gallery_modal">
+
+<div id="imageModal" class="gallery_modal">
     <div class="gallery_modal-content">
         <form method="POST" id="edit_image_form">
-                <button type="button" class="close" id="gallery_closebtn" data-dismiss="gallery_modal">&times;</button>
+                <button type="button" class="gallery_close" id="closebtn" data-dismiss="modal">&times;</button>
                 <div class="gallery_editbody">
                     <h3 class="gallery_heading-style3">Edit Photo Details</h3>
                     <label>Title</label>
-                    <input type="text" name="title" id="title" class="form-control" /><br/>
-                    <input type="hidden" name="photo_name" id="photo_name" />
+                    <input type="text" name="title" id="title" class="gallery_form-control" /><br/>
                     <input type="hidden" name="id" id="id" value="" />
                     <input type="submit" name="submit" class="btn btn-info" id="gallery_savebtn" value="Save" />
                 </div>
         </form>
     </div>
 </div>
--->
