@@ -34,7 +34,7 @@ if(isset($_POST['updfood'])){
 
     $dbcon = Database::getDb();
     $f = new Food();
-    $count = $f->updateFood($id, $event_id, $name, $type, $size, $qty, $dbcon);
+    $count = $f->updateFood($id, $event_id, $name, $type, $qty, $size, $dbcon);
 
     if($count){
         header('location: foodindex.php?eid='.$event_id);
@@ -50,7 +50,7 @@ if(isset($_POST['updfood'])){
 <form action="" method="post">
     <h2 class="food-h-style-add">Edit Food</h2>
     <input type="hidden" name="fid" value="<?= $food->food_id; ?>" />
-    Name : <input class="food-input" type="text" name="name" value="<?= $food->food_name; ?>" /><br/>
+    Name : <input class="food-input" type="text" name="name" value="<?=$food->food_name; ?>" /><br/>
     Type : <br/>
         <?php
             $options= array('choose','Vegeterian','Fast Food','Burgers','Pizza','Sushi', 'Salads', 'Deserts');

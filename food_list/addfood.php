@@ -14,8 +14,8 @@ if (isset($_POST['save'])) {
     $event_id = $_GET['eid'];
     $name = $_POST['name'];
     $type = $_POST['type'];
-    $size = $_POST['size'];
     $qty = $_POST['qty'];
+    $size = $_POST['size'];
 
     $db = Database::getDB();
     $f = new Food();
