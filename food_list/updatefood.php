@@ -1,4 +1,14 @@
 <?php 
+/* Author: Maria Korolenko
+ * Feature: Food List
+ * Description: Gets List information and allows the user
+ *              to edit the Food type, name, description,
+ *              size, quantity. New inputs are validated
+ *              then updated in the database.  
+ * Date Created: March 29th, 2019
+ * Last Modified: April 18th, 2019
+ * Recent Changes: Refactored Code, Added comments
+ */ 
 require_once '../model/database.php';
 require_once './model/Food.php';
 

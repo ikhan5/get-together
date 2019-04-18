@@ -1,40 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 
 body{
-    max-width: 1200px;
     background: #f2f2f2;
-    margin: 0 7%;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     padding: 0;
 }
-/* layout */
-.container{
+.todo-container{
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
 }
-.inputform {
+.todo-inputform {
     order:1;
     background-color: white;
-    width: 40%;
+    width: 60%;
     padding: 2.5%;
-    margin: 0;
+    margin-left: 17%;
 }
-.display{
-    order:1;
-    background-color: white;
-    width: 55%;
-    padding: 2.5%;
-    margin: 0;
-}
-
-/* styling for headline */
-.h-style-add,.h-style-list {
+.to-do-h-style-add,.to-do-h-style-list {
   position: relative;
   z-index: 1;
 }
-.h-style-add:before,.h-style-list:before  {
+.to-do-h-style-add:before,.to-do-h-style-list:before  {
   content: "";
   margin: 0;
   position: absolute;
@@ -44,34 +32,25 @@ body{
   bottom: 0;
   z-index: -1;
 }
-.h-style-add:before {
-  border-top: 23px solid #F6DC7A;
-  width: 95%;
-}
-.h-style-list:before {
+.to-do-h-style-list:before {
   border-top: 23px solid #05e5e5;
-  width: 32%;
+  width: 15%;
 }
-
-/* form styling */
 input[type=text] {
-    width: 90%;
+    width: 95%;
     padding: 5px 10px;
     margin: 10px 0;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 13px;
 }
-
-p{
+.todo-p{
     margin: 5px 0;
 }
-
-#table{
+#todo-table{
     border-collapse: collapse;
     width: 100%;
 }
-
-#table th {
+#todo-table th {
     padding: 10px 8px;
     text-align: left;
     background-color: black;
@@ -79,8 +58,7 @@ p{
     font-size: 15px;
     font-weight: 600;
 }
-
-.button-link {
+.todo-button-link {
     background: none;
     color: #000;
     border: none;
@@ -89,15 +67,15 @@ p{
     cursor: pointer;
     font-size: 1.1em;
 }
-.button-link:hover {
+.todo-button-link:hover {
     color: #05e5e5;
 }
-.delete{
+.todo-delete{
     color: #000;
     margin-left: 20px;
 }
 
-.delete:hover{
+.todo-delete:hover{
     color: red;
     
 }
@@ -112,14 +90,14 @@ p{
 .plus:hover{
     color: #F6DC7A;
 }
-.text{
-    width: 83%;
+.todo-text{
+    width: 93%;
 }
 @media only screen and (max-width: 900px){
-    .container{
+    .todo-container{
         flex-direction: column;
     }
-    .inputform {
+    .todo-inputform {
         order:1;
         width: 100%;
     }
@@ -127,10 +105,10 @@ p{
         order:2;
         width: 100%;
     }
-    .h-style-add:before {
+    .to-do-h-style-add:before {
         width: 70%;
     }
-    .h-style-list:before {
+    .to-do-h-style-list:before {
         width: 40%;
     }
     body{
@@ -139,11 +117,11 @@ p{
     input[type=text]{
         padding:2px 5px;
     }
-    #table td{
+    #todo-table td{
         font-size: 12px;
         padding:2px;
     }
-    #table th {
+    #todo-table th {
         padding:3px;
         font-size: 12px;
     }

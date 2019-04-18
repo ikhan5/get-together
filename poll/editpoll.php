@@ -1,4 +1,12 @@
 <?php
+/* Author: Maria Korolenko
+ * Feature: Poll
+ * Description: 
+ * 
+ * Date Created: April 5th, 2019
+ * Last Modified: April 18th, 2019
+ * Recent Changes: Refactored Code, Added comments
+ */ 
 require_once '../model/database.php';
 require_once './model/Poll.php';
 
@@ -46,6 +54,6 @@ if(isset($_POST['editpoll'])){
     </ul>
     <label for="poll_answer">Answer</label>
     <input type="text" name="poll_answer" id="poll_answer" /><br />
-    <input type="submit" name="save" class='btn' value="Edit Poll" />
+    <input type="submit" name="save" class='poll-btn' value="Edit Poll" />
 </form>
 
