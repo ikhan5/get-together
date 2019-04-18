@@ -23,6 +23,7 @@ if($myphoto > 0)
             <div class="photo-info">
                 <div class="photo-content">
                 <p class="photo-text">'.$row["title"].'</p>
+                <button type="button" class="edit" id="'.$row["id"].'">Edit</button>
                 <button type="button" class="delete" id="'.$row["id"].'"data-photo_name="'.$row["photo_name"].'">Delete</button>
                 </div>
             </div>
@@ -32,9 +33,13 @@ if($myphoto > 0)
 }
 else{
     $output.='
-    <p>No photos at the moment</p>
+    <tr>
+        <td colspan="6" align="center">No Data Found</td>
+    </tr>
     ';
 }
+
+$output.='</table>';
 
 echo $output;
 
