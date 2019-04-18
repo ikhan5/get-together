@@ -36,8 +36,6 @@ if(isset($_POST['submit'])){
   $doc->preserveWhiteSpace = false;
   $file_name = 'carpoolchat_n' . str_pad($event_id, 5, '0', STR_PAD_LEFT) . '.xml';
   $doc->load("./chats/" . $file_name);
-  var_dump($doc);
-  exit();
   if(!($doc->documentURI)){
     $chatfile = fopen("chats/$file_name", "w");
     $roomid = str_pad($event_id, 5, '0', STR_PAD_LEFT);
