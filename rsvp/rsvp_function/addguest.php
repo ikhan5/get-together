@@ -8,7 +8,7 @@ $email = "";
 if (isset($_POST['save'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $eid = $_POST['eid'];
+    $eid = $_GET['eid'];
 
     $db = Database::getDB();
     $g = new Guest();

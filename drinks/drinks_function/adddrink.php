@@ -8,7 +8,7 @@ if (isset($_POST['save'])) {
     $type = $_POST['type'];
     $size = $_POST['size'];
     $qty = $_POST['qty'];
-    $eid = $_POST['eid'];
+    $eid = $_GET['eid'];
 
     $db = Database::getDB();
     $d = new Drink();

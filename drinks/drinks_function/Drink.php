@@ -26,14 +26,14 @@ class Drink
         $count = $pst->execute();
 
         if($count){
-            header("location: ../drinks/?eid='$eid'");
+            header("location: ../?eid=$eid");
         }else{
             $message = 'Failed to add drinks.';
         }
         return $message;
     }
     
-    public function getDrinkById($id, $db){
+    public function getDrinkById($id,$db){
         $sql = "SELECT * FROM drinklist WHERE drink_id = :id ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':id', $id);
