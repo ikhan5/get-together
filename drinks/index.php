@@ -22,9 +22,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     <div class="drinks_inputform">
         <h2 class="drinks_heading-style">Add drinks to your event</h2>
         <form method="post" action="drinks_function/adddrink.php?eid=<?= $eid ?>">
+        <div class="drinks_input">
         <label>Name : </label><input type="text" name="name"/><br/>
         <label>Type : </label><br/>
-        <p>
+        <p class="drinks_options">
         <?php
             $options= array('choose','Non-alcoholic','Wine','Spirits','Beer and Ciders','Coolers');
             echo '<select name="type" class="drinks_dropbtn">';
@@ -37,6 +38,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <label>Size : </label><input type="text" name="size"/><br/>
         <label>Quantity : </label><input type="text" name="qty" /><br/>
         <button type="submit" name="save" class='drinks_btn'>Save</button>
+        </div>
         </form>
     </div>
     <div class="drinks_display">

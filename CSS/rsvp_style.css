@@ -110,7 +110,7 @@
 }
 
 /* form styling */
-.rsvp_sendtoguest input[type=text] {
+.rsvp_input input[type=text] {
     width: 100%;
     padding: 5px 10px;
     margin: 10px 0;

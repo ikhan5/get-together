@@ -46,10 +46,12 @@ if(isset($_POST['updguest'])){
 <div class="rsvp_inputform">
 <form action="" method="post">
     <h2 class="heading-style">Edit guest's information</h2>
+    <div class="rsvp_input">
     <input type="hidden" name="eid" value="<?= $eid; ?>">
     <input type="hidden" name="gid" value="<?= $guest->guest_id; ?>" />
     Name: <input type="text" name="name" value="<?= $guest->guest_name; ?>" /><br/>
     Email: <input type="text" name="email" value="<?= $guest->guest_email; ?>" /><br/>
     <button type="submit" name="updguest" value="UpdateGuest" class='rsvp_btn'>Update</button>
+    </div>
 </form>
 </div>
