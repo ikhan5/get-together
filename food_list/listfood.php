@@ -14,7 +14,8 @@ $event_id = $_GET['eid'];
 
 $dbcon = Database::getDB();
 $f = new Food();
-$myfood = $f->getAllFood(Database::getDB());
+$myfood = $f->getAllFood($event_id, Database::getDB());
+
 
 echo "<table id='food-table'><tr>
         <th>Type</th>

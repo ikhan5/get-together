@@ -2,10 +2,11 @@
 
 class Food
 {
-    public function getAllFood($dbcon)
+    public function getAllFood($event_id,$dbcon)
     {
-        $sql = "SELECT * FROM foodlist";
+        $sql = "SELECT * FROM foodlist where event_id = :event_id";
         $pdostm = $dbcon->prepare($sql);
+        $pdostm->bindParam(':event_id', $event_id);
         $pdostm->execute();
         $food = $pdostm->fetchAll(PDO::FETCH_OBJ);
 
