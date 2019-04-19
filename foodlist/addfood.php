@@ -22,7 +22,7 @@ if (isset($_POST['save'])) {
     $food = $f->insertFood($event_id, $name, $type, $size, $qty, $db);
 
     if($f){
-        header('location: foodindex.php?eid='.$event_id);
+        header('location: index.php?eid='.$event_id);
         echo "Food added sucessfully!";
     } else {
         echo "Error adding to list of food.";

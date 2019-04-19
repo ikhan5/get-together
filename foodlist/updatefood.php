@@ -37,7 +37,7 @@ if(isset($_POST['updfood'])){
     $count = $f->updateFood($id, $event_id, $name, $type, $qty, $size, $dbcon);
 
     if($count){
-        header('location: foodindex.php?eid='.$event_id);
+        header('location: index.php?eid='.$event_id);
     } else {
         echo  "Error updating.";
     }

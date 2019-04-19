@@ -48,7 +48,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
         <h6 class="card-title text-center">To-Do List</h6>
       </div>
     </a>
-    <a href="/food_list/foodindex.php?eid=<?= $event->getId() ?>" class="card col-1">
+    <a href="/foodlist/?eid=<?= $event->getId() ?>" class="card col-1">
       <img src="/Content/Images/food.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h6 class="card-title text-center">Food List</h6>
