@@ -1,4 +1,14 @@
 <?php
+/* Author:          Jennifer Wong
+ * Feature:         Photo Gallery
+ * Description:     User are able to upload and share photos for the event.
+ *                  Users can upload max 10 photos at a time and add a title
+ *                  for each photo after upload. Title, edit and delete button
+ *                  will show when mouse hover.
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 19th, 2019
+ * Recent Changes:  organized the style
+ */
 
 session_start();
 
@@ -19,9 +29,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
-    <body>
-    <br/>
-    <div class="gallery_container">
+<body>
+<div class="gallery_container">
     <div class="gallery_header">
         <h2 class="gallery_heading-style">Gallery</h2>
     </div>
@@ -37,11 +46,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
             <span id="multiple_files_error"></span>
         </div>
     </div>
-    </div>
-    <div class="gallery_display" id="image_table">
+</div>
+<div class="gallery_display" id="image_table">
 
-    </div>
-    </div>
+</div>
 </body>
 
 
