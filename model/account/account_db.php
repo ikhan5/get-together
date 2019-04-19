@@ -70,8 +70,6 @@ class AccountDB
 
     $sql = "INSERT INTO logins (password_hash, user_id) 
           VALUES (:password, :user_id) ";
-    echo($user_id);
-    exit();
     $pdostm = $dbcon->prepare($sql);
     $pdostm->bindParam(':password', $password);
     $pdostm->bindParam(':user_id', $user_id);
