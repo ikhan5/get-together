@@ -1,5 +1,13 @@
 <?php
-
+/* Author:          Jennifer Wong
+ * Feature:         RSVP/Guestlist
+ * Description:     Users are able to invite guests by adding their names and
+ *                  emails. A link (with eventid & guestid) will send to guest's email.
+ *                  Guests will have to register/login to join the event.
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 19th, 2019
+ * Recent Changes:  finalized the link from the email
+ */
 session_start();
 
 $eid = $_GET['eid'];

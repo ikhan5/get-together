@@ -3,9 +3,7 @@ session_start();
 if(isset($_SESSION['userid'])){
   header('Location: /events');
 }
-
 include "header.php";
-
 ?>
 <main>
         <div id="main-container">
@@ -117,7 +115,5 @@ include "header.php";
     </figure>
 </main>
 <?php
-
 include "footer.php";
-
 ?>

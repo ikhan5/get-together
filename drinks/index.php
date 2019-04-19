@@ -1,4 +1,13 @@
 <?php
+/* Author:          Jennifer Wong
+ * Feature:         Drinks
+ * Description:     User are able to add/update/delete drinks for the event.
+ *                  Recommended drinks list/ LCBO API are not fully function
+ *                  at the moment.
+ * Date Created:    April 6th, 2019
+ * Last Modified:   April 19th, 2019
+ * Recent Changes:  organized the style
+ */
 
 session_start();
 
@@ -16,7 +25,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
 
 ?>
 <link rel="stylesheet" type="text/css" href="../CSS/drinks_style.css"/>
-
+<script src="js/script.js"></script>
 <body>
     <div class="drinks_container">
     <div class="drinks_inputform">
