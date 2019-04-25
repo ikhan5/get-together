@@ -53,7 +53,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
             <div class="required">* Required Fields <span class="errorDisplay"></span></div>
             <span class="close">X</span>
             <h2>Create a New Playlist</h2>
-            <form action="addPlaylist.php" method="post" id="createplaylist">
+            <form action="addplaylist.php" method="post" id="createplaylist">
                 <div class="form-field">
                     <span class="required">*</span>
                     <label for="playlist__name">Name: </label>

@@ -37,7 +37,6 @@
 <script src="/scripts/payments.js"></script>
 <script src="/scripts/notifications.js"></script>
 <script src="/scripts/playlists.js"></script>
-<script src="/scripts/songs.js"></script>
 <script src="/Content/js/event.js"></script>
 <script src="/Content/js/carpool.js"></script>
 <script src="/Content/js/account.js"></script>
