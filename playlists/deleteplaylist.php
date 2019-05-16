@@ -11,7 +11,7 @@
 require_once '../model/database.php';
 require_once '../model/playlist_db.php';
 
-if(isset($_POST['deleteplaylist'])){
+if (isset($_POST['deleteplaylist'])) {
     $event_id =  $_POST['eid'];
     $id = $_POST['playlistID'];
     $p = new PlaylistDB;
@@ -26,12 +26,12 @@ if (isset($_POST['delete_playlist'])) {
     header("Location: index.php?eid=$event_id");
     exit;
 }
-include "playlistHeader.php";
+include($_SERVER['DOCUMENT_ROOT'] . '/loggedin_header.php');
 ?>
 <!-- Form for deleting a payment -->
 
 <div id="playlists_container">
-    <a href="index.php?eid=<?=$event_id?>">
+    <a href="index.php?eid=<?= $event_id ?>">
         <i class="fas fa-arrow-left" id="to-playlists"> Back to Playlists</i>
     </a>
     <h2 class="heading-style3">Delete Playlist: </h2>
@@ -48,5 +48,5 @@ include "playlistHeader.php";
 </div>
 
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/loggedin_footer.php');
 ?>

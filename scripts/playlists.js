@@ -10,8 +10,8 @@
 */
 var newData = [];
 var eventid = $(".playlist__event").val();
-$.getJSON("getAllPlaylists.php?eid=" + eventid, function(data) {
-  $.each(data, function(index, value) {
+$.getJSON("getAllPlaylists.php?eid=" + eventid, function (data) {
+  $.each(data, function (index, value) {
     $.ajax({
       url: "getSongsCount.php",
       method: "POST",
@@ -19,11 +19,11 @@ $.getJSON("getAllPlaylists.php?eid=" + eventid, function(data) {
       data: {
         pid: value.playlist_id
       },
-      success: function(data) {
+      success: function (data) {
         myJson = JSON.parse(data);
         newData.push(myJson.Song_Count);
       },
-      error: function(response) {
+      error: function (response) {
         console.log(response);
       }
     });
@@ -66,7 +66,7 @@ $.getJSON("getAllPlaylists.php?eid=" + eventid, function(data) {
   /*The ID is hidden within the playlist
 for use when the user clicks on a playlist, they are able to see
 the songs that respective playlist contains*/
-  $(".playlist").click(function() {
+  $(".playlist").click(function () {
     $("#songs").empty();
     var id = $(this)
       .find(".playlistID")
@@ -90,14 +90,14 @@ playlists.php file.
         getsongs: 1,
         playlist_id: id
       },
-      success: function(response) {
+      success: function (response) {
         var data = response;
-        $.each(data, function(index, value) {
+        $.each(data, function (index, value) {
           let song = `<div class="song" data-playlist=${id} data-index="${
             value.playlist_song_id
           }" data-position="${value.position}" data-youtube="${value.url}">
           <div class="song_item song__image">
-              <i class="fas fa-headphones-alt playlist-icon"></i>
+          <i class="far fa-play-circle playlist-icon"></i>
           </div>
           <a href="javascript:void(0);" class="song_item song__info">
               <div>
@@ -120,53 +120,53 @@ playlists.php file.
           $("#songs").append(song);
         });
 
-        $(".song__options").on("click", function() {
+        $(".song__options").on("click", function () {
           $(this)
             .find(".song__options_dropdown")
             .toggle(150);
         });
 
-        $(".song").on("click", function() {
+        $(".song").on("click", function () {
           let song = $(this).data("youtube");
           $("iframe").attr("src", "https://www.youtube.com/embed/");
           $("iframe").attr("src", $("iframe").attr("src") + song);
         });
       },
-      error: function(response) {
+      error: function (response) {
         console.log(response);
       }
     });
   }); //end of playlist click event
 
   $(".song").sortable();
-  $(".playlist__info").click(function() {});
+  $(".playlist__info").click(function () {});
 
-  $(".playlist-page__create").on("click", function() {
+  $(".playlist-page__create").on("click", function () {
     $("#playlistForm").toggle();
   });
 
-  $(".close").on("click", function() {
+  $(".close").on("click", function () {
     $("#playlistForm").hide();
   });
 
-  $(".create_button").on("click", function() {
+  $(".create_button").on("click", function () {
     $("#playlistForm").hide();
   });
 
   //set active playlist
-  $(".playlist").bind("click", function() {
+  $(".playlist").bind("click", function () {
     $(".activePlay").removeClass("activePlay");
     $(this).addClass("activePlay");
   });
 
-  $(".playlist").on("click", function() {
+  $(".playlist").on("click", function () {
     $(this)
       .find(".to-songs")
       .toggle(150);
   });
 
   //playlist options
-  $(".playlist__options").on("click", function(event) {
+  $(".playlist__options").on("click", function (event) {
     $(this)
       .find(".playlist__options_dropdown")
       .toggle(150);
@@ -179,10 +179,10 @@ let playlist_desc = $("#playlist__desc").val();
 /*Makes the songs sortable, i.e can be dragged around to change the order of the playlist
  WORK IN PROGRESS */
 $(".sortable").sortable({
-  update: function(event, ui) {
+  update: function (event, ui) {
     $(this)
       .children()
-      .each(function(index) {
+      .each(function (index) {
         if ($(".ui-sortable-helper").attr("data-position") != index + 1) {
           $(this)
             .attr("data-position", index + 1)
@@ -192,15 +192,15 @@ $(".sortable").sortable({
 
     newPosition(
       $(this)
-        .children()
-        .attr("data-playlist")
+      .children()
+      .attr("data-playlist")
     );
   }
 });
 //Current a work in progress
 function newPosition(playlist_id) {
   var positions = [];
-  $(".updated").each(function() {
+  $(".updated").each(function () {
     positions.push([
       playlist_id,
       $(this).attr("data-index"), //song_id

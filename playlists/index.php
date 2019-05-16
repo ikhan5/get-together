@@ -18,24 +18,24 @@
 */
 session_start();
 $pagetitle = 'Manage Your Playlists';
-include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
-    
-    $event_id =  $_GET['eid'];
+include($_SERVER['DOCUMENT_ROOT'] . '/loggedin_header.php');
+
+$event_id =  $_GET['eid'];
 ?>
 
 <div class="playlists_body">
     <div id="playlist-page__head">
         <h1 class="heading-style2">Playlists</h1>
-        <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
+        <input class="playlist__event" type="hidden" name="playlist__event" value="<?= $event_id ?>" />
         <span class="playlist-page__create">
             <i class="fas fa-plus-circle"></i>
             <h3>Create A Playlist</h3>
         </span>
     </div>
-    <section class="embed-container">
-        <center> <iframe width="640" height="480" src="https://www.youtube.com/embed/" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe></center>
+    <section class="youtube">
+        <div class="embed-container">
+            <center> <iframe width="640" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+        </div>
     </section>
 
     <div class="playlists__layout">
@@ -64,8 +64,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
                     <label for="playlist__desc">Description: </label>
                     <textarea name="playlist__desc" id="playlist__desc" cols="16" rows="5"></textarea>
                 </div>
-                <input type="hidden" name="playlist__date" value="<?=date('Y-m-d H:i:s')?>" />
-                <input class="playlist__event" type="hidden" name="playlist__event" value="<?=$event_id?>" />
+                <input type="hidden" name="playlist__date" value="<?= date('Y-m-d H:i:s') ?>" />
+                <input class="playlist__event" type="hidden" name="playlist__event" value="<?= $event_id ?>" />
                 <div class=" form-submit">
                     <input type="submit" value="Create" class="create_button">
                 </div>
@@ -74,5 +74,5 @@ include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
     </section>
 </div>
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/loggedin_footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/loggedin_footer.php');
 ?>
