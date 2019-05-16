@@ -66,7 +66,7 @@ $event_id =  $_GET['eid'];
                 </div>
                 <input type="hidden" name="playlist__date" value="<?= date('Y-m-d H:i:s') ?>" />
                 <input class="playlist__event" type="hidden" name="playlist__event" value="<?= $event_id ?>" />
-                <div class=" form-submit">
+                <div class="form-submit">
                     <input type="submit" value="Create" class="create_button">
                 </div>
             </form>
