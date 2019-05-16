@@ -127,6 +127,7 @@ playlists.php file.
         });
 
         $(".song").on("click", function () {
+          $(".youtube").show();
           let song = $(this).data("youtube");
           $("iframe").attr("src", "https://www.youtube.com/embed/");
           $("iframe").attr("src", $("iframe").attr("src") + song);

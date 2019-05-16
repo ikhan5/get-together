@@ -16,11 +16,17 @@
     padding: 50px;
     max-width: 95vw;
     font-size: 20px;
+    min-height: 550px;
 }
 
 .playlists__layout a:hover {
     text-decoration: none !important;
 }
+
+.playlists__layout {
+    min-height: 500px;
+}
+
 
 /************************Search Bar***************************/
 .searchbar {
@@ -440,6 +446,7 @@
 }
 
 .youtube {
+    display: none;
     width: 65vw;
     margin: 0 auto;
 }
