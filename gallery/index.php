@@ -2,15 +2,16 @@
 /* Author:          Jennifer Wong
  * Feature:         Photo Gallery
  * Description:     User are able to upload and share photos for the event.
- *                  Users can upload max 10 photos at a time and add a title
- *                  for each photo after upload. Title, edit and delete button
- *                  will show when mouse hover.
+ *                  Users can add a title for each photo while upload. Title, 
+ *                  delete button will show when mouse hover.
  * Date Created:    April 6th, 2019
- * Last Modified:   April 19th, 2019
+ * Last Modified:   May 18th, 2019
  * Recent Changes:  organized the style
  */
 
 session_start();
+
+require_once '../model/database.php';
 
 $eid = $_GET['eid'];
 $userid = $_SESSION['userid'];
@@ -21,49 +22,66 @@ if(!isset($userid)) {
   header('Location: /account/?action=show_add_form&return_url=' . $return_url);
 }
 
-$pagetitle = 'Invite Guest';
+$pagetitle = 'Gallery';
 include($_SERVER['DOCUMENT_ROOT'].'/loggedin_header.php');
+
+
+/* upload image */
+
+if(isset($_FILES['images'])){
+    if($_FILES['images']['error'] == 0){
+       $file = base64_encode(file_get_contents($_FILES['images']['tmp_name']));
+    }else{
+        $file = '';
+    }
+    $eid = $_GET['eid'];
+    
+    $dbcon = Database::getDb();
+    $query = "INSERT INTO gallery(title,photo_name,event_id) values (?,?,?)";
+    $result = $dbcon->prepare($query);
+    $result->execute ([$_POST['title'], $file,$eid]);
+
+    header('Location: index.php?eid='.$eid);
+    die();
+}
 
 ?>
 
+<link rel="stylesheet" type="text/css" href="style/gallery.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
-<body>
-<div class="gallery_container">
-    <div class="gallery_header">
-        <h2 class="gallery_heading-style">Gallery</h2>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <body class="gallery_page">
+    <br/>
+    <div class="container">
+    <div class="header">
+        <h2 class="heading-style">Gallery</h2>
     </div>
-    <div id="uploadModal" class="gallery_inputform">
-        <div class="gallery_upload-header">
-            <h3 class="gallery_heading-style2">Upload photos</h3>
+    <div id="uploadModal" class="inputform">
+        <div class="upload-header">
+            <h3 class="heading-style2">Upload photos</h3>
         </div>
-        <div class="gallery_upload-form">
-            <input type="hidden" name="event_id" value="<?= $eid ?>" id="eventid">
-            <input type="file" name="multiple_files" id="multiple_files" multiple />
+        <div class="upload-form">
+            <form method="post" enctype="multipart/form-data">
+                <label>Title: </label>
+                <input type="text" name="title">
+                <i class="fas fa-arrow-circle-right"></i>
+                <input type="file" name="images">
+                <i class="fas fa-arrow-circle-right"></i>
+                <input type="hidden" name="eid" value="<?= $eid; ?>">
+                <input type="submit" value="submit">
+            </form>
         </div>
-        <div class="gallery_upload-msg">
+        <div class="upload-msg">
             <span id="multiple_files_error"></span>
         </div>
     </div>
-</div>
-<div class="gallery_display" id="image_table">
-
-</div>
-</body>
-
-
-<div id="imageModal" class="gallery_modal">
-    <div class="gallery_modal-content">
-        <form method="POST" id="edit_image_form">
-                <button type="button" class="gallery_close" id="closebtn" data-dismiss="modal">&times;</button>
-                <div class="gallery_editbody">
-                    <h3 class="gallery_heading-style3">Edit Photo Details</h3>
-                    <label>Title</label>
-                    <input type="text" name="title" id="title" class="gallery_form-control" /><br/>
-                    <input type="hidden" name="id" id="id" value="" />
-                    <input type="submit" name="submit" class="btn btn-info" id="gallery_savebtn" value="Save" />
-                </div>
-        </form>
     </div>
-</div>
+    <div class="gallery_display" id="image_table">
+        <?php
+            include "listimages.php";
+        ?>
+    </div>
+    </div>
+    </body>
