@@ -10,23 +10,23 @@
 .rsvp_inputform {
     order:1;
     background-color: white;
-    width: 35%;
+    width: 30%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0 5%;
 }
 .rsvp_display{
     order:1;
     background-color: white;
-    width: 55%;
+    width: 50%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0 5%;
 }
 .rsvp_sendtoguest{
     order:2;
     background-color: white;
-    width: 35%;
+    width: 30%;
     padding: 2%;
-    margin: 0 0.5%;
+    margin: 0 5%;
 }
 
 /* styling for headline */

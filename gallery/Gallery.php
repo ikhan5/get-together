@@ -2,11 +2,13 @@
 
 class Gallery
 {
-    public function getAllPhotos($dbcon)
+    public function selectPhotoById($id,$dbcon,$eid)
     {
-        $sql = "SELECT * FROM gallery ORDER BY id DESC";
+        $sql = "SELECT * FROM gallery WHERE id = :id AND event_id = :eid";
 
         $stmt = $dbcon->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':eid', $eid);
         $stmt->execute();
 
         $result = $stmt->fetchAll();
@@ -14,40 +16,15 @@ class Gallery
         return $result;
     }
 
-    public function selectPhotoById($id,$dbcon)
+    public function deletePhoto($id,$dbcon,$eid)
     {
-        $sql = "SELECT * FROM gallery 
-                    WHERE id = :id ";
-
+        $sql = "DELETE FROM gallery WHERE id = :id AND event_id = :eid";
         $stmt = $dbcon->prepare($sql);
         $stmt->bindParam(':id', $id);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll();
-
-        return $result;
-    }
-
-    public function deletePhoto($id, $dbcon)
-    {
-        $sql = "DELETE FROM gallery WHERE id = :id ";
-        $stmt = $dbcon->prepare($sql);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':eid', $eid);
         $count = $stmt->execute();
 
         return $count;
-    }
-
-    function selectOldImage($dbcon,$id)
-    {
-        $sql = "SELECT photo_name FROM gallery WHERE id = :id ";
-        $stmt = $dbcon->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        foreach($result as $row)
-        {
-            return $result->photo_name;
-        }
     }
     
 }
